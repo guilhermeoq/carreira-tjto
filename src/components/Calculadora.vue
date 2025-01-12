@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">🚀 Simulador TJTO</a>
       <button
