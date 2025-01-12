@@ -350,6 +350,7 @@ p {
   background-color: #454545;
   padding: 5px;
   color: white;
+  font-weight: bold;
 }
 
 .pdesc {
