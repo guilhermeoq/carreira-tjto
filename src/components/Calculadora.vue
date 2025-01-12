@@ -32,6 +32,9 @@
           <li class="nav-item">
             <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605">URV PL06/2023</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.instagram.com/aprovadostjto">@aprovadostjto</a>
+          </li>
         </ul>
       </div>
     </div>
