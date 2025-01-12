@@ -174,11 +174,11 @@
         <div>
           <h5 style="margin-top: 10px">Descontos</h5>
           <p class="pdesc">
-            <i class="bi bi-people-fill"></i> Previdência:
+            <strong><i class="bi bi-people-fill"></i> Previdência:</strong>
             {{ formatarParaBR(calculator.previdencia) }}
           </p>
           <p class="pdesc">
-            <i class="bi bi-bank2"></i> IRRF: {{ formatarParaBR(calculator.irrf) }}
+            <strong><i class="bi bi-bank2"></i> IRRF:</strong> {{ formatarParaBR(calculator.irrf) }}
           </p>
           <p class="pdesctotal">
             <i class="bi bi-caret-down-fill"></i> Total de Descontos:
@@ -357,14 +357,14 @@ p {
   border-radius: 0.5em;
 }
 .paux {
-  background-color: #74bad1;
+  background-color: #80c5bf;
   padding: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
 
 .pbruto {
-  background-color: #454545;
+  background-color: #1f5d72;
   padding: 0.5em;
   border-radius: 0.5em;
   color: white;
@@ -373,14 +373,14 @@ p {
 }
 
 .pdesc {
-  background-color: #fba1a1;
+  background-color: #ffc8c8;
   padding: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
 
 .pdesctotal {
-  background-color: #fd5b5b;
+  background-color: #ff9393;
   padding: 0.5em;
   border-radius: 0.5em;
   font-weight: bold;
