@@ -46,14 +46,20 @@
         TJTO
       </h1>
       <p class="subtitle">
-        Este simulador é <strong>gratuito</strong>, não coleta nenhuma informação pessoal e foi
+        Este simulador é <strong>gratuito, não coleta nenhuma informação pessoal</strong> e foi
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
+      <div class="callout callout-info">
+        <strong>Atualizações: </strong>As calculadoras dos cargos de Técnico e Analista foram
+        unificadas. Além disso, agora é possível fazer comparações do salário líquido entre duas
+        simulações.
+      </div>
     </div>
     <div class="calculators">
       <div v-for="(calculator, index) in calculators" :key="index" class="calculator">
         <h4>Simulação {{ index + 1 }}</h4>
         <form @change="updateSalary(index)">
+          <!-- SWITCH URV -->
           <div class="form-check form-switch mb-3">
             <input
               v-model="calculator.simularAumento"
@@ -66,14 +72,8 @@
               >Simular URV de 11,98% (PL 06/2023)</label
             >
           </div>
-          <!--<div>
-            <label>
-              <input type="checkbox" v-model="calculator.simularAumento" /> Simular URV de 11,98%
-              (PL 06/2023)
-            </label>
-          </div>-->
 
-          <!--<label for="cargo">Cargo:</label>-->
+          <!-- SELECTION CARGO -->
           <div class="form-floating mb-3">
             <select
               class="form-select"
@@ -86,13 +86,8 @@
             </select>
             <label for="cargoSelect">Cargo</label>
           </div>
-          <!--
-            <select style="margin-left: 1em" id="cargo" v-model="calculator.cargo">
-              <option value="tecnico">Técnico</option>
-              <option value="analista">Analista</option>
-            </select>-->
 
-          <!--<label for="nivel">Nível:</label>-->
+          <!-- SELECTION NÍVEL -->
           <div class="form-floating mb-3">
             <select
               class="form-select"
@@ -104,11 +99,8 @@
             </select>
             <label for="nivel">Nível</label>
           </div>
-          <!--<select style="margin-left: 1em" id="nivel" v-model.number="calculator.nivel">
-              <option v-for="n in 15" :value="n">{{ n }}</option>
-            </select>-->
 
-          <!--<label for="aqfc">AQFC:</label>-->
+          <!-- SELECTION AQFC -->
           <div class="form-floating mb-3">
             <select
               class="form-select"
@@ -120,18 +112,16 @@
             </select>
             <label for="aqfc">Percentual AQFC</label>
           </div>
-          <!--<select style="margin-left: 1em" id="aqfc" v-model.number="calculator.aqfc">
-              <option v-for="percent in [0, 1, 2, 3]" :value="percent">{{ percent }}%</option>
-            </select>-->
-          <!--<label for="aqe">AQE:</label>-->
-          <div class="form-floating">
+
+          <!-- SELECTION AQE -->
+          <div class="form-floating mb-3">
             <select
               class="form-select"
               id="aqe"
               aria-label="Selecione o percentual AQE"
               v-model.number="calculator.aqe"
             >
-              <!-- Use the computed property `filteredAQE` to filter options -->
+              <!-- Computed property `filteredAQE` to filter options -->
               <option
                 v-for="percent in getAqeOptions(calculator.cargo)"
                 :key="percent"
@@ -142,51 +132,77 @@
             </select>
             <label for="aqe">Percentual AQE</label>
           </div>
-          <!--<select style="margin-left: 1em" id="aqe" v-model.number="calculator.aqe">
-              <option v-for="percent in [0, 5, 7.5, 10.5, 12.5]" :value="percent">
-                {{ percent }}%
-              </option>
-            </select>-->
+
+          <!-- SWITCH 13 SALARIO
+          <div class="form-check form-switch mb-3">
+            <input
+              v-model="calculator.decimoTerc"
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="13Switch"
+            />
+            <label class="form-check-label" for="13Switch">13º Salário</label>
+          </div>-->
         </form>
         <div>
           <h5 style="margin-top: 10px">Rendimentos</h5>
           <p class="prend">
-            <strong>Vencimento Básico:</strong> {{ formatarParaBR(calculator.vencimentoBasico) }}
+            <strong> <i class="bi bi-wallet-fill"></i> Vencimento Básico:</strong>
+            {{ formatarParaBR(calculator.vencimentoBasico) }}
           </p>
-          <p class="prend"><strong>GAJ (30%):</strong> {{ formatarParaBR(calculator.gaj) }}</p>
-          <p class="prend"><strong>AQE:</strong> {{ formatarParaBR(calculator.aqeValue) }}</p>
-          <p class="prend"><strong>AQFC:</strong> {{ formatarParaBR(calculator.aqfcValue) }}</p>
-          <p class="paux"><strong>Auxílio Alimentação:</strong> R$ 2.122,00</p>
-          <p class="pbruto">Salário Bruto: {{ formatarParaBR(calculator.salarioBruto) }}</p>
+          <p class="prend">
+            <strong><i class="bi bi-plus-circle-fill"></i> GAJ (30%):</strong>
+            {{ formatarParaBR(calculator.gaj) }}
+          </p>
+          <p class="prend">
+            <strong> <i class="bi bi-mortarboard-fill"></i> AQE:</strong>
+            {{ formatarParaBR(calculator.aqeValue) }}
+          </p>
+          <p class="prend">
+            <strong> <i class="bi bi-file-earmark-medical-fill"></i> AQFC:</strong>
+            {{ formatarParaBR(calculator.aqfcValue) }}
+          </p>
+          <p class="paux">
+            <strong> <i class="bi bi-basket-fill"></i> Aux. Alimentação:</strong> R$ 2.122,00
+          </p>
+          <p class="pbruto">
+            <i class="bi bi-caret-up-fill"></i> Salário Bruto:
+            {{ formatarParaBR(calculator.salarioBruto) }}
+          </p>
         </div>
         <div>
           <h5 style="margin-top: 10px">Descontos</h5>
-          <p class="pdesc">Previdência: {{ formatarParaBR(calculator.previdencia) }}</p>
-          <p class="pdesc">IRRF: {{ formatarParaBR(calculator.irrf) }}</p>
+          <p class="pdesc">
+            <i class="bi bi-people-fill"></i> Previdência:
+            {{ formatarParaBR(calculator.previdencia) }}
+          </p>
+          <p class="pdesc">
+            <i class="bi bi-bank2"></i> IRRF: {{ formatarParaBR(calculator.irrf) }}
+          </p>
           <p class="pdesctotal">
-            Total de Descontos: {{ formatarParaBR(calculator.totalDescontos) }}
+            <i class="bi bi-caret-down-fill"></i> Total de Descontos:
+            {{ formatarParaBR(calculator.totalDescontos) }}
           </p>
         </div>
-        <p class="pliquido">Salário Líquido: {{ formatarParaBR(calculator.salarioLiquido) }}</p>
+        <p class="pliquido">
+          <i class="bi bi-caret-right-fill"></i> Salário Líquido:
+          {{ formatarParaBR(calculator.salarioLiquido) }}
+        </p>
       </div>
     </div>
     <h5 style="text-align: center; margin-top: 1em; margin-bottom: 1em">
       Comparativo (diferença de valor líquido): {{ formatarParaBR(salaryDifference) }}
     </h5>
     <div class="container d-flex justify-content-center align-items-center">
-      <p>
+      <p class="footer">
         Desenvolvido por
-        <a class="dark:text-muted text-blue-600 underline" href="https://beacons.ai/guilhermeoq"
-          >Guilherme Quintino</a
-        >
+        <a href="https://beacons.ai/guilhermeoq">Guilherme Quintino</a>
         /
-        <a
-          class="dark:text-muted text-blue-600 underline"
-          href="https://instagram.com/aprovadostjto"
-          >@aprovadostjto</a
-        >. Os valores calculados nesta página não podem ser considerados 100% corretos devido a
-        possíveis erros nos cálculos e nos valores e alíquotas de impostos e gratificações. Não nos
-        responsabilizamos por eventuais diferenças entre a simulação e os valores reais.
+        <a href="https://instagram.com/aprovadostjto">@aprovadostjto</a>. Os valores calculados
+        nesta página não podem ser considerados 100% corretos devido a possíveis erros nos cálculos
+        e nos valores e alíquotas de impostos e gratificações. Não nos responsabilizamos por
+        eventuais diferenças entre a simulação e os valores reais.
       </p>
     </div>
   </div>
@@ -315,9 +331,7 @@ export default {
   margin: 10px;
   border-radius: 1.5em;
   background-color: white;
-  box-shadow:
-    0 4px 6px -1px rgb(0 0 0 / 0.1),
-    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   width: 100%;
 }
 
@@ -339,36 +353,44 @@ p {
 .prend {
   background-color: lightblue;
   margin-bottom: 1px;
-  padding: 5px;
+  padding: 0.5em;
+  border-radius: 0.5em;
 }
 .paux {
   background-color: #74bad1;
-  padding: 5px;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  margin-bottom: 1px;
 }
 
 .pbruto {
   background-color: #454545;
-  padding: 5px;
+  padding: 0.5em;
+  border-radius: 0.5em;
   color: white;
   font-weight: bold;
+  border-radius: 0.5em;
 }
 
 .pdesc {
   background-color: #fba1a1;
-  padding: 5px;
+  padding: 0.5em;
+  border-radius: 0.5em;
   margin-bottom: 1px;
 }
 
 .pdesctotal {
   background-color: #fd5b5b;
-  padding: 5px;
+  padding: 0.5em;
+  border-radius: 0.5em;
   font-weight: bold;
 }
 
 .pliquido {
   margin-top: 1em;
   background-color: lightgreen;
-  padding: 5px;
+  padding: 0.5em;
+  border-radius: 0.5em;
   font-weight: bold;
 }
 
@@ -381,11 +403,29 @@ p {
 .title {
   font-weight: 700; /* Equivalent to font-bold */
   font-family: 'YourHeadingFont', sans-serif; /* Equivalent to font-heading, replace 'YourHeadingFont' with the actual font you're using */
-  line-height: 1.25; /* Equivalent to leading-tighter, adjust value as needed */
+  line-height: 0.95; /* Equivalent to leading-tighter, adjust value as needed */
   margin-bottom: 1rem; /* Equivalent to mb-4 */
   letter-spacing: -0.05em; /* Equivalent to tracking-tighter, adjust value as needed */
   color: #1f1f1f; /* Equivalent to dark:text-gray-200, adjust color if necessary */
   font-size: 3rem; /* Equivalent to text-5xl */
+}
+
+.footer {
+  line-height: 1;
+  text-align: justify;
+}
+
+.callout {
+  padding: 15px;
+  margin: 20px 0;
+  border: 1px solid transparent;
+  border-left-width: 5px;
+  border-radius: 4px;
+}
+.callout-info {
+  background-color: #d1f1d4; /* Light blue */
+  border-left-color: #0a924e; /* Blue border */
+  color: #0c5460;
 }
 
 @media (min-width: 768px) {
