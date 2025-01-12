@@ -1,0 +1,10 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import './base.css';
+
+:root {
+  --bs-body-bg-rgb: 255, 255, 255; /* White background */
+  --bs-primary-rgb: 0, 123, 255; /* Blue */
+  --bd-accent-rgb: 255, 87, 34; /* Orange */
+  --bd-violet-rgb: 138, 43, 226; /* Violet */
+  --bd-pink-rgb: 255, 105, 180; /* Hot Pink */
+}
