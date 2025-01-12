@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { inject } from '@vercel/analytics'
+inject()
 import Calculadora from './components/Calculadora.vue'
 
 export default {
