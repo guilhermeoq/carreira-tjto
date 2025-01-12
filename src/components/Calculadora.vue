@@ -197,12 +197,11 @@
     <div class="container d-flex justify-content-center align-items-center">
       <p class="footer">
         Desenvolvido por
-        <a href="https://beacons.ai/guilhermeoq">Guilherme Quintino</a>
-        /
-        <a href="https://instagram.com/aprovadostjto">@aprovadostjto</a>. Os valores calculados
-        nesta página não podem ser considerados 100% corretos devido a possíveis erros nos cálculos
-        e nos valores e alíquotas de impostos e gratificações. Não nos responsabilizamos por
-        eventuais diferenças entre a simulação e os valores reais.
+        <a href="https://beacons.ai/guilhermeoq" class="link-dark"
+          >Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a
+        >. Os valores calculados nesta página não podem ser considerados 100% corretos devido a
+        possíveis erros nos cálculos e nos valores e alíquotas de impostos e gratificações. Não nos
+        responsabilizamos por eventuais diferenças entre a simulação e os valores reais.
       </p>
     </div>
   </div>
