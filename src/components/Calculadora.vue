@@ -327,7 +327,7 @@ export default {
 <style scoped>
 .calculator {
   flex: 1;
-  padding: 3em;
+  padding: 2em;
   margin: 10px;
   border-radius: 1.5em;
   background-color: white;
