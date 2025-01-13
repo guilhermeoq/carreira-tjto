@@ -475,7 +475,7 @@ p {
   background-clip: text;
   -webkit-background-clip: text;
   color: rgb(109 40 217);
-  transition: color 1s ease-in-out;
+  transition: color 0.2s ease-in-out;
   font-weight: 900;
 }
 .gradient-text:hover {
