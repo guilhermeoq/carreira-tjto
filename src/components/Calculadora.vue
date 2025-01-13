@@ -42,8 +42,8 @@
   <div id="app" class="container-lg">
     <div style="padding-top: 2em" class="container-sm">
       <h1 class="title">
-        Simulador de Salário do <span style="color: rgb(109 40 217)">PCCR</span> dos Servidores do
-        TJTO
+        Simulador de Salário do
+        <span class="gradient-text">PCCR</span> dos Servidores do TJTO
       </h1>
       <p class="subtitle">
         Este simulador é <strong>gratuito, não coleta nenhuma informação pessoal</strong> e foi
@@ -462,6 +462,36 @@ p {
   margin-bottom: 1rem; /* Equivalent to mb-4 */
   color: #1f1f1f; /* Equivalent to dark:text-gray-200, adjust color if necessary */
   font-size: 1.25rem; /* Equivalent to text-5xl */
+}
+
+.wrap {
+  width: 100%;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #e27318, rgb(27, 194, 130), rgb(109 40 217));
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgb(109 40 217);
+  transition: color 1s ease-in-out;
+  font-weight: 900;
+}
+.gradient-text:hover {
+  color: rgba(0, 0, 0, 0);
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
 }
 
 .badge {
