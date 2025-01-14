@@ -135,6 +135,7 @@
               <label for="aqe">AQE</label>
             </div>
           </div>
+
           <!-- SELECTION DEPENDENTE IR -->
           <div class="form-floating mb-3 flex-fill">
             <select
@@ -148,17 +149,16 @@
             <label for="dependente">Nº dep. IR</label>
           </div>
 
-          <!-- SWITCH 13 SALARIO
           <div class="form-check form-switch mb-3">
             <input
-              v-model="calculator.decimoTerc"
+              v-model="calculator.switchFerias"
               class="form-check-input"
               type="checkbox"
               role="switch"
-              id="13Switch"
+              id="ferias"
             />
-            <label class="form-check-label" for="13Switch">13º Salário</label>
-          </div>-->
+            <label class="form-check-label" for="ferias">Adicional de Férias</label>
+          </div>
         </form>
         <div>
           <h5 style="margin-top: 10px">Rendimentos</h5>
@@ -180,6 +180,10 @@
           </p>
           <p class="tab-alimentacao">
             <strong> <i class="bi bi-basket-fill"></i> Aux. Alimentação:</strong> R$ 2.122,00
+          </p>
+          <p class="tab-ferias">
+            <strong> <i class="bi bi-suitcase-fill"></i> Adicional de Férias:</strong>
+            {{ formatarParaBR(calculator.ferias) }}
           </p>
           <p class="tab-bruto">
             <i class="bi bi-caret-up-fill"></i> Salário Bruto:
@@ -257,6 +261,7 @@ export default {
         aqfc: 3,
         aqe: 7.5,
         dependente: 0,
+        ferias: 0,
         vencimentoBasico: 0,
         gaj: 0,
         aqfcValue: 0,
@@ -292,11 +297,19 @@ export default {
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
+      calculator.ferias = calculator.switchFerias
+        ? (calculator.vencimentoBasico +
+            calculator.gaj +
+            calculator.aqfcValue +
+            calculator.aqeValue) /
+          3
+        : 0
       calculator.salarioBruto =
         calculator.vencimentoBasico +
         calculator.gaj +
         calculator.aqfcValue +
         calculator.aqeValue +
+        calculator.ferias +
         2122
       calculator.previdencia =
         (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
@@ -425,6 +438,13 @@ export default {
 }
 .tab-alimentacao {
   background-color: #80c5bf;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  margin-bottom: 1px;
+}
+
+.tab-ferias {
+  background-color: #a9b8e9;
   padding: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
