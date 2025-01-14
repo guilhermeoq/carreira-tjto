@@ -55,7 +55,7 @@
         possível fazer comparações do salário líquido entre duas simulações.
       </div>
     </div>
-    <div class="calculators">
+    <div class="d-sm-flex gap-3">
       <div v-for="(calculator, index) in calculators" :key="index" class="calculator">
         <h4>Simulação {{ index + 1 }}</h4>
         <form @change="updateSalary(index)">
@@ -72,69 +72,71 @@
               >Simular URV de 11,98% (PL 06/2023)</label
             >
           </div>
-
-          <!-- SELECTION CARGO -->
-          <div class="form-floating mb-3">
-            <select
-              class="form-select"
-              id="cargoSelect"
-              aria-label="Selecione o cargo"
-              v-model="calculator.cargo"
-            >
-              <option value="tecnico" selected>Técnico Judiciário</option>
-              <option value="analista">Analista Judiciário</option>
-            </select>
-            <label for="cargoSelect">Cargo</label>
-          </div>
-
-          <!-- SELECTION NÍVEL -->
-          <div class="form-floating mb-3">
-            <select
-              class="form-select"
-              id="nivel"
-              aria-label="Selecione o nível"
-              v-model.number="calculator.nivel"
-            >
-              <option v-for="n in 15" :value="n">{{ n }}</option>
-            </select>
-            <label for="nivel">Nível</label>
-          </div>
-
-          <!-- SELECTION AQFC -->
-          <div class="form-floating mb-3">
-            <select
-              class="form-select"
-              id="aqfc"
-              aria-label="Selecione o percentual AQFC"
-              v-model.number="calculator.aqfc"
-            >
-              <option v-for="percent in [0, 1, 2, 3]" :value="percent">{{ percent }}%</option>
-            </select>
-            <label for="aqfc">Percentual AQFC</label>
-          </div>
-
-          <!-- SELECTION AQE -->
-          <div class="form-floating mb-3">
-            <select
-              class="form-select"
-              id="aqe"
-              aria-label="Selecione o percentual AQE"
-              v-model.number="calculator.aqe"
-            >
-              <!-- Computed property `filteredAQE` to filter options -->
-              <option
-                v-for="percent in getAqeOptions(calculator.cargo)"
-                :key="percent"
-                :value="percent"
+          <div class="d-flex justify-content-center gap-3">
+            <!-- SELECTION CARGO -->
+            <div class="form-floating mb-3 flex-fill">
+              <select
+                class="form-select"
+                id="cargoSelect"
+                aria-label="Selecione o cargo"
+                v-model="calculator.cargo"
               >
-                {{ percent }}%
-              </option>
-            </select>
-            <label for="aqe">Percentual AQE</label>
+                <option value="tecnico" selected>Técnico Judiciário</option>
+                <option value="analista">Analista Judiciário</option>
+              </select>
+              <label for="cargoSelect">Cargo</label>
+            </div>
+
+            <!-- SELECTION NÍVEL -->
+            <div class="form-floating mb-3 flex-fill">
+              <select
+                class="form-select"
+                id="nivel"
+                aria-label="Selecione o nível"
+                v-model.number="calculator.nivel"
+              >
+                <option v-for="n in 15" :value="n">{{ n }}</option>
+              </select>
+              <label for="nivel">Nível</label>
+            </div>
           </div>
 
+          <div class="d-flex flex-wrap justify-content-between gap-1">
+            <!-- SELECTION AQFC -->
+            <div class="form-floating mb-3 flex-fill">
+              <select
+                class="form-select"
+                id="aqfc"
+                aria-label="Selecione o percentual AQFC"
+                v-model.number="calculator.aqfc"
+              >
+                <option v-for="percent in [0, 1, 2, 3]" :value="percent">{{ percent }}%</option>
+              </select>
+              <label for="aqfc">AQFC</label>
+            </div>
+
+            <!-- SELECTION AQE -->
+            <div class="form-floating mb-3 flex-fill">
+              <select
+                class="form-select"
+                id="aqe"
+                aria-label="Selecione o percentual AQE"
+                v-model.number="calculator.aqe"
+              >
+                <!-- Computed property `filteredAQE` to filter options -->
+                <option
+                  v-for="percent in getAqeOptions(calculator.cargo)"
+                  :key="percent"
+                  :value="percent"
+                >
+                  {{ percent }}%
+                </option>
+              </select>
+              <label for="aqe">AQE</label>
+            </div>
+          </div>
           <!-- SELECTION DEPENDENTE IR -->
-          <div class="form-floating mb-3">
+          <div class="form-floating mb-3 flex-fill">
             <select
               class="form-select"
               id="dependente"
@@ -143,7 +145,7 @@
             >
               <option v-for="n in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :value="n">{{ n }}</option>
             </select>
-            <label for="dependente">Dependentes IR</label>
+            <label for="dependente">Nº dep. IR</label>
           </div>
 
           <!-- SWITCH 13 SALARIO
@@ -378,10 +380,15 @@ export default {
   }
 }
 
+.calculators {
+  display: flex;
+  gap: 20px; /* Adjust the gap between the divs */
+  flex-wrap: wrap; /* Ensures the divs wrap on smaller screens */
+}
+
 .calculator {
   flex: 1;
   padding: 2em;
-  margin: 10px;
   border-radius: 1.5em;
   background-color: white;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
@@ -394,12 +401,6 @@ export default {
   }
 }
 
-.calculators {
-  display: flex;
-  gap: 20px; /* Adjust the gap between the divs */
-  flex-wrap: wrap; /* Ensures the divs wrap on smaller screens */
-}
-
 .title {
   font-weight: 700; /* Equivalent to font-bold */
   font-family: 'YourHeadingFont', sans-serif; /* Equivalent to font-heading, replace 'YourHeadingFont' with the actual font you're using */
@@ -408,6 +409,12 @@ export default {
   letter-spacing: -0.05em; /* Equivalent to tracking-tighter, adjust value as needed */
   color: #1f1f1f; /* Equivalent to dark:text-gray-200, adjust color if necessary */
   font-size: 3rem; /* Equivalent to text-5xl */
+}
+
+@media (min-width: 768px) {
+  .title-class {
+    font-size: 4rem; /* Equivalent to md:text-6xl */
+  }
 }
 
 .tab-rendimento {
@@ -479,12 +486,6 @@ export default {
   background-color: #d1f1d4; /* Light blue */
   border-left-color: #0a924e; /* Blue border */
   color: #0c5460;
-}
-
-@media (min-width: 768px) {
-  .title-class {
-    font-size: 4rem; /* Equivalent to md:text-6xl */
-  }
 }
 
 .subtitle {
