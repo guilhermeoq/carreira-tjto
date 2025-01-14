@@ -402,6 +402,7 @@ export default {
 
 .calculator {
   flex: 1;
+  margin-bottom: 1em;
   padding: 2em;
   border-radius: 1.5em;
   background-color: white;
