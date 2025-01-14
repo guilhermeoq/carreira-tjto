@@ -50,7 +50,7 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>🤖 Atualizações: </strong>As calculadoras dos cargos de Técnico e Analista foram
+        <strong>📢 Atualizações: </strong>As calculadoras dos cargos de Técnico e Analista foram
         unificadas. Foi adicionado opção de dependentes para dedução no IR. Além disso, agora é
         possível fazer comparações do salário líquido entre duas simulações.
       </div>
@@ -219,7 +219,7 @@
           href="https://beacons.ai/guilhermeoq"
           target="_blank"
           rel="noopener noreferrer"
-          class="link-dark"
+          class="link-dark badge-link"
           >Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a
         >. Os valores calculados nesta página não podem ser considerados 100% corretos devido a
         possíveis erros nos cálculos e nos valores e alíquotas de impostos e gratificações. Não me
