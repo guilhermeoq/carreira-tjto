@@ -50,7 +50,7 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>Atualizações: </strong>As calculadoras dos cargos de Técnico e Analista foram
+        <strong>🤖 Atualizações: </strong>As calculadoras dos cargos de Técnico e Analista foram
         unificadas. Além disso, agora é possível fazer comparações do salário líquido entre duas
         simulações.
       </div>
