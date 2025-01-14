@@ -338,6 +338,32 @@ export default {
 </script>
 
 <style scoped>
+.gradient-text {
+  background: linear-gradient(to right, #e27318, rgb(27, 194, 130), rgb(109 40 217));
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgb(109 40 217);
+  transition: color 0.2s ease-in-out;
+  font-weight: 900;
+}
+.gradient-text:hover {
+  color: rgba(0, 0, 0, 0);
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
+}
+
 .calculator {
   flex: 1;
   padding: 2em;
@@ -353,14 +379,21 @@ export default {
     width: calc(50% - 20px);
   }
 }
-.result {
-  font-weight: bold;
-  margin-top: 10px;
+
+.calculators {
+  display: flex;
+  gap: 20px; /* Adjust the gap between the divs */
+  flex-wrap: wrap; /* Ensures the divs wrap on smaller screens */
 }
 
-p {
-  margin-top: 0;
-  margin-bottom: 0em;
+.title {
+  font-weight: 700; /* Equivalent to font-bold */
+  font-family: 'YourHeadingFont', sans-serif; /* Equivalent to font-heading, replace 'YourHeadingFont' with the actual font you're using */
+  line-height: 0.95; /* Equivalent to leading-tighter, adjust value as needed */
+  margin-bottom: 1rem; /* Equivalent to mb-4 */
+  letter-spacing: -0.05em; /* Equivalent to tracking-tighter, adjust value as needed */
+  color: #1f1f1f; /* Equivalent to dark:text-gray-200, adjust color if necessary */
+  font-size: 3rem; /* Equivalent to text-5xl */
 }
 
 .tab-rendimento {
@@ -407,22 +440,6 @@ p {
   font-weight: bold;
 }
 
-.calculators {
-  display: flex;
-  gap: 20px; /* Adjust the gap between the divs */
-  flex-wrap: wrap; /* Ensures the divs wrap on smaller screens */
-}
-
-.title {
-  font-weight: 700; /* Equivalent to font-bold */
-  font-family: 'YourHeadingFont', sans-serif; /* Equivalent to font-heading, replace 'YourHeadingFont' with the actual font you're using */
-  line-height: 0.95; /* Equivalent to leading-tighter, adjust value as needed */
-  margin-bottom: 1rem; /* Equivalent to mb-4 */
-  letter-spacing: -0.05em; /* Equivalent to tracking-tighter, adjust value as needed */
-  color: #1f1f1f; /* Equivalent to dark:text-gray-200, adjust color if necessary */
-  font-size: 3rem; /* Equivalent to text-5xl */
-}
-
 .positive {
   color: green;
 }
@@ -462,36 +479,6 @@ p {
   margin-bottom: 1rem; /* Equivalent to mb-4 */
   color: #1f1f1f; /* Equivalent to dark:text-gray-200, adjust color if necessary */
   font-size: 1.25rem; /* Equivalent to text-5xl */
-}
-
-.wrap {
-  width: 100%;
-}
-
-.gradient-text {
-  background: linear-gradient(to right, #e27318, rgb(27, 194, 130), rgb(109 40 217));
-  background-size: 200% 200%;
-  animation: rainbow 2s ease-in-out infinite;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: rgb(109 40 217);
-  transition: color 0.2s ease-in-out;
-  font-weight: 900;
-}
-.gradient-text:hover {
-  color: rgba(0, 0, 0, 0);
-}
-
-@keyframes rainbow {
-  0% {
-    background-position: left;
-  }
-  50% {
-    background-position: right;
-  }
-  100% {
-    background-position: left;
-  }
 }
 
 .badge {
