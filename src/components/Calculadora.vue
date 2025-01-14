@@ -51,8 +51,8 @@
       </p>
       <div class="callout callout-info">
         <strong>🤖 Atualizações: </strong>As calculadoras dos cargos de Técnico e Analista foram
-        unificadas. Além disso, agora é possível fazer comparações do salário líquido entre duas
-        simulações.
+        unificadas. Foi adicionado opção de dependentes para dedução no IR. Além disso, agora é
+        possível fazer comparações do salário líquido entre duas simulações.
       </div>
     </div>
     <div class="calculators">
@@ -131,6 +131,19 @@
               </option>
             </select>
             <label for="aqe">Percentual AQE</label>
+          </div>
+
+          <!-- SELECTION DEPENDENTE IR -->
+          <div class="form-floating mb-3">
+            <select
+              class="form-select"
+              id="dependente"
+              aria-label="Nº de dep. IR"
+              v-model="calculator.dependente"
+            >
+              <option v-for="n in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :value="n">{{ n }}</option>
+            </select>
+            <label for="dependente">Dependentes IR</label>
           </div>
 
           <!-- SWITCH 13 SALARIO
@@ -241,6 +254,7 @@ export default {
         nivel: 1,
         aqfc: 3,
         aqe: 7.5,
+        dependente: 0,
         vencimentoBasico: 0,
         gaj: 0,
         aqfcValue: 0,
@@ -290,7 +304,7 @@ export default {
         calculator.gaj +
         calculator.aqeValue +
         calculator.aqfcValue -
-        calculator.previdencia
+        (calculator.previdencia + 189.59 * calculator.dependente)
       calculator.irrf = this.calcularIrrf(baseIRRF)
       calculator.totalDescontos = calculator.previdencia + calculator.irrf
       calculator.salarioLiquido = calculator.salarioBruto - calculator.totalDescontos
