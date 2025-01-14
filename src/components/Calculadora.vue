@@ -51,8 +51,8 @@
       </p>
       <div class="callout callout-info">
         <strong>📢 Atualizações: </strong>as calculadoras dos cargos de Técnico e Analista foram
-        unificadas; foi adicionado opção de dependentes para dedução no IR e do adicional de férias.
-        Além disso, agora é possível fazer comparações do salário líquido entre duas simulações.
+        unificadas; nova opção para informar dependentes do IR e cálculo do adicional de férias.
+        Além disso, agora é possível fazer comparações do salário entre duas simulações.
       </div>
     </div>
     <div class="d-sm-flex gap-3">
