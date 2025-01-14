@@ -42,8 +42,8 @@
   <div id="app" class="container-lg">
     <div style="padding-top: 2em" class="container-sm">
       <h1 class="title">
-        Simulador de Salário do <span style="color: rgb(109 40 217)">PCCR</span> dos Servidores do
-        TJTO
+        Simulador de Salário do
+        <span class="gradient-text">PCCR</span> dos Servidores do TJTO
       </h1>
       <p class="subtitle">
         Este simulador é <strong>gratuito, não coleta nenhuma informação pessoal</strong> e foi
@@ -147,63 +147,77 @@
         </form>
         <div>
           <h5 style="margin-top: 10px">Rendimentos</h5>
-          <p class="prend">
+          <p class="tab-rendimento">
             <strong> <i class="bi bi-wallet-fill"></i> Vencimento Básico:</strong>
             {{ formatarParaBR(calculator.vencimentoBasico) }}
           </p>
-          <p class="prend">
+          <p class="tab-rendimento">
             <strong><i class="bi bi-plus-circle-fill"></i> GAJ (30%):</strong>
             {{ formatarParaBR(calculator.gaj) }}
           </p>
-          <p class="prend">
+          <p class="tab-rendimento">
             <strong> <i class="bi bi-mortarboard-fill"></i> AQE:</strong>
             {{ formatarParaBR(calculator.aqeValue) }}
           </p>
-          <p class="prend">
+          <p class="tab-rendimento">
             <strong> <i class="bi bi-file-earmark-medical-fill"></i> AQFC:</strong>
             {{ formatarParaBR(calculator.aqfcValue) }}
           </p>
-          <p class="paux">
+          <p class="tab-alimentacao">
             <strong> <i class="bi bi-basket-fill"></i> Aux. Alimentação:</strong> R$ 2.122,00
           </p>
-          <p class="pbruto">
+          <p class="tab-bruto">
             <i class="bi bi-caret-up-fill"></i> Salário Bruto:
             {{ formatarParaBR(calculator.salarioBruto) }}
           </p>
         </div>
         <div>
           <h5 style="margin-top: 10px">Descontos</h5>
-          <p class="pdesc">
+          <p class="tab-desconto">
             <strong><i class="bi bi-people-fill"></i> Previdência:</strong>
             {{ formatarParaBR(calculator.previdencia) }}
           </p>
-          <p class="pdesc">
+          <p class="tab-desconto">
             <strong><i class="bi bi-bank2"></i> IRRF:</strong> {{ formatarParaBR(calculator.irrf) }}
           </p>
-          <p class="pdesctotal">
+          <p class="tab-desconto-total">
             <i class="bi bi-caret-down-fill"></i> Total de Descontos:
             {{ formatarParaBR(calculator.totalDescontos) }}
           </p>
         </div>
-        <p class="pliquido">
+        <p class="tab-liquido">
           <i class="bi bi-caret-right-fill"></i> Salário Líquido:
           {{ formatarParaBR(calculator.salarioLiquido) }}
         </p>
       </div>
     </div>
     <h5 style="text-align: center; margin-top: 1em; margin-bottom: 1em">
-      Comparativo (diferença de valor líquido): {{ formatarParaBR(salaryDifference) }}
+      Comparativo (diferença de valor líquido):
+      <span :class="{ positive: salaryDifference > 0, negative: salaryDifference < 0 }">
+        {{ formatarParaBR(salaryDifference) }}</span
+      >
     </h5>
     <div class="container d-flex justify-content-center align-items-center">
       <p class="footer">
-        Desenvolvido por
-        <a href="https://beacons.ai/guilhermeoq" class="link-dark"
+        Desenvolvido por 🤖
+        <a
+          href="https://beacons.ai/guilhermeoq"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-dark"
           >Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a
         >. Os valores calculados nesta página não podem ser considerados 100% corretos devido a
         possíveis erros nos cálculos e nos valores e alíquotas de impostos e gratificações. Não me
         responsabilizo por eventuais diferenças entre a simulação e os valores reais.
       </p>
     </div>
+    <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer" class="badge-link">
+      <div class="badge container d-flex justify-content-center align-items-center">
+        <span>Powered by</span>
+        <img src="https://vuejs.org/images/logo.png" alt="Vue Logo" class="vue-logo" />
+        <span>Vue.js</span>
+      </div>
+    </a>
   </div>
 </template>
 
@@ -216,7 +230,7 @@ export default {
   },
   computed: {
     salaryDifference() {
-      return Math.abs(this.calculators[0].salarioLiquido - this.calculators[1].salarioLiquido)
+      return this.calculators[1].salarioLiquido - this.calculators[0].salarioLiquido
     },
   },
   methods: {
@@ -324,6 +338,32 @@ export default {
 </script>
 
 <style scoped>
+.gradient-text {
+  background: linear-gradient(to right, #e27318, rgb(27, 194, 130), rgb(109 40 217));
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgb(109 40 217);
+  transition: color 0.2s ease-in-out;
+  font-weight: 900;
+}
+.gradient-text:hover {
+  color: rgba(0, 0, 0, 0);
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
+}
+
 .calculator {
   flex: 1;
   padding: 2em;
@@ -338,59 +378,6 @@ export default {
   .calculator {
     width: calc(50% - 20px);
   }
-}
-.result {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 0em;
-}
-
-.prend {
-  background-color: lightblue;
-  margin-bottom: 1px;
-  padding: 0.5em;
-  border-radius: 0.5em;
-}
-.paux {
-  background-color: #80c5bf;
-  padding: 0.5em;
-  border-radius: 0.5em;
-  margin-bottom: 1px;
-}
-
-.pbruto {
-  background-color: #1f5d72;
-  padding: 0.5em;
-  border-radius: 0.5em;
-  color: white;
-  font-weight: bold;
-  border-radius: 0.5em;
-}
-
-.pdesc {
-  background-color: #ffc8c8;
-  padding: 0.5em;
-  border-radius: 0.5em;
-  margin-bottom: 1px;
-}
-
-.pdesctotal {
-  background-color: #ff9393;
-  padding: 0.5em;
-  border-radius: 0.5em;
-  font-weight: bold;
-}
-
-.pliquido {
-  margin-top: 1em;
-  background-color: lightgreen;
-  padding: 0.5em;
-  border-radius: 0.5em;
-  font-weight: bold;
 }
 
 .calculators {
@@ -409,9 +396,62 @@ p {
   font-size: 3rem; /* Equivalent to text-5xl */
 }
 
+.tab-rendimento {
+  background-color: lightblue;
+  margin-bottom: 1px;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+.tab-alimentacao {
+  background-color: #80c5bf;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  margin-bottom: 1px;
+}
+
+.tab-bruto {
+  background-color: #1f5d72;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.5em;
+}
+
+.tab-desconto {
+  background-color: #ffc8c8;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  margin-bottom: 1px;
+}
+
+.tab-desconto-total {
+  background-color: #ff9393;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  font-weight: bold;
+}
+
+.tab-liquido {
+  margin-top: 1em;
+  background-color: lightgreen;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  font-weight: bold;
+}
+
+.positive {
+  color: green;
+}
+.negative {
+  color: red;
+}
+
 .footer {
+  margin-top: 1em;
   line-height: 1;
   text-align: justify;
+  font-size: 0.9em;
 }
 
 .callout {
@@ -439,5 +479,30 @@ p {
   margin-bottom: 1rem; /* Equivalent to mb-4 */
   color: #1f1f1f; /* Equivalent to dark:text-gray-200, adjust color if necessary */
   font-size: 1.25rem; /* Equivalent to text-5xl */
+}
+
+.badge {
+  margin-top: 1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #353535;
+}
+
+.vue-logo {
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+}
+
+.badge-link {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Inherits color from parent */
+}
+
+.badge-link:hover {
+  color: #42b883; /* Optional: Add hover effect */
 }
 </style>
