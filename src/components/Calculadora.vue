@@ -123,7 +123,7 @@
                 aria-label="Selecione o percentual AQE"
                 v-model.number="calculator.aqe"
               >
-                <!-- Computed property `filteredAQE` to filter options -->
+                <!-- Computed property `filteredAQE` -->
                 <option
                   v-for="percent in getAqeOptions(calculator.cargo)"
                   :key="percent"
@@ -230,13 +230,24 @@
         responsabilizo por eventuais diferenças entre a simulação e os valores reais.
       </p>
     </div>
-    <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer" class="badge-link">
-      <div class="badge container d-flex justify-content-center align-items-center">
+
+    <div class="badge container d-flex justify-content-center align-items-center gap-3">
+      <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer" class="badge-link">
         <span>Powered by</span>
         <img src="https://vuejs.org/images/logo.png" alt="Vue Logo" class="vue-logo" />
         <span>Vue.js</span>
-      </div>
-    </a>
+      </a>
+      <a
+        href="https://github.com/guilhermeoq/carreira-tjto-vue"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://img.shields.io/badge/Available%20on%20GitHub-100000?style=flat&logo=github&logoColor=white"
+          alt="Disponível no GitHub"
+        />
+      </a>
+    </div>
   </div>
 </template>
 
@@ -342,8 +353,8 @@ export default {
       return valor.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL',
-        minimumFractionDigits: 2, // Ensure at least 2 decimal places
-        maximumFractionDigits: 2, // Limit to 2 decimal places
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
       })
     },
   },
@@ -354,7 +365,7 @@ export default {
         newCalculators.forEach((calculator) => {
           const validOptions = this.getAqeOptions(calculator.cargo)
           if (!validOptions.includes(calculator.aqe)) {
-            calculator.aqe = 0 // Reset AQE to a default valid value
+            calculator.aqe = 0
           }
         })
       },
@@ -368,6 +379,52 @@ export default {
 </script>
 
 <style scoped>
+.calculators {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.calculator {
+  flex: 1;
+  margin-bottom: 1em;
+  padding: 2em;
+  border-radius: 1.5em;
+  background-color: white;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .calculator {
+    width: calc(50% - 20px);
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-family: 'YourHeadingFont', sans-serif;
+  line-height: 0.95;
+  margin-bottom: 1rem;
+  letter-spacing: -0.05em;
+  color: #1f1f1f;
+  font-size: 3rem;
+}
+
+.subtitle {
+  font-family: 'YourHeadingFont', sans-serif;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+  color: #1f1f1f;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
 .gradient-text {
   background: linear-gradient(to right, #e27318, rgb(27, 194, 130), rgb(109 40 217));
   background-size: 200% 200%;
@@ -394,42 +451,18 @@ export default {
   }
 }
 
-.calculators {
-  display: flex;
-  gap: 20px; /* Adjust the gap between the divs */
-  flex-wrap: wrap; /* Ensures the divs wrap on smaller screens */
+.callout {
+  padding: 15px;
+  margin: 20px 0;
+  border: 1px solid transparent;
+  border-left-width: 5px;
+  border-radius: 4px;
 }
 
-.calculator {
-  flex: 1;
-  margin-bottom: 1em;
-  padding: 2em;
-  border-radius: 1.5em;
-  background-color: white;
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  width: 100%;
-}
-
-@media (min-width: 600px) {
-  .calculator {
-    width: calc(50% - 20px);
-  }
-}
-
-.title {
-  font-weight: 700; /* Equivalent to font-bold */
-  font-family: 'YourHeadingFont', sans-serif; /* Equivalent to font-heading, replace 'YourHeadingFont' with the actual font you're using */
-  line-height: 0.95; /* Equivalent to leading-tighter, adjust value as needed */
-  margin-bottom: 1rem; /* Equivalent to mb-4 */
-  letter-spacing: -0.05em; /* Equivalent to tracking-tighter, adjust value as needed */
-  color: #1f1f1f; /* Equivalent to dark:text-gray-200, adjust color if necessary */
-  font-size: 3rem; /* Equivalent to text-5xl */
-}
-
-@media (min-width: 768px) {
-  .title-class {
-    font-size: 4rem; /* Equivalent to md:text-6xl */
-  }
+.callout-info {
+  background-color: #d1f1d4;
+  border-left-color: #0a924e;
+  color: #0c5460;
 }
 
 .tab-rendimento {
@@ -438,6 +471,7 @@ export default {
   padding: 0.5em;
   border-radius: 0.5em;
 }
+
 .tab-alimentacao {
   background-color: #80c5bf;
   padding: 0.5em;
@@ -497,27 +531,6 @@ export default {
   font-size: 0.9em;
 }
 
-.callout {
-  padding: 15px;
-  margin: 20px 0;
-  border: 1px solid transparent;
-  border-left-width: 5px;
-  border-radius: 4px;
-}
-.callout-info {
-  background-color: #d1f1d4; /* Light blue */
-  border-left-color: #0a924e; /* Blue border */
-  color: #0c5460;
-}
-
-.subtitle {
-  font-family: 'YourHeadingFont', sans-serif; /* Equivalent to font-heading, replace 'YourHeadingFont' with the actual font you're using */
-  line-height: 1.25; /* Equivalent to leading-tighter, adjust value as needed */
-  margin-bottom: 1rem; /* Equivalent to mb-4 */
-  color: #1f1f1f; /* Equivalent to dark:text-gray-200, adjust color if necessary */
-  font-size: 1.25rem; /* Equivalent to text-5xl */
-}
-
 .badge {
   margin-top: 1em;
   display: inline-flex;
@@ -535,11 +548,11 @@ export default {
 }
 
 .badge-link {
-  text-decoration: none; /* Removes underline */
-  color: inherit; /* Inherits color from parent */
+  text-decoration: none;
+  color: inherit;
 }
 
 .badge-link:hover {
-  color: #42b883; /* Optional: Add hover effect */
+  color: #42b883;
 }
 </style>
