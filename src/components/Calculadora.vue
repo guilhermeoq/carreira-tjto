@@ -50,9 +50,9 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>📢 Atualizações: </strong>As calculadoras dos cargos de Técnico e Analista foram
-        unificadas. Foi adicionado opção de dependentes para dedução no IR. Além disso, agora é
-        possível fazer comparações do salário líquido entre duas simulações.
+        <strong>📢 Atualizações: </strong>as calculadoras dos cargos de Técnico e Analista foram
+        unificadas; foi adicionado opção de dependentes para dedução no IR e do adicional de férias.
+        Além disso, agora é possível fazer comparações do salário líquido entre duas simulações.
       </div>
     </div>
     <div class="d-sm-flex gap-3">
@@ -318,7 +318,8 @@ export default {
         calculator.vencimentoBasico +
         calculator.gaj +
         calculator.aqeValue +
-        calculator.aqfcValue -
+        calculator.aqfcValue +
+        calculator.ferias -
         (calculator.previdencia + 189.59 * calculator.dependente)
       calculator.irrf = this.calcularIrrf(baseIRRF)
       calculator.totalDescontos = calculator.previdencia + calculator.irrf
