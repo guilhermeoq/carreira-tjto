@@ -168,7 +168,7 @@
                   role="switch"
                   id="decimo"
                 />
-                <label class="form-check-label" for="decimo">13º Salário</label>
+                <label class="form-check-label" for="decimo">13º Salário </label>
               </div>
             </div>
 
