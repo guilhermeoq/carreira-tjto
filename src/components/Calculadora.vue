@@ -32,9 +32,6 @@
           <li class="nav-item">
             <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605">URV PL06/2023</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.instagram.com/aprovadostjto">@aprovadostjto</a>
-          </li>
         </ul>
       </div>
     </div>
@@ -60,7 +57,7 @@
         <h4>Simulação {{ index + 1 }}</h4>
         <form @change="updateSalary(index)">
           <!-- SWITCH URV -->
-          <div class="form-check form-switch mb-3">
+          <div class="form-check form-switch mt-4 mb-3">
             <input
               v-model="calculator.simularAumento"
               class="form-check-input"
@@ -69,8 +66,8 @@
               id="URVSwitch"
             />
             <label class="form-check-label" for="URVSwitch"
-              >Simular URV de 11,98% (PL 06/2023)</label
-            >
+              >Simular URV de 11,98% (PL 06/2023)
+            </label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
@@ -159,6 +156,63 @@
             />
             <label class="form-check-label" for="ferias">Adicional de Férias</label>
           </div>
+
+          <!-- SELECTION 13 SALARIO -->
+          <div class="border-top pt-3 pb-3 d-flex flex-wrap gap-3">
+            <div class="d-flex flex-row gap-3">
+              <div class="form-check form-switch">
+                <input
+                  v-model="calculator.switchDecimo"
+                  class="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="decimo"
+                />
+                <label class="form-check-label" for="decimo">13º Salário</label>
+              </div>
+            </div>
+
+            <!-- DETALHAMENTO 13 SALARIO -->
+            <div class="d-flex flex-row gap-3">
+              <div class="form-check">
+                <input
+                  v-model="calculator.tipoDecimo"
+                  class="form-check-input"
+                  type="radio"
+                  name="tipoDecimo"
+                  value="integral"
+                  id="integral"
+                  :disabled="!calculator.switchDecimo"
+                  checked
+                />
+                <label class="form-check-label" for="integral"> Integral </label>
+              </div>
+              <div class="form-check">
+                <input
+                  v-model="calculator.tipoDecimo"
+                  class="form-check-input"
+                  type="radio"
+                  name="tipoDecimo"
+                  value="parcela1"
+                  id="parcela1"
+                  :disabled="!calculator.switchDecimo"
+                />
+                <label class="form-check-label" for="parcela1"> 1ª Parcela </label>
+              </div>
+              <div class="form-check">
+                <input
+                  v-model="calculator.tipoDecimo"
+                  class="form-check-input"
+                  type="radio"
+                  name="tipoDecimo"
+                  value="parcela2"
+                  id="parcela2"
+                  :disabled="!calculator.switchDecimo"
+                />
+                <label class="form-check-label" for="parcela2"> 2ª Parcela </label>
+              </div>
+            </div>
+          </div>
         </form>
         <div>
           <h5 style="margin-top: 10px">Rendimentos</h5>
@@ -181,9 +235,16 @@
           <p class="tab-alimentacao">
             <strong> <i class="bi bi-basket-fill"></i> Aux. Alimentação:</strong> R$ 2.122,00
           </p>
-          <p class="tab-ferias">
+          <p v-show="calculator.switchFerias" class="tab-ferias">
             <strong> <i class="bi bi-suitcase-fill"></i> Adicional de Férias:</strong>
             {{ formatarParaBR(calculator.ferias) }}
+          </p>
+          <p
+            v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'"
+            class="tab-decimo"
+          >
+            <strong> <i class="bi bi-gem"></i> 13º Salário:</strong>
+            {{ formatarParaBR(calculator.decimoparcela1) }}
           </p>
           <p class="tab-bruto">
             <i class="bi bi-caret-up-fill"></i> Salário Bruto:
@@ -208,6 +269,42 @@
           <i class="bi bi-caret-right-fill"></i> Salário Líquido:
           {{ formatarParaBR(calculator.salarioLiquido) }}
         </p>
+        <div
+          v-show="
+            calculator.switchDecimo &&
+            (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
+          "
+          class="border-top"
+        >
+          <h5 style="margin-top: 10px">Folha Complementar - 13º Salário</h5>
+          <p class="tab-decimo">
+            <strong> <i class="bi bi-gem"></i> 13º Salário:</strong>
+            {{ formatarParaBR(calculator.decimoComplementar) }}
+          </p>
+          <p
+            v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'"
+            class="tab-decimo-desconto"
+          >
+            <strong><i class="bi bi-receipt"></i> Adiantamento 13º:</strong>
+            {{ formatarParaBR(calculator.decimoAdiantamento) }}
+          </p>
+          <p class="tab-decimo-desconto">
+            <strong><i class="bi bi-people-fill"></i> Previdência do 13º:</strong>
+            {{ formatarParaBR(calculator.decimoPrevidencia) }}
+          </p>
+          <p class="tab-decimo-desconto">
+            <strong><i class="bi bi-bank2"></i> IRRF do 13º:</strong>
+            {{ formatarParaBR(calculator.decimoIRRF) }}
+          </p>
+          <p class="tab-decimo-desconto-total">
+            <i class="bi bi-caret-down-fill"></i> Total de Descontos 13º:
+            {{ formatarParaBR(calculator.totalDescontosDecimo) }}
+          </p>
+          <p class="tab-decimo-liquido">
+            <i class="bi bi-caret-right-fill"></i> 13º Salário Líquido:
+            {{ formatarParaBR(calculator.decimoLiquido) }}
+          </p>
+        </div>
       </div>
     </div>
     <h5 style="text-align: center; margin-top: 1em; margin-bottom: 1em">
@@ -273,6 +370,12 @@ export default {
         aqe: 7.5,
         dependente: 0,
         ferias: 0,
+        decimoparcela1: 0,
+        decimoAdiantamento: 0,
+        decimoComplementar: 0,
+        decimoIRRF: 0,
+        decimoLiquido: 0,
+        tipoDecimo: 'integral',
         vencimentoBasico: 0,
         gaj: 0,
         aqfcValue: 0,
@@ -282,6 +385,8 @@ export default {
         irrf: 0,
         totalDescontos: 0,
         salarioLiquido: 0,
+        decimoPrevidencia: 0,
+        totalDescontosDecimo: 0,
       }
     },
     getAqeOptions(cargo) {
@@ -315,12 +420,67 @@ export default {
             calculator.aqeValue) /
           3
         : 0
+
+      calculator.decimoparcela1 =
+        calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
+          ? (calculator.vencimentoBasico +
+              calculator.gaj +
+              calculator.aqfcValue +
+              calculator.aqeValue) /
+            2
+          : 0
+
+      calculator.decimoComplementar =
+        calculator.switchDecimo &&
+        (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
+          ? calculator.vencimentoBasico +
+            calculator.gaj +
+            calculator.aqfcValue +
+            calculator.aqeValue
+          : 0
+
+      calculator.decimoAdiantamento = calculator.decimoComplementar / 2
+
+      calculator.decimoPrevidencia =
+        calculator.switchDecimo &&
+        (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
+          ? (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+          : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
+            ? 0
+            : 0
+
+      calculator.decimoIRRF = this.calcularIrrf(calculator.decimoComplementar)
+
+      const baseIRRFDecimo =
+        calculator.vencimentoBasico +
+        calculator.gaj +
+        calculator.aqeValue +
+        calculator.aqfcValue -
+        (calculator.decimoPrevidencia + 189.59 * calculator.dependente)
+      calculator.decimoIRRF = this.calcularIrrf(baseIRRFDecimo)
+
+      //TOTAL DESCONTOS 13º SALARIO
+      calculator.totalDescontosDecimo =
+        calculator.switchDecimo && calculator.tipoDecimo === 'integral'
+          ? calculator.decimoPrevidencia + calculator.decimoIRRF
+          : calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'
+            ? calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoIRRF
+            : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
+              ? 0
+              : 0
+
+      //Descontos décimo
+      calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoIRRF
+      //13º LIQUIDO
+      calculator.decimoLiquido = calculator.decimoComplementar - calculator.totalDescontosDecimo
+
       calculator.salarioBruto =
         calculator.vencimentoBasico +
         calculator.gaj +
         calculator.aqfcValue +
         calculator.aqeValue +
         calculator.ferias +
+        calculator.decimoparcela1 +
         2122
       calculator.previdencia =
         (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
@@ -336,6 +496,7 @@ export default {
       calculator.totalDescontos = calculator.previdencia + calculator.irrf
       calculator.salarioLiquido = calculator.salarioBruto - calculator.totalDescontos
     },
+
     calcularIrrf(baseCalculo) {
       if (baseCalculo <= 2259.2) {
         return 0
@@ -486,6 +647,13 @@ export default {
   margin-bottom: 1px;
 }
 
+.tab-decimo {
+  background-color: #cdc8ff;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  margin-bottom: 1px;
+}
+
 .tab-bruto {
   background-color: #1f5d72;
   padding: 0.5em;
@@ -512,6 +680,28 @@ export default {
 .tab-liquido {
   margin-top: 1em;
   background-color: lightgreen;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  font-weight: bold;
+}
+
+.tab-decimo-desconto {
+  background-color: #ffc8c8;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  margin-bottom: 1px;
+}
+
+.tab-decimo-desconto-total {
+  background-color: #ff9393;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  font-weight: bold;
+}
+
+.tab-decimo-liquido {
+  margin-top: 1em;
+  background-color: #a9a2f5;
   padding: 0.5em;
   border-radius: 0.5em;
   font-weight: bold;
