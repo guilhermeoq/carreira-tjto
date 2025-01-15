@@ -6,7 +6,9 @@
 
 <script>
 import { inject } from '@vercel/analytics'
+import { injectSpeedInsights } from '@vercel/speed-insights';
 inject()
+injectSpeedInsights();
 import Calculadora from './components/Calculadora.vue'
 
 export default {
