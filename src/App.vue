@@ -1,5 +1,5 @@
 <template>
-  <div class="back">
+  <div class="back" style="background-attachment: fixed;">
     <Calculadora />
   </div>
 </template>
