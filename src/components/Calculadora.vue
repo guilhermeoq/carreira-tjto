@@ -59,7 +59,7 @@
           <!-- SWITCH URV -->
           <div class="form-check form-switch mt-4 mb-3">
             <input
-              v-model="calculator.simularAumento"
+              v-model="calculator.simularURV"
               class="form-check-input"
               type="checkbox"
               role="switch"
@@ -120,7 +120,7 @@
                 aria-label="Selecione o percentual AQE"
                 v-model.number="calculator.aqe"
               >
-                <!-- Computed property `filteredAQE` -->
+                <!-- `filteredAQE` -->
                 <option
                   v-for="percent in getAqeOptions(calculator.cargo)"
                   :key="percent"
@@ -172,7 +172,7 @@
               </div>
             </div>
 
-            <!-- DETALHAMENTO 13 SALARIO -->
+            <!-- OPÇÕES DO 13º SALARIO -->
             <div class="d-flex flex-row gap-3">
               <div class="form-check">
                 <input
@@ -319,7 +319,7 @@
     </h5>
     <div class="container d-flex justify-content-center align-items-center">
       <p class="footer">
-        Desenvolvido por 🤖
+        Desenvolvido por
         <a
           href="https://beacons.ai/guilhermeoq"
           target="_blank"
@@ -361,7 +361,7 @@ export default {
   },
   computed: {
     salaryDifference() {
-      if (this.calculators[0].switchDecimo && this.calculators[1].switchDecimo) 
+      if (this.calculators[0].switchDecimo && this.calculators[1].switchDecimo)
       return (this.calculators[1].salarioLiquido + this.calculators[1].decimoLiquido) - (this.calculators[0].salarioLiquido + this.calculators[0].decimoLiquido)
     else if (this.calculators[0].switchDecimo)
     return (this.calculators[1].salarioLiquido) - (this.calculators[0].salarioLiquido + this.calculators[0].decimoLiquido)
@@ -373,9 +373,10 @@ export default {
     },
   },
   methods: {
+    //Inicializar calculadora
     createCalculator() {
       return {
-        simularAumento: false,
+        simularURV: false,
         cargo: 'tecnico',
         nivel: 1,
         aqfc: 3,
@@ -385,6 +386,7 @@ export default {
         decimoparcela1: 0,
         decimoAdiantamento: 0,
         decimoComplementar: 0,
+        decimoPrevidencia: 0,
         decimoIRRF: 0,
         decimoLiquido: 0,
         tipoDecimo: 'integral',
@@ -397,16 +399,17 @@ export default {
         irrf: 0,
         totalDescontos: 0,
         salarioLiquido: 0,
-        decimoPrevidencia: 0,
         totalDescontosDecimo: 0,
       }
     },
+    //Opções de AQE conforme cargo
     getAqeOptions(cargo) {
       if (cargo === 'analista') {
         return [0, 7.5, 10.5, 12.5]
       }
       return [0, 5, 7.5, 10.5, 12.5]
     },
+    //Atualizar cálculo do salário
     updateSalary(index) {
       const calculator = this.calculators[index]
       const salarios = {
@@ -421,7 +424,7 @@ export default {
       }
 
       const vb = salarios[calculator.cargo][calculator.nivel - 1]
-      calculator.vencimentoBasico = calculator.simularAumento ? vb * 1.1198 : vb
+      calculator.vencimentoBasico = calculator.simularURV ? vb * 1.1198 : vb
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
@@ -441,7 +444,7 @@ export default {
               calculator.aqeValue) /
             2
           : 0
-
+      //Cálculo do 13º salário em folha complementar
       calculator.decimoComplementar =
         calculator.switchDecimo &&
         (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
@@ -451,6 +454,7 @@ export default {
             calculator.aqeValue
           : 0
 
+      //Cálculo do adiantamento de 13º salário - 1ª parcela em folha normal
       calculator.decimoAdiantamento = calculator.decimoComplementar / 2
 
       calculator.decimoPrevidencia =
@@ -460,7 +464,7 @@ export default {
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
             ? 0
             : 0
-
+      //Cálculo do IRRF sobre o 13º salário
       calculator.decimoIRRF = this.calcularIrrf(calculator.decimoComplementar)
 
       const baseIRRFDecimo =
@@ -471,7 +475,7 @@ export default {
         (calculator.decimoPrevidencia + 189.59 * calculator.dependente)
       calculator.decimoIRRF = this.calcularIrrf(baseIRRFDecimo)
 
-      //TOTAL DESCONTOS 13º SALARIO
+      //Total de descontos aplicados sobre o 13º salário
       calculator.totalDescontosDecimo =
         calculator.switchDecimo && calculator.tipoDecimo === 'integral'
           ? calculator.decimoPrevidencia + calculator.decimoIRRF
@@ -481,11 +485,10 @@ export default {
               ? 0
               : 0
 
-      //Descontos décimo
-      calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoIRRF
-      //13º LIQUIDO
+      //Cálculo do 13º Líquido - folha complementar
       calculator.decimoLiquido = calculator.decimoComplementar - calculator.totalDescontosDecimo
 
+      //Cálculo do Salário Bruto
       calculator.salarioBruto =
         calculator.vencimentoBasico +
         calculator.gaj +
@@ -494,9 +497,12 @@ export default {
         calculator.ferias +
         calculator.decimoparcela1 +
         2122
+
+      //Cálculo do desconto de previdência sobre salário
       calculator.previdencia =
         (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
 
+      //Cálculo da base de cálculo do IRRF
       const baseIRRF =
         calculator.vencimentoBasico +
         calculator.gaj +
@@ -509,6 +515,7 @@ export default {
       calculator.salarioLiquido = calculator.salarioBruto - calculator.totalDescontos
     },
 
+    //Cálculo do IRRF
     calcularIrrf(baseCalculo) {
       if (baseCalculo <= 2259.2) {
         return 0
@@ -522,6 +529,7 @@ export default {
         return (baseCalculo - 4664.68) * 0.275 + 913.63 * 0.225 + 924.4 * 0.15 + 567.45 * 0.075
       }
     },
+    //Formatação de moeda para Real Brasileiro
     formatarParaBR(valor) {
       return valor.toLocaleString('pt-BR', {
         style: 'currency',
@@ -531,6 +539,7 @@ export default {
       })
     },
   },
+  //Remoção de opções de AQE inexistentes para 'Analista Judiciario'
   watch: {
     calculators: {
       deep: true,
