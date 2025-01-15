@@ -47,7 +47,9 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>📢 Novidades: </strong>nesta atualização é possível comparar duas simulações, os cargos de técnico e analista foram integrados na mesma calculadora. Além disso, é possível informar dependentes do IR, calcular adicional de férias e o 13º salário.
+        <strong>📢 Novidades: </strong>nesta atualização é possível comparar duas simulações, os
+        cargos de técnico e analista foram integrados na mesma calculadora. Além disso, é possível
+        informar dependentes do IR, calcular adicional de férias e o 13º salário.
       </div>
     </div>
     <div class="d-sm-flex gap-3">
@@ -277,7 +279,7 @@
           <h5 style="margin-top: 10px">Folha do 13º Salário</h5>
           <p class="tab-decimo">
             <strong> <i class="bi bi-gem"></i> 13º Salário:</strong>
-            {{ formatarParaBR(calculator.decimoComplementar) }}
+            {{ formatarParaBR(calculator.decimoFolhaComplementar) }}
           </p>
           <p
             v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'"
@@ -303,7 +305,7 @@
             {{ formatarParaBR(calculator.decimoLiquido) }}
           </p>
           <p class="tab-salario-e-decimo">
-            <i class="bi bi-caret-right-fill"></i> Salário + 13º Líquido:
+            <i class="bi bi-caret-right-fill"></i> Total Líquido (Salário + 13º):
             {{ formatarParaBR(calculator.decimoLiquido + calculator.salarioLiquido) }}
           </p>
         </div>
@@ -360,14 +362,23 @@ export default {
   computed: {
     salaryDifference() {
       if (this.calculators[0].switchDecimo && this.calculators[1].switchDecimo)
-      return (this.calculators[1].salarioLiquido + this.calculators[1].decimoLiquido) - (this.calculators[0].salarioLiquido + this.calculators[0].decimoLiquido)
-    else if (this.calculators[0].switchDecimo)
-    return (this.calculators[1].salarioLiquido) - (this.calculators[0].salarioLiquido + this.calculators[0].decimoLiquido)
-    else if (this.calculators[1].switchDecimo)
-    return (this.calculators[1].salarioLiquido + this.calculators[1].decimoLiquido) - (this.calculators[0].salarioLiquido)
-    else
-      return this.calculators[1].salarioLiquido - this.calculators[0].salarioLiquido
-
+        return (
+          this.calculators[1].salarioLiquido +
+          this.calculators[1].decimoLiquido -
+          (this.calculators[0].salarioLiquido + this.calculators[0].decimoLiquido)
+        )
+      else if (this.calculators[0].switchDecimo)
+        return (
+          this.calculators[1].salarioLiquido -
+          (this.calculators[0].salarioLiquido + this.calculators[0].decimoLiquido)
+        )
+      else if (this.calculators[1].switchDecimo)
+        return (
+          this.calculators[1].salarioLiquido +
+          this.calculators[1].decimoLiquido -
+          this.calculators[0].salarioLiquido
+        )
+      else return this.calculators[1].salarioLiquido - this.calculators[0].salarioLiquido
     },
   },
   methods: {
@@ -383,7 +394,7 @@ export default {
         ferias: 0,
         decimoparcela1: 0,
         decimoAdiantamento: 0,
-        decimoComplementar: 0,
+        decimoFolhaComplementar: 0,
         decimoPrevidencia: 0,
         decimoIRRF: 0,
         decimoLiquido: 0,
@@ -434,16 +445,8 @@ export default {
           3
         : 0
 
-      calculator.decimoparcela1 =
-        calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
-          ? (calculator.vencimentoBasico +
-              calculator.gaj +
-              calculator.aqfcValue +
-              calculator.aqeValue) /
-            2
-          : 0
-      //Cálculo do 13º salário em folha complementar
-      calculator.decimoComplementar =
+      //Cálculo do 13º salário integral - incluso em folha complementar
+      calculator.decimoFolhaComplementar =
         calculator.switchDecimo &&
         (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
           ? calculator.vencimentoBasico +
@@ -452,8 +455,18 @@ export default {
             calculator.aqeValue
           : 0
 
-      //Cálculo do adiantamento de 13º salário - 1ª parcela em folha normal
-      calculator.decimoAdiantamento = calculator.decimoComplementar / 2
+      //Cálculo da 1ª parcela do 13º salário - incluso em folha normal
+      calculator.decimoparcela1 =
+        calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
+          ? (calculator.vencimentoBasico +
+              calculator.gaj +
+              calculator.aqfcValue +
+              calculator.aqeValue) /
+            2
+          : 0
+
+      //Cálculo do desconto de adiantamento da 1ª parcela do 13º salário
+      calculator.decimoAdiantamento = calculator.decimoFolhaComplementar / 2
 
       calculator.decimoPrevidencia =
         calculator.switchDecimo &&
@@ -462,8 +475,9 @@ export default {
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
             ? 0
             : 0
+
       //Cálculo do IRRF sobre o 13º salário
-      calculator.decimoIRRF = this.calcularIrrf(calculator.decimoComplementar)
+      calculator.decimoIRRF = this.calcularIrrf(calculator.decimoFolhaComplementar)
 
       const baseIRRFDecimo =
         calculator.vencimentoBasico +
@@ -484,7 +498,8 @@ export default {
               : 0
 
       //Cálculo do 13º Líquido - folha complementar
-      calculator.decimoLiquido = calculator.decimoComplementar - calculator.totalDescontosDecimo
+      calculator.decimoLiquido =
+        calculator.decimoFolhaComplementar - calculator.totalDescontosDecimo
 
       //Cálculo do Salário Bruto
       calculator.salarioBruto =
@@ -728,7 +743,7 @@ export default {
 
 .tab-salario-e-decimo {
   margin-top: 1em;
-  background-color:rgb(36, 36, 36);
+  background-color: rgb(36, 36, 36);
   padding: 0.5em;
   border-radius: 0.5em;
   font-weight: bold;
