@@ -701,7 +701,7 @@ export default {
 
 .tab-decimo-liquido {
   margin-top: 1em;
-  background-color: #a9a2f5;
+  background-color: #b7b0ff;
   padding: 0.5em;
   border-radius: 0.5em;
   font-weight: bold;
