@@ -276,7 +276,7 @@
           "
           class="border-top"
         >
-          <h5 style="margin-top: 10px">Folha Complementar - 13º Salário</h5>
+          <h5 style="margin-top: 10px">Folha do 13º Salário</h5>
           <p class="tab-decimo">
             <strong> <i class="bi bi-gem"></i> 13º Salário:</strong>
             {{ formatarParaBR(calculator.decimoComplementar) }}
@@ -303,6 +303,10 @@
           <p class="tab-decimo-liquido">
             <i class="bi bi-caret-right-fill"></i> 13º Salário Líquido:
             {{ formatarParaBR(calculator.decimoLiquido) }}
+          </p>
+          <p class="tab-salario-e-decimo">
+            <i class="bi bi-caret-right-fill"></i> Salário + 13º Líquido:
+            {{ formatarParaBR(calculator.decimoLiquido + calculator.salarioLiquido) }}
           </p>
         </div>
       </div>
@@ -357,7 +361,15 @@ export default {
   },
   computed: {
     salaryDifference() {
+      if (this.calculators[0].switchDecimo && this.calculators[1].switchDecimo) 
+      return (this.calculators[1].salarioLiquido + this.calculators[1].decimoLiquido) - (this.calculators[0].salarioLiquido + this.calculators[0].decimoLiquido)
+    else if (this.calculators[0].switchDecimo)
+    return (this.calculators[1].salarioLiquido) - (this.calculators[0].salarioLiquido + this.calculators[0].decimoLiquido)
+    else if (this.calculators[1].switchDecimo)
+    return (this.calculators[1].salarioLiquido + this.calculators[1].decimoLiquido) - (this.calculators[0].salarioLiquido)
+    else
       return this.calculators[1].salarioLiquido - this.calculators[0].salarioLiquido
+
     },
   },
   methods: {
@@ -705,6 +717,15 @@ export default {
   padding: 0.5em;
   border-radius: 0.5em;
   font-weight: bold;
+}
+
+.tab-salario-e-decimo {
+  margin-top: 1em;
+  background-color:rgb(36, 36, 36);
+  padding: 0.5em;
+  border-radius: 0.5em;
+  font-weight: bold;
+  color: white;
 }
 
 .positive {
