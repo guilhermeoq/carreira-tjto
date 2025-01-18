@@ -157,6 +157,264 @@
             <label class="form-check-label" for="ferias">Adicional de Férias</label>
           </div>
 
+          <!-- SELECTION AUXILIO SAUDE -->
+          <div class="border-top">
+            <div class="mt-3 form-check form-switch mb-3">
+              <input
+                v-model="calculator.switchSaude"
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="switchSaude"
+              />
+              <label class="form-check-label" for="switchSaude">Auxílio Saúde</label>
+            </div>
+
+            <!-- Faixa Etaria - Idade Servidor -->
+            <div class="d-flex flex-wrap justify-content-between gap-1">
+              <div v-show="calculator.switchSaude" class="form-floating mb-3 flex-fill col-3">
+                <select
+                  class="form-select border-primary border-2"
+                  id="idadeServidor"
+                  aria-label="Idade do Servidor"
+                  v-model="calculator.faixaEtariaServidor"
+                >
+                  <option
+                    v-for="n in [
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
+                    {{ n }}
+                  </option>
+                </select>
+                <label for="idadeServidor">Idade Servidor</label>
+              </div>
+              <div v-show="calculator.switchSaude" class="form-floating mb-3 col-6">
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-primary border-2"
+                  id="mensalidadeServidor"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeServidor"
+                />
+                <label for="mensalidadeServidor">Valor R$</label>
+              </div>
+            </div>
+
+            <!-- Faixa Etaria - Idade Dependente 1 -->
+            <div class="d-flex flex-wrap justify-content-between gap-1">
+              <div v-show="calculator.switchSaude" class="form-floating mb-3 flex-fill col-3">
+                <select
+                  class="form-select border-success border-2"
+                  id="idadeDependente1"
+                  aria-label="Idade do Dependente 1"
+                  v-model="calculator.faixaEtariaDependente1"
+                >
+                  <option
+                    v-for="n in [
+                      'Não',
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
+                    {{ n }}
+                  </option>
+                </select>
+                <label for="idadeDependente1">Idade Dep. 1</label>
+              </div>
+              <div v-show="calculator.switchSaude" class="form-floating mb-3 col-6">
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-success border-2"
+                  id="mensalidadeDependente1"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeDependente1"
+                />
+                <label for="mensalidadeDependente1">Valor R$</label>
+              </div>
+            </div>
+
+            <!-- Faixa Etaria - Idade Dependente 2 -->
+            <div class="d-flex flex-wrap justify-content-between gap-1">
+              <div v-show="calculator.switchSaude" class="form-floating mb-3 flex-fill col-3">
+                <select
+                  class="form-select border-warning border-2"
+                  id="idadeDependente2"
+                  aria-label="Idade do Dependente 2"
+                  v-model="calculator.faixaEtariaDependente2"
+                >
+                  <option
+                    v-for="n in [
+                      'Não',
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
+                    {{ n }}
+                  </option>
+                </select>
+                <label for="idadeDependente2">Idade Dep. 2</label>
+              </div>
+              <div v-show="calculator.switchSaude" class="form-floating mb-3 col-6">
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-warning border-2"
+                  id="mensalidadeDependente2"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeDependente2"
+                />
+                <label for="mensalidadeDependente2">Valor R$</label>
+              </div>
+            </div>
+
+            <!-- Faixa Etaria - Idade Dependente 3 -->
+            <div class="d-flex flex-wrap justify-content-between gap-1">
+              <div v-show="calculator.switchSaude" class="form-floating mb-3 flex-fill col-3">
+                <select
+                  class="form-select border-danger border-2"
+                  id="idadeDependente3"
+                  aria-label="Idade do Dependente 3"
+                  v-model="calculator.faixaEtariaDependente3"
+                >
+                  <option
+                    v-for="n in [
+                      'Não',
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
+                    {{ n }}
+                  </option>
+                </select>
+                <label for="idadeDependente3">Idade Dep. 3+</label>
+              </div>
+
+              <div v-show="calculator.switchSaude" class="form-floating mb-3 col-6">
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-danger border-2"
+                  id="mensalidadeDependente3"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeDependente3"
+                />
+                <label for="mensalidadeDependente3">Valor R$</label>
+              </div>
+            </div>
+            <div v-show="calculator.switchSaude" class="input-group mb-3 flex-fill">
+              <label class="input-group-text" for="multiplicador">Multiplicar 'Dep. 3' x</label>
+              <select class="form-select" id="multiplicador">
+                <option v-for="n in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :value="n">
+                  {{ n }}
+                </option>
+              </select>
+            </div>
+
+            <!-- BARRA PERCENTUAL - TETO GLOBAL DO PLANO DE SAUDE -->
+            <div v-show="calculator.switchSaude" class="progress-stacked border-bottom mb-3">
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Servidor"
+                aria-valuenow="15"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 15%"
+              >
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary">
+                  Servidor
+                </div>
+              </div>
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Segment two"
+                aria-valuenow="30"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 30%"
+              >
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success">
+                  Dep. 1
+                </div>
+              </div>
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Segment three"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 20%"
+              >
+                <div class="progress-bar progress-bar-striped progress-bar-animatedr bg-warning">
+                  Dep. 2
+                </div>
+              </div>
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Segment three"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 20%"
+              >
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger">
+                  Dep. 3+
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- SELECTION 13 SALARIO -->
           <div class="border-top pt-3 pb-3 d-flex flex-wrap gap-3">
             <div class="d-flex flex-row gap-3">
@@ -234,6 +492,10 @@
           </p>
           <p class="tab-alimentacao">
             <strong> <i class="bi bi-basket-fill"></i> Aux. Alimentação:</strong> R$ 2.122,00
+          </p>
+          <p v-show="calculator.switchSaude" class="tab-saude">
+            <strong> <i class="bi bi-hospital-fill"></i> Aux. Saúde:</strong>
+            {{ formatarParaBR(calculator.saude) }}
           </p>
           <p v-show="calculator.switchFerias" class="tab-ferias">
             <strong> <i class="bi bi-suitcase-fill"></i> Adicional de Férias:</strong>
@@ -392,6 +654,16 @@ export default {
         aqe: 7.5,
         dependente: 0,
         ferias: 0,
+        saude: 0,
+        faixaEtariaServidor: '0-18',
+        faixaEtariaDependente1: 'Não',
+        faixaEtariaDependente2: 'Não',
+        faixaEtariaDependente3: 'Não',
+        multiplicadorDependente3: 1,
+        mensalidadeServidor: '',
+        mensalidadeDependente1: '',
+        mensalidadeDependente2: '',
+        mensalidadeDependente3: '',
         decimoparcela1: 0,
         decimoAdiantamento: 0,
         decimoFolhaComplementar: 0,
@@ -444,6 +716,8 @@ export default {
             calculator.aqeValue) /
           3
         : 0
+
+      calculator.saude = calculator.switchSaude ? 100 : 0
 
       //Cálculo do 13º salário integral - incluso em folha complementar
       calculator.decimoFolhaComplementar =
@@ -676,6 +950,13 @@ export default {
 
 .tab-ferias {
   background-color: #a9b8e9;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  margin-bottom: 1px;
+}
+
+.tab-saude {
+  background-color: #dbb03a;
   padding: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
