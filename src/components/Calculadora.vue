@@ -47,9 +47,8 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>📢 Novidades: </strong>nesta atualização é possível comparar duas simulações, os
-        cargos de técnico e analista foram integrados na mesma calculadora. Além disso, é possível
-        informar dependentes do IR, calcular adicional de férias e o 13º salário.
+        <strong>📢 Novidades: </strong>Informar dependentes do IR, calcular adicional de férias, 13º
+        salário e auxílio saúde (com verificação de consumo dos limites por faixa etária e geral).
       </div>
     </div>
     <div class="d-sm-flex gap-3">
