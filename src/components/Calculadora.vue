@@ -157,6 +157,407 @@
             <label class="form-check-label" for="ferias">Adicional de Férias</label>
           </div>
 
+          <!-- SELECTION AUXILIO SAUDE -->
+          <div class="border-top">
+            <div class="mt-3 form-check form-switch mb-3">
+              <input
+                v-model="calculator.switchSaude"
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="switchSaude"
+              />
+              <label class="form-check-label" for="switchSaude">Auxílio Saúde</label>
+            </div>
+
+            <!-- Faixa Etaria - Idade Servidor -->
+            <div class="d-flex flex-wrap justify-content-between gap-1">
+              <div v-if="calculator.switchSaude" class="form-floating mb-1 flex-fill col-3">
+                <select
+                  class="form-select border-primary border-2"
+                  id="idadeServidor"
+                  aria-label="Idade do Servidor"
+                  v-model="calculator.faixaEtariaServidor"
+                >
+                  <option
+                    v-for="n in [
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
+                    {{ n }}
+                  </option>
+                </select>
+                <label for="idadeServidor">Idade Servidor</label>
+              </div>
+              <div v-if="calculator.switchSaude" class="form-floating mb-1 col-6">
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-primary border-2"
+                  id="mensalidadeServidor"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeServidor"
+                />
+                <label for="mensalidadeServidor">Valor Servidor (R$)</label>
+              </div>
+            </div>
+            <div
+              v-if="calculator.switchSaude"
+              class="progress mb-3"
+              role="progressbar"
+              aria-label="Limite Servidor"
+              :aria-valuenow="
+                (
+                  (calculator.mensalidadeServidor * 100) /
+                  consultaReembolso(calculator.faixaEtariaServidor)
+                ).toFixed(2)
+              "
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div
+                class="progress-bar bg-primary"
+                :style="{
+                  width:
+                    (calculator.mensalidadeServidor * 100) /
+                      consultaReembolso(calculator.faixaEtariaServidor) +
+                    '%',
+                }"
+              >
+                {{
+                  (
+                    (calculator.mensalidadeServidor * 100) /
+                    consultaReembolso(calculator.faixaEtariaServidor)
+                  ).toFixed(2) + '%'
+                }}
+              </div>
+            </div>
+
+            <!-- Faixa Etaria - Idade Dependente 1 -->
+            <div
+              v-if="calculator.switchSaude"
+              class="d-flex flex-wrap justify-content-between gap-1"
+            >
+              <div class="form-floating mb-1 flex-fill col-3">
+                <select
+                  class="form-select border-success border-2"
+                  id="idadeDependente1"
+                  aria-label="Idade do Dependente 1"
+                  v-model="calculator.faixaEtariaDependente1"
+                >
+                  <option
+                    v-for="n in [
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
+                    {{ n }}
+                  </option>
+                </select>
+                <label for="idadeDependente1">Idade Dep. 1</label>
+              </div>
+              <div class="form-floating mb-1 col-6">
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-success border-2"
+                  id="mensalidadeDependente1"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeDependente1"
+                />
+                <label for="mensalidadeDependente1">Valor Dep. 1 (R$)</label>
+              </div>
+            </div>
+            <div
+              v-if="calculator.switchSaude"
+              class="progress mb-3"
+              role="progressbar"
+              aria-label="Limite Dependente 1"
+              :aria-valuenow="
+                (
+                  (calculator.mensalidadeDependente1 * 100) /
+                  consultaReembolso(calculator.faixaEtariaDependente1)
+                ).toFixed(2)
+              "
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div
+                class="progress-bar bg-success"
+                :style="{
+                  width:
+                    (calculator.mensalidadeDependente1 * 100) /
+                      consultaReembolso(calculator.faixaEtariaDependente1) +
+                    '%',
+                }"
+              >
+                {{
+                  (
+                    (calculator.mensalidadeDependente1 * 100) /
+                    consultaReembolso(calculator.faixaEtariaDependente1)
+                  ).toFixed(2) + '%'
+                }}
+              </div>
+            </div>
+
+            <!-- Faixa Etaria - Idade Dependente 2 -->
+            <div
+              v-if="calculator.switchSaude"
+              class="d-flex flex-wrap justify-content-between gap-1"
+            >
+              <div class="form-floating mb-3 flex-fill col-3">
+                <select
+                  class="form-select border-warning border-2"
+                  id="idadeDependente2"
+                  aria-label="Idade do Dependente 2"
+                  v-model="calculator.faixaEtariaDependente2"
+                >
+                  <option
+                    v-for="n in [
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
+                    {{ n }}
+                  </option>
+                </select>
+                <label for="idadeDependente2">Idade Dep. 2</label>
+              </div>
+              <div v-show="calculator.switchSaude" class="form-floating mb-3 col-6">
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-warning border-2"
+                  id="mensalidadeDependente2"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeDependente2"
+                />
+                <label for="mensalidadeDependente2">Valor Dep. 2 (R$)</label>
+              </div>
+            </div>
+            <div
+              v-if="calculator.switchSaude"
+              class="progress mb-3"
+              role="progressbar"
+              aria-label="Limite Dependente 2"
+              :aria-valuenow="
+                (
+                  (calculator.mensalidadeDependente2 * 100) /
+                  consultaReembolso(calculator.faixaEtariaDependente2)
+                ).toFixed(2)
+              "
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div
+                class="progress-bar bg-warning"
+                :style="{
+                  width:
+                    (calculator.mensalidadeDependente2 * 100) /
+                      consultaReembolso(calculator.faixaEtariaDependente2) +
+                    '%',
+                }"
+              >
+                {{
+                  (
+                    (calculator.mensalidadeDependente2 * 100) /
+                    consultaReembolso(calculator.faixaEtariaDependente2)
+                  ).toFixed(2) + '%'
+                }}
+              </div>
+            </div>
+
+            <!-- Faixa Etaria - Idade Dependente 3 -->
+            <div
+              v-if="calculator.switchSaude"
+              class="d-flex flex-wrap justify-content-between gap-1"
+            >
+              <div class="form-floating mb-1 flex-fill col-3">
+                <select
+                  class="form-select border-danger border-2"
+                  id="idadeDependente3"
+                  aria-label="Idade do Dependente 3"
+                  v-model="calculator.faixaEtariaDependente3"
+                >
+                  <option
+                    v-for="n in [
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
+                    {{ n }}
+                  </option>
+                </select>
+                <label for="idadeDependente3">Idade Dep. 3+</label>
+              </div>
+
+              <div class="form-floating mb-1 col-6">
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-danger border-2"
+                  id="mensalidadeDependente3"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeDependente3"
+                />
+                <label for="mensalidadeDependente3">Valor Dep. 3 (R$)</label>
+              </div>
+            </div>
+            <div
+              v-if="calculator.switchSaude"
+              class="progress mb-3"
+              role="progressbar"
+              aria-label="Limite Dependente 3"
+              :aria-valuenow="
+                (
+                  (calculator.mensalidadeDependente3 * 100) /
+                  consultaReembolso(calculator.faixaEtariaDependente3)
+                ).toFixed(2)
+              "
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div
+                class="progress-bar bg-danger"
+                :style="{
+                  width:
+                    (calculator.mensalidadeDependente3 * 100) /
+                      consultaReembolso(calculator.faixaEtariaDependente3) +
+                    '%',
+                }"
+              >
+                {{
+                  (
+                    (calculator.mensalidadeDependente3 * 100) /
+                    consultaReembolso(calculator.faixaEtariaDependente3)
+                  ).toFixed(2) + '%'
+                }}
+              </div>
+            </div>
+
+            <div v-if="calculator.switchSaude" class="input-group mb-3 flex-fill">
+              <label class="input-group-text" for="multiplicador">Multiplicar 'Dep. 3' x</label>
+              <select
+                v-model="calculator.multiplicadorDependente3"
+                class="form-select"
+                id="multiplicador"
+              >
+                <option v-for="n in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :value="n">
+                  {{ n }}
+                </option>
+              </select>
+            </div>
+
+            <!-- BARRA PERCENTUAL - TETO GLOBAL DO PLANO DE SAUDE -->
+            <div v-if="calculator.switchSaude" class="progress-stacked border-bottom">
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Servidor"
+                :aria-valuenow="calculator.percentualSaudeServidor"
+                aria-valuenow=""
+                aria-valuemin="0"
+                aria-valuemax="100"
+                :style="{ width: calculator.percentualSaudeServidor + '%' }"
+              >
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                ></div>
+              </div>
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Dep. 1"
+                :aria-valuenow="calculator.percentualSaudeDep1"
+                aria-valuenow=""
+                aria-valuemin="0"
+                aria-valuemax="100"
+                :style="{ width: calculator.percentualSaudeDep1 + '%' }"
+              >
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                ></div>
+              </div>
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Dep. 2"
+                aria-valuenow="{{calculator.percentualSaudeDep2}}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                :style="{ width: calculator.percentualSaudeDep2 + '%' }"
+              >
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                ></div>
+              </div>
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Dep. 3"
+                aria-valuenow="{{calculator.percentualSaudeDep3}}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                :style="{ width: calculator.percentualSaudeDep3 + '%' }"
+              >
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div v-if="calculator.switchSaude" class="d-flex flex-wrap justify-content-center">
+            <p>
+              <small><strong>Teto Aux. Saúde: R$ 3.235,03</strong></small>
+            </p>
+          </div>
+
           <!-- SELECTION 13 SALARIO -->
           <div class="border-top pt-3 pb-3 d-flex flex-wrap gap-3">
             <div class="d-flex flex-row gap-3">
@@ -234,6 +635,10 @@
           </p>
           <p class="tab-alimentacao">
             <strong> <i class="bi bi-basket-fill"></i> Aux. Alimentação:</strong> R$ 2.122,00
+          </p>
+          <p v-show="calculator.switchSaude" class="tab-saude">
+            <strong> <i class="bi bi-hospital-fill"></i> Aux. Saúde:</strong>
+            {{ formatarParaBR(calculator.saude) }}
           </p>
           <p v-show="calculator.switchFerias" class="tab-ferias">
             <strong> <i class="bi bi-suitcase-fill"></i> Adicional de Férias:</strong>
@@ -386,12 +791,27 @@ export default {
     createCalculator() {
       return {
         simularURV: false,
+        switchSaude: false,
         cargo: 'tecnico',
         nivel: 1,
         aqfc: 3,
         aqe: 7.5,
         dependente: 0,
         ferias: 0,
+        saude: 0,
+        faixaEtariaServidor: '0-18',
+        faixaEtariaDependente1: '0-18',
+        faixaEtariaDependente2: '0-18',
+        faixaEtariaDependente3: '0-18',
+        multiplicadorDependente3: 1,
+        mensalidadeServidor: '',
+        mensalidadeDependente1: '',
+        mensalidadeDependente2: '',
+        mensalidadeDependente3: '',
+        percentualSaudeServidor: 0,
+        percentualSaudeDep1: 0,
+        percentualSaudeDep2: 0,
+        percentualSaudeDep3: 0,
         decimoparcela1: 0,
         decimoAdiantamento: 0,
         decimoFolhaComplementar: 0,
@@ -444,6 +864,75 @@ export default {
             calculator.aqeValue) /
           3
         : 0
+
+      if (calculator.switchSaude == true) {
+        let auxilioServidor = 0
+        let auxilioDependente1 = 0
+        let auxilioDependente2 = 0
+        let auxilioDependente3 = 0
+        let reembolsoAgregado = 0
+
+        // Consulta teto de reembolso Aux.Saude para Servidor
+        if (
+          calculator.mensalidadeServidor >= this.consultaReembolso(calculator.faixaEtariaServidor)
+        )
+          auxilioServidor = this.consultaReembolso(calculator.faixaEtariaServidor)
+        else auxilioServidor = calculator.mensalidadeServidor
+        //console.log('----------------')
+        //console.log('Auxilio Servidor: ' + auxilioServidor)
+
+        // Consulta teto de reembolso Aux.Saude para Dependente 1
+        if (
+          calculator.mensalidadeDependente1 >=
+          this.consultaReembolso(calculator.faixaEtariaDependente1)
+        )
+          auxilioDependente1 = this.consultaReembolso(calculator.faixaEtariaDependente1)
+        else auxilioDependente1 = calculator.mensalidadeDependente1
+        //console.log('Auxilio Dependente 1: ' + auxilioDependente1)
+
+        // Consulta teto de reembolso Aux.Saude para Dependente 2
+        if (
+          calculator.mensalidadeDependente2 >=
+          this.consultaReembolso(calculator.faixaEtariaDependente2)
+        )
+          auxilioDependente2 = this.consultaReembolso(calculator.faixaEtariaDependente2)
+        else auxilioDependente2 = calculator.mensalidadeDependente2
+        //console.log('Auxilio Dependente 2: ' + auxilioDependente2)
+
+        // Consulta teto de reembolso Aux.Saude para Dependente 3
+        if (
+          calculator.mensalidadeDependente3 >=
+          this.consultaReembolso(calculator.faixaEtariaDependente3)
+        )
+          auxilioDependente3 =
+            this.consultaReembolso(calculator.faixaEtariaDependente3) *
+            calculator.multiplicadorDependente3
+        else
+          (auxilioDependente3 =
+            calculator.mensalidadeDependente3 * calculator.multiplicadorDependente3),
+            // console.log(
+            //   'Auxilio Dependente 3 x ' +
+            //     calculator.multiplicadorDependente3 +
+            //     '= ' +
+            //     auxilioDependente3,
+            // )
+
+            //Somatório dos reembolsos apurados conforme tetos por faixa etária
+            (reembolsoAgregado = parseFloat(
+              auxilioServidor + auxilioDependente1 + auxilioDependente2 + auxilioDependente3,
+            ))
+        calculator.saude = reembolsoAgregado >= 3235.03 ? 3235.03 : reembolsoAgregado
+
+        calculator.percentualSaudeServidor = this.percentualTetoSaude(auxilioServidor)
+        calculator.percentualSaudeDep1 = this.percentualTetoSaude(auxilioDependente1)
+        calculator.percentualSaudeDep2 = this.percentualTetoSaude(auxilioDependente2)
+        calculator.percentualSaudeDep3 = this.percentualTetoSaude(auxilioDependente3)
+        //console.log('PERCENTUAIS: ')
+        //console.log('Servidor: ' + calculator.percentualSaudeServidor)
+        //console.log('Dep1: ' + calculator.percentualSaudeDep1)
+        //console.log('Dep2: ' + calculator.percentualSaudeDep2)
+        //console.log('Dep3: ' + calculator.percentualSaudeDep3)
+      } else calculator.saude = 0.0
 
       //Cálculo do 13º salário integral - incluso em folha complementar
       calculator.decimoFolhaComplementar =
@@ -508,6 +997,7 @@ export default {
         calculator.aqfcValue +
         calculator.aqeValue +
         calculator.ferias +
+        calculator.saude +
         calculator.decimoparcela1 +
         2122
 
@@ -528,7 +1018,36 @@ export default {
       calculator.salarioLiquido = calculator.salarioBruto - calculator.totalDescontos
     },
 
-    //Cálculo do IRRF
+    percentualTetoSaude(reembolso) {
+      return (reembolso * 100) / 3235.03
+    },
+
+    //Consulta reembolso por faixa etária
+    consultaReembolso(faixaEtaria) {
+      switch (faixaEtaria) {
+        case '0-18':
+          return 490.89
+        case '19-23':
+          return 610.72
+        case '24-28':
+          return 717.03
+        case '29-33':
+          return 876.41
+        case '34-38':
+          return 976.97
+        case '39-43':
+          return 1017.53
+        case '44-48':
+          return 1202.81
+        case '49-53':
+          return 1405.36
+        case '54-58':
+          return 1671.8
+        case '59+':
+          return 6267.39
+      }
+    },
+
     calcularIrrf(baseCalculo) {
       if (baseCalculo <= 2259.2) {
         return 0
@@ -676,6 +1195,13 @@ export default {
 
 .tab-ferias {
   background-color: #a9b8e9;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  margin-bottom: 1px;
+}
+
+.tab-saude {
+  background-color: #dbb03a;
   padding: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
