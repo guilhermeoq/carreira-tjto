@@ -725,7 +725,7 @@
       <p class="footer">
         Desenvolvido por
         <a
-          href="https://beacons.ai/guilhermeoq"
+          href="https://quintino.cc"
           target="_blank"
           rel="noopener noreferrer"
           class="link-dark badge-link"
