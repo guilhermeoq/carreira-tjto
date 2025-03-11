@@ -47,8 +47,8 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>📢 Novidades: </strong>Informar dependentes do IR, calcular adicional de férias, 13º
-        salário e auxílio saúde (com verificação de consumo dos limites por faixa etária e geral).
+        <strong>📢 Novidades: </strong> simulação do data-base 2025 (Projeto de Lei nº XX/2025 em
+        tramitação na AL-TO) com efeito financeiro a partir de 1º de maio.
       </div>
     </div>
     <div class="d-sm-flex gap-3">
