@@ -64,9 +64,7 @@
               role="switch"
               id="URVSwitch"
             />
-            <label class="form-check-label" for="URVSwitch"
-              >Simular URV de 11,98% (PL 06/2023)
-            </label>
+            <label class="form-check-label" for="URVSwitch">Simular data-base 2025: 4,83% </label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
@@ -852,7 +850,7 @@ export default {
       }
 
       const vb = salarios[calculator.cargo][calculator.nivel - 1]
-      calculator.vencimentoBasico = calculator.simularURV ? vb * 1.1198 : vb
+      calculator.vencimentoBasico = calculator.simularURV ? vb * 1.0483 : vb //1.1198
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
