@@ -831,9 +831,9 @@ export default {
     //Opções de AQE conforme cargo
     getAqeOptions(cargo) {
       if (cargo === 'analista') {
-        return [0, 7.5, 10.5, 12.5]
+        return [0, 7.5, 10, 12.5]
       }
-      return [0, 5, 7.5, 10.5, 12.5]
+      return [0, 5, 7.5, 10, 12.5]
     },
     //Atualizar cálculo do salário
     updateSalary(index) {
