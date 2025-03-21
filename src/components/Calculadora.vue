@@ -47,8 +47,8 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>📢 Novidades: </strong> simulação do data-base 2025 (Projeto de Lei nº XX/2025 em
-        tramitação na AL-TO) com efeito financeiro a partir de 1º de maio.
+        <strong>📢 Novidades: </strong> simulação do data-base 2025 (+4,83%, conforme protocolo de
+        solicitação do sindicato).
       </div>
     </div>
     <div class="d-sm-flex gap-3">
@@ -551,7 +551,7 @@
 
           <div v-if="calculator.switchSaude" class="d-flex flex-wrap justify-content-center">
             <p>
-              <small><strong>Teto Aux. Saúde: R$ 3.235,03</strong></small>
+              <small><strong>Teto Aux. Saúde: R$ 34.083,41</strong></small>
             </p>
           </div>
 
@@ -918,7 +918,7 @@ export default {
             (reembolsoAgregado = parseFloat(
               auxilioServidor + auxilioDependente1 + auxilioDependente2 + auxilioDependente3,
             ))
-        calculator.saude = reembolsoAgregado >= 3235.03 ? 3235.03 : reembolsoAgregado
+        calculator.saude = reembolsoAgregado >= 3408.34 ? 3408.34 : reembolsoAgregado
 
         calculator.percentualSaudeServidor = this.percentualTetoSaude(auxilioServidor)
         calculator.percentualSaudeDep1 = this.percentualTetoSaude(auxilioDependente1)
