@@ -47,8 +47,8 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>📢 Novidades: </strong>Informar dependentes do IR, calcular adicional de férias, 13º
-        salário e auxílio saúde (com verificação de consumo dos limites por faixa etária e geral).
+        <strong>📢 Novidades: </strong> simulação do data-base 2025 (+4,83%, conforme protocolo de
+        solicitação do sindicato).
       </div>
     </div>
     <div class="d-sm-flex gap-3">
@@ -64,9 +64,7 @@
               role="switch"
               id="URVSwitch"
             />
-            <label class="form-check-label" for="URVSwitch"
-              >Simular URV de 11,98% (PL 06/2023)
-            </label>
+            <label class="form-check-label" for="URVSwitch">Simular data-base 2025: 4,83% </label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
@@ -553,7 +551,7 @@
 
           <div v-if="calculator.switchSaude" class="d-flex flex-wrap justify-content-center">
             <p>
-              <small><strong>Teto Aux. Saúde: R$ 3.235,03</strong></small>
+              <small><strong>Teto Aux. Saúde: R$ 34.083,41</strong></small>
             </p>
           </div>
 
@@ -833,9 +831,9 @@ export default {
     //Opções de AQE conforme cargo
     getAqeOptions(cargo) {
       if (cargo === 'analista') {
-        return [0, 7.5, 10.5, 12.5]
+        return [0, 7.5, 10, 12.5]
       }
-      return [0, 5, 7.5, 10.5, 12.5]
+      return [0, 5, 7.5, 10, 12.5]
     },
     //Atualizar cálculo do salário
     updateSalary(index) {
@@ -852,7 +850,7 @@ export default {
       }
 
       const vb = salarios[calculator.cargo][calculator.nivel - 1]
-      calculator.vencimentoBasico = calculator.simularURV ? vb * 1.1198 : vb
+      calculator.vencimentoBasico = calculator.simularURV ? vb * 1.0483 : vb //1.1198
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
@@ -920,7 +918,7 @@ export default {
             (reembolsoAgregado = parseFloat(
               auxilioServidor + auxilioDependente1 + auxilioDependente2 + auxilioDependente3,
             ))
-        calculator.saude = reembolsoAgregado >= 3235.03 ? 3235.03 : reembolsoAgregado
+        calculator.saude = reembolsoAgregado >= 3408.34 ? 3408.34 : reembolsoAgregado
 
         calculator.percentualSaudeServidor = this.percentualTetoSaude(auxilioServidor)
         calculator.percentualSaudeDep1 = this.percentualTetoSaude(auxilioDependente1)
