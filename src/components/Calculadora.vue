@@ -551,7 +551,7 @@
 
           <div v-if="calculator.switchSaude" class="d-flex flex-wrap justify-content-center">
             <p>
-              <small><strong>Teto Aux. Saúde: R$ 34.083,41</strong></small>
+              <small><strong>Teto Aux. Saúde: R$ 3.408,34</strong></small>
             </p>
           </div>
 
