@@ -1025,6 +1025,11 @@ export default {
         calculator.teto
 
       //Cálculo do teto/sub-teto (2024: 29196.14 / 2025: 30760.27)
+      //Como o sub-teto parece estar inativo, o teto é -5% do subsídio dos ministros do STF.
+      //R$ 41.650,92 a partir de 1º de abril de 2023
+      //R$ 44.008,52 a partir de 1º de fevereiro de 2024
+      //R$ 46.366,19 a partir de 1º de fevereiro de 2025
+
       /* calculator.teto =
         calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue + calculator.aqfcValue <=
         30760.27
