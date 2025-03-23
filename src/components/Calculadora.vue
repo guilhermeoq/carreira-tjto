@@ -48,7 +48,9 @@
       </p>
       <div class="callout callout-info">
         <strong>📢 Novidades: </strong> simulação do data-base 2025 (+4,83%, conforme protocolo de
-        solicitação do sindicato) e atualização do teto de reembolso do auxílio saúde.
+        solicitação do sindicato); atualização do teto de reembolso do auxílio saúde; desconto do
+        sub-teto (a remuneração não poderá ser superior a 90,25% do subsídio mensal de Juiz de
+        Direito substituto).
       </div>
     </div>
     <div class="d-sm-flex gap-3">
@@ -662,6 +664,10 @@
           <p class="tab-desconto">
             <strong><i class="bi bi-bank2"></i> IRRF:</strong> {{ formatarParaBR(calculator.irrf) }}
           </p>
+          <p class="tab-desconto">
+            <strong><i class="bi bi-building-fill-exclamation"></i> Sub-teto:</strong>
+            {{ formatarParaBR(calculator.teto) }}
+          </p>
           <p class="tab-desconto-total">
             <i class="bi bi-caret-down-fill"></i> Total de Descontos:
             {{ formatarParaBR(calculator.totalDescontos) }}
@@ -823,6 +829,7 @@ export default {
         salarioBruto: 0,
         previdencia: 0,
         irrf: 0,
+        teto: 0,
         totalDescontos: 0,
         salarioLiquido: 0,
         totalDescontosDecimo: 0,
@@ -1000,7 +1007,14 @@ export default {
 
       //Cálculo do desconto de previdência sobre salário
       calculator.previdencia =
-        (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+        calculator.teto > 0
+          ? (calculator.vencimentoBasico +
+              calculator.gaj +
+              calculator.aqeValue +
+              calculator.aqfcValue -
+              calculator.teto) *
+            0.14
+          : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
 
       //Cálculo da base de cálculo do IRRF
       const baseIRRF =
@@ -1009,9 +1023,22 @@ export default {
         calculator.aqeValue +
         calculator.aqfcValue +
         calculator.ferias -
-        (calculator.previdencia + 189.59 * calculator.dependente)
+        (calculator.previdencia + 189.59 * calculator.dependente) -
+        calculator.teto
+
+      //Cálculo do teto/sub-teto (2025: 30760.27)
+      calculator.teto =
+        calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue + calculator.aqfcValue <=
+        29196.14
+          ? 0
+          : calculator.vencimentoBasico +
+            calculator.gaj +
+            calculator.aqeValue +
+            calculator.aqfcValue -
+            29196.14
+
       calculator.irrf = this.calcularIrrf(baseIRRF)
-      calculator.totalDescontos = calculator.previdencia + calculator.irrf
+      calculator.totalDescontos = calculator.previdencia + calculator.irrf + calculator.teto
       calculator.salarioLiquido = calculator.salarioBruto - calculator.totalDescontos
     },
 
@@ -1179,41 +1206,41 @@ export default {
 .tab-rendimento {
   background-color: lightblue;
   margin-bottom: 1px;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
 }
 
 .tab-alimentacao {
   background-color: #80c5bf;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
 
 .tab-ferias {
   background-color: #a9b8e9;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
 
 .tab-saude {
   background-color: #dbb03a;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
 
 .tab-decimo {
   background-color: #cdc8ff;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
 
 .tab-bruto {
   background-color: #1f5d72;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   color: white;
   font-weight: bold;
