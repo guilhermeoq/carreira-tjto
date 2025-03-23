@@ -48,9 +48,7 @@
       </p>
       <div class="callout callout-info">
         <strong>📢 Novidades: </strong> simulação do data-base 2025 (+4,83%, conforme protocolo de
-        solicitação do sindicato); atualização do teto de reembolso do auxílio saúde; desconto do
-        sub-teto (a remuneração não poderá ser superior a 90,25% do subsídio mensal de Juiz de
-        Direito substituto).
+        solicitação do sindicato) e atualização do teto de reembolso do auxílio saúde.
       </div>
     </div>
     <div class="d-sm-flex gap-3">
@@ -664,10 +662,10 @@
           <p class="tab-desconto">
             <strong><i class="bi bi-bank2"></i> IRRF:</strong> {{ formatarParaBR(calculator.irrf) }}
           </p>
-          <p class="tab-desconto">
+          <!-- <p class="tab-desconto">
             <strong><i class="bi bi-building-fill-exclamation"></i> Sub-teto:</strong>
             {{ formatarParaBR(calculator.teto) }}
-          </p>
+          </p> -->
           <p class="tab-desconto-total">
             <i class="bi bi-caret-down-fill"></i> Total de Descontos:
             {{ formatarParaBR(calculator.totalDescontos) }}
@@ -1027,7 +1025,7 @@ export default {
         calculator.teto
 
       //Cálculo do teto/sub-teto (2024: 29196.14 / 2025: 30760.27)
-      calculator.teto =
+      /* calculator.teto =
         calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue + calculator.aqfcValue <=
         30760.27
           ? 0
@@ -1035,7 +1033,7 @@ export default {
             calculator.gaj +
             calculator.aqeValue +
             calculator.aqfcValue -
-            30760.27
+            30760.27 */
 
       calculator.irrf = this.calcularIrrf(baseIRRF)
       calculator.totalDescontos = calculator.previdencia + calculator.irrf + calculator.teto
