@@ -1026,16 +1026,16 @@ export default {
         (calculator.previdencia + 189.59 * calculator.dependente) -
         calculator.teto
 
-      //Cálculo do teto/sub-teto (2025: 30760.27)
+      //Cálculo do teto/sub-teto (2024: 29196.14 / 2025: 30760.27)
       calculator.teto =
         calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue + calculator.aqfcValue <=
-        29196.14
+        30760.27
           ? 0
           : calculator.vencimentoBasico +
             calculator.gaj +
             calculator.aqeValue +
             calculator.aqfcValue -
-            29196.14
+            30760.27
 
       calculator.irrf = this.calcularIrrf(baseIRRF)
       calculator.totalDescontos = calculator.previdencia + calculator.irrf + calculator.teto
