@@ -1025,6 +1025,11 @@ export default {
         calculator.teto
 
       //Cálculo do teto/sub-teto (2024: 29196.14 / 2025: 30760.27)
+      //Como o sub-teto parece estar inativo, o teto é -5% do subsídio dos ministros do STF.
+      //R$ 41.650,92 a partir de 1º de abril de 2023
+      //R$ 44.008,52 a partir de 1º de fevereiro de 2024
+      //R$ 46.366,19 a partir de 1º de fevereiro de 2025
+
       /* calculator.teto =
         calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue + calculator.aqfcValue <=
         30760.27
@@ -1205,12 +1210,14 @@ export default {
   background-color: lightblue;
   margin-bottom: 1px;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
 }
 
 .tab-alimentacao {
   background-color: #80c5bf;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
@@ -1218,6 +1225,7 @@ export default {
 .tab-ferias {
   background-color: #a9b8e9;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
@@ -1225,6 +1233,7 @@ export default {
 .tab-saude {
   background-color: #dbb03a;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
@@ -1232,6 +1241,7 @@ export default {
 .tab-decimo {
   background-color: #cdc8ff;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
@@ -1239,6 +1249,7 @@ export default {
 .tab-bruto {
   background-color: #1f5d72;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   color: white;
   font-weight: bold;
@@ -1247,14 +1258,16 @@ export default {
 
 .tab-desconto {
   background-color: #ffc8c8;
-  padding: 0.5em;
+  padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
 
 .tab-desconto-total {
   background-color: #ff9393;
-  padding: 0.5em;
+  padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   font-weight: bold;
 }
@@ -1262,21 +1275,22 @@ export default {
 .tab-liquido {
   margin-top: 1em;
   background-color: lightgreen;
-  padding: 0.5em;
+  padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   font-weight: bold;
 }
 
 .tab-decimo-desconto {
   background-color: #ffc8c8;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
 
 .tab-decimo-desconto-total {
   background-color: #ff9393;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   font-weight: bold;
 }
@@ -1284,7 +1298,7 @@ export default {
 .tab-decimo-liquido {
   margin-top: 1em;
   background-color: #b7b0ff;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   font-weight: bold;
 }
@@ -1292,7 +1306,7 @@ export default {
 .tab-salario-e-decimo {
   margin-top: 1em;
   background-color: rgb(36, 36, 36);
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   font-weight: bold;
   color: white;
