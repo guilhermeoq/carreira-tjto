@@ -1210,12 +1210,14 @@ export default {
   background-color: lightblue;
   margin-bottom: 1px;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
 }
 
 .tab-alimentacao {
   background-color: #80c5bf;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
@@ -1223,6 +1225,7 @@ export default {
 .tab-ferias {
   background-color: #a9b8e9;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
@@ -1230,6 +1233,7 @@ export default {
 .tab-saude {
   background-color: #dbb03a;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
@@ -1237,6 +1241,7 @@ export default {
 .tab-decimo {
   background-color: #cdc8ff;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
@@ -1244,6 +1249,7 @@ export default {
 .tab-bruto {
   background-color: #1f5d72;
   padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   color: white;
   font-weight: bold;
@@ -1252,14 +1258,16 @@ export default {
 
 .tab-desconto {
   background-color: #ffc8c8;
-  padding: 0.5em;
+  padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
 
 .tab-desconto-total {
   background-color: #ff9393;
-  padding: 0.5em;
+  padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   font-weight: bold;
 }
@@ -1267,21 +1275,22 @@ export default {
 .tab-liquido {
   margin-top: 1em;
   background-color: lightgreen;
-  padding: 0.5em;
+  padding: 0.2em;
+  padding-left: 0.5em;
   border-radius: 0.5em;
   font-weight: bold;
 }
 
 .tab-decimo-desconto {
   background-color: #ffc8c8;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   margin-bottom: 1px;
 }
 
 .tab-decimo-desconto-total {
   background-color: #ff9393;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   font-weight: bold;
 }
@@ -1289,7 +1298,7 @@ export default {
 .tab-decimo-liquido {
   margin-top: 1em;
   background-color: #b7b0ff;
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   font-weight: bold;
 }
@@ -1297,7 +1306,7 @@ export default {
 .tab-salario-e-decimo {
   margin-top: 1em;
   background-color: rgb(36, 36, 36);
-  padding: 0.5em;
+  padding: 0.2em;
   border-radius: 0.5em;
   font-weight: bold;
   color: white;
