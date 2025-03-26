@@ -47,9 +47,14 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>📢 Novidades: </strong> simulação do data-base 2025 (+4,83%, conforme protocolo de
-        solicitação do sindicato); atualização do teto de reembolso do auxílio saúde; simular cargos
-        comissionados/funções gratificadas.
+        <strong>📢 Novidades: </strong>
+        <ul>
+          <li>
+            ⬆️ Simulação do data-base 2025 (+4,83%, conforme protocolo de solicitação do sindicato).
+          </li>
+          <li>🏥 Atualização do teto de reembolso do auxílio saúde.</li>
+          <li>💼 Cálculo de cargos comissionados/funções gratificadas.</li>
+        </ul>
       </div>
     </div>
     <div class="d-sm-flex gap-3">
