@@ -48,7 +48,8 @@
       </p>
       <div class="callout callout-info">
         <strong>📢 Novidades: </strong> simulação do data-base 2025 (+4,83%, conforme protocolo de
-        solicitação do sindicato) e atualização do teto de reembolso do auxílio saúde.
+        solicitação do sindicato); atualização do teto de reembolso do auxílio saúde; simular cargos
+        comissionados/funções gratificadas.
       </div>
     </div>
     <div class="d-sm-flex gap-3">
@@ -143,15 +144,70 @@
             <label for="dependente">Nº dep. IR</label>
           </div>
 
-          <div class="form-check form-switch mb-3">
+          <div class="mt-3 form-check form-switch mb-3">
             <input
-              v-model="calculator.switchFerias"
+              v-model="calculator.switchFuncao"
               class="form-check-input"
               type="checkbox"
               role="switch"
-              id="ferias"
+              id="switchFuncao"
             />
-            <label class="form-check-label" for="ferias">Adicional de Férias</label>
+            <label class="form-check-label" for="switchFuncao">Funções </label>
+          </div>
+
+          <!-- Funcao do Servidor -->
+          <div class="d-flex flex-wrap justify-content-between gap-1 mb-1">
+            <div v-if="calculator.switchFuncao" class="form-floating mb-1 flex-fill col-3">
+              <select
+                class="form-select"
+                id="funcaoServidor"
+                aria-label="Idade do Servidor"
+                v-model="calculator.funcaoServidor"
+              >
+                <option
+                  v-for="n in [
+                    'DAJ-1',
+                    'DAJ-2',
+                    'DAJ-3',
+                    'DAJ-4',
+                    'DAJ-5',
+                    'DAJ-6',
+                    'DAJ-7',
+                    'DAJ-8',
+                    'DAJ-9',
+                    'DAJ-10',
+                    'DAJ-11',
+                    'FC-1',
+                    'FC-2',
+                    'FC-3',
+                    'FC-4',
+                  ]"
+                  :value="n"
+                >
+                  {{ n }}
+                </option>
+              </select>
+              <label for="funcaoServidor">Selecione o cargo/função </label>
+
+              <div class="mt-2">
+                <i
+                  ><small>*Considerando opção pelo cargo efetivo +65% do valor da função.</small></i
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="border-top">
+            <div class="form-check form-switch gap-1 mb-3 mt-3">
+              <input
+                v-model="calculator.switchFerias"
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="ferias"
+              />
+              <label class="form-check-label" for="ferias">Adicional de Férias</label>
+            </div>
           </div>
 
           <!-- SELECTION AUXILIO SAUDE -->
@@ -630,6 +686,10 @@
             <strong> <i class="bi bi-file-earmark-medical-fill"></i> AQFC:</strong>
             {{ formatarParaBR(calculator.aqfcValue) }}
           </p>
+          <p v-show="calculator.switchFuncao" class="tab-rendimento">
+            <strong> <i class="bi bi-person-fill-up"></i> Representação:</strong>
+            {{ formatarParaBR(calculator.representacao) }}
+          </p>
           <p class="tab-alimentacao">
             <strong> <i class="bi bi-basket-fill"></i> Aux. Alimentação:</strong> R$ 2.122,00
           </p>
@@ -798,6 +858,9 @@ export default {
         aqfc: 3,
         aqe: 7.5,
         dependente: 0,
+        switchFuncao: 0,
+        funcaoServidor: 'DAJ-1',
+        representacao: 0,
         ferias: 0,
         saude: 0,
         faixaEtariaServidor: '0-18',
@@ -859,11 +922,17 @@ export default {
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
+
+      if (calculator.switchFuncao == true) {
+        calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 0.65
+      } else calculator.representacao = 0
+
       calculator.ferias = calculator.switchFerias
         ? (calculator.vencimentoBasico +
             calculator.gaj +
             calculator.aqfcValue +
-            calculator.aqeValue) /
+            calculator.aqeValue +
+            calculator.representacao) /
           3
         : 0
 
@@ -943,7 +1012,8 @@ export default {
           ? calculator.vencimentoBasico +
             calculator.gaj +
             calculator.aqfcValue +
-            calculator.aqeValue
+            calculator.aqeValue +
+            calculator.representacao
           : 0
 
       //Cálculo da 1ª parcela do 13º salário - incluso em folha normal
@@ -952,7 +1022,8 @@ export default {
           ? (calculator.vencimentoBasico +
               calculator.gaj +
               calculator.aqfcValue +
-              calculator.aqeValue) /
+              calculator.aqeValue +
+              calculator.representacao) /
             2
           : 0
 
@@ -974,7 +1045,8 @@ export default {
         calculator.vencimentoBasico +
         calculator.gaj +
         calculator.aqeValue +
-        calculator.aqfcValue -
+        calculator.aqfcValue +
+        calculator.representacao -
         (calculator.decimoPrevidencia + 189.59 * calculator.dependente)
       calculator.decimoIRRF = this.calcularIrrf(baseIRRFDecimo)
 
@@ -998,6 +1070,7 @@ export default {
         calculator.gaj +
         calculator.aqfcValue +
         calculator.aqeValue +
+        calculator.representacao +
         calculator.ferias +
         calculator.saude +
         calculator.decimoparcela1 +
@@ -1020,6 +1093,7 @@ export default {
         calculator.gaj +
         calculator.aqeValue +
         calculator.aqfcValue +
+        calculator.representacao +
         calculator.ferias -
         (calculator.previdencia + 189.59 * calculator.dependente) -
         calculator.teto
@@ -1072,6 +1146,41 @@ export default {
           return 1671.8
         case '59+':
           return 6267.39
+      }
+    },
+
+    consultaValorFuncao(funcao) {
+      switch (funcao) {
+        case 'DAJ-1':
+          return 3984.11
+        case 'DAJ-2':
+          return 4687.21
+        case 'DAJ-3':
+          return 5858.99
+        case 'DAJ-4':
+          return 7030.83
+        case 'DAJ-5':
+          return 9084.25
+        case 'DAJ-6':
+          return 14061.6
+        case 'DAJ-7':
+          return 16405.22
+        case 'DAJ-8':
+          return 19920.64
+        case 'DAJ-9':
+          return 22986.44
+        case 'DAJ-10':
+          return 25284.93
+        case 'DAJ-11':
+          return 27250.69
+        case 'FC-1':
+          return 1704.04
+        case 'FC-2':
+          return 1981.4
+        case 'FC-3':
+          return 2305.81
+        case 'FC-4':
+          return 3243.49
       }
     },
 
