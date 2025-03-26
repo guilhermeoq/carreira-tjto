@@ -48,7 +48,8 @@
       </p>
       <div class="callout callout-info">
         <strong>📢 Novidades: </strong> simulação do data-base 2025 (+4,83%, conforme protocolo de
-        solicitação do sindicato) e atualização do teto de reembolso do auxílio saúde.
+        solicitação do sindicato); atualização do teto de reembolso do auxílio saúde; simular cargos
+        comissionados/funções gratificadas.
       </div>
     </div>
     <div class="d-sm-flex gap-3">
