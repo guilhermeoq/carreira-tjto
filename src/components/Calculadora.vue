@@ -49,12 +49,12 @@
       <div class="callout callout-info">
         <strong>📢 Novidades: </strong>
         <ul>
-          <li>
-            ⬆️ Simulação do data-base 2025 (+4,83%, conforme protocolo de solicitação do sindicato).
-          </li>
-          <li>🏥 Atualização do teto de reembolso do auxílio saúde.</li>
-          <li>💼 Cálculo de cargos comissionados/funções gratificadas.</li>
+          <li>📆 Simulação do data-base 2025 (+4,83%).</li>
+          <li>🏥 Atualização do teto de reembolso do auxílio saúde (R$ 3.408,34).</li>
+          <li>💼 Cálculo de funções DAJ e FC.</li>
         </ul>
+        <strong>🪲 Correções:</strong>
+        <li>🛠️ Correção no cálculo das FCs, restringindo o percentual de 65% apenas para DAJ.</li>
       </div>
     </div>
     <div class="d-sm-flex gap-3">
@@ -195,9 +195,7 @@
               <label for="funcaoServidor">Selecione o cargo/função </label>
 
               <div class="mt-2">
-                <i
-                  ><small>*Considerando opção pelo cargo efetivo +65% do valor da função.</small></i
-                >
+                <i><small>*Considerando opção pelo cargo efetivo +65% para funções DAJ.</small></i>
               </div>
             </div>
           </div>
@@ -929,7 +927,7 @@ export default {
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
 
       if (calculator.switchFuncao == true) {
-        calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 0.65
+        calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
       } else calculator.representacao = 0
 
       calculator.ferias = calculator.switchFerias
@@ -1157,27 +1155,27 @@ export default {
     consultaValorFuncao(funcao) {
       switch (funcao) {
         case 'DAJ-1':
-          return 3984.11
+          return 3984.11 * 0.65
         case 'DAJ-2':
-          return 4687.21
+          return 4687.21 * 0.65
         case 'DAJ-3':
-          return 5858.99
+          return 5858.99 * 0.65
         case 'DAJ-4':
-          return 7030.83
+          return 7030.83 * 0.65
         case 'DAJ-5':
-          return 9084.25
+          return 9084.25 * 0.65
         case 'DAJ-6':
-          return 14061.6
+          return 14061.6 * 0.65
         case 'DAJ-7':
-          return 16405.22
+          return 16405.22 * 0.65
         case 'DAJ-8':
-          return 19920.64
+          return 19920.64 * 0.65
         case 'DAJ-9':
-          return 22986.44
+          return 22986.44 * 0.65
         case 'DAJ-10':
-          return 25284.93
+          return 25284.93 * 0.65
         case 'DAJ-11':
-          return 27250.69
+          return 27250.69 * 0.65
         case 'FC-1':
           return 1704.04
         case 'FC-2':
