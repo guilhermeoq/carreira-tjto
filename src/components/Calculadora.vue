@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">🚀 Simulador TJTO</a>
       <button
@@ -15,13 +15,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="https://sapl.al.to.leg.br/media/sapl/public/normajuridica/2024/923/lei_4435-2024.pdf"
-              >Data-base</a
-            >
-          </li>
           <li class="nav-item">
             <a
               class="nav-link"
