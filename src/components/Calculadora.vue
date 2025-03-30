@@ -677,7 +677,7 @@
             <strong> <i class="bi bi-file-earmark-medical-fill"></i> AQFC:</strong>
             {{ formatarParaBR(calculator.aqfcValue) }}
           </p>
-          <p v-show="calculator.switchFuncao" class="tab-rendimento">
+          <p v-show="calculator.switchFuncao" class="tab-representacao">
             <strong> <i class="bi bi-person-fill-up"></i> Representação:</strong>
             {{ formatarParaBR(calculator.representacao) }}
           </p>
@@ -761,6 +761,7 @@
             <i class="bi bi-caret-right-fill"></i> 13º Salário Líquido:
             {{ formatarParaBR(calculator.decimoLiquido) }}
           </p>
+          <div class="border-top"></div>
           <p class="tab-salario-e-decimo">
             <i class="bi bi-caret-right-fill"></i> Total Líquido (Salário + 13º):
             {{ formatarParaBR(calculator.decimoLiquido + calculator.salarioLiquido) }}
@@ -1307,60 +1308,67 @@ export default {
 }
 
 .tab-rendimento {
-  background-color: lightblue;
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(149, 213, 233));
   margin-bottom: 1px;
   padding: 0.2em;
   padding-left: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
 }
 
 .tab-alimentacao {
-  background-color: #80c5bf;
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(48, 199, 184));
   padding: 0.2em;
   padding-left: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
+  margin-bottom: 1px;
+}
+
+.tab-representacao {
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(248, 175, 127));
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-radius: 0.3em;
   margin-bottom: 1px;
 }
 
 .tab-ferias {
-  background-color: #a9b8e9;
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(216, 191, 255));
   padding: 0.2em;
   padding-left: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   margin-bottom: 1px;
 }
 
 .tab-saude {
-  background-color: #dbb03a;
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(241, 203, 97));
   padding: 0.2em;
   padding-left: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   margin-bottom: 1px;
 }
 
 .tab-decimo {
-  background-color: #cdc8ff;
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(180, 206, 255));
   padding: 0.2em;
   padding-left: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   margin-bottom: 1px;
 }
 
 .tab-bruto {
-  background-color: #1f5d72;
+  background-color: #214574;
   padding: 0.2em;
   padding-left: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   color: white;
   font-weight: bold;
-  border-radius: 0.5em;
 }
 
 .tab-desconto {
-  background-color: #ffc8c8;
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(255, 200, 200));
   padding: 0.2em;
   padding-left: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   margin-bottom: 1px;
 }
 
@@ -1368,46 +1376,46 @@ export default {
   background-color: #ff9393;
   padding: 0.2em;
   padding-left: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   font-weight: bold;
 }
 
 .tab-liquido {
   margin-top: 1em;
-  background-color: lightgreen;
+  background-color: rgb(102, 214, 102);
   padding: 0.2em;
   padding-left: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   font-weight: bold;
 }
 
 .tab-decimo-desconto {
-  background-color: #ffc8c8;
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(255, 200, 200));
   padding: 0.2em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   margin-bottom: 1px;
 }
 
 .tab-decimo-desconto-total {
   background-color: #ff9393;
   padding: 0.2em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   font-weight: bold;
 }
 
 .tab-decimo-liquido {
   margin-top: 1em;
-  background-color: #b7b0ff;
+  background-color: rgb(102, 214, 102);
   padding: 0.2em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   font-weight: bold;
 }
 
 .tab-salario-e-decimo {
   margin-top: 1em;
-  background-color: rgb(36, 36, 36);
+  background-color: rgb(20, 133, 58);
   padding: 0.2em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   font-weight: bold;
   color: white;
 }
