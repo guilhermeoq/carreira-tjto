@@ -40,14 +40,9 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>📢 Novidades: </strong>
-        <ul>
-          <li>📆 Simulação do data-base 2025 (+4,83%).</li>
-          <li>🏥 Atualização do teto de reembolso do auxílio saúde (R$ 3.408,34).</li>
-          <li>💼 Cálculo de funções DAJ e FC.</li>
-        </ul>
-        <strong>🪲 Correções:</strong>
-        <li>🛠️ Correção no cálculo das FCs, restringindo o percentual de 65% apenas para DAJ.</li>
+        <strong>📢 Novidades: </strong> simulação do data-base 2025 (+4,83%); atualização do teto de
+        reembolso do auxílio saúde e cálculo de funções DAJ e FC. Foi corrigido um erro no cálculo
+        das FCs, limitando o percentual de 65% apenas para DAJ.
       </div>
     </div>
     <div class="d-sm-flex gap-3">
