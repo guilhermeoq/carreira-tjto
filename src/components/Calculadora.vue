@@ -1070,14 +1070,7 @@ export default {
 
       //Cálculo do desconto de previdência sobre salário
       calculator.previdencia =
-        calculator.teto > 0
-          ? (calculator.vencimentoBasico +
-              calculator.gaj +
-              calculator.aqeValue +
-              calculator.aqfcValue -
-              calculator.teto) *
-            0.14
-          : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+        (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
 
       //Cálculo da base de cálculo do IRRF
       const baseIRRF =
