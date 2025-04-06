@@ -32,7 +32,7 @@
   <div id="app" class="container-lg">
     <div style="padding-top: 2em" class="container-sm">
       <h1 class="title">
-        Simulador de Salário do
+        Simulador da Carreira
         <span class="gradient-text">PCCR</span> dos Servidores do TJTO
       </h1>
       <p class="subtitle">
@@ -678,7 +678,7 @@
             {{ formatarParaBR(calculator.aqfcValue) }}
           </p>
           <p v-show="calculator.switchFuncao" class="tab-representacao">
-            <strong> <i class="bi bi-person-fill-up"></i> Representação:</strong>
+            <strong> <i class="bi bi-person-fill-up"></i> Representação (Função):</strong>
             {{ formatarParaBR(calculator.representacao) }}
           </p>
           <p class="tab-alimentacao">
