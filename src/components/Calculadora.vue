@@ -791,22 +791,39 @@
     </div>
 
     <div class="badge container d-flex justify-content-center align-items-center gap-3">
-      <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer" class="badge-link">
-        <span>Powered by</span>
-        <img src="https://vuejs.org/images/logo.png" alt="Vue Logo" class="vue-logo" />
-        <span>Vue.js</span>
+      <a
+        href="https://vuejs.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://img.shields.io/badge/Built%20with%20Vue.js-white?style=flat&logo=vuedotjs&logoColor=234fc08d&color=35495e"
+          alt="Built with Vue.js"
+        />
       </a>
       <a
+        href="https://vercel.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://img.shields.io/badge/Powered_by%20Vercel-white?style=flat&logo=vercel&logoColor=white&color=black"
+          alt="Powered by Vercel"
+        />
+      </a>
+    </div>
+  </div>
+  <div class="badge container d-flex justify-content-center align-items-center gap-3">
+    <a
         href="https://github.com/guilhermeoq/carreira-tjto-vue"
         target="_blank"
         rel="noopener noreferrer"
       >
         <img
-          src="https://img.shields.io/badge/Available%20on%20GitHub-100000?style=flat&logo=github&logoColor=white"
-          alt="Disponível no GitHub"
+          src="https://img.shields.io/badge/Available_on_GitHub-black?style=flat&logo=github&color=black"
+          alt="Available on GitHub"
         />
       </a>
-    </div>
   </div>
 </template>
 
@@ -1428,7 +1445,7 @@ export default {
 }
 
 .badge {
-  margin-top: 1em;
+
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -1443,12 +1460,4 @@ export default {
   display: inline-block;
 }
 
-.badge-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.badge-link:hover {
-  color: #42b883;
-}
 </style>
