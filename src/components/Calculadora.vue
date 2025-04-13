@@ -19,11 +19,11 @@
             <a
               class="nav-link"
               href="https://www.tjto.jus.br/component/edocman/685-plano-de-cargos-carreiras-e-remuneracao-dos-servidores-do-tjto/viewdocument/685?Itemid="
-              >PCCR</a
+              >Lei n.º 2.409</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605">URV PL06/2023</a>
+            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605">PL06/2023</a>
           </li>
         </ul>
       </div>
@@ -40,9 +40,12 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>📢 Novidades: </strong> simulação do data-base 2025 (+4,83%); atualização do teto de
-        reembolso do auxílio saúde e cálculo de funções DAJ e FC. Foi corrigido um erro no cálculo
-        das FCs, limitando o percentual de 65% apenas para DAJ.
+        <strong>📢 Novidades: </strong>
+        <ul>
+          <li>📈Simulação do data-base 2025 (+4,83%)</li>
+          <li>🏥Atualização do teto de reembolso do auxílio saúde</li>
+          <li>💼Cálculo de funções DAJ e FC</li>
+        </ul>
       </div>
     </div>
     <div class="d-sm-flex gap-3">
@@ -820,7 +823,7 @@
         rel="noopener noreferrer"
       >
         <img
-          src="https://img.shields.io/badge/Available_on_GitHub-black?style=flat&logo=github&color=black"
+          src="https://img.shields.io/badge/Available_on_GitHub-black?style=flat&logo=github&color=393939"
           alt="Available on GitHub"
         />
       </a>
