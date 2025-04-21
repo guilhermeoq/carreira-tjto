@@ -782,7 +782,7 @@
       <p class="footer">
         Desenvolvido por
         <a
-          href="https://quintino.cc"
+          href="https://guilhermeoq.github.io"
           target="_blank"
           rel="noopener noreferrer"
           class="link-dark badge-link"
