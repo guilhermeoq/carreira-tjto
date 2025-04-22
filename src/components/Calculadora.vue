@@ -50,7 +50,7 @@
       </p>
       <div class="callout callout-info">
         <strong>📢 Novidades: </strong><br>
-          📈 Prévia do reajuste de 2025 (+4,83%), conforme <a href="https://sapl.al.to.leg.br/materia/11972" target="_blank">PL 01/2025 em tramitação</a>. Efeitos financeiros a partir de 1º de maio de 2025, após aprovação.
+          📈 Prévia do data-base de 2025 (+4,83%), conforme <a href="https://sapl.al.to.leg.br/materia/11972" target="_blank">PL 01/2025 em tramitação</a>. Efeitos financeiros a partir de 1º de maio de 2025, após aprovação.
       </div>
     </div>
     <div class="d-sm-flex gap-3">
