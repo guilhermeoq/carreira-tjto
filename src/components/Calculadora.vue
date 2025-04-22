@@ -19,11 +19,20 @@
             <a
               class="nav-link"
               href="https://www.tjto.jus.br/component/edocman/685-plano-de-cargos-carreiras-e-remuneracao-dos-servidores-do-tjto/viewdocument/685?Itemid="
+              target="_blank"
               >Lei n.º 2.409</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605">PL06/2023</a>
+            <a
+              class="nav-link"
+              href="https://sapl.al.to.leg.br/materia/11972"
+              target="_blank"
+              >PL01/2025 (data-base)</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605" target="_blank">PL06/2023 (URV)</a>
           </li>
         </ul>
       </div>
@@ -40,12 +49,8 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>📢 Novidades: </strong>
-        <ul>
-          <li>📈Simulação do data-base 2025 (+4,83%)</li>
-          <li>🏥Atualização do teto de reembolso do auxílio saúde</li>
-          <li>💼Cálculo de funções DAJ e FC</li>
-        </ul>
+        <strong>📢 Novidades: </strong><br>
+          📈 Prévia do reajuste de 2025 (+4,83%), conforme <a href="https://sapl.al.to.leg.br/materia/11972" target="_blank">PL 01/2025 em tramitação</a>. Efeitos financeiros a partir de 1º de maio de 2025, após aprovação.
       </div>
     </div>
     <div class="d-sm-flex gap-3">
@@ -61,7 +66,7 @@
               role="switch"
               id="URVSwitch"
             />
-            <label class="form-check-label" for="URVSwitch">Simular data-base 2025: 4,83% </label>
+            <label class="form-check-label" for="URVSwitch">Prévia do data-base 2025: +4,83%</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
