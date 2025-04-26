@@ -50,7 +50,7 @@
       </p>
       <div class="callout callout-info">
         <strong>📢 Novidades: </strong><br>
-          🪙 Cálculo da previdência complementar, vigente a partir da folha de abril/2025. O servidor contribui com 14% até o valor do teto do IGEPREV (R$ 8.157,41) e com 8,5% para o BRASILPREV sobre o valor que ultrapassar o teto do IGEPREV, limitado ao total salário. Ambas as contribuições contam com contrapartida patronal no mesmo percentual.<br><br>
+           🧓 Cálculo da previdência complementar (vigente a partir da folha de abril/2025). O servidor contribui com 14% até o valor do teto do IGEPREV (R$ 8.157,41) e com 8,5% para o BRASILPREV sobre o valor do salário que ultrapassa o teto do IGEPREV, limitado ao total salário (Venc. Básico + GAJ + AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual.<br><br>
           📈 Prévia do data-base 2025 (+4,83%), conforme <a href="https://sapl.al.to.leg.br/materia/11972" target="_blank">PL 01/2025 em tramitação</a>. Efeitos financeiros a partir de 1º de maio de 2025, após aprovação.
       </div>
     </div>
