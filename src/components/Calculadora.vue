@@ -49,9 +49,11 @@
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
       <div class="callout callout-info">
-        <strong>📢 Novidades: </strong><br>
-           🧓 Cálculo da previdência complementar (vigente a partir da folha de abril/2025). O servidor contribui com 14% até o valor do teto do IGEPREV (R$ 8.157,41) e com 8,5% para o BRASILPREV sobre o valor do salário que ultrapassa o teto do IGEPREV, limitado ao total salário (Venc. Básico + GAJ + AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual.<br><br>
-          📈 Prévia do data-base 2025 (+4,83%), conforme <a href="https://sapl.al.to.leg.br/materia/11972" target="_blank">PL 01/2025 em tramitação</a>. Efeitos financeiros a partir de 1º de maio de 2025, após aprovação.
+        <small><strong>📢 Novidades:</strong><br>
+          🪙 Cálculo da previdência complementar (vigente a partir da folha de abril/2025). O servidor contribui com 14% até o teto do IGEPREV (R$ 8.157,41) e com 8,5% para o BRASILPREV sobre o valor do salário que ultrapassa o teto do IGEPREV, limitado ao total do salário (Venc. Básico + GAJ + AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual. Antes, o desconto para o IGEPREV de 14% estava sendo calculado sobre o valor total do salário.<br>
+          📈 Prévia do data-base 2025 (+4,83%), conforme <a href="https://sapl.al.to.leg.br/materia/11972" target="_blank">PL 01/2025 em tramitação</a>. Efeitos financeiros a partir de 1º de maio de 2025, após aprovação.<br>
+          🪲 Foi corrigido um erro de cálculo do data-base 2025, que não estava sendo aplicado às funções FC/DAJ.
+        </small>
       </div>
     </div>
     <div class="d-sm-flex gap-3">
@@ -221,6 +223,63 @@
                 id="ferias"
               />
               <label class="form-check-label" for="ferias">Adicional de Férias</label>
+            </div>
+          </div>
+
+          <!-- SELECTION 13 SALARIO -->
+          <div class="border-top pt-3 pb-3 d-flex flex-wrap gap-3">
+            <div class="d-flex flex-row gap-3">
+              <div class="form-check form-switch">
+                <input
+                  v-model="calculator.switchDecimo"
+                  class="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="decimo"
+                />
+                <label class="form-check-label" for="decimo">13º Salário </label>
+              </div>
+            </div>
+
+            <!-- OPÇÕES DO 13º SALARIO -->
+            <div class="d-flex flex-row gap-3">
+              <div class="form-check" >
+                <input
+                  v-model="calculator.tipoDecimo"
+                  class="form-check-input"
+                  type="radio"
+                  name="tipoDecimo"
+                  value="integral"
+                  id="integral"
+                  :disabled="!calculator.switchDecimo"
+                  checked
+                />
+                <label class="form-check-label" for="integral"> Integral </label>
+              </div>
+              <div class="form-check">
+                <input
+                  v-model="calculator.tipoDecimo"
+                  class="form-check-input"
+                  type="radio"
+                  name="tipoDecimo"
+                  value="parcela1"
+                  id="parcela1"
+                  :disabled="!calculator.switchDecimo"
+                />
+                <label class="form-check-label" for="parcela1"> 1ª Parcela </label>
+              </div>
+              <div class="form-check">
+                <input
+                  v-model="calculator.tipoDecimo"
+                  class="form-check-input"
+                  type="radio"
+                  name="tipoDecimo"
+                  value="parcela2"
+                  id="parcela2"
+                  :disabled="!calculator.switchDecimo"
+                />
+                <label class="form-check-label" for="parcela2"> 2ª Parcela </label>
+              </div>
             </div>
           </div>
 
@@ -625,62 +684,7 @@
             </p>
           </div>
 
-          <!-- SELECTION 13 SALARIO -->
-          <div class="border-top pt-3 pb-3 d-flex flex-wrap gap-3">
-            <div class="d-flex flex-row gap-3">
-              <div class="form-check form-switch">
-                <input
-                  v-model="calculator.switchDecimo"
-                  class="form-check-input"
-                  type="checkbox"
-                  role="switch"
-                  id="decimo"
-                />
-                <label class="form-check-label" for="decimo">13º Salário </label>
-              </div>
-            </div>
 
-            <!-- OPÇÕES DO 13º SALARIO -->
-            <div class="d-flex flex-row gap-3">
-              <div class="form-check">
-                <input
-                  v-model="calculator.tipoDecimo"
-                  class="form-check-input"
-                  type="radio"
-                  name="tipoDecimo"
-                  value="integral"
-                  id="integral"
-                  :disabled="!calculator.switchDecimo"
-                  checked
-                />
-                <label class="form-check-label" for="integral"> Integral </label>
-              </div>
-              <div class="form-check">
-                <input
-                  v-model="calculator.tipoDecimo"
-                  class="form-check-input"
-                  type="radio"
-                  name="tipoDecimo"
-                  value="parcela1"
-                  id="parcela1"
-                  :disabled="!calculator.switchDecimo"
-                />
-                <label class="form-check-label" for="parcela1"> 1ª Parcela </label>
-              </div>
-              <div class="form-check">
-                <input
-                  v-model="calculator.tipoDecimo"
-                  class="form-check-input"
-                  type="radio"
-                  name="tipoDecimo"
-                  value="parcela2"
-                  id="parcela2"
-                  :disabled="!calculator.switchDecimo"
-                />
-                <label class="form-check-label" for="parcela2"> 2ª Parcela </label>
-              </div>
-            </div>
-          </div>
         </form>
         <div>
           <h5 style="margin-top: 10px">Rendimentos</h5>
