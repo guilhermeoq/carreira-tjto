@@ -42,7 +42,7 @@
           8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
           salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual.<br>
           📈 Prévia do <strong>data-base 2025, +4,17%</strong> <span class="badge text-bg-warning">Atualizado</span> conforme <a href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
-            target="_blank">PL 01/2025</a>. Efeitos financeiros a partir de 01/05/  2025, após aprovação.<br>
+            target="_blank">PL 01/2025</a>. Efeitos financeiros a partir de 1º de maio, após aprovação.<br>
         </small>
       </div>
 
