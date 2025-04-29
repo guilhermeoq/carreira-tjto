@@ -14,7 +14,7 @@
               target="_blank">Lei n.º 2.409</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/11972" target="_blank">PL01/2025 (data-base)</a>
+            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio" target="_blank">PL01/2025 (data-base)</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605" target="_blank">PL06/2023 (URV)</a>
@@ -41,7 +41,7 @@
           🪙 Cálculo da previdência complementar (a partir de abril/2025). Contribuição de 14% até o teto do IGEPREV (R$
           8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
           salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual.<br>
-          📈 Prévia do data-base 2025 (+4,83%), conforme <a href="https://sapl.al.to.leg.br/materia/11972"
+          📈 Prévia do <strong>data-base 2025, +4,17%</strong> <span class="badge text-bg-warning">Atualizado</span> conforme <a href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
             target="_blank">PL 01/2025</a>. Efeitos financeiros a partir de 01/05/  2025, após aprovação.<br>
         </small>
       </div>
@@ -51,7 +51,7 @@
         <div class="container my-5">
                 <div class="position-relative">
                   <div class="progress" style="height: 4px;">
-                    <div class="progress-bar" role="progressbar" style="width: 13%;" aria-valuenow="2" aria-valuemin="0"
+                    <div class="progress-bar" role="progressbar" style="width: 88%;" aria-valuenow="2" aria-valuemin="0"
                       aria-valuemax="4"></div>
                   </div>
                   <div class="d-flex justify-content-between position-absolute top-0 start-0 w-100"
@@ -61,11 +61,11 @@
                       <div class="small mt-1"><small>CCJ</small></div>
                     </div>
                     <div class="text-center" style="width: 25%;">
-                      <div class="badge bg-secondary rounded-pill" style="color: white">2</div>
+                      <div class="badge bg-primary rounded-pill" style="color: white">2</div>
                       <div class="small mt-1"><small>CF</small></div>
                     </div>
                     <div class="text-center" style="width: 25%;">
-                      <div class="badge bg-secondary rounded-pill" style="color: white">3</div>
+                      <div class="badge bg-primary rounded-pill" style="color: white">3</div>
                       <div class="small mt-1"><small>CCD</small></div>
                     </div>
                     <div class="text-center" style="width: 25%;">
@@ -85,7 +85,7 @@
           <div class="form-check form-switch mt-4 mb-3">
             <input v-model="calculator.simularURV" class="form-check-input" type="checkbox" role="switch"
               id="URVSwitch" />
-            <label class="form-check-label" for="URVSwitch">Prévia do data-base 2025: +4,83%</label>
+            <label class="form-check-label" for="URVSwitch">Prévia do data-base 2025: +4,17%</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
@@ -726,14 +726,14 @@ export default {
       }
 
       const vb = salarios[calculator.cargo][calculator.nivel - 1]
-      calculator.vencimentoBasico = calculator.simularURV ? vb * 1.0483 : vb //1.1198
+      calculator.vencimentoBasico = calculator.simularURV ? vb * 1.0417 : vb //1.1198
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
 
       if (calculator.switchFuncao == true) {
         //Calculando data-base sobre funções...
-        (calculator.simularURV ===true ) ? calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1.0483 : calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
+        (calculator.simularURV ===true ) ? calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1.0417 : calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
       } else calculator.representacao = 0
 
       calculator.ferias = calculator.switchFerias
