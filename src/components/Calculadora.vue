@@ -37,7 +37,7 @@
       </p>
 
       <div class="callout callout-info">
-        <small><strong>📢 Novidades:</strong><br>
+        <small><strong>📢 [30/04/2025] Novidades:</strong><br>
           🪙 Cálculo da previdência complementar (a partir de abril/2025). Contribuição de 14% até o teto do IGEPREV (R$
           8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
           salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual.<br>
