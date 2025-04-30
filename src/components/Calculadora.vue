@@ -41,41 +41,11 @@
           🪙 Cálculo da previdência complementar (a partir de abril/2025). Contribuição de 14% até o teto do IGEPREV (R$
           8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
           salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual.<br>
-          📈 Prévia do <strong>data-base 2025, +4,17%</strong> <span class="badge text-bg-warning">Atualizado</span> conforme <a href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
-            target="_blank">PL 01/2025</a>. Efeitos financeiros a partir de 1º de maio, após aprovação.<br>
+          📈 Data-base 2025, <strong>+4,17%</strong> conforme <a href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
+            target="_blank">PL 01/2025</a> <span class="badge text-bg-info">Aprovado</span>. Efeito financeiro retroativo a 1º de maio.<br>
         </small>
       </div>
 
-      <div class="callout callout-warning">
-        <small><strong>📄 Andamento do PL01/2025:</strong></small>
-        <div class="container my-5">
-                <div class="position-relative">
-                  <div class="progress" style="height: 4px;">
-                    <div class="progress-bar" role="progressbar" style="width: 88%;" aria-valuenow="2" aria-valuemin="0"
-                      aria-valuemax="4"></div>
-                  </div>
-                  <div class="d-flex justify-content-between position-absolute top-0 start-0 w-100"
-                    style="transform: translateY(-50%);">
-                    <div class="text-center" style="width: 25%;">
-                      <div class="badge bg-primary rounded-pill" style="color: white">1</div>
-                      <div class="small mt-1"><small>CCJ</small></div>
-                    </div>
-                    <div class="text-center" style="width: 25%;">
-                      <div class="badge bg-primary rounded-pill" style="color: white">2</div>
-                      <div class="small mt-1"><small>CF</small></div>
-                    </div>
-                    <div class="text-center" style="width: 25%;">
-                      <div class="badge bg-primary rounded-pill" style="color: white">3</div>
-                      <div class="small mt-1"><small>CCD</small></div>
-                    </div>
-                    <div class="text-center" style="width: 25%;">
-                      <div class="badge bg-secondary rounded-pill" style="color: white">4</div>
-                      <div class="small mt-1"><small>COASP</small></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-      </div>
     </div>
     <div class="d-sm-flex gap-3">
       <div v-for="(calculator, index) in calculators" :key="index" class="calculator">
@@ -84,8 +54,8 @@
           <!-- SWITCH URV -->
           <div class="form-check form-switch mt-4 mb-3">
             <input v-model="calculator.simularURV" class="form-check-input" type="checkbox" role="switch"
-              id="URVSwitch" />
-            <label class="form-check-label" for="URVSwitch">Prévia do data-base 2025: +4,17%</label>
+              id="URVSwitch" defaultChecked />
+            <label class="form-check-label" for="URVSwitch">Data-base 2025: +4,17%</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
@@ -655,7 +625,7 @@ export default {
     //Inicializar calculadora
     createCalculator() {
       return {
-        simularURV: false,
+        simularURV: true,
         switchSaude: false,
         cargo: 'tecnico',
         nivel: 1,
