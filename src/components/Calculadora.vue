@@ -39,10 +39,16 @@
         Simulador da Carreira
         <span class="gradient-text">PCCR</span> dos Servidores do TJTO
       </h1>
+
+      <div class="d-block d-md-flex gap-3">
       <p class="subtitle">
         Este simulador é <strong>gratuito, não coleta nenhuma informação pessoal</strong> e foi
         desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
       </p>
+
+      <SiteStats />
+
+    </div>
 
       <div class="callout callout-info">
         <small><strong>📢 [30/04/2025] Novidades:</strong><br>
@@ -610,7 +616,11 @@
 </template>
 
 <script>
+import SiteStats from '@/components/SiteStats.vue';
 export default {
+  components: {
+    SiteStats
+  },
   data() {
     return {
       calculators: [this.createCalculator(), this.createCalculator()],

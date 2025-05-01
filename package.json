@@ -15,6 +15,7 @@
     "@vercel/speed-insights": "^1.1.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "decimal.js": "^10.5.0",
     "vue": "^3.5.13",
     "vue2-filters": "^0.14.0"
   },
