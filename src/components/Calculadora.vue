@@ -51,7 +51,7 @@
     </div>
 
       <div class="callout callout-info">
-        <small><strong>📢 [30/04/2025] Novidades:</strong><br>
+        <small><strong>[30/04/2025] Novidades:</strong><br>
           📈 Data-base 2025 foi aprovado, +4,17% conforme <a href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
             target="_blank">PL 01/2025</a>. Efeito financeiro retroativo a 1º de maio.<br>
           💾 A calculadora agora salva no seu próprio navegador as informações preenchidas, utilize o botão abaixo para redefinir as calculadoras.<br>
