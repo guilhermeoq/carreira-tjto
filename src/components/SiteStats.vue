@@ -1,16 +1,16 @@
 <template>
   <div class="site-stats py-2 px-3 d-flex justify-content-center align-items-center gap-5">
     <div class="stat" :class="{ 'fade-in': visible }">
-      <div class="label">visitantes</div>
+      <div class="label">+visitantes</div>
       <div class="value">{{ animatedVisitors }}</div>
     </div>
     <div class="stat" :class="{ 'fade-in': visible }">
-      <div class="label">visualizações</div>
+      <div class="label">+visualizações</div>
       <div class="value">{{ animatedViews }}</div>
     </div>
   </div>
   <div class="site-stats d-flex justify-content-center align-items-center">
-    <div class="label" :class="{ 'fade-in': visible }">nos últimos 30 dias 🎉</div>
+    <div class="label" :class="{ 'fade-in': visible }">nos últimos 30 dias</div>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
   mounted() {
     this.visible = true;
     this.animateNumber('animatedVisitors', 656);
-    this.animateNumber('animatedViews', 948);
+    this.animateNumber('animatedViews', 968);
   },
   methods: {
     animateNumber(key, target, duration = 1000) {
@@ -58,7 +58,7 @@ export default {
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
-  color: #333;
+  color: #383838;
   line-height: 1;
 }
 .label {

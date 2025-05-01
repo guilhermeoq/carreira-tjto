@@ -59,6 +59,7 @@
           🪙 Cálculo da previdência complementar (a partir de abril/2025). Contribuição de 14% até o teto do IGEPREV (R$
           8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
           salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual.<br>
+          <i>Obs.: em razão de regras previdênciárias distintas, alguns servidores continuam com retenção de 14% sobre o total do salário (VB+GAJ+AQE). As duas opções de cálculo estão disponíveis.</i>
         </small>
       </div>
 
@@ -75,7 +76,7 @@
           <div class="form-check form-switch mt-4 mb-3">
             <input v-model="calculator.simularURV" class="form-check-input" type="checkbox" role="switch"
               id="URVSwitch" defaultChecked />
-            <label class="form-check-label" for="URVSwitch">Data-base 2025: +4,17%</label>
+            <label class="form-check-label">Data-base 2025: +4,17%</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
@@ -84,7 +85,7 @@
                 <option value="tecnico" selected>Técnico Judiciário</option>
                 <option value="analista">Analista Judiciário</option>
               </select>
-              <label for="cargoSelect">Cargo</label>
+              <label>Cargo</label>
             </div>
 
             <!-- SELECTION NÍVEL -->
@@ -92,7 +93,7 @@
               <select class="form-select" id="nivel" aria-label="Selecione o nível" v-model.number="calculator.nivel">
                 <option v-for="n in 15" :value="n">{{ n }}</option>
               </select>
-              <label for="nivel">Nível</label>
+              <label>Nível</label>
             </div>
           </div>
 
@@ -103,7 +104,7 @@
                 v-model.number="calculator.aqfc">
                 <option v-for="percent in [0, 1, 2, 3]" :value="percent">{{ percent }}%</option>
               </select>
-              <label for="aqfc">AQFC</label>
+              <label>AQFC</label>
             </div>
 
             <!-- SELECTION AQE -->
@@ -115,7 +116,7 @@
                   {{ percent }}%
                 </option>
               </select>
-              <label for="aqe">AQE</label>
+              <label>AQE</label>
             </div>
           </div>
 
@@ -124,21 +125,31 @@
             <select class="form-select" id="dependente" aria-label="Nº de dep. IR" v-model="calculator.dependente">
               <option v-for="n in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :value="n">{{ n }}</option>
             </select>
-            <label for="dependente">Nº dep. IR</label>
+            <label>Nº dep. IR</label>
           </div>
 
           <div class="border-bottom">
-            <div class="form-check form-switch gap-1 mb-3 mt-3">
-              <input v-model="calculator.switchPrevcom" class="form-check-input" type="checkbox" role="switch"
-                id="switchPrevcom" defaultChecked />
-              <label class="form-check-label" for="switchPrevcom">Previdência Complementar</label>
-            </div>
+            <p>Previdência:</p>
+          <!-- OPÇÕES DE PREVIDÊNCIA -->
+          <div class="d-flex flex-row gap-3 mb-3">
+              <div class="form-check">
+                <input v-model="calculator.selectPrev" class="form-check-input" type="radio" name="tipoPrevidencia"
+                  value="1" id="Prevcom" checked />
+                <label class="form-check-label">Complementar</label>
+              </div>
+              <div class="form-check">
+                <input v-model="calculator.selectPrev" class="form-check-input" type="radio" name="tipoPrevidencia"
+                  value="2" id="IgeprevTotal" />
+                <label class="form-check-label">IGEPREV 14% (VB+GAJ+AQE) </label>
+              </div>
+          </div>
+
           </div>
 
           <div class="mt-3 form-check form-switch mb-3">
             <input v-model="calculator.switchFuncao" class="form-check-input" type="checkbox" role="switch"
               id="switchFuncao" />
-            <label class="form-check-label" for="switchFuncao">Funções </label>
+            <label class="form-check-label">Funções </label>
           </div>
 
           <!-- Funcao do Servidor -->
@@ -166,7 +177,7 @@
                   {{ n }}
                 </option>
               </select>
-              <label for="funcaoServidor">Selecione o cargo/função </label>
+              <label>Selecione o cargo/função </label>
 
               <div class="mt-2">
                 <i><small>*Considerando opção pelo cargo efetivo +65% para funções DAJ.</small></i>
@@ -178,7 +189,7 @@
             <div class="form-check form-switch gap-1 mb-3 mt-3">
               <input v-model="calculator.switchFerias" class="form-check-input" type="checkbox" role="switch"
                 id="ferias" />
-              <label class="form-check-label" for="ferias">Adicional de Férias</label>
+              <label class="form-check-label">Adicional de Férias</label>
             </div>
           </div>
 
@@ -188,7 +199,7 @@
               <div class="form-check form-switch">
                 <input v-model="calculator.switchDecimo" class="form-check-input" type="checkbox" role="switch"
                   id="decimo" />
-                <label class="form-check-label" for="decimo">13º Salário </label>
+                <label class="form-check-label">13º Salário </label>
               </div>
             </div>
 
@@ -197,17 +208,17 @@
               <div class="form-check">
                 <input v-model="calculator.tipoDecimo" class="form-check-input" type="radio" name="tipoDecimo"
                   value="integral" id="integral" :disabled="!calculator.switchDecimo" checked />
-                <label class="form-check-label" for="integral"> Integral </label>
+                <label class="form-check-label"> Integral </label>
               </div>
               <div class="form-check">
                 <input v-model="calculator.tipoDecimo" class="form-check-input" type="radio" name="tipoDecimo"
                   value="parcela1" id="parcela1" :disabled="!calculator.switchDecimo" />
-                <label class="form-check-label" for="parcela1"> 1ª Parcela </label>
+                <label class="form-check-label"> 1ª Parcela </label>
               </div>
               <div class="form-check">
                 <input v-model="calculator.tipoDecimo" class="form-check-input" type="radio" name="tipoDecimo"
                   value="parcela2" id="parcela2" :disabled="!calculator.switchDecimo" />
-                <label class="form-check-label" for="parcela2"> 2ª Parcela </label>
+                <label class="form-check-label"> 2ª Parcela </label>
               </div>
             </div>
           </div>
@@ -217,7 +228,7 @@
             <div class="mt-3 form-check form-switch mb-3">
               <input v-model="calculator.switchSaude" class="form-check-input" type="checkbox" role="switch"
                 id="switchSaude" />
-              <label class="form-check-label" for="switchSaude">Auxílio Saúde</label>
+              <label class="form-check-label">Auxílio Saúde</label>
             </div>
 
             <!-- Faixa Etaria - Idade Servidor -->
@@ -240,12 +251,12 @@
                     {{ n }}
                   </option>
                 </select>
-                <label for="idadeServidor">Idade Servidor</label>
+                <label>Idade Servidor</label>
               </div>
               <div v-if="calculator.switchSaude" class="form-floating mb-1 col-6">
                 <input type="number" min="0.00" max="10000.00" step="any" class="form-control border-primary border-2"
                   id="mensalidadeServidor" placeholder="Digite o valor" v-model="calculator.mensalidadeServidor" />
-                <label for="mensalidadeServidor">Valor Servidor (R$)</label>
+                <label>Valor Servidor (R$)</label>
               </div>
             </div>
             <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Servidor"
@@ -290,13 +301,13 @@
                     {{ n }}
                   </option>
                 </select>
-                <label for="idadeDependente1">Idade Dep. 1</label>
+                <label>Idade Dep. 1</label>
               </div>
               <div class="form-floating mb-1 col-6">
                 <input type="number" min="0.00" max="10000.00" step="any" class="form-control border-success border-2"
                   id="mensalidadeDependente1" placeholder="Digite o valor"
                   v-model="calculator.mensalidadeDependente1" />
-                <label for="mensalidadeDependente1">Valor Dep. 1 (R$)</label>
+                <label>Valor Dep. 1 (R$)</label>
               </div>
             </div>
             <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Dependente 1"
@@ -341,13 +352,13 @@
                     {{ n }}
                   </option>
                 </select>
-                <label for="idadeDependente2">Idade Dep. 2</label>
+                <label>Idade Dep. 2</label>
               </div>
               <div v-show="calculator.switchSaude" class="form-floating mb-3 col-6">
                 <input type="number" min="0.00" max="10000.00" step="any" class="form-control border-warning border-2"
                   id="mensalidadeDependente2" placeholder="Digite o valor"
                   v-model="calculator.mensalidadeDependente2" />
-                <label for="mensalidadeDependente2">Valor Dep. 2 (R$)</label>
+                <label>Valor Dep. 2 (R$)</label>
               </div>
             </div>
             <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Dependente 2"
@@ -392,14 +403,14 @@
                     {{ n }}
                   </option>
                 </select>
-                <label for="idadeDependente3">Idade Dep. 3+</label>
+                <label>Idade Dep. 3+</label>
               </div>
 
               <div class="form-floating mb-1 col-6">
                 <input type="number" min="0.00" max="10000.00" step="any" class="form-control border-danger border-2"
                   id="mensalidadeDependente3" placeholder="Digite o valor"
                   v-model="calculator.mensalidadeDependente3" />
-                <label for="mensalidadeDependente3">Valor Dep. 3 (R$)</label>
+                <label>Valor Dep. 3 (R$)</label>
               </div>
             </div>
             <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Dependente 3"
@@ -425,7 +436,7 @@
             </div>
 
             <div v-if="calculator.switchSaude" class="input-group mb-3 flex-fill">
-              <label class="input-group-text" for="multiplicador">Multiplicar 'Dep. 3' x</label>
+              <label class="input-group-text">Multiplicar 'Dep. 3' x</label>
               <select v-model="calculator.multiplicadorDependente3" class="form-select" id="multiplicador">
                 <option v-for="n in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :value="n">
                   {{ n }}
@@ -433,7 +444,7 @@
               </select>
             </div>
 
-            <!-- BARRA PERCENTUAL - TETO GLOBAL DO PLANO DE SAUDE -->
+            <!-- BARRA PERCENTUAL - TETO GLOBAL DO PLANO DE SAUDE - TETO: R$ 34.083,41 -->
             <div v-if="calculator.switchSaude" class="progress-stacked border-bottom">
               <div class="progress" role="progressbar" aria-label="Servidor"
                 :aria-valuenow="calculator.percentualSaudeServidor" aria-valuenow="" aria-valuemin="0"
@@ -514,17 +525,17 @@
             <strong><i class="bi bi-people-fill"></i> IGEPREV:</strong>
             {{ formatarParaBR(calculator.previdencia) }}
           </p>
-          <p v-show="calculator.switchPrevcom" class="tab-desconto">
+          <p v-show="calculator.selectPrev == 1" class="tab-desconto">
             <strong> <i class="bi bi-people-fill"></i> BRASILPREV:</strong>
             {{ formatarParaBR(calculator.prevcom) }}
           </p>
           <p class="tab-desconto">
             <strong><i class="bi bi-bank2"></i> IRRF:</strong> {{ formatarParaBR(calculator.irrf) }}
           </p>
-          <!-- <p class="tab-desconto">
+          <p class="tab-desconto" v-show="calculator.teto > 0">
             <strong><i class="bi bi-building-fill-exclamation"></i> Sub-teto:</strong>
             {{ formatarParaBR(calculator.teto) }}
-          </p> -->
+          </p>
           <p class="tab-desconto-total">
             <i class="bi bi-caret-down-fill"></i> Total de Descontos:
             {{ formatarParaBR(calculator.totalDescontos) }}
@@ -540,30 +551,30 @@
           " class="border-top">
           <h5 style="margin-top: 10px">Folha do 13º Salário</h5>
           <p class="tab-decimo">
-            <strong> <i class="bi bi-gem"></i> 13º Salário:</strong>
+            <strong><i class="bi bi-gem"></i> 13º Salário:</strong>
             {{ formatarParaBR(calculator.decimoFolhaComplementar) }}
           </p>
-          <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'" class="tab-decimo-desconto">
+          <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'" class="tab-desconto">
             <strong><i class="bi bi-receipt"></i> Adiantamento 13º:</strong>
             {{ formatarParaBR(calculator.decimoAdiantamento) }}
           </p>
-          <p class="tab-decimo-desconto">
+          <p class="tab-desconto">
             <strong><i class="bi bi-people-fill"></i> IGEPREV 13º:</strong>
             {{ formatarParaBR(calculator.decimoPrevidencia) }}
           </p>
-          <p v-show="calculator.switchPrevcom" class="tab-desconto">
-            <strong> <i class="bi bi-people-fill"></i> BRASILPREV 13º:</strong>
+          <p v-show="calculator.selectPrev == 1" class="tab-desconto">
+          <strong><i class="bi bi-people-fill"></i> BRASILPREV 13º:</strong>
             {{ formatarParaBR(calculator.prevcom) }}
           </p>
-          <p class="tab-decimo-desconto">
+          <p class="tab-desconto">
             <strong><i class="bi bi-bank2"></i> IRRF do 13º:</strong>
             {{ formatarParaBR(calculator.decimoIRRF) }}
           </p>
-          <p class="tab-decimo-desconto-total">
+          <p class="tab-desconto-total">
             <i class="bi bi-caret-down-fill"></i> Total de Descontos 13º:
             {{ formatarParaBR(calculator.totalDescontosDecimo) }}
           </p>
-          <p class="tab-decimo-liquido">
+          <p class="tab-liquido">
             <i class="bi bi-caret-right-fill"></i> 13º Salário Líquido:
             {{ formatarParaBR(calculator.decimoLiquido) }}
           </p>
@@ -651,7 +662,7 @@ export default {
   methods: {
     //Inicializar calculadora
     createCalculator() {
-      return {
+      const base =  {
         simularURV: true,
         switchSaude: false,
         cargo: 'tecnico',
@@ -659,7 +670,7 @@ export default {
         aqfc: 3,
         aqe: 7.5,
         dependente: 0,
-        switchPrevcom: true,
+        selectPrev: 1,
         switchFuncao: false,
         funcaoServidor: 'DAJ-1',
         representacao: 0,
@@ -699,6 +710,7 @@ export default {
         salarioLiquido: 0,
         totalDescontosDecimo: 0,
       }
+      return JSON.parse(JSON.stringify(base))
     },
     saveCalculatorsToLocalStorage() {
     localStorage.setItem('calculators', JSON.stringify(this.calculators));
@@ -870,20 +882,30 @@ export default {
       calculator.decimoIRRF = this.calcularIrrf(calculator.decimoFolhaComplementar)
 
       const baseIRRFDecimo =
+      (calculator.selectPrev == 1) ? (
         calculator.vencimentoBasico +
         calculator.gaj +
         calculator.aqeValue +
         calculator.aqfcValue +
         calculator.representacao -
-        (calculator.decimoPrevidencia + calculator.decimoPrevcom + 189.59 * calculator.dependente)
+        (calculator.decimoPrevidencia + calculator.teto + calculator.decimoPrevcom + 189.59 * calculator.dependente)) :
+        (
+        calculator.vencimentoBasico +
+        calculator.gaj +
+        calculator.aqeValue +
+        calculator.aqfcValue +
+        calculator.representacao -
+        (calculator.decimoPrevidencia + calculator.teto + 189.59 * calculator.dependente))
+
+
       calculator.decimoIRRF = this.calcularIrrf(baseIRRFDecimo)
 
       //Total de descontos aplicados sobre o 13º salário
       calculator.totalDescontosDecimo =
         calculator.switchDecimo && calculator.tipoDecimo === 'integral'
-          ? (calculator.switchPrevcom === true) ? calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoPrevidencia + calculator.decimoIRRF
+          ? (calculator.selectPrev == 1) ? calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoPrevidencia + calculator.decimoIRRF
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'
-            ?  (calculator.switchPrevcom === true) ? calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoIRRF
+            ?  (calculator.selectPrev == 1) ? calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoIRRF
             : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
               ? 0
               : 0
@@ -905,23 +927,33 @@ export default {
         2122
 
       //Cálculo do desconto de previdência sobre salário
+
       calculator.previdencia =
-        ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+      (calculator.selectPrev == 1) ?
+      (((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14) :
+      ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14)
 
       //Cálculo do desconto da previdência complementar
       calculator.prevcom = ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) - tetoIgeprev) * 0.085 : 0
 
 
       //Cálculo da base de cálculo do IRRF
-      const baseIRRF =
-        calculator.vencimentoBasico +
+        let baseIRRF =
+        (calculator.selectPrev == 1) ?
+        (calculator.vencimentoBasico +
         calculator.gaj +
         calculator.aqeValue +
         calculator.aqfcValue +
         calculator.representacao +
         calculator.ferias -
-        (calculator.previdencia + calculator.prevcom + 189.59 * calculator.dependente) -
-        calculator.teto
+        (calculator.previdencia + calculator.teto + calculator.prevcom + (189.59 * calculator.dependente))) :
+        (calculator.vencimentoBasico +
+        calculator.gaj +
+        calculator.aqeValue +
+        calculator.aqfcValue +
+        calculator.representacao +
+        calculator.ferias -
+        (calculator.previdencia + calculator.teto + (189.59 * calculator.dependente)))
 
       //Cálculo do teto/sub-teto (2024: 29196.14 / 2025: 30760.27)
       //Como o sub-teto parece estar inativo, o teto é -5% do subsídio dos ministros do STF.
@@ -929,19 +961,21 @@ export default {
       //R$ 44.008,52 a partir de 1º de fevereiro de 2024
       //R$ 46.366,19 a partir de 1º de fevereiro de 2025
 
-      /* calculator.teto =
-        calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue + calculator.aqfcValue <=
-        30760.27
+      //Venc. 2025 Juiz Jubstituto: R$ 34.083,41
+
+       calculator.teto =
+        (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue + calculator.aqfcValue + calculator.representacao <=
+        41845.49)
           ? 0
-          : calculator.vencimentoBasico +
+          : (calculator.vencimentoBasico +
             calculator.gaj +
             calculator.aqeValue +
-            calculator.aqfcValue -
-            30760.27 */
+            calculator.aqfcValue +
+            calculator.representacao) -
+            41845.49
 
       calculator.irrf = this.calcularIrrf(baseIRRF)
-      calculator.totalDescontos = (calculator.switchPrevcom === true) ? calculator.previdencia + calculator.irrf + calculator.prevcom : calculator.previdencia + calculator.irrf
-      console.log(switchPrevcom)
+      calculator.totalDescontos = (calculator.selectPrev == 1) ? (calculator.previdencia + calculator.irrf + calculator.prevcom + calculator.teto) : calculator.previdencia + calculator.irrf + calculator.teto
       calculator.salarioLiquido = calculator.salarioBruto - calculator.totalDescontos
     },
 
@@ -1008,6 +1042,10 @@ export default {
         case 'FC-4':
           return 3243.49
       }
+    },
+
+    calculaBaseirrf(){
+
     },
 
     calcularIrrf(baseCalculo) {
@@ -1243,13 +1281,6 @@ export default {
   padding: 0.2em;
   border-radius: 0.3em;
   margin-bottom: 1px;
-}
-
-.tab-decimo-desconto-total {
-  background-color: #ff9393;
-  padding: 0.2em;
-  border-radius: 0.3em;
-  font-weight: bold;
 }
 
 .tab-decimo-liquido {
