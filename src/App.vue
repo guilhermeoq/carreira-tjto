@@ -10,6 +10,7 @@ import { injectSpeedInsights } from '@vercel/speed-insights';
 inject()
 injectSpeedInsights();
 import Calculadora from './components/Calculadora.vue'
+import SiteStats from './components/SiteStats.vue';
 
 export default {
   components: {
