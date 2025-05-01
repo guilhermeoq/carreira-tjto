@@ -1,4 +1,12 @@
 <template>
+  <div class="scroll-buttons position-fixed bottom-0 start-0 m-3 d-flex flex-column gap-2 z-3">
+      <button class="btn btn-secondary btn-sm" @click="scrollToTop">
+        <i class="bi bi-arrow-up"></i>
+      </button>
+      <button class="btn btn-secondary btn-sm" @click="scrollToBottom">
+        <i class="bi bi-arrow-down"></i>
+      </button>
+    </div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">🚀 Simulador TJTO</a>
@@ -685,6 +693,13 @@ export default {
     this.calculators = [this.createCalculator(), this.createCalculator()];
     this.calculators.forEach((_, index) => this.updateSalary(index)); // recalculate
   },
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  },
+  scrollToBottom() {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  },
+
     //Opções de AQE conforme cargo
     getAqeOptions(cargo) {
       if (cargo === 'analista') {
