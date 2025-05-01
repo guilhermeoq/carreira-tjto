@@ -46,9 +46,10 @@
 
       <div class="callout callout-info">
         <small><strong>📢 [30/04/2025] Novidades:</strong><br>
-          💾 A calculadora agora salva no seu próprio navegador as informações preenchidas, utilize o botão abaixo para limpar para a configuração padrão.<br>
-          📈 Data-base 2025, <strong>+4,17%</strong> conforme <a href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
-            target="_blank">PL 01/2025</a> <span class="badge text-bg-info">Aprovado</span>. Efeito financeiro retroativo a 1º de maio.<br>
+          📈 Data-base 2025 foi aprovado, +4,17% conforme <a href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
+            target="_blank">PL 01/2025</a>. Efeito financeiro retroativo a 1º de maio.<br>
+          💾 A calculadora agora salva no seu próprio navegador as informações preenchidas, utilize o botão abaixo para redefinir as calculadoras.<br>
+          ↕️ Novos botões de navegação para mover a barra de rolagem.<br>
           🪙 Cálculo da previdência complementar (a partir de abril/2025). Contribuição de 14% até o teto do IGEPREV (R$
           8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
           salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual.<br>
@@ -568,11 +569,14 @@
         </div>
       </div>
     </div>
-    <h5 style="text-align: center; margin-top: 1em; margin-bottom: 1em">
-      Comparativo (diferença de valor líquido):
+    <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
+    <h5 style="margin-bottom: 0;">
+      Comparativo:
       <span :class="{ positive: salaryDifference > 0, negative: salaryDifference < 0 }">
         {{ formatarParaBR(salaryDifference) }}</span>
     </h5>
+    <p><small>(diferença de valor líquido)</small></p>
+  </div>
     <div class="container d-flex justify-content-center align-items-center">
       <p class="footer">
         Desenvolvido por
