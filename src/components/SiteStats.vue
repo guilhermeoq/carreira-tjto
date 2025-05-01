@@ -26,8 +26,8 @@ export default {
   },
   mounted() {
     this.visible = true;
-    this.animateNumber('animatedVisitors', 656);
-    this.animateNumber('animatedViews', 968);
+    this.animateNumber('animatedVisitors', 659);
+    this.animateNumber('animatedViews', 991);
   },
   methods: {
     animateNumber(key, target, duration = 1000) {

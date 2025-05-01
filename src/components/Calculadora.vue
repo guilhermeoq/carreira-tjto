@@ -129,11 +129,14 @@
           </div>
 
           <div class="border-bottom">
-            <div class="form-check form-switch gap-1 mb-3 mt-3">
+            <div class="form-check form-switch gap-1 mb-1 mt-3">
               <input v-model="calculator.switchPrevcom" class="form-check-input" type="checkbox" role="switch"
                 id="switchPrevcom" defaultChecked />
               <label class="form-check-label">Previdência Complementar</label>
             </div>
+            <div class="mb-3">
+              <i><small>*Se desligado, desconta 14% sobre todo o salário (VB+GAJ+AQE).</small></i>
+              </div>
           </div>
 
           <div class="mt-3 form-check form-switch mb-3">
@@ -574,6 +577,9 @@
             {{ formatarParaBR(calculator.decimoLiquido + calculator.salarioLiquido) }}
           </p>
         </div>
+        <div>
+          
+      </div>
       </div>
     </div>
     <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
