@@ -38,13 +38,18 @@
 
       <div class="callout callout-info">
         <small><strong>📢 [30/04/2025] Novidades:</strong><br>
+          💾 A calculadora agora salva no seu próprio navegador as informações preenchidas, utilize o botão abaixo para limpar para a configuração padrão.<br>
+          📈 Data-base 2025, <strong>+4,17%</strong> conforme <a href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
+            target="_blank">PL 01/2025</a> <span class="badge text-bg-info">Aprovado</span>. Efeito financeiro retroativo a 1º de maio.<br>
           🪙 Cálculo da previdência complementar (a partir de abril/2025). Contribuição de 14% até o teto do IGEPREV (R$
           8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
           salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual.<br>
-          📈 Data-base 2025, <strong>+4,17%</strong> conforme <a href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
-            target="_blank">PL 01/2025</a> <span class="badge text-bg-info">Aprovado</span>. Efeito financeiro retroativo a 1º de maio.<br>
         </small>
       </div>
+
+      <div style="text-align: center; margin-top: 1em; margin-bottom: 1em" >
+      <button type="button" class="btn btn-primary" @click="resetCalculators">Limpar Calculadoras</button>
+    </div>
 
     </div>
     <div class="d-sm-flex gap-3">
@@ -673,6 +678,13 @@ export default {
         totalDescontosDecimo: 0,
       }
     },
+    saveCalculatorsToLocalStorage() {
+    localStorage.setItem('calculators', JSON.stringify(this.calculators));
+  },
+  resetCalculators() {
+    this.calculators = [this.createCalculator(), this.createCalculator()];
+    this.calculators.forEach((_, index) => this.updateSalary(index)); // recalculate
+  },
     //Opções de AQE conforme cargo
     getAqeOptions(cargo) {
       if (cargo === 'analista') {
@@ -1002,14 +1014,23 @@ export default {
           if (!validOptions.includes(calculator.aqe)) {
             calculator.aqe = 0
           }
-        })
+        });
+         // 🔐 New logic: Save to localStorage
+      localStorage.setItem('calculators', JSON.stringify(newCalculators));
       },
     },
   },
 
-  mounted() {
-    this.calculators.forEach((_, index) => this.updateSalary(index))
-  },
+  mounted(){
+  const saved = localStorage.getItem('calculators');
+  if (saved) {
+    this.calculators = JSON.parse(saved);
+  } else {
+    this.calculators = [this.createCalculator(), this.createCalculator()];
+  }
+
+  this.calculators.forEach((_, index) => this.updateSalary(index));
+},
 }
 </script>
 
