@@ -528,7 +528,7 @@
           <p class="tab-desconto" v-show="calculator.teto > 0">
             <strong><i class="bi bi-building-fill-exclamation"></i> Sub-teto:</strong>
             {{ formatarParaBR(calculator.teto) }}
-          </p> 
+          </p>
           <p class="tab-desconto-total">
             <i class="bi bi-caret-down-fill"></i> Total de Descontos:
             {{ formatarParaBR(calculator.totalDescontos) }}
@@ -578,7 +578,7 @@
           </p>
         </div>
         <div>
-          
+
       </div>
       </div>
     </div>
@@ -911,7 +911,7 @@ export default {
         calculator.decimoparcela1 +
         2122
 
-      
+
 
       //Cálculo do teto/sub-teto (2024: 29196.14 / 2025: 30760.27)
       //Como o sub-teto parece estar inativo, o teto é -5% do subsídio dos ministros do STF.
@@ -933,7 +933,7 @@ export default {
     //Cálculo do desconto de previdência sobre salário
     calculator.previdencia =
       (calculator.switchPrevcom) ?
-        (((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14) : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14 
+        (((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14) : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
 
       //Cálculo do desconto da previdência complementar
       calculator.prevcom = ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) - tetoIgeprev) * 0.085 : 0
@@ -956,7 +956,7 @@ export default {
         calculator.aqfcValue +
         calculator.representacao +
         calculator.ferias -
-        (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente)) 
+        (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente))
 
         //console.log('Vencimento Basico: ' + calculator.vencimentoBasico)
         //console.log('GAJ: ' + calculator.gaj)
@@ -969,11 +969,11 @@ export default {
         //console.log('TETO: ' + calculator.teto)
         //console.log(calculator.switchPrevcom)
         //console.log('------------------------')
-        
+
 
       calculator.irrf = this.calcularIrrf(baseIRRF)
       calculator.totalDescontos = (calculator.switchPrevcom === true) ? calculator.previdencia + calculator.irrf + calculator.teto + calculator.prevcom : calculator.previdencia + calculator.irrf + calculator.teto
-      
+
       calculator.salarioLiquido = calculator.salarioBruto - calculator.totalDescontos
     },
 
