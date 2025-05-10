@@ -53,13 +53,12 @@
 
       <div class="callout callout-info">
         <small><strong>[09/05/2025] Novidades:</strong><br>
-          📈 Data-base 2025 foi aprovado, +4,17% conforme <a
+          📈 Data-base 2025 aprovado, +4,17% conforme <a
             href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio" target="_blank">PL 01/2025</a>. Efeito
           financeiro retroativo a 1º de maio. Por enquanto, está ativa a opção para 'desligar' o data-base, para fins de
           comparação.<br>
           💾 A calculadora agora salva no seu próprio navegador as informações preenchidas, utilize o botão abaixo para
-          redefinir as calculadoras.<br>
-          ↕️ Novos botões de navegação para mover a barra de rolagem.<br>
+          limpar as calculadoras.<br>
           🪙 Três opções de cálculo da previdência:
           <ol>
             <li>Complementar (a partir de abril/2025). Contribuição de 14% até o teto do IGEPREV (R$
@@ -72,13 +71,13 @@
         </small>
       </div>
 
-      <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
-        <button type="button" class="btn btn-primary" @click="resetCalculators">Limpar Calculadoras</button>
+      <div style="text-align: center; margin-top: 2em; margin-bottom: 1em">
+        <button type="button" class="btn custom-btn" @click="resetCalculators"><strong>Limpar Calculadoras</strong></button>
       </div>
 
     </div>
     <div class="d-sm-flex gap-3">
-      <div v-for="(calculator, index) in calculators" :key="index" class="calculator">
+      <div v-for="(calculator, index) in calculators" :key="index" class="calculator box">
         <h4>Simulação {{ index + 1 }}</h4>
         <form @change="updateSalary(index)">
           <!-- SWITCH URV -->
@@ -582,7 +581,7 @@
             <i class="bi bi-caret-down-fill"></i> Total de Descontos 13º:
             {{ formatarParaBR(calculator.totalDescontosDecimo) }}
           </p>
-          <p class="tab-decimo-liquido">
+          <p class="tab-liquido">
             <i class="bi bi-caret-right-fill"></i> 13º Salário Líquido:
             {{ formatarParaBR(calculator.decimoLiquido) }}
           </p>
@@ -609,7 +608,7 @@
       <p class="footer">
         Desenvolvido por
         <a href="https://guilhermeoq.github.io" target="_blank" rel="noopener noreferrer"
-          class="link-dark badge-link">Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a>. Os valores
+          style="color: #919191">Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a>. Os valores
         calculados nesta página não podem ser considerados 100% corretos devido a
         possíveis erros nos cálculos e nos valores e alíquotas de impostos e gratificações. Não me
         responsabilizo por eventuais diferenças entre a simulação e os valores reais.
@@ -624,7 +623,7 @@
       </a>
       <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">
         <img
-          src="https://img.shields.io/badge/Powered_by%20Vercel-white?style=flat&logo=vercel&logoColor=white&color=black"
+          src="https://img.shields.io/badge/Powered_by%20Vercel-white?style=flat&logo=vercel&logoColor=white&color=292929"
           alt="Powered by Vercel" />
       </a>
     </div>
@@ -1139,8 +1138,8 @@ export default {
   margin-bottom: 1em;
   padding: 2em;
   border-radius: 1.5em;
-  background-color: white;
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  background-color: #252525;
+  box-shadow: 0 12px 50px 0px rgba(38, 33, 56, 0.99);
   width: 100%;
 }
 
@@ -1156,7 +1155,7 @@ export default {
   line-height: 0.95;
   margin-bottom: 1rem;
   letter-spacing: -0.05em;
-  color: #1f1f1f;
+  color: rgb(216, 216, 216);
   font-size: 3rem;
 }
 
@@ -1164,7 +1163,7 @@ export default {
   font-family: 'YourHeadingFont', sans-serif;
   line-height: 1.25;
   margin-bottom: 1rem;
-  color: #1f1f1f;
+  color: rgb(197, 197, 197);
   font-size: 1.25rem;
 }
 
@@ -1175,7 +1174,7 @@ export default {
 }
 
 .gradient-text {
-  background: linear-gradient(to right, #e27318, rgb(27, 194, 130), rgb(109 40 217));
+  background: linear-gradient(to right, #302055, rgb(147, 104, 172), rgb(67, 9, 161));
   background-size: 200% 200%;
   animation: rainbow 2s ease-in-out infinite;
   background-clip: text;
@@ -1207,14 +1206,14 @@ export default {
   padding: 15px;
   margin: 20px 0;
   border: 1px solid transparent;
-  border-left-width: 5px;
+  border-left-width: 10px;
   border-radius: 4px;
 }
 
 .callout-info {
-  background-color: #d1f1d4;
-  border-left-color: #0a924e;
-  color: #0c5460;
+  background-color: #252525;
+  border-left-color: #15884c;
+  color: #d1d1d1;
 }
 
 .callout-warning {
@@ -1225,7 +1224,7 @@ export default {
 }
 
 .tab-rendimento {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(149, 213, 233));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(49, 71, 78, 0.5));
   margin-bottom: 1px;
   padding: 0.2em;
   padding-left: 0.5em;
@@ -1233,7 +1232,7 @@ export default {
 }
 
 .tab-alimentacao {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(48, 199, 184));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(29, 121, 111,0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1241,7 +1240,7 @@ export default {
 }
 
 .tab-representacao {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(248, 175, 127));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(124, 79, 49,0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1249,7 +1248,7 @@ export default {
 }
 
 .tab-ferias {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(216, 191, 255));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(59, 35, 97,0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1257,7 +1256,7 @@ export default {
 }
 
 .tab-saude {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(241, 203, 97));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(134, 102, 14,0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1265,7 +1264,7 @@ export default {
 }
 
 .tab-decimo {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(180, 206, 255));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(48, 71, 112,0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1282,7 +1281,7 @@ export default {
 }
 
 .tab-desconto {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(255, 200, 200));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(105, 52, 52,0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1290,7 +1289,7 @@ export default {
 }
 
 .tab-desconto-total {
-  background-color: #ff9393;
+  background-color: #4d1818;
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1299,31 +1298,9 @@ export default {
 
 .tab-liquido {
   margin-top: 1em;
-  background-color: rgb(102, 214, 102);
+  background-color: rgb(37, 87, 37);
   padding: 0.2em;
   padding-left: 0.5em;
-  border-radius: 0.3em;
-  font-weight: bold;
-}
-
-.tab-decimo-desconto {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(255, 200, 200));
-  padding: 0.2em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
-
-.tab-decimo-desconto-total {
-  background-color: #ff9393;
-  padding: 0.2em;
-  border-radius: 0.3em;
-  font-weight: bold;
-}
-
-.tab-decimo-liquido {
-  margin-top: 1em;
-  background-color: rgb(102, 214, 102);
-  padding: 0.2em;
   border-radius: 0.3em;
   font-weight: bold;
 }
@@ -1338,7 +1315,7 @@ export default {
 }
 
 .positive {
-  color: green;
+  color: rgb(48, 170, 48);
 }
 
 .negative {
@@ -1346,6 +1323,7 @@ export default {
 }
 
 .footer {
+  color:#adadad;
   margin-top: 1em;
   line-height: 1;
   text-align: justify;
@@ -1367,4 +1345,15 @@ export default {
   width: 20px;
   display: inline-block;
 }
+
+.custom-btn {
+  background-color: #252525; /* your custom color */
+  color: white;
+  border: none;
+}
+
+.custom-btn:hover {
+  background-color: #363636;
+}
 </style>
+

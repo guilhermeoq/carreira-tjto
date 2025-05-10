@@ -58,12 +58,12 @@ export default {
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
-  color: #383838;
+  color: rgb(147, 104, 172);
   line-height: 1;
 }
 .label {
   font-size: 0.8rem;
-  color: #666;
+  color: #b4b4b4;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   line-height: 1.1;
@@ -86,5 +86,7 @@ export default {
     transform: translateY(0);
   }
 }
+
+
 </style>
 
