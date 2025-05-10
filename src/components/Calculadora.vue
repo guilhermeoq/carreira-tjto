@@ -1,12 +1,12 @@
 <template>
   <div class="scroll-buttons position-fixed bottom-0 start-0 m-3 d-flex flex-column gap-2 z-3">
-      <button class="btn btn-secondary btn-sm" @click="scrollToTop">
-        <i class="bi bi-arrow-up"></i>
-      </button>
-      <button class="btn btn-secondary btn-sm" @click="scrollToBottom">
-        <i class="bi bi-arrow-down"></i>
-      </button>
-    </div>
+    <button class="btn btn-secondary btn-sm" @click="scrollToTop">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+    <button class="btn btn-secondary btn-sm" @click="scrollToBottom">
+      <i class="bi bi-arrow-down"></i>
+    </button>
+  </div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">🚀 Simulador TJTO</a>
@@ -22,7 +22,8 @@
               target="_blank">Lei n.º 2.409</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio" target="_blank">PL01/2025 (data-base)</a>
+            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
+              target="_blank">PL01/2025 (data-base)</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605" target="_blank">PL06/2023 (URV)</a>
@@ -41,35 +42,39 @@
       </h1>
 
       <div class="d-block d-md-flex gap-3">
-      <p class="subtitle">
-        Este simulador é <strong>gratuito, não coleta nenhuma informação pessoal</strong> e foi
-        desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
-      </p>
+        <p class="subtitle">
+          Este simulador é <strong>gratuito, não coleta nenhuma informação pessoal</strong> e foi
+          desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
+        </p>
 
-      <SiteStats />
+        <SiteStats />
 
-    </div>
+      </div>
 
       <div class="callout callout-info">
-        <small><strong>[30/04/2025] Novidades:</strong><br>
-          📈 Data-base 2025 foi aprovado, +4,17% conforme <a href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
-            target="_blank">PL 01/2025</a>. Efeito financeiro retroativo a 1º de maio. Por enquanto, está ativa a opção para 'desligar' o data-base, para fins de comparação.<br>
-          💾 A calculadora agora salva no seu próprio navegador as informações preenchidas, utilize o botão abaixo para redefinir as calculadoras.<br>
+        <small><strong>[09/05/2025] Novidades:</strong><br>
+          📈 Data-base 2025 foi aprovado, +4,17% conforme <a
+            href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio" target="_blank">PL 01/2025</a>. Efeito
+          financeiro retroativo a 1º de maio. Por enquanto, está ativa a opção para 'desligar' o data-base, para fins de
+          comparação.<br>
+          💾 A calculadora agora salva no seu próprio navegador as informações preenchidas, utilize o botão abaixo para
+          redefinir as calculadoras.<br>
           ↕️ Novos botões de navegação para mover a barra de rolagem.<br>
           🪙 Três opções de cálculo da previdência:
           <ol>
             <li>Complementar (a partir de abril/2025). Contribuição de 14% até o teto do IGEPREV (R$
-          8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
-          salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual;</li>
-          <li>IGEPREV (Teto), apenas a contribuição de 14% até o teto do IGEPREV;</li>
-          <li>IGEPREV (VB+GAJ+AQE), apenas a contribuição de 14%, mas aplicada sobre VB+GAJ+AQE. Em razão de regras previdênciárias distintas, alguns servidores continuam com este regime de cálculo ativo.</li>
+              8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
+              salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual;</li>
+            <li>IGEPREV (Teto), apenas a contribuição de 14% até o teto do IGEPREV;</li>
+            <li>IGEPREV (VB+GAJ+AQE), apenas a contribuição de 14%, mas aplicada sobre VB+GAJ+AQE. Em razão de regras
+              previdênciárias distintas, alguns servidores continuam com este regime de cálculo ativo.</li>
           </ol>
         </small>
       </div>
 
-      <div style="text-align: center; margin-top: 1em; margin-bottom: 1em" >
-      <button type="button" class="btn btn-primary" @click="resetCalculators">Limpar Calculadoras</button>
-    </div>
+      <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
+        <button type="button" class="btn btn-primary" @click="resetCalculators">Limpar Calculadoras</button>
+      </div>
 
     </div>
     <div class="d-sm-flex gap-3">
@@ -78,8 +83,8 @@
         <form @change="updateSalary(index)">
           <!-- SWITCH URV -->
           <div class="form-check form-switch mt-4 mb-3">
-            <input v-model="calculator.simularURV" class="form-check-input" type="checkbox" role="switch"
-              id="URVSwitch" defaultChecked />
+            <input v-model="calculator.simularURV" class="form-check-input" type="checkbox" role="switch" id="URVSwitch"
+              defaultChecked />
             <label class="form-check-label">Data-base 2025: +4,17%</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
@@ -166,22 +171,22 @@
               <select class="form-select" id="funcaoServidor" aria-label="Idade do Servidor"
                 v-model="calculator.funcaoServidor">
                 <option v-for="n in [
-                    'DAJ-1',
-                    'DAJ-2',
-                    'DAJ-3',
-                    'DAJ-4',
-                    'DAJ-5',
-                    'DAJ-6',
-                    'DAJ-7',
-                    'DAJ-8',
-                    'DAJ-9',
-                    'DAJ-10',
-                    'DAJ-11',
-                    'FC-1',
-                    'FC-2',
-                    'FC-3',
-                    'FC-4',
-                  ]" :value="n">
+                  'DAJ-1',
+                  'DAJ-2',
+                  'DAJ-3',
+                  'DAJ-4',
+                  'DAJ-5',
+                  'DAJ-6',
+                  'DAJ-7',
+                  'DAJ-8',
+                  'DAJ-9',
+                  'DAJ-10',
+                  'DAJ-11',
+                  'FC-1',
+                  'FC-2',
+                  'FC-3',
+                  'FC-4',
+                ]" :value="n">
                   {{ n }}
                 </option>
               </select>
@@ -245,17 +250,17 @@
                 <select class="form-select border-primary border-2" id="idadeServidor" aria-label="Idade do Servidor"
                   v-model="calculator.faixaEtariaServidor">
                   <option v-for="n in [
-                      '0-18',
-                      '19-23',
-                      '24-28',
-                      '29-33',
-                      '34-38',
-                      '39-43',
-                      '44-48',
-                      '49-53',
-                      '54-58',
-                      '59+',
-                    ]" :value="n">
+                    '0-18',
+                    '19-23',
+                    '24-28',
+                    '29-33',
+                    '34-38',
+                    '39-43',
+                    '44-48',
+                    '49-53',
+                    '54-58',
+                    '59+',
+                  ]" :value="n">
                     {{ n }}
                   </option>
                 </select>
@@ -268,23 +273,22 @@
               </div>
             </div>
             <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Servidor"
-              :aria-valuenow="
-                (
-                  (calculator.mensalidadeServidor * 100) /
-                  consultaReembolso(calculator.faixaEtariaServidor)
-                ).toFixed(2)
-              " aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar bg-primary" :style="{
-                  width:
-                    (calculator.mensalidadeServidor * 100) /
-                      consultaReembolso(calculator.faixaEtariaServidor) +
-                    '%',
-                }">
-                {{
-                (
+              :aria-valuenow="(
                 (calculator.mensalidadeServidor * 100) /
                 consultaReembolso(calculator.faixaEtariaServidor)
-                ).toFixed(2) + '%'
+              ).toFixed(2)
+                " aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar bg-primary" :style="{
+                width:
+                  (calculator.mensalidadeServidor * 100) /
+                  consultaReembolso(calculator.faixaEtariaServidor) +
+                  '%',
+              }">
+                {{
+                  (
+                    (calculator.mensalidadeServidor * 100) /
+                    consultaReembolso(calculator.faixaEtariaServidor)
+                  ).toFixed(2) + '%'
                 }}
               </div>
             </div>
@@ -295,17 +299,17 @@
                 <select class="form-select border-success border-2" id="idadeDependente1"
                   aria-label="Idade do Dependente 1" v-model="calculator.faixaEtariaDependente1">
                   <option v-for="n in [
-                      '0-18',
-                      '19-23',
-                      '24-28',
-                      '29-33',
-                      '34-38',
-                      '39-43',
-                      '44-48',
-                      '49-53',
-                      '54-58',
-                      '59+',
-                    ]" :value="n">
+                    '0-18',
+                    '19-23',
+                    '24-28',
+                    '29-33',
+                    '34-38',
+                    '39-43',
+                    '44-48',
+                    '49-53',
+                    '54-58',
+                    '59+',
+                  ]" :value="n">
                     {{ n }}
                   </option>
                 </select>
@@ -319,23 +323,22 @@
               </div>
             </div>
             <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Dependente 1"
-              :aria-valuenow="
-                (
-                  (calculator.mensalidadeDependente1 * 100) /
-                  consultaReembolso(calculator.faixaEtariaDependente1)
-                ).toFixed(2)
-              " aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar bg-success" :style="{
-                  width:
-                    (calculator.mensalidadeDependente1 * 100) /
-                      consultaReembolso(calculator.faixaEtariaDependente1) +
-                    '%',
-                }">
-                {{
-                (
+              :aria-valuenow="(
                 (calculator.mensalidadeDependente1 * 100) /
                 consultaReembolso(calculator.faixaEtariaDependente1)
-                ).toFixed(2) + '%'
+              ).toFixed(2)
+                " aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar bg-success" :style="{
+                width:
+                  (calculator.mensalidadeDependente1 * 100) /
+                  consultaReembolso(calculator.faixaEtariaDependente1) +
+                  '%',
+              }">
+                {{
+                  (
+                    (calculator.mensalidadeDependente1 * 100) /
+                    consultaReembolso(calculator.faixaEtariaDependente1)
+                  ).toFixed(2) + '%'
                 }}
               </div>
             </div>
@@ -346,17 +349,17 @@
                 <select class="form-select border-warning border-2" id="idadeDependente2"
                   aria-label="Idade do Dependente 2" v-model="calculator.faixaEtariaDependente2">
                   <option v-for="n in [
-                      '0-18',
-                      '19-23',
-                      '24-28',
-                      '29-33',
-                      '34-38',
-                      '39-43',
-                      '44-48',
-                      '49-53',
-                      '54-58',
-                      '59+',
-                    ]" :value="n">
+                    '0-18',
+                    '19-23',
+                    '24-28',
+                    '29-33',
+                    '34-38',
+                    '39-43',
+                    '44-48',
+                    '49-53',
+                    '54-58',
+                    '59+',
+                  ]" :value="n">
                     {{ n }}
                   </option>
                 </select>
@@ -370,23 +373,22 @@
               </div>
             </div>
             <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Dependente 2"
-              :aria-valuenow="
-                (
-                  (calculator.mensalidadeDependente2 * 100) /
-                  consultaReembolso(calculator.faixaEtariaDependente2)
-                ).toFixed(2)
-              " aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar bg-warning" :style="{
-                  width:
-                    (calculator.mensalidadeDependente2 * 100) /
-                      consultaReembolso(calculator.faixaEtariaDependente2) +
-                    '%',
-                }">
-                {{
-                (
+              :aria-valuenow="(
                 (calculator.mensalidadeDependente2 * 100) /
                 consultaReembolso(calculator.faixaEtariaDependente2)
-                ).toFixed(2) + '%'
+              ).toFixed(2)
+                " aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar bg-warning" :style="{
+                width:
+                  (calculator.mensalidadeDependente2 * 100) /
+                  consultaReembolso(calculator.faixaEtariaDependente2) +
+                  '%',
+              }">
+                {{
+                  (
+                    (calculator.mensalidadeDependente2 * 100) /
+                    consultaReembolso(calculator.faixaEtariaDependente2)
+                  ).toFixed(2) + '%'
                 }}
               </div>
             </div>
@@ -397,17 +399,17 @@
                 <select class="form-select border-danger border-2" id="idadeDependente3"
                   aria-label="Idade do Dependente 3" v-model="calculator.faixaEtariaDependente3">
                   <option v-for="n in [
-                      '0-18',
-                      '19-23',
-                      '24-28',
-                      '29-33',
-                      '34-38',
-                      '39-43',
-                      '44-48',
-                      '49-53',
-                      '54-58',
-                      '59+',
-                    ]" :value="n">
+                    '0-18',
+                    '19-23',
+                    '24-28',
+                    '29-33',
+                    '34-38',
+                    '39-43',
+                    '44-48',
+                    '49-53',
+                    '54-58',
+                    '59+',
+                  ]" :value="n">
                     {{ n }}
                   </option>
                 </select>
@@ -422,23 +424,22 @@
               </div>
             </div>
             <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Dependente 3"
-              :aria-valuenow="
-                (
-                  (calculator.mensalidadeDependente3 * 100) /
-                  consultaReembolso(calculator.faixaEtariaDependente3)
-                ).toFixed(2)
-              " aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar bg-danger" :style="{
-                  width:
-                    (calculator.mensalidadeDependente3 * 100) /
-                      consultaReembolso(calculator.faixaEtariaDependente3) +
-                    '%',
-                }">
-                {{
-                (
+              :aria-valuenow="(
                 (calculator.mensalidadeDependente3 * 100) /
                 consultaReembolso(calculator.faixaEtariaDependente3)
-                ).toFixed(2) + '%'
+              ).toFixed(2)
+                " aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar bg-danger" :style="{
+                width:
+                  (calculator.mensalidadeDependente3 * 100) /
+                  consultaReembolso(calculator.faixaEtariaDependente3) +
+                  '%',
+              }">
+                {{
+                  (
+                    (calculator.mensalidadeDependente3 * 100) /
+                    consultaReembolso(calculator.faixaEtariaDependente3)
+                  ).toFixed(2) + '%'
                 }}
               </div>
             </div>
@@ -553,9 +554,8 @@
           <i class="bi bi-caret-right-fill"></i> Salário Líquido:
           {{ formatarParaBR(calculator.salarioLiquido) }}
         </p>
-        <div v-show="
-            calculator.switchDecimo &&
-            (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
+        <div v-show="calculator.switchDecimo &&
+          (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
           " class="border-top">
           <h5 style="margin-top: 10px">Folha do 13º Salário</h5>
           <p class="tab-decimo">
@@ -594,17 +594,17 @@
         </div>
         <div>
 
-      </div>
+        </div>
       </div>
     </div>
     <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
-    <h5 style="margin-bottom: 0;">
-      Comparativo:
-      <span :class="{ positive: salaryDifference > 0, negative: salaryDifference < 0 }">
-        {{ formatarParaBR(salaryDifference) }}</span>
-    </h5>
-    <p><small>(diferença de valor líquido)</small></p>
-  </div>
+      <h5 style="margin-bottom: 0;">
+        Comparativo:
+        <span :class="{ positive: salaryDifference > 0, negative: salaryDifference < 0 }">
+          {{ formatarParaBR(salaryDifference) }}</span>
+      </h5>
+      <p><small>(diferença de valor líquido)</small></p>
+    </div>
     <div class="container d-flex justify-content-center align-items-center">
       <p class="footer">
         Desenvolvido por
@@ -723,18 +723,18 @@ export default {
       }
     },
     saveCalculatorsToLocalStorage() {
-    localStorage.setItem('calculators', JSON.stringify(this.calculators));
-  },
-  resetCalculators() {
-    this.calculators = [this.createCalculator(), this.createCalculator()];
-    this.calculators.forEach((_, index) => this.updateSalary(index)); // recalculate
-  },
-  scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  },
-  scrollToBottom() {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  },
+      localStorage.setItem('calculators', JSON.stringify(this.calculators));
+    },
+    resetCalculators() {
+      this.calculators = [this.createCalculator(), this.createCalculator()];
+      this.calculators.forEach((_, index) => this.updateSalary(index)); // recalculate
+    },
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    },
 
     //Opções de AQE conforme cargo
     getAqeOptions(cargo) {
@@ -746,7 +746,7 @@ export default {
     //Atualizar cálculo do salário
     updateSalary(index) {
       const calculator = this.calculators[index]
-      const tetoIgeprev= 8157.41
+      const tetoIgeprev = 8157.41
       const salarios = {
         tecnico: [
           7140.42, 7497.44, 7872.31, 8265.92, 8679.22, 9113.17, 9568.85, 10047.27, 10549.66,
@@ -766,16 +766,16 @@ export default {
 
       if (calculator.switchFuncao == true) {
         //Calculando data-base sobre funções...
-        (calculator.simularURV ===true ) ? calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1.0417 : calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
+        (calculator.simularURV === true) ? calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1.0417 : calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
       } else calculator.representacao = 0
 
       calculator.ferias = calculator.switchFerias
         ? (calculator.vencimentoBasico +
-            calculator.gaj +
-            calculator.aqfcValue +
-            calculator.aqeValue +
-            calculator.representacao) /
-          3
+          calculator.gaj +
+          calculator.aqfcValue +
+          calculator.aqeValue +
+          calculator.representacao) /
+        3
         : 0
 
       if (calculator.switchSaude == true) {
@@ -850,23 +850,23 @@ export default {
       //Cálculo do 13º salário integral - incluso em folha complementar
       calculator.decimoFolhaComplementar =
         calculator.switchDecimo &&
-        (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
+          (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
           ? calculator.vencimentoBasico +
-            calculator.gaj +
-            calculator.aqfcValue +
-            calculator.aqeValue +
-            calculator.representacao
+          calculator.gaj +
+          calculator.aqfcValue +
+          calculator.aqeValue +
+          calculator.representacao
           : 0
 
       //Cálculo da 1ª parcela do 13º salário - incluso em folha normal
       calculator.decimoparcela1 =
         calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
           ? (calculator.vencimentoBasico +
-              calculator.gaj +
-              calculator.aqfcValue +
-              calculator.aqeValue +
-              calculator.representacao) /
-            2
+            calculator.gaj +
+            calculator.aqfcValue +
+            calculator.aqeValue +
+            calculator.representacao) /
+          2
           : 0
 
       //Cálculo do desconto de adiantamento da 1ª parcela do 13º salário
@@ -874,16 +874,16 @@ export default {
 
       calculator.decimoPrevidencia =
         calculator.switchDecimo &&
-        (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2') ?
-        ((calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo') ?
-          ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14)
+          (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2') ?
+          ((calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo') ?
+            ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14)
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
             ? 0
             : 0
 
       calculator.decimoPrevcom =
         calculator.switchDecimo &&
-        (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
+          (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
           ? ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) - tetoIgeprev) * 0.085 : 0
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
             ? 0
@@ -894,18 +894,18 @@ export default {
 
       const baseIRRFDecimo =
         (calculator.tipoPrevidencia === 'prevcom') ? (
-        calculator.vencimentoBasico +
-        calculator.gaj +
-        calculator.aqeValue +
-        calculator.aqfcValue +
-        calculator.representacao -
-        (calculator.decimoPrevidencia + calculator.decimoPrevcom + 189.59 * calculator.dependente)) :
-        calculator.vencimentoBasico +
-        calculator.gaj +
-        calculator.aqeValue +
-        calculator.aqfcValue +
-        calculator.representacao -
-        (calculator.decimoPrevidencia + 189.59 * calculator.dependente)
+          calculator.vencimentoBasico +
+          calculator.gaj +
+          calculator.aqeValue +
+          calculator.aqfcValue +
+          calculator.representacao -
+          (calculator.decimoPrevidencia + calculator.decimoPrevcom + 189.59 * calculator.dependente)) :
+          calculator.vencimentoBasico +
+          calculator.gaj +
+          calculator.aqeValue +
+          calculator.aqfcValue +
+          calculator.representacao -
+          (calculator.decimoPrevidencia + 189.59 * calculator.dependente)
 
       calculator.decimoIRRF = this.calcularIrrf(baseIRRFDecimo)
 
@@ -914,7 +914,7 @@ export default {
         calculator.switchDecimo && calculator.tipoDecimo === 'integral'
           ? (calculator.tipoPrevidencia === 'prevcom') ? calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoPrevidencia + calculator.decimoIRRF
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'
-            ?  (calculator.tipoPrevidencia === 'prevcom') ? calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoIRRF
+            ? (calculator.tipoPrevidencia === 'prevcom') ? calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoIRRF
             : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
               ? 0
               : 0
@@ -945,19 +945,19 @@ export default {
 
       calculator.teto =
         (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue + calculator.aqfcValue + calculator.representacao <=
-        41845.49)
+          41845.49)
           ? 0
           : (calculator.vencimentoBasico +
             calculator.gaj +
             calculator.aqeValue +
             calculator.aqfcValue +
             calculator.representacao) -
-            41845.49
+          41845.49
 
-    //Cálculo do desconto de previdência sobre salário
-    calculator.previdencia =
-      (calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo') ?
-        (((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14) : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+      //Cálculo do desconto de previdência sobre salário
+      calculator.previdencia =
+        (calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo') ?
+          (((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14) : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
 
       //Cálculo do desconto da previdência complementar
       calculator.prevcom = ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) - tetoIgeprev) * 0.085 : 0
@@ -965,42 +965,42 @@ export default {
 
       //Cálculo da base de cálculo do IRRF
       const baseIRRF =
-      (calculator.tipoPrevidencia === 'prevcom') ? (
-        calculator.vencimentoBasico +
-        calculator.gaj +
-        calculator.aqeValue +
-        calculator.aqfcValue +
-        calculator.representacao +
-        calculator.ferias -
-        (calculator.previdencia + calculator.teto + calculator.prevcom + 189.59 * calculator.dependente)) :
-        (calculator.tipoPrevidencia === 'igeprevNovo') ? (
-        calculator.vencimentoBasico +
-        calculator.gaj +
-        calculator.aqeValue +
-        calculator.aqfcValue +
-        calculator.representacao +
-        calculator.ferias -
-        (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente)) :
-        (
-        calculator.vencimentoBasico +
-        calculator.gaj +
-        calculator.aqeValue +
-        calculator.aqfcValue +
-        calculator.representacao +
-        calculator.ferias -
-        (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente))
+        (calculator.tipoPrevidencia === 'prevcom') ? (
+          calculator.vencimentoBasico +
+          calculator.gaj +
+          calculator.aqeValue +
+          calculator.aqfcValue +
+          calculator.representacao +
+          calculator.ferias -
+          (calculator.previdencia + calculator.teto + calculator.prevcom + 189.59 * calculator.dependente)) :
+          (calculator.tipoPrevidencia === 'igeprevNovo') ? (
+            calculator.vencimentoBasico +
+            calculator.gaj +
+            calculator.aqeValue +
+            calculator.aqfcValue +
+            calculator.representacao +
+            calculator.ferias -
+            (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente)) :
+            (
+              calculator.vencimentoBasico +
+              calculator.gaj +
+              calculator.aqeValue +
+              calculator.aqfcValue +
+              calculator.representacao +
+              calculator.ferias -
+              (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente))
 
-        //console.log('Vencimento Basico: ' + calculator.vencimentoBasico)
-        //console.log('GAJ: ' + calculator.gaj)
-        //console.log('AQE: ' + calculator.aqeValue)
-        //console.log('Representacao: ' + calculator.representacao)
-        //console.log('Previdencia: ' + calculator.previdencia)
-        //console.log('Dependente: ' + calculator.dependente)
-        //console.log('Prevcom: ' + calculator.prevcom)
-        //console.log('Base de Calculo IRRF: ' + baseIRRF)
-        //console.log('TETO: ' + calculator.teto)
-        //console.log(calculator.switchPrevcom)
-        //console.log('------------------------')
+      //console.log('Vencimento Basico: ' + calculator.vencimentoBasico)
+      //console.log('GAJ: ' + calculator.gaj)
+      //console.log('AQE: ' + calculator.aqeValue)
+      //console.log('Representacao: ' + calculator.representacao)
+      //console.log('Previdencia: ' + calculator.previdencia)
+      //console.log('Dependente: ' + calculator.dependente)
+      //console.log('Prevcom: ' + calculator.prevcom)
+      //console.log('Base de Calculo IRRF: ' + baseIRRF)
+      //console.log('TETO: ' + calculator.teto)
+      //console.log(calculator.switchPrevcom)
+      //console.log('------------------------')
 
 
       calculator.irrf = this.calcularIrrf(baseIRRF)
@@ -1108,22 +1108,22 @@ export default {
             calculator.aqe = 0
           }
         });
-         // 🔐 New logic: Save to localStorage
-      localStorage.setItem('calculators', JSON.stringify(newCalculators));
+        // 🔐 New logic: Save to localStorage
+        localStorage.setItem('calculators', JSON.stringify(newCalculators));
       },
     },
   },
 
-  mounted(){
-  const saved = localStorage.getItem('calculators');
-  if (saved) {
-    this.calculators = JSON.parse(saved);
-  } else {
-    this.calculators = [this.createCalculator(), this.createCalculator()];
-  }
+  mounted() {
+    const saved = localStorage.getItem('calculators');
+    if (saved) {
+      this.calculators = JSON.parse(saved);
+    } else {
+      this.calculators = [this.createCalculator(), this.createCalculator()];
+    }
 
-  this.calculators.forEach((_, index) => this.updateSalary(index));
-},
+    this.calculators.forEach((_, index) => this.updateSalary(index));
+  },
 }
 </script>
 
@@ -1184,6 +1184,7 @@ export default {
   transition: color 0.2s ease-in-out;
   font-weight: 900;
 }
+
 .gradient-text:hover {
   color: rgba(0, 0, 0, 0);
 }
@@ -1192,9 +1193,11 @@ export default {
   0% {
     background-position: left;
   }
+
   50% {
     background-position: right;
   }
+
   100% {
     background-position: left;
   }
@@ -1217,7 +1220,8 @@ export default {
 .callout-warning {
   background-color: #e1f1ff;
   border-left-color: #0f558f;
-  color: #030303;;
+  color: #030303;
+  ;
 }
 
 .tab-rendimento {
@@ -1336,6 +1340,7 @@ export default {
 .positive {
   color: green;
 }
+
 .negative {
   color: red;
 }
@@ -1362,5 +1367,4 @@ export default {
   width: 20px;
   display: inline-block;
 }
-
 </style>
