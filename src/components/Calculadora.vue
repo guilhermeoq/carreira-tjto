@@ -53,13 +53,17 @@
       <div class="callout callout-info">
         <small><strong>[30/04/2025] Novidades:</strong><br>
           📈 Data-base 2025 foi aprovado, +4,17% conforme <a href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
-            target="_blank">PL 01/2025</a>. Efeito financeiro retroativo a 1º de maio.<br>
+            target="_blank">PL 01/2025</a>. Efeito financeiro retroativo a 1º de maio. Por enquanto, está ativa a opção para 'desligar' o data-base, para fins de comparação.<br>
           💾 A calculadora agora salva no seu próprio navegador as informações preenchidas, utilize o botão abaixo para redefinir as calculadoras.<br>
           ↕️ Novos botões de navegação para mover a barra de rolagem.<br>
-          🪙 Cálculo da previdência complementar (a partir de abril/2025). Contribuição de 14% até o teto do IGEPREV (R$
+          🪙 Três opções de cálculo da previdência:
+          <ol>
+            <li>Complementar (a partir de abril/2025). Contribuição de 14% até o teto do IGEPREV (R$
           8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
-          salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual.<br>
-          <i>Obs.: em razão de regras previdênciárias distintas, alguns servidores continuam com retenção de 14% sobre o total do salário (VB+GAJ+AQE). As duas opções de cálculo estão disponíveis.</i>
+          salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual;</li>
+          <li>IGEPREV (Teto), apenas a contribuição de 14% até o teto do IGEPREV;</li>
+          <li>IGEPREV (VB+GAJ+AQE), apenas a contribuição de 14%, mas aplicada sobre VB+GAJ+AQE. Em razão de regras previdênciárias distintas, alguns servidores continuam com este regime de cálculo ativo.</li>
+          </ol>
         </small>
       </div>
 
@@ -128,15 +132,26 @@
             <label>Nº dep. IR</label>
           </div>
 
-          <div class="border-bottom">
-            <div class="form-check form-switch gap-1 mb-1 mt-3">
-              <input v-model="calculator.switchPrevcom" class="form-check-input" type="checkbox" role="switch"
-                id="switchPrevcom" defaultChecked />
-              <label class="form-check-label">Previdência Complementar</label>
-            </div>
-            <div class="mb-3">
-              <i><small>*Se desligado, desconta 14% sobre todo o salário (VB+GAJ+AQE).</small></i>
+          <!-- OPÇÕES DE PREVIDENCIA -->
+          <p class="mb-0">Previdência:</p>
+          <div class="border-bottom pt-3 pb-3 d-flex flex-wrap gap-3">
+            <div class="d-flex flex-row gap-3 flex-wrap">
+              <div class="form-check">
+                <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio" name="tipoPrevidencia"
+                  value="prevcom" id="prevcom" checked />
+                <label class="form-check-label"> Complementar </label>
               </div>
+              <div class="form-check">
+                <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio" name="tipoPrevidencia"
+                  value="igeprevNovo" id="igeprevNovo" />
+                <label class="form-check-label"> IGEPREV (Teto) </label>
+              </div>
+              <div class="form-check">
+                <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio" name="tipoPrevidencia"
+                  value="igeprevAntigo" id="igeprevAntigo" />
+                <label class="form-check-label"> IGEPREV (VB+GAJ+AQE) </label>
+              </div>
+            </div>
           </div>
 
           <div class="mt-3 form-check form-switch mb-3">
@@ -518,7 +533,7 @@
             <strong><i class="bi bi-people-fill"></i> IGEPREV:</strong>
             {{ formatarParaBR(calculator.previdencia) }}
           </p>
-          <p v-show="calculator.switchPrevcom" class="tab-desconto">
+          <p v-show="calculator.tipoPrevidencia === 'prevcom'" class="tab-desconto">
             <strong> <i class="bi bi-people-fill"></i> BRASILPREV:</strong>
             {{ formatarParaBR(calculator.prevcom) }}
           </p>
@@ -547,23 +562,23 @@
             <strong> <i class="bi bi-gem"></i> 13º Salário:</strong>
             {{ formatarParaBR(calculator.decimoFolhaComplementar) }}
           </p>
-          <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'" class="tab-decimo-desconto">
+          <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'" class="tab-desconto">
             <strong><i class="bi bi-receipt"></i> Adiantamento 13º:</strong>
             {{ formatarParaBR(calculator.decimoAdiantamento) }}
           </p>
-          <p class="tab-decimo-desconto">
+          <p class="tab-desconto">
             <strong><i class="bi bi-people-fill"></i> IGEPREV 13º:</strong>
             {{ formatarParaBR(calculator.decimoPrevidencia) }}
           </p>
-          <p v-show="calculator.switchPrevcom" class="tab-desconto">
+          <p v-show="calculator.tipoPrevidencia === 'prevcom'" class="tab-desconto">
             <strong> <i class="bi bi-people-fill"></i> BRASILPREV 13º:</strong>
             {{ formatarParaBR(calculator.prevcom) }}
           </p>
-          <p class="tab-decimo-desconto">
+          <p class="tab-desconto">
             <strong><i class="bi bi-bank2"></i> IRRF do 13º:</strong>
             {{ formatarParaBR(calculator.decimoIRRF) }}
           </p>
-          <p class="tab-decimo-desconto-total">
+          <p class="tab-desconto-total">
             <i class="bi bi-caret-down-fill"></i> Total de Descontos 13º:
             {{ formatarParaBR(calculator.totalDescontosDecimo) }}
           </p>
@@ -666,7 +681,7 @@ export default {
         aqfc: 3,
         aqe: 7.5,
         dependente: 0,
-        switchPrevcom: true,
+        tipoPrevidencia: 'prevcom',
         switchFuncao: false,
         funcaoServidor: 'DAJ-1',
         representacao: 0,
@@ -859,8 +874,9 @@ export default {
 
       calculator.decimoPrevidencia =
         calculator.switchDecimo &&
-        (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
-          ? ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+        (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2') ?
+        ((calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo') ?
+          ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14)
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
             ? 0
             : 0
@@ -877,20 +893,28 @@ export default {
       calculator.decimoIRRF = this.calcularIrrf(calculator.decimoFolhaComplementar)
 
       const baseIRRFDecimo =
+        (calculator.tipoPrevidencia === 'prevcom') ? (
         calculator.vencimentoBasico +
         calculator.gaj +
         calculator.aqeValue +
         calculator.aqfcValue +
         calculator.representacao -
-        (calculator.decimoPrevidencia + calculator.decimoPrevcom + 189.59 * calculator.dependente)
+        (calculator.decimoPrevidencia + calculator.decimoPrevcom + 189.59 * calculator.dependente)) :
+        calculator.vencimentoBasico +
+        calculator.gaj +
+        calculator.aqeValue +
+        calculator.aqfcValue +
+        calculator.representacao -
+        (calculator.decimoPrevidencia + 189.59 * calculator.dependente)
+
       calculator.decimoIRRF = this.calcularIrrf(baseIRRFDecimo)
 
       //Total de descontos aplicados sobre o 13º salário
       calculator.totalDescontosDecimo =
         calculator.switchDecimo && calculator.tipoDecimo === 'integral'
-          ? (calculator.switchPrevcom === true) ? calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoPrevidencia + calculator.decimoIRRF
+          ? (calculator.tipoPrevidencia === 'prevcom') ? calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoPrevidencia + calculator.decimoIRRF
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'
-            ?  (calculator.switchPrevcom === true) ? calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoIRRF
+            ?  (calculator.tipoPrevidencia === 'prevcom') ? calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoIRRF
             : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
               ? 0
               : 0
@@ -932,7 +956,7 @@ export default {
 
     //Cálculo do desconto de previdência sobre salário
     calculator.previdencia =
-      (calculator.switchPrevcom) ?
+      (calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo') ?
         (((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14) : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
 
       //Cálculo do desconto da previdência complementar
@@ -941,7 +965,7 @@ export default {
 
       //Cálculo da base de cálculo do IRRF
       const baseIRRF =
-      (calculator.switchPrevcom === true) ? (
+      (calculator.tipoPrevidencia === 'prevcom') ? (
         calculator.vencimentoBasico +
         calculator.gaj +
         calculator.aqeValue +
@@ -949,6 +973,14 @@ export default {
         calculator.representacao +
         calculator.ferias -
         (calculator.previdencia + calculator.teto + calculator.prevcom + 189.59 * calculator.dependente)) :
+        (calculator.tipoPrevidencia === 'igeprevNovo') ? (
+        calculator.vencimentoBasico +
+        calculator.gaj +
+        calculator.aqeValue +
+        calculator.aqfcValue +
+        calculator.representacao +
+        calculator.ferias -
+        (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente)) :
         (
         calculator.vencimentoBasico +
         calculator.gaj +
@@ -972,7 +1004,7 @@ export default {
 
 
       calculator.irrf = this.calcularIrrf(baseIRRF)
-      calculator.totalDescontos = (calculator.switchPrevcom === true) ? calculator.previdencia + calculator.irrf + calculator.teto + calculator.prevcom : calculator.previdencia + calculator.irrf + calculator.teto
+      calculator.totalDescontos = (calculator.tipoPrevidencia === 'prevcom') ? calculator.previdencia + calculator.irrf + calculator.teto + calculator.prevcom : calculator.previdencia + calculator.irrf + calculator.teto
 
       calculator.salarioLiquido = calculator.salarioBruto - calculator.totalDescontos
     },
