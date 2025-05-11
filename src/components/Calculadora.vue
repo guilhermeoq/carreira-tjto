@@ -1138,8 +1138,8 @@ export default {
   margin-bottom: 1em;
   padding: 2em;
   border-radius: 1.5em;
-  background-color: #252525;
-  box-shadow: 0 12px 50px 0px rgba(38, 33, 56, 0.99);
+  background-color: #212529;
+  box-shadow: 0 0px 30px 0px rgba(30, 25, 49, 0.99);
   width: 100%;
 }
 
@@ -1211,7 +1211,7 @@ export default {
 }
 
 .callout-info {
-  background-color: #252525;
+  background-color: #212529;
   border-left-color: #15884c;
   color: #d1d1d1;
 }
