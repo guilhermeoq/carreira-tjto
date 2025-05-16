@@ -52,21 +52,16 @@
       </div>
 
       <div class="callout callout-info">
-        <small><strong>[09/05/2025] Novidades:</strong><br>
-          📈 Data-base 2025 aprovado, +4,17% conforme <a
-            href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio" target="_blank">PL 01/2025</a>. Efeito
-          financeiro retroativo a 1º de maio. Por enquanto, está ativa a opção para 'desligar' o data-base, para fins de
-          comparação.<br>
-          💾 A calculadora agora salva no seu próprio navegador as informações preenchidas, utilize o botão abaixo para
-          limpar as calculadoras.<br>
-          🪙 Três opções de cálculo da previdência:
+        <small><strong>[16/05/2025] Atualizações:</strong><br>
+          📊 Foi ajustado o cálculo do IRRF conforme <a href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova tabela do Imposto de Renda</a>, vigente a partir de maio/2025.<br>
+          📈 Data-base 2025 aprovado, +4,17%. Por enquanto, você pode 'desativar' o cálculo do data-base para comparar a diferença.<br>
+          🏦 Estão disponíveis três opções de cálculo da previdência:
           <ol>
-            <li>Complementar (a partir de abril/2025). Contribuição de 14% até o teto do IGEPREV (R$
-              8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
+            <li>Complementar (novo). Contribuição de 14% até o teto do IGEPREV (R$ 8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
               salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual;</li>
-            <li>IGEPREV (Teto), apenas a contribuição de 14% até o teto do IGEPREV;</li>
-            <li>IGEPREV (VB+GAJ+AQE), apenas a contribuição de 14%, mas aplicada sobre VB+GAJ+AQE. Em razão de regras
-              previdênciárias distintas, alguns servidores continuam com este regime de cálculo ativo.</li>
+            <li>IGEPREV (novo), para servidores que optarem por sair da prev. complementar, contribuindo com 14% limitado ao teto do IGEPREV;</li>
+            <li>IGEPREV (antigo), contribuição de 14% aplicada sobre o total do salário (VB+GAJ+AQE). Em razão de regras
+              previdênciárias distintas, alguns servidores continuam com este regime de cálculo vigente.</li>
           </ol>
         </small>
       </div>
@@ -77,7 +72,7 @@
 
     </div>
     <div class="d-sm-flex gap-3">
-      <div v-for="(calculator, index) in calculators" :key="index" class="calculator box">
+      <div v-for="(calculator, index) in calculators" :key="index" class="calculator">
         <h4>Simulação {{ index + 1 }}</h4>
         <form @change="updateSalary(index)">
           <!-- SWITCH URV -->
@@ -989,17 +984,18 @@ export default {
               calculator.ferias -
               (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente))
 
-      //console.log('Vencimento Basico: ' + calculator.vencimentoBasico)
-      //console.log('GAJ: ' + calculator.gaj)
-      //console.log('AQE: ' + calculator.aqeValue)
-      //console.log('Representacao: ' + calculator.representacao)
-      //console.log('Previdencia: ' + calculator.previdencia)
-      //console.log('Dependente: ' + calculator.dependente)
-      //console.log('Prevcom: ' + calculator.prevcom)
-      //console.log('Base de Calculo IRRF: ' + baseIRRF)
-      //console.log('TETO: ' + calculator.teto)
-      //console.log(calculator.switchPrevcom)
-      //console.log('------------------------')
+      console.log('Vencimento Basico: ' + calculator.vencimentoBasico)
+      console.log('GAJ: ' + calculator.gaj)
+      console.log('AQE: ' + calculator.aqeValue)
+      console.log('AQFC: ' + calculator.aqfcValue)
+      console.log('Representacao: ' + calculator.representacao)
+      console.log('Previdencia: ' + calculator.previdencia)
+      console.log('Dependente: ' + calculator.dependente)
+      console.log('Previdencia: ' + calculator.previdencia)
+      console.log('Prevcom: ' + calculator.prevcom)
+      console.log('Base de Calculo IRRF: ' + baseIRRF)
+      console.log('TETO: ' + calculator.teto)
+      console.log('------------------------')
 
 
       calculator.irrf = this.calcularIrrf(baseIRRF)
@@ -1074,16 +1070,16 @@ export default {
     },
 
     calcularIrrf(baseCalculo) {
-      if (baseCalculo <= 2259.2) {
+      if (baseCalculo <= 2428.8) {
         return 0
       } else if (baseCalculo <= 2826.65) {
-        return (baseCalculo - 2259.2) * 0.075
+        return (baseCalculo - 2428.8) * 0.075
       } else if (baseCalculo <= 3751.05) {
-        return (baseCalculo - 2826.65) * 0.15 + 567.45 * 0.075
+        return (baseCalculo - 2826.65) * 0.15 + 397.85 * 0.075
       } else if (baseCalculo <= 4664.68) {
-        return (baseCalculo - 3751.05) * 0.225 + 924.4 * 0.15 + 567.45 * 0.075
+        return (baseCalculo - 3751.05) * 0.225 + 924.4 * 0.15 + 397.85 * 0.075
       } else {
-        return (baseCalculo - 4664.68) * 0.275 + 913.63 * 0.225 + 924.4 * 0.15 + 567.45 * 0.075
+        return (baseCalculo - 4664.68) * 0.275 + 913.63 * 0.225 + 924.4 * 0.15 + 397.85 * 0.075
       }
     },
     //Formatação de moeda para Real Brasileiro
