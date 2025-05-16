@@ -57,10 +57,10 @@
           📈 Data-base 2025 de +4,17%, vigente a partir da folha de maio/2025. Por enquanto, você pode 'desativar' o cálculo do data-base para comparar a diferença.<br>
           🏦 Estão disponíveis três opções de cálculo da previdência:
           <ol>
-            <li>Complementar (novo). Contribuição de 14% até o teto do IGEPREV (R$ 8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
+            <li>Complementar: contribuição de 14% até o teto do IGEPREV (R$ 8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
               salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual;</li>
-            <li>IGEPREV (novo), para servidores que optarem por sair da prev. complementar, contribuindo com 14% limitado ao teto do IGEPREV;</li>
-            <li>IGEPREV (antigo), contribuição de 14% aplicada sobre o total do salário (VB+GAJ+AQE). Em razão de regras
+            <li>IGEPREV (novo): para servidores que optarem por sair da prev. complementar, contribuindo com 14% limitado ao teto do IGEPREV;</li>
+            <li>IGEPREV (antigo): contribuição de 14% aplicada sobre o total do salário (VB+GAJ+AQE). Em razão de regras
               previdênciárias distintas, alguns servidores continuam com este regime de cálculo vigente.</li>
           </ol>
         </small>
@@ -138,17 +138,17 @@
               <div class="form-check">
                 <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio" name="tipoPrevidencia"
                   value="prevcom" id="prevcom" checked />
-                <label class="form-check-label"> Complementar </label>
+                <label class="form-check-label"> Complementar</label>
               </div>
               <div class="form-check">
                 <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio" name="tipoPrevidencia"
                   value="igeprevNovo" id="igeprevNovo" />
-                <label class="form-check-label"> IGEPREV (Teto) </label>
+                <label class="form-check-label"> IGEPREV (novo) </label>
               </div>
               <div class="form-check">
                 <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio" name="tipoPrevidencia"
                   value="igeprevAntigo" id="igeprevAntigo" />
-                <label class="form-check-label"> IGEPREV (VB+GAJ+AQE) </label>
+                <label class="form-check-label"> IGEPREV (antigo) </label>
               </div>
             </div>
           </div>
