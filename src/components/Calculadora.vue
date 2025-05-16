@@ -53,8 +53,8 @@
 
       <div class="callout callout-info">
         <small><strong>[16/05/2025] Atualizações:</strong><br>
-          📊 Foi ajustado o cálculo do IRRF conforme <a href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova tabela do Imposto de Renda</a>, vigente a partir de maio/2025.<br>
-          📈 Data-base 2025 aprovado, +4,17%. Por enquanto, você pode 'desativar' o cálculo do data-base para comparar a diferença.<br>
+          📊 Foi ajustado o cálculo do IRRF conforme <a href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova tabela do Imposto de Renda</a>, vigente a partir da folha de maio/2025.<br>
+          📈 Data-base 2025 de +4,17%, vigente a partir da folha de maio/2025. Por enquanto, você pode 'desativar' o cálculo do data-base para comparar a diferença.<br>
           🏦 Estão disponíveis três opções de cálculo da previdência:
           <ol>
             <li>Complementar (novo). Contribuição de 14% até o teto do IGEPREV (R$ 8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
@@ -984,18 +984,18 @@ export default {
               calculator.ferias -
               (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente))
 
-      console.log('Vencimento Basico: ' + calculator.vencimentoBasico)
-      console.log('GAJ: ' + calculator.gaj)
-      console.log('AQE: ' + calculator.aqeValue)
-      console.log('AQFC: ' + calculator.aqfcValue)
-      console.log('Representacao: ' + calculator.representacao)
-      console.log('Previdencia: ' + calculator.previdencia)
-      console.log('Dependente: ' + calculator.dependente)
-      console.log('Previdencia: ' + calculator.previdencia)
-      console.log('Prevcom: ' + calculator.prevcom)
-      console.log('Base de Calculo IRRF: ' + baseIRRF)
-      console.log('TETO: ' + calculator.teto)
-      console.log('------------------------')
+      //console.log('Vencimento Basico: ' + calculator.vencimentoBasico)
+      //console.log('GAJ: ' + calculator.gaj)
+      //console.log('AQE: ' + calculator.aqeValue)
+      //console.log('AQFC: ' + calculator.aqfcValue)
+      //console.log('Representacao: ' + calculator.representacao)
+      //console.log('Previdencia: ' + calculator.previdencia)
+      //console.log('Dependente: ' + calculator.dependente)
+      //console.log('Previdencia: ' + calculator.previdencia)
+      //console.log('Prevcom: ' + calculator.prevcom)
+      //console.log('Base de Calculo IRRF: ' + baseIRRF)
+      //console.log('TETO: ' + calculator.teto)
+      //console.log('------------------------')
 
 
       calculator.irrf = this.calcularIrrf(baseIRRF)
