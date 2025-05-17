@@ -53,13 +53,17 @@
 
       <div class="callout callout-info">
         <small><strong>[16/05/2025] Atualizações:</strong><br>
-          📊 Foi ajustado o cálculo do IRRF conforme <a href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova tabela do Imposto de Renda</a>, vigente a partir da folha de maio/2025.<br>
-          📈 Data-base 2025 de +4,17%, vigente a partir da folha de maio/2025. Por enquanto, você pode 'desativar' o cálculo do data-base para comparar a diferença.<br>
+          📊 Foi ajustado o cálculo do IRRF conforme <a
+            href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
+            tabela do Imposto de Renda</a>, vigente a partir da folha de maio/2025.<br>
+          📈 Data-base 2025 de +4,17%, vigente a partir da folha de maio/2025.<br>
           🏦 Estão disponíveis três opções de cálculo da previdência:
           <ol>
-            <li>Complementar: contribuição de 14% até o teto do IGEPREV (R$ 8.157,41) e de 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do
+            <li>Complementar: contribuição de 14% até o teto do IGEPREV (R$ 8.157,41) e de 8,5% para o BRASILPREV sobre
+              o valor que ultrapassa o teto, limitado ao total do
               salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual;</li>
-            <li>IGEPREV (novo): para servidores que optarem por sair da prev. complementar, contribuindo com 14% limitado ao teto do IGEPREV;</li>
+            <li>IGEPREV (novo): para servidores que optarem por sair da prev. complementar, contribuindo com 14%
+              limitado ao teto do IGEPREV;</li>
             <li>IGEPREV (antigo): contribuição de 14% aplicada sobre o total do salário (VB+GAJ+AQE). Em razão de regras
               previdênciárias distintas, alguns servidores continuam com este regime de cálculo vigente.</li>
           </ol>
@@ -67,7 +71,8 @@
       </div>
 
       <div style="text-align: center; margin-top: 2em; margin-bottom: 1em">
-        <button type="button" class="btn custom-btn" @click="resetCalculators"><strong>Limpar Calculadoras</strong></button>
+        <button type="button" class="btn custom-btn" @click="resetCalculators"><strong>Limpar
+            Calculadoras</strong></button>
       </div>
 
     </div>
@@ -132,24 +137,32 @@
           </div>
 
           <!-- OPÇÕES DE PREVIDENCIA -->
-          <p class="mb-0">Previdência:</p>
-          <div class="border-bottom pt-3 pb-3 d-flex flex-wrap gap-3">
-            <div class="d-flex flex-row gap-3 flex-wrap">
-              <div class="form-check">
-                <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio" name="tipoPrevidencia"
-                  value="prevcom" id="prevcom" checked />
-                <label class="form-check-label"> Complementar</label>
+          <div class="border-bottom">
+            <p class="mb-0">Previdência:</p>
+            <div class="pt-2 pb-1 d-flex flex-wrap gap-3">
+              <div class="d-flex flex-row gap-3 flex-wrap">
+                <div class="form-check">
+                  <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio"
+                    name="tipoPrevidencia" value="prevcom" id="prevcom" checked />
+                  <label class="form-check-label"> Complementar</label>
+                </div>
+                <div class="form-check">
+                  <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio"
+                    name="tipoPrevidencia" value="igeprevNovo" id="igeprevNovo" />
+                  <label class="form-check-label"> IGEPREV (novo) </label>
+                </div>
+                <div class="form-check">
+                  <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio"
+                    name="tipoPrevidencia" value="igeprevAntigo" id="igeprevAntigo" />
+                  <label class="form-check-label"> IGEPREV (antigo) </label>
+                </div>
               </div>
-              <div class="form-check">
-                <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio" name="tipoPrevidencia"
-                  value="igeprevNovo" id="igeprevNovo" />
-                <label class="form-check-label"> IGEPREV (novo) </label>
-              </div>
-              <div class="form-check">
-                <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio" name="tipoPrevidencia"
-                  value="igeprevAntigo" id="igeprevAntigo" />
-                <label class="form-check-label"> IGEPREV (antigo) </label>
-              </div>
+            </div>
+            <div class="mb-2">
+              <div ></div>
+              <i v-show="calculator.tipoPrevidencia === 'prevcom'"><small>*IGEPREV (14% até o teto) + BRASILPREV (8,5%).</small></i>
+              <i v-show="calculator.tipoPrevidencia === 'igeprevNovo'"><small>*Apenas IGEPREV (14% limitado ao teto).</small></i>
+              <i v-show="calculator.tipoPrevidencia === 'igeprevAntigo'"><small>*Apenas IGEPREV (14% sobre todo o salário).</small></i>
             </div>
           </div>
 
@@ -1228,7 +1241,7 @@ export default {
 }
 
 .tab-alimentacao {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(29, 121, 111,0.5));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(29, 121, 111, 0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1236,7 +1249,7 @@ export default {
 }
 
 .tab-representacao {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(124, 79, 49,0.5));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(124, 79, 49, 0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1244,7 +1257,7 @@ export default {
 }
 
 .tab-ferias {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(59, 35, 97,0.5));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(59, 35, 97, 0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1252,7 +1265,7 @@ export default {
 }
 
 .tab-saude {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(134, 102, 14,0.5));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(134, 102, 14, 0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1260,7 +1273,7 @@ export default {
 }
 
 .tab-decimo {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(48, 71, 112,0.5));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(48, 71, 112, 0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1277,7 +1290,7 @@ export default {
 }
 
 .tab-desconto {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(105, 52, 52,0.5));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(105, 52, 52, 0.5));
   padding: 0.2em;
   padding-left: 0.5em;
   border-radius: 0.3em;
@@ -1319,7 +1332,7 @@ export default {
 }
 
 .footer {
-  color:#adadad;
+  color: #adadad;
   margin-top: 1em;
   line-height: 1;
   text-align: justify;
@@ -1343,7 +1356,8 @@ export default {
 }
 
 .custom-btn {
-  background-color: #252525; /* your custom color */
+  background-color: #252525;
+  /* your custom color */
   color: white;
   border: none;
 }
@@ -1352,4 +1366,3 @@ export default {
   background-color: #363636;
 }
 </style>
-
