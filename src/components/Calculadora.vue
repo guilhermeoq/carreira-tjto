@@ -56,14 +56,13 @@
           📊 Foi ajustado o cálculo do IRRF conforme <a
             href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
             tabela do Imposto de Renda</a>, vigente a partir da folha de maio/2025.<br>
-          📈 Data-base 2025 de +4,17%, vigente a partir da folha de maio/2025.<br>
+          📈 Data-base 2025 (+4,17%), já incorporado no cálculo.<br>
           🏦 Estão disponíveis três opções de cálculo da previdência:
           <ol>
             <li>Complementar: contribuição de 14% até o teto do IGEPREV (R$ 8.157,41) e de 8,5% para o BRASILPREV sobre
               o valor que ultrapassa o teto, limitado ao total do
               salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual;</li>
-            <li>IGEPREV (novo): para servidores que optarem por sair da prev. complementar, contribuindo com 14%
-              limitado ao teto do IGEPREV;</li>
+            <li>IGEPREV (novo): para servidores que optarem por sair da prev. complementar, contribuindo com 14% apenas para o IGEPREV, limitado ao teto;</li>
             <li>IGEPREV (antigo): contribuição de 14% aplicada sobre o total do salário (VB+GAJ+AQE). Em razão de regras
               previdênciárias distintas, alguns servidores continuam com este regime de cálculo vigente.</li>
           </ol>
@@ -82,9 +81,9 @@
         <form @change="updateSalary(index)">
           <!-- SWITCH URV -->
           <div class="form-check form-switch mt-4 mb-3">
-            <input v-model="calculator.simularURV" class="form-check-input" type="checkbox" role="switch" id="URVSwitch"
+            <input v-model="calculator.simularPercentual" class="form-check-input" type="checkbox" role="switch" id="URVSwitch"
               defaultChecked />
-            <label class="form-check-label">Data-base 2025: +4,17%</label>
+            <label class="form-check-label">Simular URV +11,98% (PL em tramitação)</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
@@ -681,7 +680,7 @@ export default {
     //Inicializar calculadora
     createCalculator() {
       return {
-        simularURV: true,
+        simularPercentual: true,
         switchSaude: false,
         cargo: 'tecnico',
         nivel: 1,
@@ -756,24 +755,24 @@ export default {
       const tetoIgeprev = 8157.41
       const salarios = {
         tecnico: [
-          7140.42, 7497.44, 7872.31, 8265.92, 8679.22, 9113.17, 9568.85, 10047.27, 10549.66,
-          11077.11, 11630.98, 12212.54, 12823.16, 13464.32, 14137.55,
+          7438.18, 7810.08, 8200.59, 8610.62, 9041.14, 9493.19, 9967.88, 10466.25, 10989.58,
+          11539.04, 12115.99, 12721.81, 13357.89, 14025.79, 14727.09,
         ],
         analista: [
-          11954.45, 12552.18, 13179.8, 13838.77, 14530.7, 15257.24, 16020.1, 16821.11, 17662.11,
-          18545.29, 19472.54, 20446.16, 21468.48, 22541.9, 23669.0,
+          12452.95, 13075.61, 13729.40, 14415.85, 15136.63, 15893.47, 16688.14, 17522.55, 18398.62,
+          19318.63, 20284.54, 21298.76, 22363.72, 23481.90, 24656.00,
         ],
       }
 
       const vb = salarios[calculator.cargo][calculator.nivel - 1]
-      calculator.vencimentoBasico = calculator.simularURV ? vb * 1.0417 : vb //1.1198
+      calculator.vencimentoBasico = calculator.simularPercentual ? vb * 1.1198 : vb //1.1198
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
 
       if (calculator.switchFuncao == true) {
         //Calculando data-base sobre funções...
-        (calculator.simularURV === true) ? calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1.0417 : calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
+        (calculator.simularPercentual === true) ? calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1.0417 : calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
       } else calculator.representacao = 0
 
       calculator.ferias = calculator.switchFerias
@@ -1050,35 +1049,35 @@ export default {
     consultaValorFuncao(funcao) {
       switch (funcao) {
         case 'DAJ-1':
-          return 3984.11 * 0.65
+          return 4150.25 * 0.65
         case 'DAJ-2':
-          return 4687.21 * 0.65
+          return 4882.67 * 0.65
         case 'DAJ-3':
-          return 5858.99 * 0.65
+          return 6103.31 * 0.65
         case 'DAJ-4':
-          return 7030.83 * 0.65
+          return 7324.02 * 0.65
         case 'DAJ-5':
-          return 9084.25 * 0.65
+          return 9463.06 * 0.65
         case 'DAJ-6':
-          return 14061.6 * 0.65
+          return 14647.97 * 0.65
         case 'DAJ-7':
-          return 16405.22 * 0.65
+          return 17089.32 * 0.65
         case 'DAJ-8':
-          return 19920.64 * 0.65
+          return 20751.33 * 0.65
         case 'DAJ-9':
-          return 22986.44 * 0.65
+          return 23944.97 * 0.65
         case 'DAJ-10':
-          return 25284.93 * 0.65
+          return 26339.31 * 0.65
         case 'DAJ-11':
-          return 27250.69 * 0.65
+          return 28387.04 * 0.65
         case 'FC-1':
-          return 1704.04
+          return 1775.10
         case 'FC-2':
-          return 1981.4
+          return 2064.02
         case 'FC-3':
-          return 2305.81
+          return 2401.96
         case 'FC-4':
-          return 3243.49
+          return 3378.74
       }
     },
 
