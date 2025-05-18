@@ -82,7 +82,7 @@
           <!-- SWITCH URV -->
           <div class="form-check form-switch mt-4 mb-3">
             <input v-model="calculator.simularPercentual" class="form-check-input" type="checkbox" role="switch" id="URVSwitch"
-              defaultChecked />
+               />
             <label class="form-check-label">Simular URV +11,98% (PL em tramitação)</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
@@ -680,7 +680,7 @@ export default {
     //Inicializar calculadora
     createCalculator() {
       return {
-        simularPercentual: true,
+        simularPercentual: false,
         switchSaude: false,
         cargo: 'tecnico',
         nivel: 1,
