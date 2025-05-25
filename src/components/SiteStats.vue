@@ -1,16 +1,13 @@
 <template>
-  <div class="site-stats py-2 px-3 d-flex justify-content-center align-items-center gap-5">
+  <div class="site-stats py-2 px-3 d-flex justify-content-center align-items-center">
     <div class="stat" :class="{ 'fade-in': visible }">
-      <div class="label">visitantes</div>
-      <div class="value">{{ animatedVisitors }}</div>
-    </div>
-    <div class="stat" :class="{ 'fade-in': visible }">
-      <div class="label">visualizações</div>
       <div class="value">{{ animatedViews }}</div>
+      <div class="label">acessos</div>
+
     </div>
   </div>
   <div class="site-stats d-flex justify-content-center align-items-center">
-    <div class="label" :class="{ 'fade-in': visible }">nos últimos 30 dias</div>
+    <div class="labelTime" :class="{ 'fade-in': visible }">nos últimos 30 dias</div>
   </div>
 </template>
 
@@ -19,15 +16,13 @@ export default {
   name: 'SiteStats',
   data() {
     return {
-      animatedVisitors: 0,
       animatedViews: 0,
       visible: false,
     }
   },
   mounted() {
     this.visible = true;
-    this.animateNumber('animatedVisitors', 565);
-    this.animateNumber('animatedViews', 969);
+    this.animateNumber('animatedViews', 1023);
   },
   methods: {
     animateNumber(key, target, duration = 1000) {
@@ -67,7 +62,17 @@ export default {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   line-height: 1.1;
+  text-align: center;
 }
+
+.labelTime {
+  font-size: 0.8rem;
+  color: #b4b4b4;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+}
+
 .dot {
   font-size: 1.5rem;
   line-height: 0;

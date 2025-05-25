@@ -23,7 +23,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
-              target="_blank">PL01/2025 (data-base)</a>
+              target="_blank">Data-base 2025</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605" target="_blank">PL06/2023 (URV)</a>
@@ -159,9 +159,9 @@
             </div>
             <div class="mb-2">
               <div ></div>
-              <i v-show="calculator.tipoPrevidencia === 'prevcom'"><small>*IGEPREV (14% até o teto) + BRASILPREV (8,5%).</small></i>
-              <i v-show="calculator.tipoPrevidencia === 'igeprevNovo'"><small>*Apenas IGEPREV (14% limitado ao teto).</small></i>
-              <i v-show="calculator.tipoPrevidencia === 'igeprevAntigo'"><small>*Apenas IGEPREV (14% sobre todo o salário).</small></i>
+              <i v-show="calculator.tipoPrevidencia === 'prevcom'"><small>*IGEPREV (14%) + BRASILPREV (8,5%).</small></i>
+              <i v-show="calculator.tipoPrevidencia === 'igeprevNovo'"><small>*IGEPREV (14% limitado ao teto).</small></i>
+              <i v-show="calculator.tipoPrevidencia === 'igeprevAntigo'"><small>*IGEPREV (14% sobre todo o salário).</small></i>
             </div>
           </div>
 
