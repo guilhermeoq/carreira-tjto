@@ -18,15 +18,13 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link"
-              href="https://www.tjto.jus.br/component/edocman/685-plano-de-cargos-carreiras-e-remuneracao-dos-servidores-do-tjto/viewdocument/685?Itemid="
-              target="_blank">Lei n.º 2.409</a>
+              href="https://www.tjto.jus.br/component/edocman/685-plano-de-cargos-carreiras-e-remuneracao-dos-servidores-do-tjto/viewdocument/685?Itemid=">Lei n.º 2.409</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
-              target="_blank">Data-base 2025</a>
+            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio">Data-base 2025</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605" target="_blank">PL06/2023 (URV)</a>
+            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605">PL06/2023 (URV)</a>
           </li>
         </ul>
       </div>
@@ -614,7 +612,7 @@
     <div class="container d-flex justify-content-center align-items-center">
       <p class="footer">
         Desenvolvido por
-        <a href="https://guilhermeoq.github.io" target="_blank" rel="noopener noreferrer"
+        <a href="https://guilhermeoq.github.io" rel="noopener noreferrer"
           style="color: #919191">Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a>. Os valores
         calculados nesta página não podem ser considerados 100% corretos devido a
         possíveis erros nos cálculos e nos valores e alíquotas de impostos e gratificações. Não me
@@ -623,12 +621,12 @@
     </div>
 
     <div class="badge container d-flex justify-content-center align-items-center gap-3">
-      <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">
+      <a href="https://vuejs.org" rel="noopener noreferrer">
         <img
           src="https://img.shields.io/badge/Built%20with%20Vue.js-white?style=flat&logo=vuedotjs&logoColor=234fc08d&color=35495e"
           alt="Built with Vue.js" />
       </a>
-      <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">
+      <a href="https://vercel.com" rel="noopener noreferrer">
         <img
           src="https://img.shields.io/badge/Powered_by%20Vercel-white?style=flat&logo=vercel&logoColor=white&color=292929"
           alt="Powered by Vercel" />
@@ -636,7 +634,7 @@
     </div>
   </div>
   <div class="badge container d-flex justify-content-center align-items-center gap-3">
-    <a href="https://github.com/guilhermeoq/carreira-tjto-vue" target="_blank" rel="noopener noreferrer">
+    <a href="https://github.com/guilhermeoq/carreira-tjto-vue" rel="noopener noreferrer">
       <img src="https://img.shields.io/badge/Available_on_GitHub-black?style=flat&logo=github&color=393939"
         alt="Available on GitHub" />
     </a>
