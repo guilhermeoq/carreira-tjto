@@ -22,7 +22,7 @@ export default {
   },
   mounted() {
     this.visible = true;
-    this.animateNumber('animatedViews', 1018);
+    this.animateNumber('animatedViews', 406);
   },
   methods: {
     animateNumber(key, target, duration = 1000) {
