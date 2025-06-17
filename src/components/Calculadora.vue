@@ -44,9 +44,6 @@
           Este simulador é <strong>gratuito, não coleta nenhuma informação pessoal</strong> e foi
           desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
         </p>
-
-        <SiteStats />
-
       </div>
 
       <div class="callout callout-info">
@@ -642,11 +639,7 @@
 </template>
 
 <script>
-import SiteStats from '@/components/SiteStats.vue';
 export default {
-  components: {
-    SiteStats
-  },
   data() {
     return {
       calculators: [this.createCalculator(), this.createCalculator()],
