@@ -48,18 +48,15 @@
 
       <div class="callout callout-info">
         <small><strong>[16/05/2025] Atualizações:</strong><br>
+                    📈 Data-base 2025 (+4,17%), já incorporado no cálculo.<br>
           📊 Foi ajustado o cálculo do IRRF conforme <a
             href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
             tabela do Imposto de Renda</a>, vigente a partir da folha de maio/2025.<br>
-          📈 Data-base 2025 (+4,17%), já incorporado no cálculo.<br>
           🏦 Estão disponíveis três opções de cálculo da previdência:
           <ol>
-            <li>Complementar: contribuição de 14% até o teto do IGEPREV (R$ 8.157,41) e de 8,5% para o BRASILPREV sobre
-              o valor que ultrapassa o teto, limitado ao total do
-              salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual;</li>
-            <li>IGEPREV (novo): para servidores que optarem por sair da prev. complementar, contribuindo com 14% apenas para o IGEPREV, limitado ao teto;</li>
-            <li>IGEPREV (antigo): contribuição de 14% aplicada sobre o total do salário (VB+GAJ+AQE). Em razão de regras
-              previdênciárias distintas, alguns servidores continuam com este regime de cálculo vigente.</li>
+            <li>Complementar: para novos servidores que optaram pela previdência complementar. Contribui com 14% sobre VB+GAJ+AQE até o teto do IGEPREV (R$ 8.157,41) e com 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual;</li>
+            <li>IGEPREV (novo): para servidores novos que optarem por sair da previdência complementar, contribuindo com 14% apenas para o IGEPREV, limitado ao teto;</li>
+            <li>IGEPREV (antigo): para servidores antigos que contribuem com 14% sobre o total do salário (VB+GAJ+AQE).</li>
           </ol>
         </small>
       </div>
