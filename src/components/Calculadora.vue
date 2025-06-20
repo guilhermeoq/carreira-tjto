@@ -47,17 +47,17 @@
       </div>
 
       <div class="callout callout-info">
-        <small><strong>[16/05/2025] Atualizações:</strong><br>
-                    📈 Data-base 2025 (+4,17%), já incorporado no cálculo.<br>
-          📊 Foi ajustado o cálculo do IRRF conforme <a
-            href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
-            tabela do Imposto de Renda</a>, vigente a partir da folha de maio/2025.<br>
-          🏦 Estão disponíveis três opções de cálculo da previdência:
+        <small><strong>Atualizações:</strong><br>
+          🔮 Opção de simular datas-base futuras, considerando +4% em 2026 e +3,5% nos anos seguintes.<br>
+          📊 Foi ajustado o cálculo do IRRF conforme <a href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova tabela do Imposto de Renda</a>, vigente a partir da folha de maio/2025.<br>
+          📈 Data-base 2025 (+4,17%), já incorporado no cálculo.<br>
+          🏦 Cálculos de previdência para servidores novos e antigos.
+          <!-- Estão disponíveis três opções de cálculo da previdência:
           <ol>
             <li>Complementar: para novos servidores que optaram pela previdência complementar. Contribui com 14% sobre VB+GAJ+AQE até o teto do IGEPREV (R$ 8.157,41) e com 8,5% para o BRASILPREV sobre o valor que ultrapassa o teto, limitado ao total do salário (VB+GAJ+AQE). Ambas as contribuições contam com contrapartida patronal no mesmo percentual;</li>
             <li>IGEPREV (novo): para servidores novos que optarem por sair da previdência complementar, contribuindo com 14% apenas para o IGEPREV, limitado ao teto;</li>
             <li>IGEPREV (antigo): para servidores antigos que contribuem com 14% sobre o total do salário (VB+GAJ+AQE).</li>
-          </ol>
+          </ol>-->
         </small>
       </div>
 
@@ -75,8 +75,33 @@
           <div class="form-check form-switch mt-4 mb-3">
             <input v-model="calculator.simularPercentual" class="form-check-input" type="checkbox" role="switch" id="URVSwitch"
                />
-            <label class="form-check-label">Simular URV +11,98% (PL em tramitação)</label>
+            <label class="form-check-label">Simular data-base futura</label>
           </div>
+
+          <!-- SIMULAR DATA-BASE-->
+          <div class="d-flex flex-wrap justify-content-between gap-1 mb-1">
+            <div v-if="calculator.simularPercentual" class="form-floating mb-1 flex-fill col-3">
+              <select class="form-select" id="dbfuturo" aria-label="Data-base futuro"
+                v-model="calculator.dbfuturo">
+                <option v-for="n in [
+                  '2026',
+                  '2027',
+                  '2028',
+                  '2029',
+                  '2030',
+                ]" :value="n">
+                  {{ n }}
+                </option>
+              </select>
+              <label>Simular data-base</label>
+
+              <div class="mt-2">
+                <i><small>*Considerando +4% em 2026 e +3,5% nos anos seguintes.</small></i>
+              </div>
+            </div>
+          </div>
+
+
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
             <div class="form-floating mb-3 flex-fill">
@@ -166,7 +191,7 @@
           <!-- Funcao do Servidor -->
           <div class="d-flex flex-wrap justify-content-between gap-1 mb-1">
             <div v-if="calculator.switchFuncao" class="form-floating mb-1 flex-fill col-3">
-              <select class="form-select" id="funcaoServidor" aria-label="Idade do Servidor"
+              <select class="form-select" id="funcaoServidor" aria-label="Função do Servidor"
                 v-model="calculator.funcaoServidor">
                 <option v-for="n in [
                   'DAJ-1',
@@ -669,6 +694,7 @@ export default {
     createCalculator() {
       return {
         simularPercentual: false,
+        dbfuturo: '2026',
         switchSaude: false,
         cargo: 'tecnico',
         nivel: 1,
@@ -753,7 +779,7 @@ export default {
       }
 
       const vb = salarios[calculator.cargo][calculator.nivel - 1]
-      calculator.vencimentoBasico = calculator.simularPercentual ? vb * 1.1198 : vb //1.1198
+      calculator.vencimentoBasico = calculator.simularPercentual ? vb * ((calculator.dbfuturo === "2026" ? 1.04 : calculator.dbfuturo === "2027" ? 1.0764 : calculator.dbfuturo === "2028" ? 1.1141 : calculator.dbfuturo === "2029" ? 1.1530 : 1.1935)) : vb //1.1198
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
