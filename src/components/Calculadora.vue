@@ -47,7 +47,8 @@
       </div>
 
       <div class="callout callout-info">
-        <small><strong>[16/05/2025] Atualizações:</strong><br>
+        <small><strong>[25/06/2025] Atualizações:</strong><br>
+          🚩 Simulação do PL/06/2023, <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">em tramitação na AL-TO</a>, aprovado na Comissão de Finanças em 25/06/2025.<br>
           📈 Data-base 2025 (+4,17%), já incorporado no cálculo.<br>
           📊 Foi ajustado o cálculo do IRRF conforme <a
             href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
