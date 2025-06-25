@@ -753,8 +753,7 @@ export default {
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
 
       if (calculator.switchFuncao == true) {
-        //Calculando data-base sobre funções...
-        (calculator.simularPercentual === true) ? calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1.0417 : calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
+        (calculator.simularPercentual === true) ? calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) : calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
       } else calculator.representacao = 0
 
       calculator.ferias = calculator.switchFerias
