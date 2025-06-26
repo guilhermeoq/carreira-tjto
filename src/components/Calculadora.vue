@@ -9,7 +9,7 @@
   </div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse" data-bs-theme="dark">
     <div class="container-fluid">
-      <div class="navbar-brand">🚀 <strong>carreiratjto.com</strong></div>
+      <div class="navbar-brand"><img src="/android-chrome-192x192.png" width="25" height="25" alt=""> <strong>carreiratjto.com</strong></div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
