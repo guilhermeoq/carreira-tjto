@@ -9,7 +9,7 @@
   </div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse" data-bs-theme="dark">
     <div class="container-fluid">
-      <div class="navbar-brand">🚀 <strong>carreiratjto.com</strong></div>
+      <div class="navbar-brand"><img src="/android-chrome-192x192.png" width="25" height="25" alt=""> <strong>carreiratjto.com</strong></div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -61,13 +61,13 @@
       </div>
       <div class="d-flex justify-content-center gap-3">
       <div style="text-align: center; margin-bottom: 1em">
-        <button type="button" class="btn copyBtn" @click="copyCalc1ToCalc2"> <strong><i class="bi bi-copy"></i> Copiar 1 para 2</strong></button>
+        <button type="button" class="btn copyBtn" @click="copyCalc2ToCalc1"> <strong><i class="bi bi-copy"></i> Copiar 2 para 1</strong></button>
       </div>
       <div style="text-align: center; margin-bottom: 1em">
         <button type="button" class="btn swapBtn" @click="swapCalculators"><i class="bi bi-arrow-left-right"></i>  <strong>Inverter</strong></button>
       </div>
       <div style="text-align: center; margin-bottom: 1em">
-        <button type="button" class="btn copyBtn" @click="copyCalc2ToCalc1"><strong><i class="bi bi-copy"></i> Copiar 2 para 1</strong></button>
+        <button type="button" class="btn copyBtn" @click="copyCalc1ToCalc2"><strong><i class="bi bi-copy"></i> Copiar 1 para 2</strong></button>
       </div>
       </div>
 
