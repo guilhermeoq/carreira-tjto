@@ -56,9 +56,19 @@
         </small>
       </div>
 
-      <div style="text-align: center; margin-top: 2em; margin-bottom: 1em">
-        <button type="button" class="btn custom-btn" @click="resetCalculators"><strong>Limpar
-            Calculadoras</strong></button>
+      <div style="text-align: center; margin-top: 2em; margin-bottom: 1em;">
+        <button type="button" class="btn clearBtn" @click="resetCalculators"><strong><i class="bi bi-stars"></i> Limpar</strong></button>
+      </div>
+      <div class="d-flex justify-content-center gap-3">
+      <div style="text-align: center; margin-bottom: 1em">
+        <button type="button" class="btn copyBtn" @click="copyCalc1ToCalc2"> <strong><i class="bi bi-copy"></i> Copiar 1 para 2</strong></button>
+      </div>
+      <div style="text-align: center; margin-bottom: 1em">
+        <button type="button" class="btn swapBtn" @click="swapCalculators"><i class="bi bi-arrow-left-right"></i>  <strong>Inverter</strong></button>
+      </div>
+      <div style="text-align: center; margin-bottom: 1em">
+        <button type="button" class="btn copyBtn" @click="copyCalc2ToCalc1"><strong><i class="bi bi-copy"></i> Copiar 2 para 1</strong></button>
+      </div>
       </div>
 
     </div>
@@ -718,6 +728,20 @@ export default {
       this.calculators = [this.createCalculator(), this.createCalculator()];
       this.calculators.forEach((_, index) => this.updateSalary(index)); // recalculate
     },
+    swapCalculators() {
+      [this.calculators[0], this.calculators[1]] = [this.calculators[1], this.calculators[0]];
+      this.saveCalculatorsToLocalStorage();
+    },
+    copyCalc1ToCalc2() {
+      this.calculators[1] = JSON.parse(JSON.stringify(this.calculators[0]));
+      this.updateSalary(1);
+      this.saveCalculatorsToLocalStorage();
+    },
+    copyCalc2ToCalc1() {
+      this.calculators[0] = JSON.parse(JSON.stringify(this.calculators[1]));
+      this.updateSalary(0);
+      this.saveCalculatorsToLocalStorage();
+    },
     scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
@@ -1336,14 +1360,35 @@ export default {
   display: inline-block;
 }
 
-.custom-btn {
-  background-color: #252525;
-  /* your custom color */
+.clearBtn {
+  background-color: #292929;
   color: white;
   border: none;
 }
 
-.custom-btn:hover {
-  background-color: #363636;
+.clearBtn:hover {
+  background-color: #414141;
 }
+
+.swapBtn {
+  background-color: #2a1e4e;
+  color: white;
+  border: none;
+}
+
+.swapBtn:hover {
+  background-color: #473285
+}
+
+.copyBtn {
+  background-color: #383053;
+  color: white;
+  border: none;
+}
+
+.copyBtn:hover {
+  background-color: #564c77;
+}
+
+
 </style>
