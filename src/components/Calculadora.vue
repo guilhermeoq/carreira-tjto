@@ -48,8 +48,8 @@
 
       <div class="callout callout-info">
         <small><strong>[25/06/2025] Atualizações:</strong><br>
-          🚩 Simulação do PL 06/2023, <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">em tramitação na AL-TO</a>, aprovado na Comissão de Finanças em 25/06/2025.<br>
-          📈 Data-base 2025 (+4,17%), já incorporado no cálculo.<br>
+          🚩 Simulação do PL 06/2023 (URV), <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">em tramitação na AL-TO</a>, aprovado na Comissão de Finanças em 25/06/2025. O PL prevê efeito financeiro a partir de 1º de outubro de 2025.<br>
+          📈 Data-base 2025 (+4,17%), já incorporado nos cálculos.<br>
           📊 Foi ajustado o cálculo do IRRF conforme <a
             href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
             tabela do Imposto de Renda</a>, vigente a partir da folha de maio/2025.<br>
@@ -603,38 +603,38 @@
     <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
       <h5 style="margin-bottom: 0;">
         Comparativo:
-        <span :class="{ positive: salaryDifference > 0, negative: salaryDifference < 0 }">
-          {{ formatarParaBR(salaryDifference) }}</span>
+        <span :class="{ positive: comparativo > 0, negative: comparativo < 0 }">
+          {{ formatarParaBR(comparativo) }}</span>
       </h5>
       <p><small>(diferença de valor líquido)</small></p>
     </div>
     <div class="container d-flex justify-content-center align-items-center">
       <p class="footer">
         Desenvolvido por
-        <a href="https://guilhermeoq.github.io" rel="noopener noreferrer"
-          style="color: #919191">Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a>. Os valores
+        <a href="https://guilhermeoq.github.io"
+          style="color: white">Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a>. Os valores
         calculados nesta página não podem ser considerados 100% corretos devido a
         possíveis erros nos cálculos e nos valores e alíquotas de impostos e gratificações. Não me
-        responsabilizo por eventuais diferenças entre a simulação e os valores reais.
+        responsabilizo por eventuais diferenças entre a simulação e os valores reais. Caso você tenha alguma sugestão, correção ou comentário a fazer sobre a calculadora, por favor entre em contato pelo e-mail <a style="color: white" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
       </p>
     </div>
 
     <div class="badge container d-flex justify-content-center align-items-center gap-3">
-      <a href="https://vuejs.org" rel="noopener noreferrer">
+      <a href="https://vuejs.org">
         <img
-          src="https://img.shields.io/badge/Built%20with%20Vue.js-white?style=flat&logo=vuedotjs&logoColor=234fc08d&color=35495e"
+          src="https://img.shields.io/badge/Built%20with%20Vue-grey?style=for-the-badge&logo=vuedotjs&&color=35495e"
           alt="Built with Vue.js" />
       </a>
-      <a href="https://vercel.com" rel="noopener noreferrer">
+      <a href="https://vercel.com">
         <img
-          src="https://img.shields.io/badge/Powered_by%20Vercel-white?style=flat&logo=vercel&logoColor=white&color=292929"
+          src="https://img.shields.io/badge/Powered%20by%20Vercel-grey?style=for-the-badge&logo=vercel&color=292929"
           alt="Powered by Vercel" />
       </a>
     </div>
   </div>
   <div class="badge container d-flex justify-content-center align-items-center gap-3">
-    <a href="https://github.com/guilhermeoq/carreira-tjto-vue" rel="noopener noreferrer">
-      <img src="https://img.shields.io/badge/Available_on_GitHub-black?style=flat&logo=github&color=393939"
+    <a href="https://github.com/guilhermeoq/carreira-tjto-vue">
+      <img src="https://img.shields.io/badge/Available%20on%20Github-grey?style=for-the-badge&logo=github&color=393939"
         alt="Available on GitHub" />
     </a>
   </div>
@@ -647,28 +647,17 @@ export default {
       calculators: [this.createCalculator(), this.createCalculator()],
     }
   },
-  computed: {
-    salaryDifference() {
-      if (this.calculators[0].switchDecimo && this.calculators[1].switchDecimo)
-        return (
-          this.calculators[1].salarioLiquido +
-          this.calculators[1].decimoLiquido -
-          (this.calculators[0].salarioLiquido + this.calculators[0].decimoLiquido)
-        )
-      else if (this.calculators[0].switchDecimo)
-        return (
-          this.calculators[1].salarioLiquido -
-          (this.calculators[0].salarioLiquido + this.calculators[0].decimoLiquido)
-        )
-      else if (this.calculators[1].switchDecimo)
-        return (
-          this.calculators[1].salarioLiquido +
-          this.calculators[1].decimoLiquido -
-          this.calculators[0].salarioLiquido
-        )
-      else return this.calculators[1].salarioLiquido - this.calculators[0].salarioLiquido
-    },
+computed: {
+  comparativo() {
+    const [calc0, calc1] = this.calculators;
+
+    const total0 = calc0.salarioLiquido + (calc0.switchDecimo ? calc0.decimoLiquido : 0);
+    const total1 = calc1.salarioLiquido + (calc1.switchDecimo ? calc1.decimoLiquido : 0);
+
+    return total1 - total0;
   },
+},
+
   methods: {
     //Inicializar calculadora
     createCalculator() {
