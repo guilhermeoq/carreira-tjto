@@ -62,13 +62,13 @@
       </div>
       <div class="d-flex justify-content-center gap-3">
       <div style="text-align: center; margin-bottom: 1em">
-        <button type="button" class="btn copyBtn" @click="copyCalc2ToCalc1"> <strong><i class="bi bi-copy"></i> Copiar 2 para 1</strong></button>
+        <button type="button" class="btn copyBtn" @click="copyCalc1ToCalc2"> <strong><i class="bi bi-copy"></i> Copiar 1 para 2</strong></button>
       </div>
       <div style="text-align: center; margin-bottom: 1em">
         <button type="button" class="btn swapBtn" @click="swapCalculators"><i class="bi bi-arrow-left-right"></i>  <strong>Inverter</strong></button>
       </div>
       <div style="text-align: center; margin-bottom: 1em">
-        <button type="button" class="btn copyBtn" @click="copyCalc1ToCalc2"><strong><i class="bi bi-copy"></i> Copiar 1 para 2</strong></button>
+        <button type="button" class="btn copyBtn" @click="copyCalc2ToCalc1"><strong><i class="bi bi-copy"></i> Copiar 2 para 1</strong></button>
       </div>
       </div>
 
