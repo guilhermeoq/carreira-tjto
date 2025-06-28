@@ -567,7 +567,7 @@
             {{ formatarParaBR(calculator.decimoFolhaComplementar) }}
           </p>
           <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'" class="tab-desconto">
-            <strong><i class="bi bi-receipt"></i> ¹Adiantamento 13º:</strong>
+            <strong><i class="bi bi-receipt"></i> Adiantamento 13º:</strong>
             {{ formatarParaBR(calculator.decimoAdiantamento) }}
           </p>
           <p class="tab-desconto">
@@ -586,8 +586,8 @@
             <i class="bi bi-caret-down-fill"></i> Total de Descontos 13º:
             {{ formatarParaBR(calculator.totalDescontosDecimo) }}
           </p>
-                  <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'">
-            <i><small>¹Adiantamento do 13º sem URV</small></i>
+                  <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2' && calculator.simularPercentual">
+            <i><small>*Adiantamento do 13º sem URV</small></i>
           </p>
           <p class="tab-liquido">
             <i class="bi bi-caret-right-fill"></i> 13º Salário Líquido:
