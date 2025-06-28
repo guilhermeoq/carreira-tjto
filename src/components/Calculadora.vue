@@ -877,14 +877,12 @@ computed: {
       //Cálculo do desconto de adiantamento da 1ª parcela do 13º salário
       const vbSemURV = (calculator.vencimentoBasico / 1.1198)
       const repSemURV = (calculator.representacao / 1.1198)
-      console.log('vbSemURV: ' + vbSemURV)
+      calculator.simularPercentual ? (
       calculator.decimoAdiantamento = (vbSemURV +
           (vbSemURV * 0.3) +
           (vbSemURV * (calculator.aqfc / 100)) +
           (vbSemURV * (calculator.aqe / 100)) +
-          repSemURV) / 2
-
-
+          repSemURV) / 2) : calculator.decimoAdiantamento = calculator.decimoFolhaComplementar / 2
 
       calculator.decimoPrevidencia =
         calculator.switchDecimo &&
