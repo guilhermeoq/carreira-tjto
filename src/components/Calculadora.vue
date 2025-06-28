@@ -47,8 +47,9 @@
       </div>
 
       <div class="callout callout-info">
-        <small><strong>[25/06/2025] Atualizações:</strong><br>
+        <small><strong>[27/06/2025] Atualizações:</strong><br>
           🚩 Simulação do PL 06/2023 (URV), <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">em tramitação na AL-TO</a>, aprovado na Comissão de Finanças em 25/06/2025. O PL prevê efeito financeiro a partir de 1º de outubro de 2025.<br>
+          🛠️ Foi ajustado o cálculo do adiantamento do 13º, de modo que o cálculo da 2ª parcela detecta que a 1ª parcela não possui URV.<br>
           📈 Data-base 2025 (+4,17%), já incorporado nos cálculos.<br>
           📊 Foi ajustado o cálculo do IRRF conforme <a
             href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
@@ -566,7 +567,7 @@
             {{ formatarParaBR(calculator.decimoFolhaComplementar) }}
           </p>
           <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'" class="tab-desconto">
-            <strong><i class="bi bi-receipt"></i> Adiantamento 13º:</strong>
+            <strong><i class="bi bi-receipt"></i> ¹Adiantamento 13º:</strong>
             {{ formatarParaBR(calculator.decimoAdiantamento) }}
           </p>
           <p class="tab-desconto">
@@ -584,6 +585,9 @@
           <p class="tab-desconto-total">
             <i class="bi bi-caret-down-fill"></i> Total de Descontos 13º:
             {{ formatarParaBR(calculator.totalDescontosDecimo) }}
+          </p>
+                  <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'">
+            <i><small>¹Adiantamento do 13º sem URV</small></i>
           </p>
           <p class="tab-liquido">
             <i class="bi bi-caret-right-fill"></i> 13º Salário Líquido:
@@ -871,7 +875,15 @@ computed: {
           : 0
 
       //Cálculo do desconto de adiantamento da 1ª parcela do 13º salário
-      calculator.decimoAdiantamento = calculator.decimoFolhaComplementar / 2
+      const vbSemURV = (calculator.vencimentoBasico / 1.1198)
+      console.log('vbSemURV: ' + vbSemURV)
+      calculator.decimoAdiantamento = (vbSemURV +
+          (vbSemURV * 0.3) +
+          (vbSemURV * (calculator.aqfc / 100)) +
+          (vbSemURV * (calculator.aqe / 100)) +
+          calculator.representacao) / 2
+
+
 
       calculator.decimoPrevidencia =
         calculator.switchDecimo &&
