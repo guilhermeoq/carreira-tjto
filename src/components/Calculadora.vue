@@ -771,7 +771,7 @@ computed: {
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
 
       if (calculator.switchFuncao == true) {
-        (calculator.simularPercentual === true) ? calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) : calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
+        (calculator.simularPercentual === true) ? calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1.1198 : calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
       } else calculator.representacao = 0
 
       calculator.ferias = calculator.switchFerias
@@ -876,12 +876,13 @@ computed: {
 
       //Cálculo do desconto de adiantamento da 1ª parcela do 13º salário
       const vbSemURV = (calculator.vencimentoBasico / 1.1198)
+      const repSemURV = (calculator.representacao / 1.1198)
       console.log('vbSemURV: ' + vbSemURV)
       calculator.decimoAdiantamento = (vbSemURV +
           (vbSemURV * 0.3) +
           (vbSemURV * (calculator.aqfc / 100)) +
           (vbSemURV * (calculator.aqe / 100)) +
-          calculator.representacao) / 2
+          repSemURV) / 2
 
 
 
