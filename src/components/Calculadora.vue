@@ -612,7 +612,7 @@
         <span :class="{ positive: comparativo > 0, negative: comparativo < 0 }">
           {{ formatarParaBR(comparativo) }}</span>
       </h5>
-      <p><small>(diferença de valor líquido)</small></p>
+      <p><small>(diferença de valor líquido entre as simulações)</small></p>
     </div>
     <div class="container d-flex justify-content-center align-items-center">
       <p class="footer">
