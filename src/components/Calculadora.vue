@@ -47,15 +47,16 @@
       </div>
 
       <div class="callout callout-info">
-        <small><strong>[01/07/2025] Novidades<br>Atualizações:</strong><br>
-          🚩 Simulação do PL 06/2023 (URV), <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">em tramitação na AL-TO</a>, aprovado na Comissão de Administração, Trabalho, Defesa do Consumidor, Transportes, Desenvolvimento Urbano e Serviço Públicos em 01/07/2025. O PL prevê efeito financeiro a partir de 1º de outubro de 2025.<br>
+        <small><strong>[01/07/2025] Novidades</strong><br>
+          📣 O PL 06/2023 (URV) <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">irá ao Plenário da ALETO</a>. O PL foi aprovado na Comissão de Administração, Trabalho, Defesa do Consumidor, Transportes, Desenvolvimento Urbano e Serviço Públicos nesta terça-feira, 01/07/2025. O PL prevê efeito financeiro a partir de 1º de outubro de 2025, ou seja, a partir do salário de 01/11/2025.<br>
+          <strong>Atualizações:<br></strong>
           📈 Data-base 2025 (+4,17%), já está incorporado nos cálculos.<br>
           📊 Foi ajustado o cálculo do IRRF conforme <a
             href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
             tabela do Imposto de Renda</a>, vigente a partir da folha de maio/2025.<br>
-            <strong>Correções:</strong><br>
-            🛠️ Cálculo do adiantamento do 13º ajustado para simulação da URV, de modo que o cálculo da 2ª parcela agora considera que a 1ª parcela não possui URV.<br>
-            🪲 Também foi corrigida a simulação da URV que não estava sendo aplicada nas funções gratificadas.
+            <strong>Ajustes & Correções:</strong><br>
+            🛠️ Ao habilitar a simulação da URV, o cálculo do adiantamento do 13º já está ajustado para que o percentual da URV incida apenas sobre a 2ª parcela, uma vez que a 1ª parcela foi paga em 01/07/2025.<br>
+            🪲 Também foi corrigido um erro na simulação da URV, que não estava sendo aplicada no valor das funções.
         </small>
       </div>
 
