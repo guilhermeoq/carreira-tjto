@@ -48,7 +48,7 @@
 
       <div class="callout callout-info">
         <small><strong>[01/07/2025] Novidades</strong><br>
-          📣 O PL 06/2023 (URV) <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">irá ao Plenário da ALETO</a>. O PL foi aprovado na Comissão de Administração, Trabalho, Defesa do Consumidor, Transportes, Desenvolvimento Urbano e Serviço Públicos nesta terça-feira, 01/07/2025. O PL prevê efeito financeiro a partir de 1º de outubro de 2025, ou seja, a partir do salário de 01/11/2025.<br>
+          📣 O PL 06/2023 (URV) <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">irá ao Plenário da ALETO</a>. O PL foi aprovado na Comissão de Administração, Trabalho, Defesa do Consumidor, Transportes, Desenvolvimento Urbano e Serviço Públicos nesta terça-feira, 01/07/2025. O PL prevê efeito financeiro a partir de 1º de outubro de 2025, ou seja, a partir do salário de 1º de novembro.<br>
           <strong>Atualizações:<br></strong>
           📈 Data-base 2025 (+4,17%), já está incorporado nos cálculos.<br>
           📊 Foi ajustado o cálculo do IRRF conforme <a
