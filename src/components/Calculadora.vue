@@ -54,7 +54,7 @@
             href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
             tabela do Imposto de Renda</a>, vigente desde a folha de maio/2025.<br>
             <strong>Ajustes e Correções:</strong><br>
-            🛠️ Ao habilitar o cálculo da URV, o adiantamento do 13º já está ajustado para que o percentual da URV incida apenas sobre a 2ª parcela, uma vez que a 1ª parcela foi paga em 01/07/2025, antes do efeito financeiro.<br>
+            🛠️ Considerando que o efeito financeiro da URV entrará em vigor entre a 1ª e a 2ª parcela do 13º salário de 2025, ao habilitar a URV, foi feito um ajuste apenas no cálculo da 2ª parcela, para que o valor do adiantamento (1ª parcela), pago em 01/07/2025 — antes do início do efeito financeiro — conste nos descontos sem a incidência da URV.<br>
             🪲 Também foi corrigido um erro no cálculo da URV, que não estava sendo aplicada no valor das funções.
         </small>
       </div>
