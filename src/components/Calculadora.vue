@@ -47,8 +47,8 @@
       </div>
 
       <div class="callout callout-info">
-        <small><strong>[27/06/2025] Novidades<br>Atualizações:</strong><br>
-          🚩 Simulação do PL 06/2023 (URV), <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">em tramitação na AL-TO</a>, aprovado na Comissão de Finanças em 25/06/2025. O PL prevê efeito financeiro a partir de 1º de outubro de 2025.<br>
+        <small><strong>[01/07/2025] Novidades<br>Atualizações:</strong><br>
+          🚩 Simulação do PL 06/2023 (URV), <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">em tramitação na AL-TO</a>, aprovado na Comissão de Administração, Trabalho, Defesa do Consumidor, Transportes, Desenvolvimento Urbano e Serviço Públicos em 01/07/2025. O PL prevê efeito financeiro a partir de 1º de outubro de 2025.<br>
           📈 Data-base 2025 (+4,17%), já está incorporado nos cálculos.<br>
           📊 Foi ajustado o cálculo do IRRF conforme <a
             href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
