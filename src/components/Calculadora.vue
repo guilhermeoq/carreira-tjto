@@ -639,12 +639,6 @@
       </a>
     </div>
   </div>
-  <div class="badge container d-flex justify-content-center align-items-center gap-3">
-    <a href="https://github.com/guilhermeoq/carreira-tjto-vue">
-      <img src="https://img.shields.io/badge/Available%20on%20Github-grey?style=for-the-badge&logo=github&color=393939"
-        alt="Available on GitHub" />
-    </a>
-  </div>
 </template>
 
 <script>
