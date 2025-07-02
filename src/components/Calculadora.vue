@@ -3,9 +3,9 @@
     <button class="btn btn-secondary btn-sm" @click="scrollToTop">
       <i class="bi bi-arrow-up"></i>
     </button>
-    <button class="btn btn-secondary btn-sm" @click="scrollToBottom">
+    <a href="#comparativo" class="btn btn-secondary btn-sm">
       <i class="bi bi-arrow-down"></i>
-    </button>
+    </a>
   </div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse" data-bs-theme="dark">
     <div class="container-fluid">
@@ -47,16 +47,15 @@
       </div>
 
       <div class="callout callout-info">
-        <small><strong>[01/07/2025] Novidades</strong><br>
-          📣 O PL 06/2023 (URV) <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">irá ao Plenário da ALETO</a>. O PL foi aprovado na Comissão de Administração, Trabalho, Defesa do Consumidor, Transportes, Desenvolvimento Urbano e Serviço Públicos nesta terça-feira, 01/07/2025. O PL prevê efeito financeiro a partir de 1º de outubro de 2025, ou seja, a partir do salário de 1º de novembro.<br>
-          <strong>Atualizações:<br></strong>
-          📈 Data-base 2025 (+4,17%), já está incorporado nos cálculos.<br>
-          📊 Foi ajustado o cálculo do IRRF conforme <a
+        <small><strong>[02/07/2025] Novidades</strong><br>
+          📣 O PL 06/2023 (URV) <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">foi aprovado na ALETO</a>. O efeito financeiro será partir de 1º de outubro de 2025, ou seja, a partir do salário de 1º de novembro.<br>
+          📈 Data-base 2025 (+4,17%), já está incorporado nos cálculos, vigente desde a folha de maio/2025.<br>
+          📊 O cálculo do IRRF está em conformidade com a <a
             href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
-            tabela do Imposto de Renda</a>, vigente a partir da folha de maio/2025.<br>
-            <strong>Ajustes & Correções:</strong><br>
-            🛠️ Ao habilitar a simulação da URV, o cálculo do adiantamento do 13º já está ajustado para que o percentual da URV incida apenas sobre a 2ª parcela, uma vez que a 1ª parcela foi paga em 01/07/2025.<br>
-            🪲 Também foi corrigido um erro na simulação da URV, que não estava sendo aplicada no valor das funções.
+            tabela do Imposto de Renda</a>, vigente desde a folha de maio/2025.<br>
+            <strong>Ajustes e Correções:</strong><br>
+            🛠️ Considerando que o efeito financeiro da URV entrará em vigor entre a 1ª e a 2ª parcela do 13º salário de 2025, ao habilitar a URV, foi feito um ajuste apenas no cálculo da 2ª parcela, para que o valor do adiantamento (1ª parcela), pago em 01/07/2025 — antes do início do efeito financeiro — conste nos descontos sem a incidência da URV.<br>
+            🪲 Também foi corrigido um erro no cálculo da URV, que não estava sendo aplicada no valor das funções.
         </small>
       </div>
 
@@ -84,7 +83,7 @@
           <div class="form-check form-switch mt-4 mb-3">
             <input v-model="calculator.simularPercentual" class="form-check-input" type="checkbox" role="switch" id="URVSwitch"
                />
-            <label class="form-check-label">Simular URV +11,98% (PL em tramitação)</label>
+            <label class="form-check-label">Calcular URV (+11,98%)</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
@@ -608,7 +607,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
-      <h5 style="margin-bottom: 0;">
+      <h5 id="comparativo" style="margin-bottom: 0;">
         Comparativo:
         <span :class="{ positive: comparativo > 0, negative: comparativo < 0 }">
           {{ formatarParaBR(comparativo) }}</span>
@@ -1334,8 +1333,8 @@ computed: {
 }
 
 .footer {
-  color: #adadad;
-  margin-top: 1em;
+  color: #858585;
+  margin-top: 3em;
   line-height: 1;
   text-align: justify;
   font-size: 0.9em;
