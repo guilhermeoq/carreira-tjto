@@ -548,7 +548,7 @@
             <strong><i class="bi bi-bank2"></i> IRRF:</strong> {{ formatarParaBR(calculator.irrf) }}
           </p>
           <p class="tab-desconto" v-show="calculator.teto > 0">
-            <strong><i class="bi bi-building-fill-exclamation"></i> Sub-teto:</strong>
+            <strong><i class="bi bi-building-fill-exclamation"></i> Teto:</strong>
             {{ formatarParaBR(calculator.teto) }}
           </p>
           <p class="tab-desconto-total">
