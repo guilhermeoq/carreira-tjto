@@ -3,9 +3,9 @@
     <button class="btn btn-secondary btn-sm" @click="scrollToTop">
       <i class="bi bi-arrow-up"></i>
     </button>
-    <button class="btn btn-secondary btn-sm" @click="scrollToBottom">
+    <a href="#comparativo" class="btn btn-secondary btn-sm">
       <i class="bi bi-arrow-down"></i>
-    </button>
+    </a>
   </div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse" data-bs-theme="dark">
     <div class="container-fluid">
@@ -607,7 +607,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
-      <h5 style="margin-bottom: 0;">
+      <h5 id="comparativo" style="margin-bottom: 0;">
         Comparativo:
         <span :class="{ positive: comparativo > 0, negative: comparativo < 0 }">
           {{ formatarParaBR(comparativo) }}</span>
@@ -1333,8 +1333,8 @@ computed: {
 }
 
 .footer {
-  color: #adadad;
-  margin-top: 1em;
+  color: #858585;
+  margin-top: 3em;
   line-height: 1;
   text-align: justify;
   font-size: 0.9em;
