@@ -83,7 +83,7 @@
           <div class="form-check form-switch mt-4 mb-3">
             <input v-model="calculator.simularPercentual" class="form-check-input" type="checkbox" role="switch" id="URVSwitch"
                />
-            <label class="form-check-label">Calcular URV (+11,98%)</label>
+            <label class="form-check-label">Calcular URV (+11,98%, folha de out/2025)</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
