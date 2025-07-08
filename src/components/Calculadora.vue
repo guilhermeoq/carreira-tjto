@@ -48,14 +48,8 @@
 
       <div class="callout callout-info">
         <small><strong>[02/07/2025] Novidades</strong><br>
-          📣 O PL 06/2023 (URV) <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">foi aprovado na ALETO</a>. O efeito financeiro será partir de 1º de outubro de 2025, ou seja, a partir do salário de 1º de novembro.<br>
+          📣 O PL 06/2023 (URV) <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">foi aprovado na ALETO</a>. O texto prevê efeito financeiro a partir de 1º de outubro de 2025, ou seja, a partir do salário de 1º de novembro.<br>
           📈 Data-base 2025 (+4,17%), já está incorporado nos cálculos, vigente desde a folha de maio/2025.<br>
-          📊 O cálculo do IRRF está em conformidade com a <a
-            href="https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/04/nova-tabela-do-imposto-de-renda-comeca-a-valer-em-maio-veja-o-que-muda">nova
-            tabela do Imposto de Renda</a>, vigente desde a folha de maio/2025.<br>
-            <strong>Ajustes e Correções:</strong><br>
-            🛠️ Considerando que o efeito financeiro da URV entrará em vigor entre a 1ª e a 2ª parcela do 13º salário de 2025, ao habilitar a URV, foi feito um ajuste apenas no cálculo da 2ª parcela, para que o valor do adiantamento (1ª parcela), pago em 01/07/2025 — antes do início do efeito financeiro — conste nos descontos sem a incidência da URV.<br>
-            🪲 Também foi corrigido um erro no cálculo da URV, que não estava sendo aplicada no valor das funções.
         </small>
       </div>
 
