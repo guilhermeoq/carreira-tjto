@@ -44,8 +44,7 @@
 
       <div class="d-block d-md-flex gap-3">
         <p class="subtitle">
-          Este simulador é <strong>gratuito, não coleta nenhuma informação pessoal</strong> e foi
-          desenvolvido com base em dados do Portal da Transparência e da legislação vigente.
+          Visualize sua <strong>evolução na carreira e remuneração no TJTO</strong>. Simule progressões e detalhes da folha de pagamento com uma ferramenta gratuita desenvolvida para facilitar seu planejamento financeiro.
         </p>
       </div>
 
@@ -615,10 +614,7 @@
       <p class="footer">
         Desenvolvido por
         <a href="https://guilhermeoq.github.io"
-          style="color: #858585">Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a>. Os valores
-        calculados nesta página não podem ser considerados 100% corretos devido a
-        possíveis erros nos cálculos e nos valores e alíquotas de impostos e gratificações. Não me
-        responsabilizo por eventuais diferenças entre a simulação e os valores reais. Caso você tenha alguma sugestão, correção ou comentário a fazer sobre a calculadora, por favor entre em contato pelo e-mail <a style="color: #858585" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
+          class="link">Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a>. Este simulador é gratuito, não coleta nenhuma informação pessoal e foi desenvolvido com base em dados do Portal da Transparência e da legislação vigente.<br>Os valores calculados nesta página não podem ser considerados 100% corretos devido a possíveis erros nos cálculos e nos valores e alíquotas de impostos e gratificações. Não me responsabilizo por eventuais diferenças entre a simulação e os valores reais. Caso você tenha alguma sugestão ou comentário, por favor entre em contato pelo e-mail <a class="link" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
       </p>
     </div>
 
@@ -634,6 +630,7 @@
           alt="Powered by Vercel" />
       </a>
     </div>
+    <p class="copyright">© {{ currentYear }}  Carreira TJTO. Todos os direitos reservados.</p>
   </div>
 </template>
 
@@ -657,6 +654,9 @@ computed: {
 
     return total1 - total0;
   },
+   currentYear() {
+      return new Date().getFullYear();
+    }
 },
 
   methods: {
@@ -1312,6 +1312,19 @@ body[data-bs-theme="dark"] {
   font-size: 0.9em;
 }
 
+.copyright {
+  color: #858585;
+  margin-top: 1em;
+  line-height: 1;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.link {
+color: #c5c5c5
+}
+
+
 .badge {
 
   display: inline-flex;
@@ -1415,7 +1428,7 @@ body[data-bs-theme="light"] {
 }
 
 .callout-info {
-  background-color: #d1f1d4;
+  background-color: #deebe5;
   border-left-color: #0a924e;
   color: #0c5460;
 }
@@ -1526,14 +1539,26 @@ body[data-bs-theme="light"] {
   color: red;
 }
 
-
 .footer {
-  color: #858585;
+  color: #383838;
   margin-top: 3em;
   line-height: 1;
   text-align: justify;
   font-size: 0.9em;
 }
+
+.copyright {
+  color: #383838;
+  margin-top: 1em;
+  line-height: 1;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.link {
+color: rgb(71, 71, 71)
+}
+
 
 .badge {
 
@@ -1612,6 +1637,5 @@ body[data-bs-theme="light"] {
     background-position: left;
   }
 }
-
 
 </style>
