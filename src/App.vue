@@ -34,19 +34,14 @@ body[data-bs-theme="dark"] {
 /* === LIGHT THEME === */
 body[data-bs-theme="light"] {
 .back {
-  --bd-pink-rgb: 214, 51, 132;
   padding-right: 0px;
   padding-bottom: 3rem;
 
-  background-image: linear-gradient(
-      180deg,
-      rgba(var(--bs-body-bg-rgb), 0.01),
-      rgba(var(--bs-body-bg-rgb), 1) 85%
-    ),
-    radial-gradient(ellipse at top left, rgba(var(--bs-primary-rgb), 0.5), transparent 50%),
-    radial-gradient(ellipse at top right, rgba(var(--bd-accent-rgb), 0.5), transparent 50%),
-    radial-gradient(ellipse at center right, rgba(var(--bd-violet-rgb), 0.5), transparent 50%),
-    radial-gradient(ellipse at center left, rgba(var(--bd-pink-rgb), 0.5), transparent 50%);
+background: #C9D6FF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
 }
 
 }
