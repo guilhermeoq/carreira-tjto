@@ -7,7 +7,7 @@
       <i class="bi bi-arrow-down"></i>
     </a>
   </div>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse" data-bs-theme="dark">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse">
     <div class="container-fluid">
       <div class="navbar-brand"><img src="/android-chrome-192x192.png" width="25" height="25" alt=""> <strong>carreiratjto.com</strong></div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -32,8 +32,11 @@
   </nav>
   <div id="app" class="container-lg">
 
+<div class="mt-4 mb-3 d-flex justify-content-end">
+  <ThemeToggle />
+</div>
+    <div class="container-sm">
 
-    <div style="padding-top: 2em" class="container-sm">
       <h1 class="title">
         Simulador da Carreira
         <span class="gradient-text">PCCR</span> dos Servidores do TJTO
@@ -612,10 +615,10 @@
       <p class="footer">
         Desenvolvido por
         <a href="https://guilhermeoq.github.io"
-          style="color: white">Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a>. Os valores
+          style="color: #858585">Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a>. Os valores
         calculados nesta página não podem ser considerados 100% corretos devido a
         possíveis erros nos cálculos e nos valores e alíquotas de impostos e gratificações. Não me
-        responsabilizo por eventuais diferenças entre a simulação e os valores reais. Caso você tenha alguma sugestão, correção ou comentário a fazer sobre a calculadora, por favor entre em contato pelo e-mail <a style="color: white" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
+        responsabilizo por eventuais diferenças entre a simulação e os valores reais. Caso você tenha alguma sugestão, correção ou comentário a fazer sobre a calculadora, por favor entre em contato pelo e-mail <a style="color: #858585" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
       </p>
     </div>
 
@@ -635,11 +638,15 @@
 </template>
 
 <script>
+import ThemeToggle from './ThemeToggle.vue';
 export default {
   data() {
     return {
       calculators: [this.createCalculator(), this.createCalculator()],
     }
+  },
+  components: {
+    ThemeToggle,
   },
 computed: {
   comparativo() {
@@ -1130,7 +1137,9 @@ computed: {
 }
 </script>
 
-<style scoped>
+<style>
+/* === DARK THEME === */
+body[data-bs-theme="dark"] {
 .calculators {
   display: flex;
   gap: 20px;
@@ -1159,7 +1168,6 @@ computed: {
   line-height: 0.95;
   margin-bottom: 1rem;
   letter-spacing: -0.05em;
-  color: rgb(216, 216, 216);
   font-size: 3rem;
 }
 
@@ -1167,7 +1175,6 @@ computed: {
   font-family: 'YourHeadingFont', sans-serif;
   line-height: 1.25;
   margin-bottom: 1rem;
-  color: rgb(197, 197, 197);
   font-size: 1.25rem;
 }
 
@@ -1378,6 +1385,261 @@ computed: {
 
 .copyBtn:hover {
   background-color: #564c77;
+}
+}
+
+/* === LIGHT THEME === */
+body[data-bs-theme="light"] {
+
+.calculators {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.calculator {
+  flex: 1;
+  margin-bottom: 1em;
+  padding: 2em;
+  border-radius: 1.5em;
+  background-color: white;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .calculator {
+    width: calc(50% - 20px);
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-family: 'YourHeadingFont', sans-serif;
+  line-height: 0.95;
+  margin-bottom: 1rem;
+  letter-spacing: -0.05em;
+  font-size: 3rem;
+}
+
+.subtitle {
+  font-family: 'YourHeadingFont', sans-serif;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #302055, rgb(147, 104, 172), rgb(67, 9, 161));
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgb(109 40 217);
+  transition: color 0.2s ease-in-out;
+  font-weight: 900;
+}
+
+.gradient-text:hover {
+  color: rgba(0, 0, 0, 0);
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: left;
+  }
+
+  50% {
+    background-position: right;
+  }
+
+  100% {
+    background-position: left;
+  }
+}
+
+.callout {
+  padding: 15px;
+  margin: 20px 0;
+  border: 1px solid transparent;
+  border-left-width: 10px;
+  border-radius: 4px;
+}
+
+.callout-info {
+  background-color: #d1f1d4;
+  border-left-color: #0a924e;
+  color: #0c5460;
+}
+
+.callout-warning {
+  background-color: #e1f1ff;
+  border-left-color: #0f558f;
+  color: #030303;
+}
+
+.tab-rendimento {
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(149, 213, 233));
+  margin-bottom: 1px;
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-radius: 0.3em;
+}
+
+.tab-alimentacao {
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(48, 199, 184));
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-radius: 0.3em;
+  margin-bottom: 1px;
+}
+
+.tab-representacao {
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(248, 175, 127));
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-radius: 0.3em;
+  margin-bottom: 1px;
+}
+
+
+.tab-ferias {
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(216, 191, 255));
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-radius: 0.3em;
+  margin-bottom: 1px;
+}
+
+.tab-saude {
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(241, 203, 97));
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-radius: 0.3em;
+  margin-bottom: 1px;
+}
+
+.tab-decimo {
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(180, 206, 255));
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-radius: 0.3em;
+  margin-bottom: 1px;
+}
+
+.tab-bruto {
+  background-color: #214574;
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-radius: 0.3em;
+  color: white;
+  font-weight: bold;
+}
+
+.tab-desconto {
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(255, 200, 200));
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-radius: 0.3em;
+  margin-bottom: 1px;
+}
+
+.tab-desconto-total {
+  background-color: #ff9393;
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-radius: 0.3em;
+  font-weight: bold;
+}
+
+.tab-liquido {
+  margin-top: 1em;
+  background-color: rgb(102, 214, 102);
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-radius: 0.3em;
+  font-weight: bold;
+}
+
+.tab-salario-e-decimo {
+  margin-top: 1em;
+  background-color: rgb(20, 133, 58);
+  padding: 0.2em;
+  border-radius: 0.3em;
+  font-weight: bold;
+  color: white;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+
+.footer {
+  color: #858585;
+  margin-top: 3em;
+  line-height: 1;
+  text-align: justify;
+  font-size: 0.9em;
+}
+
+.badge {
+
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #353535;
+}
+
+.vue-logo {
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+}
+
+.clearBtn {
+  background-color: #4f8ec2;
+  color: white;
+  border: none;
+}
+
+.clearBtn:hover {
+  background-color: #77a3c5;
+}
+
+.swapBtn {
+  background-color: #193963;
+  color: white;
+  border: none;
+}
+
+.swapBtn:hover {
+  background-color: #30598d
+}
+
+.copyBtn {
+  background-color: #486ea0;
+  color: white;
+  border: none;
+}
+
+.copyBtn:hover {
+  background-color: #6284af;
+}
+
+
 }
 
 
