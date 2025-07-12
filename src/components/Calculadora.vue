@@ -1184,35 +1184,6 @@ body[data-bs-theme="dark"] {
   }
 }
 
-.gradient-text {
-  background: linear-gradient(to right, #302055, rgb(147, 104, 172), rgb(67, 9, 161));
-  background-size: 200% 200%;
-  animation: rainbow 2s ease-in-out infinite;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: rgb(109 40 217);
-  transition: color 0.2s ease-in-out;
-  font-weight: 900;
-}
-
-.gradient-text:hover {
-  color: rgba(0, 0, 0, 0);
-}
-
-@keyframes rainbow {
-  0% {
-    background-position: left;
-  }
-
-  50% {
-    background-position: right;
-  }
-
-  100% {
-    background-position: left;
-  }
-}
-
 .callout {
   padding: 15px;
   margin: 20px 0;
@@ -1435,35 +1406,6 @@ body[data-bs-theme="light"] {
   }
 }
 
-.gradient-text {
-  background: linear-gradient(to right, #302055, rgb(147, 104, 172), rgb(67, 9, 161));
-  background-size: 200% 200%;
-  animation: rainbow 2s ease-in-out infinite;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: rgb(109 40 217);
-  transition: color 0.2s ease-in-out;
-  font-weight: 900;
-}
-
-.gradient-text:hover {
-  color: rgba(0, 0, 0, 0);
-}
-
-@keyframes rainbow {
-  0% {
-    background-position: left;
-  }
-
-  50% {
-    background-position: right;
-  }
-
-  100% {
-    background-position: left;
-  }
-}
-
 .callout {
   padding: 15px;
   margin: 20px 0;
@@ -1640,6 +1582,35 @@ body[data-bs-theme="light"] {
 }
 
 
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #302055, rgb(147, 104, 172), rgb(67, 9, 161));
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgb(109 40 217);
+  transition: color 0.2s ease-in-out;
+  font-weight: 900;
+}
+
+.gradient-text:hover {
+  color: rgba(0, 0, 0, 0);
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: left;
+  }
+
+  50% {
+    background-position: right;
+  }
+
+  100% {
+    background-position: left;
+  }
 }
 
 
