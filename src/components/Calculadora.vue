@@ -1,12 +1,12 @@
 <template>
-  <div class="scroll-buttons position-fixed bottom-0 start-0 m-3 d-flex flex-column gap-2 z-3">
+  <!-- <div class="scroll-buttons position-fixed bottom-0 start-0 m-3 d-flex flex-column gap-2 z-3">
     <button class="btn btn-secondary btn-sm" @click="scrollToTop">
       <i class="bi bi-arrow-up"></i>
     </button>
     <a href="#comparativo" class="btn btn-secondary btn-sm">
       <i class="bi bi-arrow-down"></i>
     </a>
-  </div>
+  </div>-->
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse">
     <div class="container-fluid">
       <div class="navbar-brand"><img src="/android-chrome-192x192.png" width="25" height="25" alt=""> <strong>carreiratjto.com</strong></div>
@@ -604,7 +604,7 @@
     </div>
     <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
       <h5 id="comparativo" style="margin-bottom: 0;">
-        Comparativo:
+        Comparação:
         <span :class="{ positive: comparativo > 0, negative: comparativo < 0 }">
           {{ formatarParaBR(comparativo) }}</span>
       </h5>
@@ -732,12 +732,12 @@ computed: {
       this.updateSalary(0);
       this.saveCalculatorsToLocalStorage();
     },
-    scrollToTop() {
+    /* scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     scrollToBottom() {
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    },
+    }, */
 
     //Opções de AQE conforme cargo
     getAqeOptions(cargo) {
