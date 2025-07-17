@@ -50,7 +50,7 @@
 
       <div class="callout callout-info">
         <small><strong>[02/07/2025] Novidades</strong><br>
-          📣 O PL 06/2023 (URV) <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">foi aprovado na ALETO</a>. O texto prevê efeito financeiro a partir de 1º de outubro de 2025, ou seja, a partir do salário de 1º de novembro.<br>
+          📣 O PL 06/2023 (URV) <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">foi aprovado na ALETO</a>, aguardando a sanção do Poder Executivo. O texto prevê efeito financeiro a partir de 1º de outubro de 2025, ou seja, a partir do salário de 1º de novembro.<br>
           📈 Data-base 2025 (+4,17%), já está incorporado nos cálculos, vigente desde a folha de maio/2025.<br>
         </small>
       </div>
