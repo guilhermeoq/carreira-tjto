@@ -38,9 +38,6 @@
               >Data-base 2025</a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605">PL06/2023 (URV)</a>
-          </li>
         </ul>
       </div>
     </div>
