@@ -9,19 +9,34 @@
   </div>-->
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse">
     <div class="container-fluid">
-      <div class="navbar-brand"><img src="/android-chrome-192x192.png" width="25" height="25" alt=""> <strong>carreiratjto.com</strong></div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="navbar-brand">
+        <img src="/android-chrome-192x192.png" width="25" height="25" alt="" />
+        <strong>carreiratjto.com</strong>
+      </div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link"
-              href="https://www.tjto.jus.br/component/edocman/685-plano-de-cargos-carreiras-e-remuneracao-dos-servidores-do-tjto/viewdocument/685?Itemid=">Lei n.º 2.409</a>
+            <a
+              class="nav-link"
+              href="https://www.tjto.jus.br/component/edocman/685-plano-de-cargos-carreiras-e-remuneracao-dos-servidores-do-tjto/viewdocument/685?Itemid="
+              >Lei n.º 2.409</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio">Data-base 2025</a>
+            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
+              >Data-base 2025</a
+            >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://sapl.al.to.leg.br/materia/9605">PL06/2023 (URV)</a>
@@ -31,12 +46,10 @@
     </div>
   </nav>
   <div id="app" class="container-lg">
-
-<div class="mt-4 mb-3 d-flex justify-content-end">
-  <ThemeToggle />
-</div>
+    <div class="mt-4 mb-3 d-flex justify-content-end">
+      <ThemeToggle />
+    </div>
     <div class="container-sm">
-
       <h1 class="title">
         Simulador da Carreira
         <span class="gradient-text">PCCR</span> dos Servidores do TJTO
@@ -44,32 +57,48 @@
 
       <div class="d-block d-md-flex gap-3">
         <p class="subtitle">
-          Visualize sua <strong>evolução na carreira e remuneração no TJTO</strong>. Simule progressões e detalhes da folha de pagamento com uma ferramenta gratuita desenvolvida para facilitar seu planejamento financeiro.
+          Visualize sua <strong>evolução na carreira e remuneração no TJTO</strong>. Simule
+          progressões e detalhes da folha de pagamento com uma ferramenta gratuita desenvolvida para
+          facilitar seu planejamento financeiro.
         </p>
       </div>
 
       <div class="callout callout-info">
-        <small><strong>[02/07/2025] Novidades</strong><br>
-          📣 O PL 06/2023 (URV) <a href="https://sapl.al.to.leg.br/materia/9605/documentoacessorio">foi aprovado na ALETO</a>, aguardando a sanção do Poder Executivo. O texto prevê efeito financeiro a partir de 1º de outubro de 2025.<br>
-          📈 Data-base 2025 (+4,17%), já está incorporado nos cálculos, vigente desde a folha de maio/2025.<br>
+        <small
+          ><strong>[24/07/2025] Novidades</strong><br />
+          📈 Atualizado em conformidade com a
+          <a href="https://doe.to.gov.br/diario/5476/download"
+            >Lei Nº 4.815, de 21 de julho de 2025</a
+          >, que dispõe sobre a recomposição dos vencimentos dos servidores efetivos ativos,
+          inativos, pensionistas e comissionados do Poder Judiciário do Estado do Tocantins,
+          decorrente da perda salarial ocasionada pela conversão da moeda em URV, na forma do art.
+          22 da Lei Nº 8.880, de 27 de maio de 1994. A lei produz efeitos financeiros a partir de 1º
+          de outubro de 2025.<br />
         </small>
       </div>
 
-      <div style="text-align: center; margin-top: 2em; margin-bottom: 1em;">
-        <button type="button" class="btn clearBtn" @click="resetCalculators"><strong><i class="bi bi-stars"></i> Limpar</strong></button>
+      <div style="text-align: center; margin-top: 2em; margin-bottom: 1em">
+        <button type="button" class="btn clearBtn" @click="resetCalculators">
+          <strong><i class="bi bi-stars"></i> Limpar</strong>
+        </button>
       </div>
       <div class="d-flex justify-content-center gap-3">
-      <div style="text-align: center; margin-bottom: 1em">
-        <button type="button" class="btn copyBtn" @click="copyCalc1ToCalc2"> <strong><i class="bi bi-copy"></i> Copiar 1 para 2</strong></button>
+        <div style="text-align: center; margin-bottom: 1em">
+          <button type="button" class="btn copyBtn" @click="copyCalc1ToCalc2">
+            <strong><i class="bi bi-copy"></i> Copiar 1 para 2</strong>
+          </button>
+        </div>
+        <div style="text-align: center; margin-bottom: 1em">
+          <button type="button" class="btn swapBtn" @click="swapCalculators">
+            <i class="bi bi-arrow-left-right"></i> <strong>Inverter</strong>
+          </button>
+        </div>
+        <div style="text-align: center; margin-bottom: 1em">
+          <button type="button" class="btn copyBtn" @click="copyCalc2ToCalc1">
+            <strong><i class="bi bi-copy"></i> Copiar 2 para 1</strong>
+          </button>
+        </div>
       </div>
-      <div style="text-align: center; margin-bottom: 1em">
-        <button type="button" class="btn swapBtn" @click="swapCalculators"><i class="bi bi-arrow-left-right"></i>  <strong>Inverter</strong></button>
-      </div>
-      <div style="text-align: center; margin-bottom: 1em">
-        <button type="button" class="btn copyBtn" @click="copyCalc2ToCalc1"><strong><i class="bi bi-copy"></i> Copiar 2 para 1</strong></button>
-      </div>
-      </div>
-
     </div>
     <div class="d-sm-flex gap-3">
       <div v-for="(calculator, index) in calculators" :key="index" class="calculator">
@@ -77,14 +106,24 @@
         <form @change="updateSalary(index)">
           <!-- SWITCH URV -->
           <div class="form-check form-switch mt-4 mb-3">
-            <input v-model="calculator.simularPercentual" class="form-check-input" type="checkbox" role="switch" id="URVSwitch"
-               />
+            <input
+              v-model="calculator.simularPercentual"
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="URVSwitch"
+            />
             <label class="form-check-label">Calcular URV (+11,98%, folha de out/2025)</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
             <div class="form-floating mb-3 flex-fill">
-              <select class="form-select" id="cargoSelect" aria-label="Selecione o cargo" v-model="calculator.cargo">
+              <select
+                class="form-select"
+                id="cargoSelect"
+                aria-label="Selecione o cargo"
+                v-model="calculator.cargo"
+              >
                 <option value="tecnico" selected>Técnico Judiciário</option>
                 <option value="analista">Analista Judiciário</option>
               </select>
@@ -93,7 +132,12 @@
 
             <!-- SELECTION NÍVEL -->
             <div class="form-floating mb-3 flex-fill">
-              <select class="form-select" id="nivel" aria-label="Selecione o nível" v-model.number="calculator.nivel">
+              <select
+                class="form-select"
+                id="nivel"
+                aria-label="Selecione o nível"
+                v-model.number="calculator.nivel"
+              >
                 <option v-for="n in 15" :value="n">{{ n }}</option>
               </select>
               <label>Nível</label>
@@ -103,8 +147,12 @@
           <div class="d-flex flex-wrap justify-content-between gap-1">
             <!-- SELECTION AQFC -->
             <div class="form-floating mb-3 flex-fill">
-              <select class="form-select" id="aqfc" aria-label="Selecione o percentual AQFC"
-                v-model.number="calculator.aqfc">
+              <select
+                class="form-select"
+                id="aqfc"
+                aria-label="Selecione o percentual AQFC"
+                v-model.number="calculator.aqfc"
+              >
                 <option v-for="percent in [0, 1, 2, 3]" :value="percent">{{ percent }}%</option>
               </select>
               <label>AQFC</label>
@@ -112,10 +160,18 @@
 
             <!-- SELECTION AQE -->
             <div class="form-floating mb-3 flex-fill">
-              <select class="form-select" id="aqe" aria-label="Selecione o percentual AQE"
-                v-model.number="calculator.aqe">
+              <select
+                class="form-select"
+                id="aqe"
+                aria-label="Selecione o percentual AQE"
+                v-model.number="calculator.aqe"
+              >
                 <!-- `filteredAQE` -->
-                <option v-for="percent in getAqeOptions(calculator.cargo)" :key="percent" :value="percent">
+                <option
+                  v-for="percent in getAqeOptions(calculator.cargo)"
+                  :key="percent"
+                  :value="percent"
+                >
                   {{ percent }}%
                 </option>
               </select>
@@ -125,7 +181,12 @@
 
           <!-- SELECTION DEPENDENTE IR -->
           <div class="form-floating mb-3 flex-fill">
-            <select class="form-select" id="dependente" aria-label="Nº de dep. IR" v-model="calculator.dependente">
+            <select
+              class="form-select"
+              id="dependente"
+              aria-label="Nº de dep. IR"
+              v-model="calculator.dependente"
+            >
               <option v-for="n in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :value="n">{{ n }}</option>
             </select>
             <label>Nº dep. IR</label>
@@ -137,58 +198,95 @@
             <div class="pt-2 pb-1 d-flex flex-wrap gap-3">
               <div class="d-flex flex-row gap-3 flex-wrap">
                 <div class="form-check">
-                  <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio"
-                    name="tipoPrevidencia" value="prevcom" id="prevcom" checked />
+                  <input
+                    v-model="calculator.tipoPrevidencia"
+                    class="form-check-input"
+                    type="radio"
+                    name="tipoPrevidencia"
+                    value="prevcom"
+                    id="prevcom"
+                    checked
+                  />
                   <label class="form-check-label"> Complementar</label>
                 </div>
                 <div class="form-check">
-                  <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio"
-                    name="tipoPrevidencia" value="igeprevNovo" id="igeprevNovo" />
+                  <input
+                    v-model="calculator.tipoPrevidencia"
+                    class="form-check-input"
+                    type="radio"
+                    name="tipoPrevidencia"
+                    value="igeprevNovo"
+                    id="igeprevNovo"
+                  />
                   <label class="form-check-label"> IGEPREV (novo) </label>
                 </div>
                 <div class="form-check">
-                  <input v-model="calculator.tipoPrevidencia" class="form-check-input" type="radio"
-                    name="tipoPrevidencia" value="igeprevAntigo" id="igeprevAntigo" />
+                  <input
+                    v-model="calculator.tipoPrevidencia"
+                    class="form-check-input"
+                    type="radio"
+                    name="tipoPrevidencia"
+                    value="igeprevAntigo"
+                    id="igeprevAntigo"
+                  />
                   <label class="form-check-label"> IGEPREV (antigo) </label>
                 </div>
               </div>
             </div>
             <div class="mb-2">
-              <div ></div>
-              <i v-show="calculator.tipoPrevidencia === 'prevcom'"><small>*IGEPREV (14%) + BRASILPREV (8,5%).</small></i>
-              <i v-show="calculator.tipoPrevidencia === 'igeprevNovo'"><small>*IGEPREV (14% limitado ao teto).</small></i>
-              <i v-show="calculator.tipoPrevidencia === 'igeprevAntigo'"><small>*IGEPREV (14% sobre todo o salário).</small></i>
+              <div></div>
+              <i v-show="calculator.tipoPrevidencia === 'prevcom'"
+                ><small>*IGEPREV (14%) + BRASILPREV (8,5%).</small></i
+              >
+              <i v-show="calculator.tipoPrevidencia === 'igeprevNovo'"
+                ><small>*IGEPREV (14% limitado ao teto).</small></i
+              >
+              <i v-show="calculator.tipoPrevidencia === 'igeprevAntigo'"
+                ><small>*IGEPREV (14% sobre todo o salário).</small></i
+              >
             </div>
           </div>
 
           <div class="mt-3 form-check form-switch mb-3">
-            <input v-model="calculator.switchFuncao" class="form-check-input" type="checkbox" role="switch"
-              id="switchFuncao" />
+            <input
+              v-model="calculator.switchFuncao"
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="switchFuncao"
+            />
             <label class="form-check-label">Funções </label>
           </div>
 
           <!-- Funcao do Servidor -->
           <div class="d-flex flex-wrap justify-content-between gap-1 mb-1">
             <div v-if="calculator.switchFuncao" class="form-floating mb-1 flex-fill col-3">
-              <select class="form-select" id="funcaoServidor" aria-label="Idade do Servidor"
-                v-model="calculator.funcaoServidor">
-                <option v-for="n in [
-                  'DAJ-1',
-                  'DAJ-2',
-                  'DAJ-3',
-                  'DAJ-4',
-                  'DAJ-5',
-                  'DAJ-6',
-                  'DAJ-7',
-                  'DAJ-8',
-                  'DAJ-9',
-                  'DAJ-10',
-                  'DAJ-11',
-                  'FC-1',
-                  'FC-2',
-                  'FC-3',
-                  'FC-4',
-                ]" :value="n">
+              <select
+                class="form-select"
+                id="funcaoServidor"
+                aria-label="Idade do Servidor"
+                v-model="calculator.funcaoServidor"
+              >
+                <option
+                  v-for="n in [
+                    'DAJ-1',
+                    'DAJ-2',
+                    'DAJ-3',
+                    'DAJ-4',
+                    'DAJ-5',
+                    'DAJ-6',
+                    'DAJ-7',
+                    'DAJ-8',
+                    'DAJ-9',
+                    'DAJ-10',
+                    'DAJ-11',
+                    'FC-1',
+                    'FC-2',
+                    'FC-3',
+                    'FC-4',
+                  ]"
+                  :value="n"
+                >
                   {{ n }}
                 </option>
               </select>
@@ -202,8 +300,13 @@
 
           <div class="border-top">
             <div class="form-check form-switch gap-1 mb-3 mt-3">
-              <input v-model="calculator.switchFerias" class="form-check-input" type="checkbox" role="switch"
-                id="ferias" />
+              <input
+                v-model="calculator.switchFerias"
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="ferias"
+              />
               <label class="form-check-label">Adicional de Férias</label>
             </div>
           </div>
@@ -212,8 +315,13 @@
           <div class="border-top pt-3 pb-3 d-flex flex-wrap gap-3">
             <div class="d-flex flex-row gap-3">
               <div class="form-check form-switch">
-                <input v-model="calculator.switchDecimo" class="form-check-input" type="checkbox" role="switch"
-                  id="decimo" />
+                <input
+                  v-model="calculator.switchDecimo"
+                  class="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="decimo"
+                />
                 <label class="form-check-label">13º Salário </label>
               </div>
             </div>
@@ -221,18 +329,40 @@
             <!-- OPÇÕES DO 13º SALARIO -->
             <div class="d-flex flex-row gap-3">
               <div class="form-check">
-                <input v-model="calculator.tipoDecimo" class="form-check-input" type="radio" name="tipoDecimo"
-                  value="integral" id="integral" :disabled="!calculator.switchDecimo" checked />
+                <input
+                  v-model="calculator.tipoDecimo"
+                  class="form-check-input"
+                  type="radio"
+                  name="tipoDecimo"
+                  value="integral"
+                  id="integral"
+                  :disabled="!calculator.switchDecimo"
+                  checked
+                />
                 <label class="form-check-label"> Integral </label>
               </div>
               <div class="form-check">
-                <input v-model="calculator.tipoDecimo" class="form-check-input" type="radio" name="tipoDecimo"
-                  value="parcela1" id="parcela1" :disabled="!calculator.switchDecimo" />
+                <input
+                  v-model="calculator.tipoDecimo"
+                  class="form-check-input"
+                  type="radio"
+                  name="tipoDecimo"
+                  value="parcela1"
+                  id="parcela1"
+                  :disabled="!calculator.switchDecimo"
+                />
                 <label class="form-check-label"> 1ª Parcela </label>
               </div>
               <div class="form-check">
-                <input v-model="calculator.tipoDecimo" class="form-check-input" type="radio" name="tipoDecimo"
-                  value="parcela2" id="parcela2" :disabled="!calculator.switchDecimo" />
+                <input
+                  v-model="calculator.tipoDecimo"
+                  class="form-check-input"
+                  type="radio"
+                  name="tipoDecimo"
+                  value="parcela2"
+                  id="parcela2"
+                  :disabled="!calculator.switchDecimo"
+                />
                 <label class="form-check-label"> 2ª Parcela </label>
               </div>
             </div>
@@ -241,51 +371,82 @@
           <!-- SELECTION AUXILIO SAUDE -->
           <div class="border-top">
             <div class="mt-3 form-check form-switch mb-3">
-              <input v-model="calculator.switchSaude" class="form-check-input" type="checkbox" role="switch"
-                id="switchSaude" />
+              <input
+                v-model="calculator.switchSaude"
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="switchSaude"
+              />
               <label class="form-check-label">Auxílio Saúde</label>
             </div>
 
             <!-- Faixa Etaria - Idade Servidor -->
             <div class="d-flex flex-wrap justify-content-between gap-1">
               <div v-if="calculator.switchSaude" class="form-floating mb-1 flex-fill col-3">
-                <select class="form-select border-primary border-2" id="idadeServidor" aria-label="Idade do Servidor"
-                  v-model="calculator.faixaEtariaServidor">
-                  <option v-for="n in [
-                    '0-18',
-                    '19-23',
-                    '24-28',
-                    '29-33',
-                    '34-38',
-                    '39-43',
-                    '44-48',
-                    '49-53',
-                    '54-58',
-                    '59+',
-                  ]" :value="n">
+                <select
+                  class="form-select border-primary border-2"
+                  id="idadeServidor"
+                  aria-label="Idade do Servidor"
+                  v-model="calculator.faixaEtariaServidor"
+                >
+                  <option
+                    v-for="n in [
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
                     {{ n }}
                   </option>
                 </select>
                 <label>Idade Servidor</label>
               </div>
               <div v-if="calculator.switchSaude" class="form-floating mb-1 col-6">
-                <input type="number" min="0.00" max="10000.00" step="any" class="form-control border-primary border-2"
-                  id="mensalidadeServidor" placeholder="Digite o valor" v-model="calculator.mensalidadeServidor" />
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-primary border-2"
+                  id="mensalidadeServidor"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeServidor"
+                />
                 <label>Valor Servidor (R$)</label>
               </div>
             </div>
-            <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Servidor"
-              :aria-valuenow="(
-                (calculator.mensalidadeServidor * 100) /
-                consultaReembolso(calculator.faixaEtariaServidor)
-              ).toFixed(2)
-                " aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar bg-primary" :style="{
-                width:
+            <div
+              v-if="calculator.switchSaude"
+              class="progress mb-3"
+              role="progressbar"
+              aria-label="Limite Servidor"
+              :aria-valuenow="
+                (
                   (calculator.mensalidadeServidor * 100) /
-                  consultaReembolso(calculator.faixaEtariaServidor) +
-                  '%',
-              }">
+                  consultaReembolso(calculator.faixaEtariaServidor)
+                ).toFixed(2)
+              "
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div
+                class="progress-bar bg-primary"
+                :style="{
+                  width:
+                    (calculator.mensalidadeServidor * 100) /
+                      consultaReembolso(calculator.faixaEtariaServidor) +
+                    '%',
+                }"
+              >
                 {{
                   (
                     (calculator.mensalidadeServidor * 100) /
@@ -296,46 +457,74 @@
             </div>
 
             <!-- Faixa Etaria - Idade Dependente 1 -->
-            <div v-if="calculator.switchSaude" class="d-flex flex-wrap justify-content-between gap-1">
+            <div
+              v-if="calculator.switchSaude"
+              class="d-flex flex-wrap justify-content-between gap-1"
+            >
               <div class="form-floating mb-1 flex-fill col-3">
-                <select class="form-select border-success border-2" id="idadeDependente1"
-                  aria-label="Idade do Dependente 1" v-model="calculator.faixaEtariaDependente1">
-                  <option v-for="n in [
-                    '0-18',
-                    '19-23',
-                    '24-28',
-                    '29-33',
-                    '34-38',
-                    '39-43',
-                    '44-48',
-                    '49-53',
-                    '54-58',
-                    '59+',
-                  ]" :value="n">
+                <select
+                  class="form-select border-success border-2"
+                  id="idadeDependente1"
+                  aria-label="Idade do Dependente 1"
+                  v-model="calculator.faixaEtariaDependente1"
+                >
+                  <option
+                    v-for="n in [
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
                     {{ n }}
                   </option>
                 </select>
                 <label>Idade Dep. 1</label>
               </div>
               <div class="form-floating mb-1 col-6">
-                <input type="number" min="0.00" max="10000.00" step="any" class="form-control border-success border-2"
-                  id="mensalidadeDependente1" placeholder="Digite o valor"
-                  v-model="calculator.mensalidadeDependente1" />
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-success border-2"
+                  id="mensalidadeDependente1"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeDependente1"
+                />
                 <label>Valor Dep. 1 (R$)</label>
               </div>
             </div>
-            <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Dependente 1"
-              :aria-valuenow="(
-                (calculator.mensalidadeDependente1 * 100) /
-                consultaReembolso(calculator.faixaEtariaDependente1)
-              ).toFixed(2)
-                " aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar bg-success" :style="{
-                width:
+            <div
+              v-if="calculator.switchSaude"
+              class="progress mb-3"
+              role="progressbar"
+              aria-label="Limite Dependente 1"
+              :aria-valuenow="
+                (
                   (calculator.mensalidadeDependente1 * 100) /
-                  consultaReembolso(calculator.faixaEtariaDependente1) +
-                  '%',
-              }">
+                  consultaReembolso(calculator.faixaEtariaDependente1)
+                ).toFixed(2)
+              "
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div
+                class="progress-bar bg-success"
+                :style="{
+                  width:
+                    (calculator.mensalidadeDependente1 * 100) /
+                      consultaReembolso(calculator.faixaEtariaDependente1) +
+                    '%',
+                }"
+              >
                 {{
                   (
                     (calculator.mensalidadeDependente1 * 100) /
@@ -346,46 +535,74 @@
             </div>
 
             <!-- Faixa Etaria - Idade Dependente 2 -->
-            <div v-if="calculator.switchSaude" class="d-flex flex-wrap justify-content-between gap-1">
+            <div
+              v-if="calculator.switchSaude"
+              class="d-flex flex-wrap justify-content-between gap-1"
+            >
               <div class="form-floating mb-3 flex-fill col-3">
-                <select class="form-select border-warning border-2" id="idadeDependente2"
-                  aria-label="Idade do Dependente 2" v-model="calculator.faixaEtariaDependente2">
-                  <option v-for="n in [
-                    '0-18',
-                    '19-23',
-                    '24-28',
-                    '29-33',
-                    '34-38',
-                    '39-43',
-                    '44-48',
-                    '49-53',
-                    '54-58',
-                    '59+',
-                  ]" :value="n">
+                <select
+                  class="form-select border-warning border-2"
+                  id="idadeDependente2"
+                  aria-label="Idade do Dependente 2"
+                  v-model="calculator.faixaEtariaDependente2"
+                >
+                  <option
+                    v-for="n in [
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
                     {{ n }}
                   </option>
                 </select>
                 <label>Idade Dep. 2</label>
               </div>
               <div v-show="calculator.switchSaude" class="form-floating mb-3 col-6">
-                <input type="number" min="0.00" max="10000.00" step="any" class="form-control border-warning border-2"
-                  id="mensalidadeDependente2" placeholder="Digite o valor"
-                  v-model="calculator.mensalidadeDependente2" />
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-warning border-2"
+                  id="mensalidadeDependente2"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeDependente2"
+                />
                 <label>Valor Dep. 2 (R$)</label>
               </div>
             </div>
-            <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Dependente 2"
-              :aria-valuenow="(
-                (calculator.mensalidadeDependente2 * 100) /
-                consultaReembolso(calculator.faixaEtariaDependente2)
-              ).toFixed(2)
-                " aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar bg-warning" :style="{
-                width:
+            <div
+              v-if="calculator.switchSaude"
+              class="progress mb-3"
+              role="progressbar"
+              aria-label="Limite Dependente 2"
+              :aria-valuenow="
+                (
                   (calculator.mensalidadeDependente2 * 100) /
-                  consultaReembolso(calculator.faixaEtariaDependente2) +
-                  '%',
-              }">
+                  consultaReembolso(calculator.faixaEtariaDependente2)
+                ).toFixed(2)
+              "
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div
+                class="progress-bar bg-warning"
+                :style="{
+                  width:
+                    (calculator.mensalidadeDependente2 * 100) /
+                      consultaReembolso(calculator.faixaEtariaDependente2) +
+                    '%',
+                }"
+              >
                 {{
                   (
                     (calculator.mensalidadeDependente2 * 100) /
@@ -396,22 +613,32 @@
             </div>
 
             <!-- Faixa Etaria - Idade Dependente 3 -->
-            <div v-if="calculator.switchSaude" class="d-flex flex-wrap justify-content-between gap-1">
+            <div
+              v-if="calculator.switchSaude"
+              class="d-flex flex-wrap justify-content-between gap-1"
+            >
               <div class="form-floating mb-1 flex-fill col-3">
-                <select class="form-select border-danger border-2" id="idadeDependente3"
-                  aria-label="Idade do Dependente 3" v-model="calculator.faixaEtariaDependente3">
-                  <option v-for="n in [
-                    '0-18',
-                    '19-23',
-                    '24-28',
-                    '29-33',
-                    '34-38',
-                    '39-43',
-                    '44-48',
-                    '49-53',
-                    '54-58',
-                    '59+',
-                  ]" :value="n">
+                <select
+                  class="form-select border-danger border-2"
+                  id="idadeDependente3"
+                  aria-label="Idade do Dependente 3"
+                  v-model="calculator.faixaEtariaDependente3"
+                >
+                  <option
+                    v-for="n in [
+                      '0-18',
+                      '19-23',
+                      '24-28',
+                      '29-33',
+                      '34-38',
+                      '39-43',
+                      '44-48',
+                      '49-53',
+                      '54-58',
+                      '59+',
+                    ]"
+                    :value="n"
+                  >
                     {{ n }}
                   </option>
                 </select>
@@ -419,24 +646,42 @@
               </div>
 
               <div class="form-floating mb-1 col-6">
-                <input type="number" min="0.00" max="10000.00" step="any" class="form-control border-danger border-2"
-                  id="mensalidadeDependente3" placeholder="Digite o valor"
-                  v-model="calculator.mensalidadeDependente3" />
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control border-danger border-2"
+                  id="mensalidadeDependente3"
+                  placeholder="Digite o valor"
+                  v-model="calculator.mensalidadeDependente3"
+                />
                 <label>Valor Dep. 3 (R$)</label>
               </div>
             </div>
-            <div v-if="calculator.switchSaude" class="progress mb-3" role="progressbar" aria-label="Limite Dependente 3"
-              :aria-valuenow="(
-                (calculator.mensalidadeDependente3 * 100) /
-                consultaReembolso(calculator.faixaEtariaDependente3)
-              ).toFixed(2)
-                " aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar bg-danger" :style="{
-                width:
+            <div
+              v-if="calculator.switchSaude"
+              class="progress mb-3"
+              role="progressbar"
+              aria-label="Limite Dependente 3"
+              :aria-valuenow="
+                (
                   (calculator.mensalidadeDependente3 * 100) /
-                  consultaReembolso(calculator.faixaEtariaDependente3) +
-                  '%',
-              }">
+                  consultaReembolso(calculator.faixaEtariaDependente3)
+                ).toFixed(2)
+              "
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div
+                class="progress-bar bg-danger"
+                :style="{
+                  width:
+                    (calculator.mensalidadeDependente3 * 100) /
+                      consultaReembolso(calculator.faixaEtariaDependente3) +
+                    '%',
+                }"
+              >
                 {{
                   (
                     (calculator.mensalidadeDependente3 * 100) /
@@ -448,7 +693,11 @@
 
             <div v-if="calculator.switchSaude" class="input-group mb-3 flex-fill">
               <label class="input-group-text">Multiplicar 'Dep. 3' x</label>
-              <select v-model="calculator.multiplicadorDependente3" class="form-select" id="multiplicador">
+              <select
+                v-model="calculator.multiplicadorDependente3"
+                class="form-select"
+                id="multiplicador"
+              >
                 <option v-for="n in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :value="n">
                   {{ n }}
                 </option>
@@ -457,25 +706,59 @@
 
             <!-- BARRA PERCENTUAL - TETO GLOBAL DO PLANO DE SAUDE -->
             <div v-if="calculator.switchSaude" class="progress-stacked border-bottom">
-              <div class="progress" role="progressbar" aria-label="Servidor"
-                :aria-valuenow="calculator.percentualSaudeServidor" aria-valuenow="" aria-valuemin="0"
-                aria-valuemax="100" :style="{ width: calculator.percentualSaudeServidor + '%' }">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"></div>
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Servidor"
+                :aria-valuenow="calculator.percentualSaudeServidor"
+                aria-valuenow=""
+                aria-valuemin="0"
+                aria-valuemax="100"
+                :style="{ width: calculator.percentualSaudeServidor + '%' }"
+              >
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                ></div>
               </div>
-              <div class="progress" role="progressbar" aria-label="Dep. 1"
-                :aria-valuenow="calculator.percentualSaudeDep1" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"
-                :style="{ width: calculator.percentualSaudeDep1 + '%' }">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"></div>
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Dep. 1"
+                :aria-valuenow="calculator.percentualSaudeDep1"
+                aria-valuenow=""
+                aria-valuemin="0"
+                aria-valuemax="100"
+                :style="{ width: calculator.percentualSaudeDep1 + '%' }"
+              >
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                ></div>
               </div>
-              <div class="progress" role="progressbar" aria-label="Dep. 2"
-                aria-valuenow="{{calculator.percentualSaudeDep2}}" aria-valuemin="0" aria-valuemax="100"
-                :style="{ width: calculator.percentualSaudeDep2 + '%' }">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"></div>
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Dep. 2"
+                aria-valuenow="{{calculator.percentualSaudeDep2}}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                :style="{ width: calculator.percentualSaudeDep2 + '%' }"
+              >
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                ></div>
               </div>
-              <div class="progress" role="progressbar" aria-label="Dep. 3"
-                aria-valuenow="{{calculator.percentualSaudeDep3}}" aria-valuemin="0" aria-valuemax="100"
-                :style="{ width: calculator.percentualSaudeDep3 + '%' }">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"></div>
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Dep. 3"
+                aria-valuenow="{{calculator.percentualSaudeDep3}}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                :style="{ width: calculator.percentualSaudeDep3 + '%' }"
+              >
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
+                ></div>
               </div>
             </div>
           </div>
@@ -485,8 +768,6 @@
               <small><strong>Teto Aux. Saúde: R$ 3.408,34</strong></small>
             </p>
           </div>
-
-
         </form>
         <div>
           <h5 style="margin-top: 10px">Rendimentos</h5>
@@ -521,7 +802,10 @@
             <strong> <i class="bi bi-suitcase-fill"></i> Adicional de Férias:</strong>
             {{ formatarParaBR(calculator.ferias) }}
           </p>
-          <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'" class="tab-decimo">
+          <p
+            v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'"
+            class="tab-decimo"
+          >
             <strong> <i class="bi bi-gem"></i> 13º Salário:</strong>
             {{ formatarParaBR(calculator.decimoparcela1) }}
           </p>
@@ -556,15 +840,22 @@
           <i class="bi bi-caret-right-fill"></i> Salário Líquido:
           {{ formatarParaBR(calculator.salarioLiquido) }}
         </p>
-        <div v-show="calculator.switchDecimo &&
-          (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
-          " class="border-top">
+        <div
+          v-show="
+            calculator.switchDecimo &&
+            (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
+          "
+          class="border-top"
+        >
           <h5 style="margin-top: 10px">Folha do 13º Salário</h5>
           <p class="tab-decimo">
             <strong> <i class="bi bi-gem"></i> 13º Salário:</strong>
             {{ formatarParaBR(calculator.decimoFolhaComplementar) }}
           </p>
-          <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'" class="tab-desconto">
+          <p
+            v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'"
+            class="tab-desconto"
+          >
             <strong><i class="bi bi-receipt"></i> Adiantamento 13º:</strong>
             {{ formatarParaBR(calculator.decimoAdiantamento) }}
           </p>
@@ -584,7 +875,13 @@
             <i class="bi bi-caret-down-fill"></i> Total de Descontos 13º:
             {{ formatarParaBR(calculator.totalDescontosDecimo) }}
           </p>
-                  <p v-show="calculator.switchDecimo && calculator.tipoDecimo === 'parcela2' && calculator.simularPercentual">
+          <p
+            v-show="
+              calculator.switchDecimo &&
+              calculator.tipoDecimo === 'parcela2' &&
+              calculator.simularPercentual
+            "
+          >
             <i><small>*Adiantamento do 13º sem URV</small></i>
           </p>
           <p class="tab-liquido">
@@ -597,24 +894,30 @@
             {{ formatarParaBR(calculator.decimoLiquido + calculator.salarioLiquido) }}
           </p>
         </div>
-        <div>
-
-        </div>
+        <div></div>
       </div>
     </div>
     <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
-      <h5 id="comparativo" style="margin-bottom: 0;">
+      <h5 id="comparativo" style="margin-bottom: 0">
         Comparação:
         <span :class="{ positive: comparativo > 0, negative: comparativo < 0 }">
-          {{ formatarParaBR(comparativo) }}</span>
+          {{ formatarParaBR(comparativo) }}</span
+        >
       </h5>
       <p><small>(diferença de valor líquido entre as simulações)</small></p>
     </div>
     <div class="container d-flex justify-content-center align-items-center">
       <p class="footer">
         Desenvolvido por
-        <a href="https://guilhermeoq.github.io"
-          class="link">Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a>. Este simulador é gratuito, não coleta nenhuma informação pessoal e foi desenvolvido com base em dados do Portal da Transparência e da legislação vigente.<br>Os valores calculados nesta página não podem ser considerados 100% corretos devido a possíveis erros nos cálculos e nos valores e alíquotas de impostos e gratificações. Não me responsabilizo por eventuais diferenças entre a simulação e os valores reais. Caso você tenha alguma sugestão ou comentário, por favor entre em contato pelo e-mail <a class="link" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
+        <a href="https://guilhermeoq.github.io" class="link"
+          >Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a
+        >. Este simulador é gratuito, não coleta nenhuma informação pessoal e foi desenvolvido com
+        base em dados do Portal da Transparência e da legislação vigente.<br />Os valores calculados
+        nesta página não podem ser considerados 100% corretos devido a possíveis erros nos cálculos
+        e nos valores e alíquotas de impostos e gratificações. Não me responsabilizo por eventuais
+        diferenças entre a simulação e os valores reais. Caso você tenha alguma sugestão ou
+        comentário, por favor entre em contato pelo e-mail
+        <a class="link" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
       </p>
     </div>
 
@@ -622,20 +925,22 @@
       <a href="https://vuejs.org">
         <img
           src="https://img.shields.io/badge/Built%20with%20Vue-grey?style=for-the-badge&logo=vuedotjs&&color=35495e"
-          alt="Built with Vue.js" />
+          alt="Built with Vue.js"
+        />
       </a>
       <a href="https://vercel.com">
         <img
           src="https://img.shields.io/badge/Powered%20by%20Vercel-grey?style=for-the-badge&logo=vercel&color=292929"
-          alt="Powered by Vercel" />
+          alt="Powered by Vercel"
+        />
       </a>
     </div>
-    <p class="copyright">© {{ currentYear }}  Carreira TJTO. Todos os direitos reservados.</p>
+    <p class="copyright">© {{ currentYear }} Carreira TJTO. Todos os direitos reservados.</p>
   </div>
 </template>
 
 <script>
-import ThemeToggle from './ThemeToggle.vue';
+import ThemeToggle from './ThemeToggle.vue'
 export default {
   data() {
     return {
@@ -645,19 +950,19 @@ export default {
   components: {
     ThemeToggle,
   },
-computed: {
-  comparativo() {
-    const [calc0, calc1] = this.calculators;
+  computed: {
+    comparativo() {
+      const [calc0, calc1] = this.calculators
 
-    const total0 = calc0.salarioLiquido + (calc0.switchDecimo ? calc0.decimoLiquido : 0);
-    const total1 = calc1.salarioLiquido + (calc1.switchDecimo ? calc1.decimoLiquido : 0);
+      const total0 = calc0.salarioLiquido + (calc0.switchDecimo ? calc0.decimoLiquido : 0)
+      const total1 = calc1.salarioLiquido + (calc1.switchDecimo ? calc1.decimoLiquido : 0)
 
-    return total1 - total0;
+      return total1 - total0
+    },
+    currentYear() {
+      return new Date().getFullYear()
+    },
   },
-   currentYear() {
-      return new Date().getFullYear();
-    }
-},
 
   methods: {
     //Inicializar calculadora
@@ -712,25 +1017,25 @@ computed: {
       }
     },
     saveCalculatorsToLocalStorage() {
-      localStorage.setItem('calculators', JSON.stringify(this.calculators));
+      localStorage.setItem('calculators', JSON.stringify(this.calculators))
     },
     resetCalculators() {
-      this.calculators = [this.createCalculator(), this.createCalculator()];
-      this.calculators.forEach((_, index) => this.updateSalary(index)); // recalculate
+      this.calculators = [this.createCalculator(), this.createCalculator()]
+      this.calculators.forEach((_, index) => this.updateSalary(index)) // recalculate
     },
     swapCalculators() {
-      [this.calculators[0], this.calculators[1]] = [this.calculators[1], this.calculators[0]];
-      this.saveCalculatorsToLocalStorage();
+      ;[this.calculators[0], this.calculators[1]] = [this.calculators[1], this.calculators[0]]
+      this.saveCalculatorsToLocalStorage()
     },
     copyCalc1ToCalc2() {
-      this.calculators[1] = JSON.parse(JSON.stringify(this.calculators[0]));
-      this.updateSalary(1);
-      this.saveCalculatorsToLocalStorage();
+      this.calculators[1] = JSON.parse(JSON.stringify(this.calculators[0]))
+      this.updateSalary(1)
+      this.saveCalculatorsToLocalStorage()
     },
     copyCalc2ToCalc1() {
-      this.calculators[0] = JSON.parse(JSON.stringify(this.calculators[1]));
-      this.updateSalary(0);
-      this.saveCalculatorsToLocalStorage();
+      this.calculators[0] = JSON.parse(JSON.stringify(this.calculators[1]))
+      this.updateSalary(0)
+      this.saveCalculatorsToLocalStorage()
     },
     /* scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -756,8 +1061,8 @@ computed: {
           11539.04, 12115.99, 12721.81, 13357.89, 14025.79, 14727.09,
         ],
         analista: [
-          12452.95, 13075.61, 13729.40, 14415.85, 15136.63, 15893.47, 16688.14, 17522.55, 18398.62,
-          19318.63, 20284.54, 21298.76, 22363.72, 23481.90, 24656.00,
+          12452.95, 13075.61, 13729.4, 14415.85, 15136.63, 15893.47, 16688.14, 17522.55, 18398.62,
+          19318.63, 20284.54, 21298.76, 22363.72, 23481.9, 24656.0,
         ],
       }
 
@@ -768,16 +1073,19 @@ computed: {
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
 
       if (calculator.switchFuncao == true) {
-        (calculator.simularPercentual === true) ? calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1.1198 : calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor)
+        calculator.simularPercentual === true
+          ? (calculator.representacao =
+              this.consultaValorFuncao(calculator.funcaoServidor) * 1.1198)
+          : (calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor))
       } else calculator.representacao = 0
 
       calculator.ferias = calculator.switchFerias
         ? (calculator.vencimentoBasico +
-          calculator.gaj +
-          calculator.aqfcValue +
-          calculator.aqeValue +
-          calculator.representacao) /
-        3
+            calculator.gaj +
+            calculator.aqfcValue +
+            calculator.aqeValue +
+            calculator.representacao) /
+          3
         : 0
 
       if (calculator.switchSaude == true) {
@@ -852,48 +1160,57 @@ computed: {
       //Cálculo do 13º salário integral - incluso em folha complementar
       calculator.decimoFolhaComplementar =
         calculator.switchDecimo &&
-          (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
+        (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
           ? calculator.vencimentoBasico +
-          calculator.gaj +
-          calculator.aqfcValue +
-          calculator.aqeValue +
-          calculator.representacao
+            calculator.gaj +
+            calculator.aqfcValue +
+            calculator.aqeValue +
+            calculator.representacao
           : 0
 
       //Cálculo da 1ª parcela do 13º salário - incluso em folha normal
       calculator.decimoparcela1 =
         calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
           ? (calculator.vencimentoBasico +
-            calculator.gaj +
-            calculator.aqfcValue +
-            calculator.aqeValue +
-            calculator.representacao) /
-          2
+              calculator.gaj +
+              calculator.aqfcValue +
+              calculator.aqeValue +
+              calculator.representacao) /
+            2
           : 0
 
       //Cálculo do desconto de adiantamento da 1ª parcela do 13º salário
-      const vbSemURV = (calculator.vencimentoBasico / 1.1198)
-      const repSemURV = (calculator.representacao / 1.1198)
-      calculator.simularPercentual ? (
-      calculator.decimoAdiantamento = (vbSemURV +
-          (vbSemURV * 0.3) +
-          (vbSemURV * (calculator.aqfc / 100)) +
-          (vbSemURV * (calculator.aqe / 100)) +
-          repSemURV) / 2) : calculator.decimoAdiantamento = calculator.decimoFolhaComplementar / 2
+      const vbSemURV = calculator.vencimentoBasico / 1.1198
+      const repSemURV = calculator.representacao / 1.1198
+      calculator.simularPercentual
+        ? (calculator.decimoAdiantamento =
+            (vbSemURV +
+              vbSemURV * 0.3 +
+              vbSemURV * (calculator.aqfc / 100) +
+              vbSemURV * (calculator.aqe / 100) +
+              repSemURV) /
+            2)
+        : (calculator.decimoAdiantamento = calculator.decimoFolhaComplementar / 2)
 
       calculator.decimoPrevidencia =
         calculator.switchDecimo &&
-          (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2') ?
-          ((calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo') ?
-            ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14)
+        (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
+          ? calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo'
+            ? calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue >= tetoIgeprev
+              ? tetoIgeprev * 0.14
+              : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+            : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
             ? 0
             : 0
 
       calculator.decimoPrevcom =
         calculator.switchDecimo &&
-          (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
-          ? ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) - tetoIgeprev) * 0.085 : 0
+        (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
+          ? calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue >= tetoIgeprev
+            ? (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue - tetoIgeprev) *
+              0.085
+            : 0
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
             ? 0
             : 0
@@ -902,28 +1219,37 @@ computed: {
       calculator.decimoIRRF = this.calcularIrrf(calculator.decimoFolhaComplementar)
 
       const baseIRRFDecimo =
-        (calculator.tipoPrevidencia === 'prevcom') ? (
-          calculator.vencimentoBasico +
-          calculator.gaj +
-          calculator.aqeValue +
-          calculator.aqfcValue +
-          calculator.representacao -
-          (calculator.decimoPrevidencia + calculator.decimoPrevcom + 189.59 * calculator.dependente)) :
-          calculator.vencimentoBasico +
-          calculator.gaj +
-          calculator.aqeValue +
-          calculator.aqfcValue +
-          calculator.representacao -
-          (calculator.decimoPrevidencia + 189.59 * calculator.dependente)
+        calculator.tipoPrevidencia === 'prevcom'
+          ? calculator.vencimentoBasico +
+            calculator.gaj +
+            calculator.aqeValue +
+            calculator.aqfcValue +
+            calculator.representacao -
+            (calculator.decimoPrevidencia +
+              calculator.decimoPrevcom +
+              189.59 * calculator.dependente)
+          : calculator.vencimentoBasico +
+            calculator.gaj +
+            calculator.aqeValue +
+            calculator.aqfcValue +
+            calculator.representacao -
+            (calculator.decimoPrevidencia + 189.59 * calculator.dependente)
 
       calculator.decimoIRRF = this.calcularIrrf(baseIRRFDecimo)
 
       //Total de descontos aplicados sobre o 13º salário
       calculator.totalDescontosDecimo =
         calculator.switchDecimo && calculator.tipoDecimo === 'integral'
-          ? (calculator.tipoPrevidencia === 'prevcom') ? calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoPrevidencia + calculator.decimoIRRF
+          ? calculator.tipoPrevidencia === 'prevcom'
+            ? calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF
+            : calculator.decimoPrevidencia + calculator.decimoIRRF
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela2'
-            ? (calculator.tipoPrevidencia === 'prevcom') ? calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoPrevcom + calculator.decimoIRRF : calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoIRRF
+            ? calculator.tipoPrevidencia === 'prevcom'
+              ? calculator.decimoAdiantamento +
+                calculator.decimoPrevidencia +
+                calculator.decimoPrevcom +
+                calculator.decimoIRRF
+              : calculator.decimoAdiantamento + calculator.decimoPrevidencia + calculator.decimoIRRF
             : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
               ? 0
               : 0
@@ -944,8 +1270,6 @@ computed: {
         calculator.decimoparcela1 +
         2122
 
-
-
       //Cálculo do teto/sub-teto (2024: 29196.14 / 2025: 30760.27)
       //Como o sub-teto parece estar inativo, o teto é -5% do subsídio dos ministros do STF.
       //R$ 41.650,92 a partir de 1º de abril de 2023
@@ -953,51 +1277,63 @@ computed: {
       //R$ 46.366,19 a partir de 1º de fevereiro de 2025
 
       calculator.teto =
-        (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue + calculator.aqfcValue + calculator.representacao <=
-          41845.49)
-          ? 0
-          : (calculator.vencimentoBasico +
-            calculator.gaj +
-            calculator.aqeValue +
-            calculator.aqfcValue +
-            calculator.representacao) -
-          41845.49
-
-      //Cálculo do desconto de previdência sobre salário
-      calculator.previdencia =
-        (calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo') ?
-          (((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? tetoIgeprev * 0.14 : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14) : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
-
-      //Cálculo do desconto da previdência complementar
-      calculator.prevcom = ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) >= tetoIgeprev) ? ((calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) - tetoIgeprev) * 0.085 : 0
-
-
-      //Cálculo da base de cálculo do IRRF
-      const baseIRRF =
-        (calculator.tipoPrevidencia === 'prevcom') ? (
-          calculator.vencimentoBasico +
+        calculator.vencimentoBasico +
           calculator.gaj +
           calculator.aqeValue +
           calculator.aqfcValue +
-          calculator.representacao +
-          calculator.ferias -
-          (calculator.previdencia + calculator.teto + calculator.prevcom + 189.59 * calculator.dependente)) :
-          (calculator.tipoPrevidencia === 'igeprevNovo') ? (
-            calculator.vencimentoBasico +
+          calculator.representacao <=
+        41845.49
+          ? 0
+          : calculator.vencimentoBasico +
+            calculator.gaj +
+            calculator.aqeValue +
+            calculator.aqfcValue +
+            calculator.representacao -
+            41845.49
+
+      //Cálculo do desconto de previdência sobre salário
+      calculator.previdencia =
+        calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo'
+          ? calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue >= tetoIgeprev
+            ? tetoIgeprev * 0.14
+            : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+          : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+
+      //Cálculo do desconto da previdência complementar
+      calculator.prevcom =
+        calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue >= tetoIgeprev
+          ? (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue - tetoIgeprev) *
+            0.085
+          : 0
+
+      //Cálculo da base de cálculo do IRRF
+      const baseIRRF =
+        calculator.tipoPrevidencia === 'prevcom'
+          ? calculator.vencimentoBasico +
             calculator.gaj +
             calculator.aqeValue +
             calculator.aqfcValue +
             calculator.representacao +
             calculator.ferias -
-            (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente)) :
-            (
-              calculator.vencimentoBasico +
+            (calculator.previdencia +
+              calculator.teto +
+              calculator.prevcom +
+              189.59 * calculator.dependente)
+          : calculator.tipoPrevidencia === 'igeprevNovo'
+            ? calculator.vencimentoBasico +
               calculator.gaj +
               calculator.aqeValue +
               calculator.aqfcValue +
               calculator.representacao +
               calculator.ferias -
-              (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente))
+              (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente)
+            : calculator.vencimentoBasico +
+              calculator.gaj +
+              calculator.aqeValue +
+              calculator.aqfcValue +
+              calculator.representacao +
+              calculator.ferias -
+              (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente)
 
       //console.log('Vencimento Basico: ' + calculator.vencimentoBasico)
       //console.log('GAJ: ' + calculator.gaj)
@@ -1012,9 +1348,11 @@ computed: {
       //console.log('TETO: ' + calculator.teto)
       //console.log('------------------------')
 
-
       calculator.irrf = this.calcularIrrf(baseIRRF)
-      calculator.totalDescontos = (calculator.tipoPrevidencia === 'prevcom') ? calculator.previdencia + calculator.irrf + calculator.teto + calculator.prevcom : calculator.previdencia + calculator.irrf + calculator.teto
+      calculator.totalDescontos =
+        calculator.tipoPrevidencia === 'prevcom'
+          ? calculator.previdencia + calculator.irrf + calculator.teto + calculator.prevcom
+          : calculator.previdencia + calculator.irrf + calculator.teto
 
       calculator.salarioLiquido = calculator.salarioBruto - calculator.totalDescontos
     },
@@ -1074,7 +1412,7 @@ computed: {
         case 'DAJ-11':
           return 28387.04 * 0.65
         case 'FC-1':
-          return 1775.10
+          return 1775.1
         case 'FC-2':
           return 2064.02
         case 'FC-3':
@@ -1117,496 +1455,487 @@ computed: {
           if (!validOptions.includes(calculator.aqe)) {
             calculator.aqe = 0
           }
-        });
+        })
         // 🔐 New logic: Save to localStorage
-        localStorage.setItem('calculators', JSON.stringify(newCalculators));
+        localStorage.setItem('calculators', JSON.stringify(newCalculators))
       },
     },
   },
 
   mounted() {
-    const saved = localStorage.getItem('calculators');
+    const saved = localStorage.getItem('calculators')
     if (saved) {
-      this.calculators = JSON.parse(saved);
+      this.calculators = JSON.parse(saved)
     } else {
-      this.calculators = [this.createCalculator(), this.createCalculator()];
+      this.calculators = [this.createCalculator(), this.createCalculator()]
     }
 
-    this.calculators.forEach((_, index) => this.updateSalary(index));
+    this.calculators.forEach((_, index) => this.updateSalary(index))
   },
 }
 </script>
 
 <style>
 /* === DARK THEME === */
-body[data-bs-theme="dark"] {
-.calculators {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.calculator {
-  flex: 1;
-  margin-bottom: 1em;
-  padding: 2em;
-  border-radius: 1.5em;
-  background-color: #212529;
-  box-shadow: 0 0px 30px 0px rgba(30, 25, 49, 0.99);
-  width: 100%;
-}
-
-@media (min-width: 600px) {
-  .calculator {
-    width: calc(50% - 20px);
+body[data-bs-theme='dark'] {
+  .calculators {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
   }
-}
 
-.title {
-  font-weight: 700;
-  font-family: 'YourHeadingFont', sans-serif;
-  line-height: 0.95;
-  margin-bottom: 1rem;
-  letter-spacing: -0.05em;
-  font-size: 3rem;
-}
+  .calculator {
+    flex: 1;
+    margin-bottom: 1em;
+    padding: 2em;
+    border-radius: 1.5em;
+    background-color: #212529;
+    box-shadow: 0 0px 30px 0px rgba(30, 25, 49, 0.99);
+    width: 100%;
+  }
 
-.subtitle {
-  font-family: 'YourHeadingFont', sans-serif;
-  line-height: 1.25;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-}
+  @media (min-width: 600px) {
+    .calculator {
+      width: calc(50% - 20px);
+    }
+  }
 
-@media (min-width: 768px) {
   .title {
+    font-weight: 700;
+    font-family: 'YourHeadingFont', sans-serif;
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    letter-spacing: -0.05em;
     font-size: 3rem;
   }
-}
 
-.callout {
-  padding: 15px;
-  margin: 20px 0;
-  border: 1px solid transparent;
-  border-left-width: 10px;
-  border-radius: 4px;
-}
+  .subtitle {
+    font-family: 'YourHeadingFont', sans-serif;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
 
-.callout-info {
-  background-color: #212529;
-  border-left-color: #15884c;
-  color: #d1d1d1;
-}
+  @media (min-width: 768px) {
+    .title {
+      font-size: 3rem;
+    }
+  }
 
-.callout-warning {
-  background-color: #e1f1ff;
-  border-left-color: #0f558f;
-  color: #030303;
-  ;
-}
+  .callout {
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-left-width: 10px;
+    border-radius: 4px;
+  }
 
-.tab-rendimento {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(49, 71, 78, 0.5));
-  margin-bottom: 1px;
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-}
+  .callout-info {
+    background-color: #212529;
+    border-left-color: #15884c;
+    color: #d1d1d1;
+  }
 
-.tab-alimentacao {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(29, 121, 111, 0.5));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .callout-warning {
+    background-color: #e1f1ff;
+    border-left-color: #0f558f;
+    color: #030303;
+  }
 
-.tab-representacao {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(124, 79, 49, 0.5));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .tab-rendimento {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(49, 71, 78, 0.5));
+    margin-bottom: 1px;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+  }
 
-.tab-ferias {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(59, 35, 97, 0.5));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .tab-alimentacao {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(29, 121, 111, 0.5));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-saude {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(134, 102, 14, 0.5));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .tab-representacao {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(124, 79, 49, 0.5));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-decimo {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(48, 71, 112, 0.5));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .tab-ferias {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(59, 35, 97, 0.5));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-bruto {
-  background-color: #214574;
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  color: white;
-  font-weight: bold;
-}
+  .tab-saude {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(134, 102, 14, 0.5));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-desconto {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(105, 52, 52, 0.5));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .tab-decimo {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(48, 71, 112, 0.5));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-desconto-total {
-  background-color: #4d1818;
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  font-weight: bold;
-}
+  .tab-bruto {
+    background-color: #214574;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    color: white;
+    font-weight: bold;
+  }
 
-.tab-liquido {
-  margin-top: 1em;
-  background-color: rgb(37, 87, 37);
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  font-weight: bold;
-}
+  .tab-desconto {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0) 15%, rgba(105, 52, 52, 0.5));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-salario-e-decimo {
-  margin-top: 1em;
-  background-color: rgb(20, 133, 58);
-  padding: 0.2em;
-  border-radius: 0.3em;
-  font-weight: bold;
-  color: white;
-}
+  .tab-desconto-total {
+    background-color: #4d1818;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    font-weight: bold;
+  }
 
-.positive {
-  color: rgb(48, 170, 48);
-}
+  .tab-liquido {
+    margin-top: 1em;
+    background-color: rgb(37, 87, 37);
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    font-weight: bold;
+  }
 
-.negative {
-  color: red;
-}
+  .tab-salario-e-decimo {
+    margin-top: 1em;
+    background-color: rgb(20, 133, 58);
+    padding: 0.2em;
+    border-radius: 0.3em;
+    font-weight: bold;
+    color: white;
+  }
 
-.footer {
-  color: #858585;
-  margin-top: 3em;
-  line-height: 1;
-  text-align: justify;
-  font-size: 0.9em;
-}
+  .positive {
+    color: rgb(48, 170, 48);
+  }
 
-.copyright {
-  color: #858585;
-  margin-top: 1em;
-  line-height: 1;
-  text-align: center;
-  font-size: 0.9em;
-}
+  .negative {
+    color: red;
+  }
 
-.link {
-color: #c5c5c5
-}
+  .footer {
+    color: #858585;
+    margin-top: 3em;
+    line-height: 1;
+    text-align: justify;
+    font-size: 0.9em;
+  }
 
+  .copyright {
+    color: #858585;
+    margin-top: 1em;
+    line-height: 1;
+    text-align: center;
+    font-size: 0.9em;
+  }
 
-.badge {
+  .link {
+    color: #c5c5c5;
+  }
 
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  color: #353535;
-}
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #353535;
+  }
 
-.vue-logo {
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-}
+  .vue-logo {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+  }
 
-.clearBtn {
-  background-color: #292929;
-  color: white;
-  border: none;
-}
+  .clearBtn {
+    background-color: #292929;
+    color: white;
+    border: none;
+  }
 
-.clearBtn:hover {
-  background-color: #414141;
-}
+  .clearBtn:hover {
+    background-color: #414141;
+  }
 
-.swapBtn {
-  background-color: #2a1e4e;
-  color: white;
-  border: none;
-}
+  .swapBtn {
+    background-color: #2a1e4e;
+    color: white;
+    border: none;
+  }
 
-.swapBtn:hover {
-  background-color: #473285
-}
+  .swapBtn:hover {
+    background-color: #473285;
+  }
 
-.copyBtn {
-  background-color: #383053;
-  color: white;
-  border: none;
-}
+  .copyBtn {
+    background-color: #383053;
+    color: white;
+    border: none;
+  }
 
-.copyBtn:hover {
-  background-color: #564c77;
-}
+  .copyBtn:hover {
+    background-color: #564c77;
+  }
 }
 
 /* === LIGHT THEME === */
-body[data-bs-theme="light"] {
-
-.calculators {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.calculator {
-  flex: 1;
-  margin-bottom: 1em;
-  padding: 2em;
-  border-radius: 1.5em;
-  background-color: white;
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  width: 100%;
-}
-
-@media (min-width: 600px) {
-  .calculator {
-    width: calc(50% - 20px);
+body[data-bs-theme='light'] {
+  .calculators {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
   }
-}
 
-.title {
-  font-weight: 700;
-  font-family: 'YourHeadingFont', sans-serif;
-  line-height: 0.95;
-  margin-bottom: 1rem;
-  letter-spacing: -0.05em;
-  font-size: 3rem;
-}
+  .calculator {
+    flex: 1;
+    margin-bottom: 1em;
+    padding: 2em;
+    border-radius: 1.5em;
+    background-color: white;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    width: 100%;
+  }
 
-.subtitle {
-  font-family: 'YourHeadingFont', sans-serif;
-  line-height: 1.25;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-}
+  @media (min-width: 600px) {
+    .calculator {
+      width: calc(50% - 20px);
+    }
+  }
 
-@media (min-width: 768px) {
   .title {
+    font-weight: 700;
+    font-family: 'YourHeadingFont', sans-serif;
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    letter-spacing: -0.05em;
     font-size: 3rem;
   }
-}
 
-.callout {
-  padding: 15px;
-  margin: 20px 0;
-  border: 1px solid transparent;
-  border-left-width: 10px;
-  border-radius: 4px;
-}
+  .subtitle {
+    font-family: 'YourHeadingFont', sans-serif;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
 
-.callout-info {
-  background-color: #deebe5;
-  border-left-color: #0a924e;
-  color: #0c5460;
-}
+  @media (min-width: 768px) {
+    .title {
+      font-size: 3rem;
+    }
+  }
 
-.callout-warning {
-  background-color: #e1f1ff;
-  border-left-color: #0f558f;
-  color: #030303;
-}
+  .callout {
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-left-width: 10px;
+    border-radius: 4px;
+  }
 
-.tab-rendimento {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(149, 213, 233));
-  margin-bottom: 1px;
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-}
+  .callout-info {
+    background-color: #deebe5;
+    border-left-color: #0a924e;
+    color: #0c5460;
+  }
 
-.tab-alimentacao {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(48, 199, 184));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .callout-warning {
+    background-color: #e1f1ff;
+    border-left-color: #0f558f;
+    color: #030303;
+  }
 
-.tab-representacao {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(248, 175, 127));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .tab-rendimento {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(149, 213, 233));
+    margin-bottom: 1px;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+  }
 
+  .tab-alimentacao {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(48, 199, 184));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-ferias {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(216, 191, 255));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .tab-representacao {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(248, 175, 127));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-saude {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(241, 203, 97));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .tab-ferias {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(216, 191, 255));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-decimo {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(180, 206, 255));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .tab-saude {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(241, 203, 97));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-bruto {
-  background-color: #214574;
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  color: white;
-  font-weight: bold;
-}
+  .tab-decimo {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(180, 206, 255));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-desconto {
-  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(255, 200, 200));
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  margin-bottom: 1px;
-}
+  .tab-bruto {
+    background-color: #214574;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    color: white;
+    font-weight: bold;
+  }
 
-.tab-desconto-total {
-  background-color: #ff9393;
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  font-weight: bold;
-}
+  .tab-desconto {
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(255, 200, 200));
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    margin-bottom: 1px;
+  }
 
-.tab-liquido {
-  margin-top: 1em;
-  background-color: rgb(102, 214, 102);
-  padding: 0.2em;
-  padding-left: 0.5em;
-  border-radius: 0.3em;
-  font-weight: bold;
-}
+  .tab-desconto-total {
+    background-color: #ff9393;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    font-weight: bold;
+  }
 
-.tab-salario-e-decimo {
-  margin-top: 1em;
-  background-color: rgb(20, 133, 58);
-  padding: 0.2em;
-  border-radius: 0.3em;
-  font-weight: bold;
-  color: white;
-}
+  .tab-liquido {
+    margin-top: 1em;
+    background-color: rgb(102, 214, 102);
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+    font-weight: bold;
+  }
 
-.positive {
-  color: green;
-}
+  .tab-salario-e-decimo {
+    margin-top: 1em;
+    background-color: rgb(20, 133, 58);
+    padding: 0.2em;
+    border-radius: 0.3em;
+    font-weight: bold;
+    color: white;
+  }
 
-.negative {
-  color: red;
-}
+  .positive {
+    color: green;
+  }
 
-.footer {
-  color: #383838;
-  margin-top: 3em;
-  line-height: 1;
-  text-align: justify;
-  font-size: 0.9em;
-}
+  .negative {
+    color: red;
+  }
 
-.copyright {
-  color: #383838;
-  margin-top: 1em;
-  line-height: 1;
-  text-align: center;
-  font-size: 0.9em;
-}
+  .footer {
+    color: #383838;
+    margin-top: 3em;
+    line-height: 1;
+    text-align: justify;
+    font-size: 0.9em;
+  }
 
-.link {
-color: rgb(71, 71, 71)
-}
+  .copyright {
+    color: #383838;
+    margin-top: 1em;
+    line-height: 1;
+    text-align: center;
+    font-size: 0.9em;
+  }
 
+  .link {
+    color: rgb(71, 71, 71);
+  }
 
-.badge {
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #353535;
+  }
 
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  color: #353535;
-}
+  .vue-logo {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+  }
 
-.vue-logo {
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-}
+  .clearBtn {
+    background-color: #4f8ec2;
+    color: white;
+    border: none;
+  }
 
-.clearBtn {
-  background-color: #4f8ec2;
-  color: white;
-  border: none;
-}
+  .clearBtn:hover {
+    background-color: #77a3c5;
+  }
 
-.clearBtn:hover {
-  background-color: #77a3c5;
-}
+  .swapBtn {
+    background-color: #193963;
+    color: white;
+    border: none;
+  }
 
-.swapBtn {
-  background-color: #193963;
-  color: white;
-  border: none;
-}
+  .swapBtn:hover {
+    background-color: #30598d;
+  }
 
-.swapBtn:hover {
-  background-color: #30598d
-}
+  .copyBtn {
+    background-color: #486ea0;
+    color: white;
+    border: none;
+  }
 
-.copyBtn {
-  background-color: #486ea0;
-  color: white;
-  border: none;
-}
-
-.copyBtn:hover {
-  background-color: #6284af;
-}
-
-
+  .copyBtn:hover {
+    background-color: #6284af;
+  }
 }
 
 .gradient-text {
@@ -1637,5 +1966,4 @@ color: rgb(71, 71, 71)
     background-position: left;
   }
 }
-
 </style>
