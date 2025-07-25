@@ -69,7 +69,7 @@
           >, que dispõe sobre a recomposição dos vencimentos dos servidores efetivos ativos,
           inativos, pensionistas e comissionados do Poder Judiciário do Estado do Tocantins,
           decorrente da perda salarial ocasionada pela conversão da moeda em URV, na forma do art.
-          22 da Lei Nº 8.880, de 27 de maio de 1994. A lei produz efeitos financeiros a partir de 1º
+          22 da Lei Nº 8.880, de 27 de maio de 1994. A lei prevê efeitos financeiros a partir de 1º
           de outubro de 2025.<br />
         </small>
       </div>
