@@ -61,16 +61,14 @@
       </div>
 
       <div class="callout callout-info">
-        <small
-          ><strong>[24/07/2025] Novidades</strong><br />
-          📈 Atualizado em conformidade com a
+        <small><strong>Atualizações:</strong><br>
+          🪙 [23/08/25] Novo campo para informar <strong>Outros Descontos</strong> pessoais na folha de pagamento.<br>
+          📈 [24/07/25] Atualizado em conformidade com a
           <a href="https://doe.to.gov.br/diario/5476/download"
             >Lei Nº 4.815, de 21 de julho de 2025</a
           >, que dispõe sobre a recomposição dos vencimentos dos servidores efetivos ativos,
           inativos, pensionistas e comissionados do Poder Judiciário do Estado do Tocantins,
-          decorrente da perda salarial ocasionada pela conversão da moeda em URV, na forma do art.
-          22 da Lei Nº 8.880, de 27 de maio de 1994. A lei prevê efeitos financeiros a partir de 1º
-          de outubro de 2025.<br />
+          decorrente da perda salarial ocasionada pela conversão da moeda em URV.<br />
         </small>
       </div>
 
@@ -366,7 +364,7 @@
           </div>
 
           <!-- SELECTION AUXILIO SAUDE -->
-          <div class="border-top">
+          <div class="border-top border-bottom">
             <div class="mt-3 form-check form-switch mb-3">
               <input
                 v-model="calculator.switchSaude"
@@ -765,6 +763,19 @@
               <small><strong>Teto Aux. Saúde: R$ 3.408,34</strong></small>
             </p>
           </div>
+          <div class="mt-3 form-floating mb-1 col-6">
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="any"
+                  class="form-control"
+                  id="outrosDescontos"
+                  placeholder="Digite o valor"
+                  v-model="calculator.outrosDescontos"
+                />
+                <label>Outros Descontos (R$)</label>
+              </div>
         </form>
         <div>
           <h5 style="margin-top: 10px">Rendimentos</h5>
@@ -827,6 +838,10 @@
           <p class="tab-desconto" v-show="calculator.teto > 0">
             <strong><i class="bi bi-building-fill-exclamation"></i> Teto:</strong>
             {{ formatarParaBR(calculator.teto) }}
+          </p>
+          <p class="tab-desconto" v-show="calculator.outrosDescontos > 0">
+            <strong><i class="bi bi-cash-stack"></i> Outros Descontos:</strong>
+            {{ formatarParaBR(calculator.outrosDescontos) }}
           </p>
           <p class="tab-desconto-total">
             <i class="bi bi-caret-down-fill"></i> Total de Descontos:
@@ -991,6 +1006,7 @@ export default {
         percentualSaudeDep1: 0,
         percentualSaudeDep2: 0,
         percentualSaudeDep3: 0,
+        outrosDescontos: 0.0,
         decimoparcela1: 0,
         decimoAdiantamento: 0,
         decimoFolhaComplementar: 0,
@@ -1348,8 +1364,8 @@ export default {
       calculator.irrf = this.calcularIrrf(baseIRRF)
       calculator.totalDescontos =
         calculator.tipoPrevidencia === 'prevcom'
-          ? calculator.previdencia + calculator.irrf + calculator.teto + calculator.prevcom
-          : calculator.previdencia + calculator.irrf + calculator.teto
+          ? calculator.previdencia + calculator.irrf + calculator.teto + calculator.prevcom + (parseFloat(calculator.outrosDescontos) || 0)
+          : calculator.previdencia + calculator.irrf + calculator.teto + (parseFloat(calculator.outrosDescontos) || 0)
 
       calculator.salarioLiquido = calculator.salarioBruto - calculator.totalDescontos
     },
