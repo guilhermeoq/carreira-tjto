@@ -62,8 +62,8 @@
 
       <div class="callout callout-info">
         <small><strong>Atualizações:</strong><br>
-          🪙 [23/08/25] Novo campo para informar <strong>Outros Descontos</strong> pessoais na folha de pagamento.<br>
-          📈 [24/07/25] Atualizado em conformidade com a
+          🪙 Novo campo para informar <strong>Outros Descontos</strong> pessoais na folha de pagamento.<br>
+          📈 Atualizado em conformidade com a
           <a href="https://doe.to.gov.br/diario/5476/download"
             >Lei Nº 4.815, de 21 de julho de 2025</a
           >, que dispõe sobre a recomposição dos vencimentos dos servidores efetivos ativos,
