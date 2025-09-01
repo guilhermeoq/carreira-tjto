@@ -763,7 +763,8 @@
               <small><strong>Teto Aux. Saúde: R$ 3.408,34</strong></small>
             </p>
           </div>
-          <div class="mt-3 form-floating mb-1 col-6">
+          <p class="mb-0 mt-2">Outros descontos:</p>
+          <div class="mt-1 form-floating mb-1 col-6">
                 <input
                   type="number"
                   min="0.00"
@@ -774,7 +775,7 @@
                   placeholder="Digite o valor"
                   v-model="calculator.outrosDescontos"
                 />
-                <label>Outros Descontos (R$)</label>
+                <label>Valor (R$)</label>
               </div>
         </form>
         <div>
