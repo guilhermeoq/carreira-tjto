@@ -1031,7 +1031,7 @@ export default {
       }
     },
     saveCalculatorsToLocalStorage() {
-      localStorage.setItem('calculators', JSON.stringify(this.calculators))
+      localStorage.setItem('calculators-storev1', JSON.stringify(this.calculators))
     },
     resetCalculators() {
       this.calculators = [this.createCalculator(), this.createCalculator()]
@@ -1471,13 +1471,13 @@ export default {
           }
         })
         // 🔐 New logic: Save to localStorage
-        localStorage.setItem('calculators', JSON.stringify(newCalculators))
+        localStorage.setItem('calculators-storev1', JSON.stringify(newCalculators))
       },
     },
   },
 
   mounted() {
-    const saved = localStorage.getItem('calculators')
+    const saved = localStorage.getItem('calculators-storev1')
     if (saved) {
       this.calculators = JSON.parse(saved)
     } else {
