@@ -54,8 +54,7 @@
 
       <div class="d-block d-md-flex gap-3">
         <p class="subtitle">
-          Visualize sua <strong>evolução na carreira e remuneração no TJTO</strong>. Simule
-          progressões e detalhes da folha de pagamento com uma ferramenta gratuita desenvolvida para
+          Simule a <strong>evolução na carreira e salário do TJTO</strong>. Visualize progressões e detalhes da folha de pagamento neste simulador gratuito desenvolvido para
           facilitar seu planejamento financeiro.
         </p>
       </div>
