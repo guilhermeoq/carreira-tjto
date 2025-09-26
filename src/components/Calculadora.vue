@@ -61,14 +61,12 @@
 
       <div class="callout callout-info">
         <small><strong>Atualizações:</strong><br>
-          🪙 Novo campo para informar <strong>Outros Descontos</strong> pessoais na folha de pagamento.<br>
+          🧮 Atualizado a parametrização de desconto do IGEPREV para servidores que contribuem apenas até o teto de R$ 8.147,51. O cálculo agora utiliza <a href="https://www.gov.br/inss/pt-br/direitos-e-deveres/inscricao-e-contribuicao/tabela-de-contribuicao-mensal">faixas de salários com suas respectivas alíquotas</a> para o cálculo das contribuições (vigente a partir da folha de set/2025).<br>
+          🏦 Novo campo para informar outros descontos pessoais na folha de pagamento.<br>
           📈 Atualizado em conformidade com a
           <a href="https://doe.to.gov.br/diario/5476/download"
             >Lei Nº 4.815, de 21 de julho de 2025</a
-          >, que dispõe sobre a recomposição dos vencimentos dos servidores efetivos ativos,
-          inativos, pensionistas e comissionados do Poder Judiciário do Estado do Tocantins,
-          decorrente da perda salarial ocasionada pela conversão da moeda em URV.<br />
-        </small>
+          >, que dispõe sobre a recomposição decorrente da perda salarial ocasionada pela conversão da moeda em URV.<br /></small>
       </div>
 
       <div style="text-align: center; margin-top: 2em; margin-bottom: 1em">
@@ -1209,9 +1207,7 @@ export default {
         calculator.switchDecimo &&
         (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
           ? calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo'
-            ? calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue >= tetoIgeprev
-              ? tetoIgeprev * 0.14
-              : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+              ? this.calcularPrevidencia(tetoIgeprev)
             : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
             ? 0
@@ -1307,9 +1303,7 @@ export default {
       //Cálculo do desconto de previdência sobre salário
       calculator.previdencia =
         calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo'
-          ? calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue >= tetoIgeprev
-            ? tetoIgeprev * 0.14
-            : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+          ? this.calcularPrevidencia(tetoIgeprev)
           : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
 
       //Cálculo do desconto da previdência complementar
@@ -1447,6 +1441,30 @@ export default {
       } else {
         return (baseCalculo - 4664.68) * 0.275 + 913.63 * 0.225 + 924.4 * 0.15 + 397.85 * 0.075
       }
+    },
+
+    calcularPrevidencia(baseDeCalculo) {
+        let contribuicao;
+
+        if (baseDeCalculo <= 1518.00) {
+          contribuicao = baseDeCalculo * 0.075;
+        } else if (baseDeCalculo <= 2793.88) {
+          // 9% sobre o que excede 1518.00, mais o valor total da 1ª faixa (1518.00 * 7.5% = 113.85)
+          contribuicao = (baseDeCalculo - 1518.00) * 0.09 + 113.85;
+        } else if (baseDeCalculo <= 4190.83) {
+          // 12% sobre o que excede 2793.88, mais o total das faixas anteriores (113.85 + 114,8292 = 228,6792)
+          contribuicao = (baseDeCalculo - 2793.88) * 0.12 + 228.67;
+        } else if (baseDeCalculo <= 8157.41) {
+          // 14% sobre o que excede 4190.83, mais o total das faixas anteriores (228,6792 + 167,634 = 396,3132)
+          contribuicao = (baseDeCalculo - 4190.83) * 0.14 + 396.32;
+        } else {
+          // Se o salário for maior que o teto, a contribuição é fixa no valor máximo.
+          // (113.85 + 114,8292 + 167,634 + 555.3212 = 951.64)
+          contribuicao = 951.64;
+      }
+
+      // Arredonda o resultado final para 2 casas decimais
+      return contribuicao;
     },
     //Formatação de moeda para Real Brasileiro
     formatarParaBR(valor) {
