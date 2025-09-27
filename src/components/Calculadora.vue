@@ -61,7 +61,7 @@
 
       <div class="callout callout-info">
         <small><strong>Atualizações:</strong><br>
-          📰 Aleto é <a href="https://clebertoledo.com.br/politica/aleto-e-notificada-sobre-revogacao-de-lei-que-estabelecia-limite-salarial-dos-servidores-do-tjto/"></a>notificada sobre revogação de lei</a> que estabelecia limite salarial dos servidores do TJTO. Aguardando mais informações para remoção do cálculo de sub-teto.<br>
+          📰 Aleto é <a href="https://clebertoledo.com.br/politica/aleto-e-notificada-sobre-revogacao-de-lei-que-estabelecia-limite-salarial-dos-servidores-do-tjto/">notificada sobre revogação de lei</a> que estabelecia limite salarial dos servidores do TJTO. Aguardando mais informações para remoção do cálculo de sub-teto.<br>
           🧮 Alteração no cálculo de desconto do IGEPREV para servidores que contribuem apenas até o teto de R$ 8.147,51. O cálculo agora utiliza <a href="https://www.gov.br/inss/pt-br/direitos-e-deveres/inscricao-e-contribuicao/tabela-de-contribuicao-mensal">faixas de salários com suas respectivas alíquotas</a> para o cálculo das contribuições (vigente a partir da folha de set/2025).<br>
           🏦 Novo campo para informar outros descontos pessoais na folha de pagamento.<br>
           📈 Atualizado em conformidade com a
