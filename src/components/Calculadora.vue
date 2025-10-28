@@ -947,7 +947,7 @@
         />
       </a>
     </div>
-    <p class="copyright">© {{ currentYear }} Carreira TJTO. Todos os direitos reservados.</p>
+    <p class="copyright">© {{ currentYear }} carreiratjto.com. Todos os direitos reservados.</p>
   </div>
 </template>
 
