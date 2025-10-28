@@ -62,7 +62,7 @@
         <small
           ><strong>Atualizações:</strong><br />
           ⚠️ Foi alterado o cálculo da previdência do IGEPREV — voltou a ser de 14% até o teto do
-          IGEPREV na folha de out/2025).<br />
+          IGEPREV na folha de out/2025.<br />
           📈 Atualizado em conformidade com a
           <a href="https://doe.to.gov.br/diario/5476/download"
             >Lei Nº 4.815, de 21 de julho de 2025</a
