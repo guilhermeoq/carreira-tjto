@@ -27,9 +27,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a
-              class="nav-link"
-              href="https://www.al.to.leg.br/arquivos/lei_2409-2010_63738.PDF"
+            <a class="nav-link" href="https://www.al.to.leg.br/arquivos/lei_2409-2010_63738.PDF"
               >Lei n.º 2.409</a
             >
           </li>
@@ -54,19 +52,23 @@
 
       <div class="d-block d-md-flex gap-3">
         <p class="subtitle">
-          Simule a <strong>evolução na carreira e salário do TJTO</strong>. Visualize progressões e detalhes da folha de pagamento neste simulador gratuito desenvolvido para
-          facilitar seu planejamento financeiro.
+          Simule a <strong>evolução na carreira e salário do TJTO</strong>. Visualize progressões e
+          detalhes da folha de pagamento neste simulador gratuito desenvolvido para facilitar seu
+          planejamento financeiro.
         </p>
       </div>
 
       <div class="callout callout-info">
-        <small><strong>Atualizações:</strong><br>
-          🧮 Alteração no cálculo de desconto do IGEPREV para servidores que contribuem apenas até o teto de R$ 8.147,51. O cálculo agora utiliza <a href="https://www.gov.br/inss/pt-br/direitos-e-deveres/inscricao-e-contribuicao/tabela-de-contribuicao-mensal">faixas de salários com suas respectivas alíquotas</a> para o cálculo das contribuições (vigente a partir da folha de set/2025).<br>
-          🏦 Novo campo para informar outros descontos pessoais na folha de pagamento.<br>
+        <small
+          ><strong>Atualizações:</strong><br />
+          ⚠️ Foi alterado o cálculo da previdência do IGEPREV — voltou a ser de 14% até o teto do
+          IGEPREV na folha de out/2025).<br />
           📈 Atualizado em conformidade com a
           <a href="https://doe.to.gov.br/diario/5476/download"
             >Lei Nº 4.815, de 21 de julho de 2025</a
-          >, que dispõe sobre a recomposição decorrente da perda salarial ocasionada pela conversão da moeda em URV.<br /></small>
+          >. Efeito financeiro retroativo a folha de out/2025, pagamento a partir da folha de
+          nov/2025.<br
+        /></small>
       </div>
 
       <div style="text-align: center; margin-top: 2em; margin-bottom: 1em">
@@ -105,7 +107,7 @@
               role="switch"
               id="URVSwitch"
             />
-            <label class="form-check-label">Calcular URV (+11,98%, folha de out/2025)</label>
+            <label class="form-check-label">Calcular URV (+11,98%, folha de nov/2025)</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
@@ -762,18 +764,18 @@
           </div>
           <p class="mb-0 mt-2">Outros descontos:</p>
           <div class="mt-1 form-floating mb-1 col-6">
-                <input
-                  type="number"
-                  min="0.00"
-                  max="10000.00"
-                  step="any"
-                  class="form-control"
-                  id="outrosDescontos"
-                  placeholder="Digite o valor"
-                  v-model="calculator.outrosDescontos"
-                />
-                <label>Valor (R$)</label>
-              </div>
+            <input
+              type="number"
+              min="0.00"
+              max="10000.00"
+              step="any"
+              class="form-control"
+              id="outrosDescontos"
+              placeholder="Digite o valor"
+              v-model="calculator.outrosDescontos"
+            />
+            <label>Valor (R$)</label>
+          </div>
         </form>
         <div>
           <h5 style="margin-top: 10px">Rendimentos</h5>
@@ -1207,7 +1209,7 @@ export default {
         calculator.switchDecimo &&
         (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
           ? calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo'
-              ? this.calcularPrevidencia(tetoIgeprev)
+            ? this.calcularPrevidencia(tetoIgeprev)
             : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
             ? 0
@@ -1358,8 +1360,15 @@ export default {
       calculator.irrf = this.calcularIrrf(baseIRRF)
       calculator.totalDescontos =
         calculator.tipoPrevidencia === 'prevcom'
-          ? calculator.previdencia + calculator.irrf + calculator.teto + calculator.prevcom + (parseFloat(calculator.outrosDescontos) || 0)
-          : calculator.previdencia + calculator.irrf + calculator.teto + (parseFloat(calculator.outrosDescontos) || 0)
+          ? calculator.previdencia +
+            calculator.irrf +
+            calculator.teto +
+            calculator.prevcom +
+            (parseFloat(calculator.outrosDescontos) || 0)
+          : calculator.previdencia +
+            calculator.irrf +
+            calculator.teto +
+            (parseFloat(calculator.outrosDescontos) || 0)
 
       calculator.salarioLiquido = calculator.salarioBruto - calculator.totalDescontos
     },
@@ -1444,27 +1453,7 @@ export default {
     },
 
     calcularPrevidencia(baseDeCalculo) {
-        let contribuicao;
-
-        if (baseDeCalculo <= 1518.00) {
-          contribuicao = baseDeCalculo * 0.075;
-        } else if (baseDeCalculo <= 2793.88) {
-          // 9% sobre o que excede 1518.00, mais o valor total da 1ª faixa (1518.00 * 7.5% = 113.85)
-          contribuicao = (baseDeCalculo - 1518.00) * 0.09 + 113.85;
-        } else if (baseDeCalculo <= 4190.83) {
-          // 12% sobre o que excede 2793.88, mais o total das faixas anteriores (113.85 + 114,8292 = 228,6792)
-          contribuicao = (baseDeCalculo - 2793.88) * 0.12 + 228.67;
-        } else if (baseDeCalculo <= 8157.41) {
-          // 14% sobre o que excede 4190.83, mais o total das faixas anteriores (228,6792 + 167,634 = 396,3132)
-          contribuicao = (baseDeCalculo - 4190.83) * 0.14 + 396.32;
-        } else {
-          // Se o salário for maior que o teto, a contribuição é fixa no valor máximo.
-          // (113.85 + 114,8292 + 167,634 + 555.3212 = 951.64)
-          contribuicao = 951.64;
-      }
-
-      // Arredonda o resultado final para 2 casas decimais
-      return contribuicao;
+      return baseDeCalculo * 0.14
     },
     //Formatação de moeda para Real Brasileiro
     formatarParaBR(valor) {
