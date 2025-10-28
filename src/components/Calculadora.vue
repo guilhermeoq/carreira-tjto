@@ -67,7 +67,7 @@
           <a href="https://doe.to.gov.br/diario/5476/download"
             >Lei Nº 4.815, de 21 de julho de 2025</a
           >
-          (URV)<br
+          (URV).<br
         /></small>
       </div>
 
@@ -107,7 +107,7 @@
               role="switch"
               id="URVSwitch"
             />
-            <label class="form-check-label">Calcular URV (+11,98%, folha de nov/2025)</label>
+            <label class="form-check-label">Calcular URV (+11,98%)</label>
           </div>
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
