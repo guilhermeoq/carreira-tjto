@@ -66,8 +66,8 @@
           📈 Atualizado em conformidade com a
           <a href="https://doe.to.gov.br/diario/5476/download"
             >Lei Nº 4.815, de 21 de julho de 2025</a
-          >. Efeito financeiro retroativo a folha de out/2025, pagamento a partir da folha de
-          nov/2025.<br
+          >
+          (URV)<br
         /></small>
       </div>
 
