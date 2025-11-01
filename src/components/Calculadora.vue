@@ -66,10 +66,10 @@
             >Lei Nº 4.815, de 21 de julho de 2025</a
           >.<br />
           📢 Para servidores que adiantaram a 1ª parcela do 13º, o simulador compensará a diferença
-          da URV diretamente na 2ª parcela<br />
+          da URV diretamente na 2ª parcela.<br />
           ⚠️ O cálculo da previdência do IGEPREV para servidores que contribuem apenas até o teto
           voltou a ser uma dedução simples de 14% sobre a base de cálculo, conforme a folha de
-          pagamento de out/2025..<br
+          pagamento de out/2025.<br
         /></small>
       </div>
 
