@@ -7,7 +7,7 @@
       <i class="bi bi-arrow-down"></i>
     </a>
   </div>-->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse">
+  <nav class="navbar navbar-expand-lg navbar-collapse">
     <div class="container-fluid">
       <div class="navbar-brand">
         <img src="/android-chrome-192x192.png" width="25" height="25" alt="" />
