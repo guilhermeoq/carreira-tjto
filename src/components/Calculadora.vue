@@ -112,7 +112,7 @@
             <label class="form-check-label">Calcular URV (+11,98%)</label>
           </div>
           -->
-          <div class="d-flex justify-content-center gap-3">
+          <div class="d-flex justify-content-center mt-4 gap-3">
             <!-- SELECTION CARGO -->
             <div class="form-floating mb-3 flex-fill">
               <select
