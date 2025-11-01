@@ -60,14 +60,16 @@
 
       <div class="callout callout-info">
         <small
-          ><strong>Atualizações:</strong><br />
-          ⚠️ Foi alterado o cálculo da previdência do IGEPREV para servidores que contribuem apenas
-          até o teto — voltou a ser 14% do teto na folha de out/2025.<br />
-          📈 Atualizado em conformidade com a
+          ><strong>Atualizações [01/11/2025]:</strong><br />
+          📈 O cálculo da URV já está incorporado no simulador, em conformidade com a
           <a href="https://doe.to.gov.br/diario/5476/download"
             >Lei Nº 4.815, de 21 de julho de 2025</a
-          >
-          (URV).<br
+          >.<br />
+          📢 Para servidores que adiantaram a 1ª parcela do 13º, o simulador compensará a diferença
+          da URV diretamente na 2ª parcela.<br />
+          ⚠️ O cálculo da previdência do IGEPREV para servidores que contribuem apenas até o teto
+          voltou a ser uma dedução simples de 14% sobre a base de cálculo, conforme a folha de
+          pagamento de out/2025.<br
         /></small>
       </div>
 
@@ -98,7 +100,7 @@
       <div v-for="(calculator, index) in calculators" :key="index" class="calculator">
         <h4>Simulação {{ index + 1 }}</h4>
         <form @change="updateSalary(index)">
-          <!-- SWITCH URV -->
+          <!-- SWITCH URV
           <div class="form-check form-switch mt-4 mb-3">
             <input
               v-model="calculator.simularPercentual"
@@ -109,6 +111,7 @@
             />
             <label class="form-check-label">Calcular URV (+11,98%)</label>
           </div>
+          -->
           <div class="d-flex justify-content-center gap-3">
             <!-- SELECTION CARGO -->
             <div class="form-floating mb-3 flex-fill">
@@ -980,7 +983,7 @@ export default {
     //Inicializar calculadora
     createCalculator() {
       return {
-        simularPercentual: false,
+        simularPercentual: true,
         switchSaude: false,
         cargo: 'tecnico',
         nivel: 1,
@@ -1070,25 +1073,24 @@ export default {
       const tetoIgeprev = 8157.41
       const salarios = {
         tecnico: [
-          7438.18, 7810.08, 8200.59, 8610.62, 9041.14, 9493.19, 9967.88, 10466.25, 10989.58,
-          11539.04, 12115.99, 12721.81, 13357.89, 14025.79, 14727.09,
+          8329.27, 8745.73, 9183.02, 9642.17, 10124.27, 10630.47, 11162.03, 11720.11, 12306.13,
+          12921.42, 13567.49, 14245.88, 14958.17, 15706.08, 16491.4,
         ],
         analista: [
-          12452.95, 13075.61, 13729.4, 14415.85, 15136.63, 15893.47, 16688.14, 17522.55, 18398.62,
-          19318.63, 20284.54, 21298.76, 22363.72, 23481.9, 24656.0,
+          13944.81, 14642.07, 15374.18, 16142.87, 16950.0, 17797.51, 18687.38, 19621.75, 20602.77,
+          21633.0, 22714.63, 23850.35, 25042.89, 26295.03, 27609.79,
         ],
       }
 
       const vb = salarios[calculator.cargo][calculator.nivel - 1]
-      calculator.vencimentoBasico = calculator.simularPercentual ? vb * 1.1198 : vb //1.1198
+      calculator.vencimentoBasico = calculator.simularPercentual ? vb * 1 : vb //1.1198
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
 
       if (calculator.switchFuncao == true) {
         calculator.simularPercentual === true
-          ? (calculator.representacao =
-              this.consultaValorFuncao(calculator.funcaoServidor) * 1.1198)
+          ? (calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1) //simularPercentual
           : (calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor))
       } else calculator.representacao = 0
 
@@ -1406,35 +1408,35 @@ export default {
     consultaValorFuncao(funcao) {
       switch (funcao) {
         case 'DAJ-1':
-          return 4150.25 * 0.65
+          return 4647.45 * 0.65
         case 'DAJ-2':
-          return 4882.67 * 0.65
+          return 5467.61 * 0.65
         case 'DAJ-3':
-          return 6103.31 * 0.65
+          return 6834.49 * 0.65
         case 'DAJ-4':
-          return 7324.02 * 0.65
+          return 8201.44 * 0.65
         case 'DAJ-5':
-          return 9463.06 * 0.65
+          return 10596.73 * 0.65
         case 'DAJ-6':
-          return 14647.97 * 0.65
+          return 16402.8 * 0.65
         case 'DAJ-7':
-          return 17089.32 * 0.65
+          return 19136.62 * 0.65
         case 'DAJ-8':
-          return 20751.33 * 0.65
+          return 23237.34 * 0.65
         case 'DAJ-9':
-          return 23944.97 * 0.65
+          return 26813.58 * 0.65
         case 'DAJ-10':
-          return 26339.31 * 0.65
+          return 29494.76 * 0.65
         case 'DAJ-11':
-          return 28387.04 * 0.65
+          return 31787.81 * 0.65
         case 'FC-1':
-          return 1775.1
+          return 1987.76
         case 'FC-2':
-          return 2064.02
+          return 2311.29
         case 'FC-3':
-          return 2401.96
+          return 2689.71
         case 'FC-4':
-          return 3378.74
+          return 3783.51
       }
     },
 
