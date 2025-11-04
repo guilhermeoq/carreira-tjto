@@ -298,6 +298,19 @@
           <div class="border-top">
             <div class="form-check form-switch gap-1 mb-3 mt-3">
               <input
+                v-model="calculator.switchGtic"
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="gtic"
+              />
+              <label class="form-check-label">GTIC</label>
+            </div>
+          </div>
+
+          <div class="border-top">
+            <div class="form-check form-switch gap-1 mb-3 mt-3">
+              <input
                 v-model="calculator.switchFerias"
                 class="form-check-input"
                 type="checkbox"
@@ -790,6 +803,10 @@
             <strong><i class="bi bi-plus-circle-fill"></i> GAJ (30%):</strong>
             {{ formatarParaBR(calculator.gaj) }}
           </p>
+          <p v-show="calculator.switchGtic" class="tab-rendimento">
+            <strong><i class="bi bi-pc-display-horizontal"></i> GTIC (30%):</strong>
+            {{ formatarParaBR(calculator.gtic) }}
+          </p>
           <p class="tab-rendimento">
             <strong> <i class="bi bi-mortarboard-fill"></i> AQE:</strong>
             {{ formatarParaBR(calculator.aqeValue) }}
@@ -991,6 +1008,7 @@ export default {
         aqe: 7.5,
         dependente: 0,
         tipoPrevidencia: 'prevcom',
+        switchGtic: false,
         switchFuncao: false,
         funcaoServidor: 'DAJ-1',
         representacao: 0,
@@ -1020,6 +1038,7 @@ export default {
         tipoDecimo: 'integral',
         vencimentoBasico: 0,
         gaj: 0,
+        gtic: 0,
         aqfcValue: 0,
         aqeValue: 0,
         salarioBruto: 0,
@@ -1085,6 +1104,7 @@ export default {
       const vb = salarios[calculator.cargo][calculator.nivel - 1]
       calculator.vencimentoBasico = calculator.simularPercentual ? vb * 1 : vb //1.1198
       calculator.gaj = calculator.vencimentoBasico * 0.3
+      calculator.gtic = calculator.switchGtic ? calculator.vencimentoBasico * 0.3 : 0
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
 
@@ -1097,6 +1117,7 @@ export default {
       calculator.ferias = calculator.switchFerias
         ? (calculator.vencimentoBasico +
             calculator.gaj +
+            calculator.gtic +
             calculator.aqfcValue +
             calculator.aqeValue +
             calculator.representacao) /
@@ -1174,6 +1195,7 @@ export default {
         (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
           ? calculator.vencimentoBasico +
             calculator.gaj +
+            calculator.gtic +
             calculator.aqfcValue +
             calculator.aqeValue +
             calculator.representacao
@@ -1184,6 +1206,7 @@ export default {
         calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
           ? (calculator.vencimentoBasico +
               calculator.gaj +
+              calculator.gtic +
               calculator.aqfcValue +
               calculator.aqeValue +
               calculator.representacao) /
@@ -1208,7 +1231,11 @@ export default {
         (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
           ? calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo'
             ? this.calcularPrevidencia(tetoIgeprev)
-            : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+            : (calculator.vencimentoBasico +
+                calculator.gaj +
+                calculator.gtic +
+                calculator.aqeValue) *
+              0.14
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
             ? 0
             : 0
@@ -1216,8 +1243,13 @@ export default {
       calculator.decimoPrevcom =
         calculator.switchDecimo &&
         (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
-          ? calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue >= tetoIgeprev
-            ? (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue - tetoIgeprev) *
+          ? calculator.vencimentoBasico + calculator.gaj + calculator.gtic + calculator.aqeValue >=
+            tetoIgeprev
+            ? (calculator.vencimentoBasico +
+                calculator.gaj +
+                calculator.gtic +
+                calculator.aqeValue -
+                tetoIgeprev) *
               0.085
             : 0
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
@@ -1231,6 +1263,7 @@ export default {
         calculator.tipoPrevidencia === 'prevcom'
           ? calculator.vencimentoBasico +
             calculator.gaj +
+            calculator.gtic +
             calculator.aqeValue +
             calculator.aqfcValue +
             calculator.representacao -
@@ -1239,6 +1272,7 @@ export default {
               189.59 * calculator.dependente)
           : calculator.vencimentoBasico +
             calculator.gaj +
+            calculator.gtic +
             calculator.aqeValue +
             calculator.aqfcValue +
             calculator.representacao -
@@ -1271,6 +1305,7 @@ export default {
       calculator.salarioBruto =
         calculator.vencimentoBasico +
         calculator.gaj +
+        calculator.gtic +
         calculator.aqfcValue +
         calculator.aqeValue +
         calculator.representacao +
@@ -1288,6 +1323,7 @@ export default {
       calculator.teto =
         calculator.vencimentoBasico +
           calculator.gaj +
+          calculator.gtic +
           calculator.aqeValue +
           calculator.aqfcValue +
           calculator.representacao <=
@@ -1295,6 +1331,7 @@ export default {
           ? 0
           : calculator.vencimentoBasico +
             calculator.gaj +
+            calculator.gtic +
             calculator.aqeValue +
             calculator.aqfcValue +
             calculator.representacao -
@@ -1304,12 +1341,18 @@ export default {
       calculator.previdencia =
         calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo'
           ? this.calcularPrevidencia(tetoIgeprev)
-          : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
+          : (calculator.vencimentoBasico + calculator.gaj + calculator.gtic + calculator.aqeValue) *
+            0.14
 
       //Cálculo do desconto da previdência complementar
       calculator.prevcom =
-        calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue >= tetoIgeprev
-          ? (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue - tetoIgeprev) *
+        calculator.vencimentoBasico + calculator.gaj + calculator.gtic + calculator.aqeValue >=
+        tetoIgeprev
+          ? (calculator.vencimentoBasico +
+              calculator.gaj +
+              calculator.gtic +
+              calculator.aqeValue -
+              tetoIgeprev) *
             0.085
           : 0
 
@@ -1318,6 +1361,7 @@ export default {
         calculator.tipoPrevidencia === 'prevcom'
           ? calculator.vencimentoBasico +
             calculator.gaj +
+            calculator.gtic +
             calculator.aqeValue +
             calculator.aqfcValue +
             calculator.representacao +
@@ -1329,6 +1373,7 @@ export default {
           : calculator.tipoPrevidencia === 'igeprevNovo'
             ? calculator.vencimentoBasico +
               calculator.gaj +
+              calculator.gtic +
               calculator.aqeValue +
               calculator.aqfcValue +
               calculator.representacao +
@@ -1336,6 +1381,7 @@ export default {
               (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente)
             : calculator.vencimentoBasico +
               calculator.gaj +
+              calculator.gtic +
               calculator.aqeValue +
               calculator.aqfcValue +
               calculator.representacao +
@@ -1345,6 +1391,7 @@ export default {
       /* console.log(`------------------------
       Vencimento Basico: ${calculator.vencimentoBasico}
       GAJ: ${calculator.gaj}
+      GTIC: ${calculator.gtic}
       AQE: ${calculator.aqeValue}
       AQFC: ${calculator.aqfcValue}
       Representacao: ${calculator.representacao}
