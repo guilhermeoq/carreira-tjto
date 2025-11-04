@@ -1116,8 +1116,7 @@ export default {
         )
           auxilioServidor = this.consultaReembolso(calculator.faixaEtariaServidor)
         else auxilioServidor = calculator.mensalidadeServidor
-        //console.log('----------------')
-        //console.log('Auxilio Servidor: ' + auxilioServidor)
+        //console.log(`Auxilio Servidor:  ${auxilioServidor}`)
 
         // Consulta teto de reembolso Aux.Saude para Dependente 1
         if (
@@ -1126,7 +1125,7 @@ export default {
         )
           auxilioDependente1 = this.consultaReembolso(calculator.faixaEtariaDependente1)
         else auxilioDependente1 = calculator.mensalidadeDependente1
-        //console.log('Auxilio Dependente 1: ' + auxilioDependente1)
+        //console.log(`Auxilio Dependente 1: ${auxilioDependente1}`)
 
         // Consulta teto de reembolso Aux.Saude para Dependente 2
         if (
@@ -1135,7 +1134,7 @@ export default {
         )
           auxilioDependente2 = this.consultaReembolso(calculator.faixaEtariaDependente2)
         else auxilioDependente2 = calculator.mensalidadeDependente2
-        //console.log('Auxilio Dependente 2: ' + auxilioDependente2)
+        //console.log(`Auxilio Dependente 2: ${auxilioDependente2}`)
 
         // Consulta teto de reembolso Aux.Saude para Dependente 3
         if (
@@ -1148,12 +1147,9 @@ export default {
         else
           (auxilioDependente3 =
             calculator.mensalidadeDependente3 * calculator.multiplicadorDependente3),
-            // console.log(
-            //   'Auxilio Dependente 3 x ' +
-            //     calculator.multiplicadorDependente3 +
-            //     '= ' +
-            //     auxilioDependente3,
-            // )
+            // console.log(`Auxilio Dependente 3 x
+            // ${calculator.multiplicadorDependente3}
+            // = ${auxilioDependente3}`)
 
             //Somatório dos reembolsos apurados conforme tetos por faixa etária
             (reembolsoAgregado = parseFloat(
@@ -1165,11 +1161,11 @@ export default {
         calculator.percentualSaudeDep1 = this.percentualTetoSaude(auxilioDependente1)
         calculator.percentualSaudeDep2 = this.percentualTetoSaude(auxilioDependente2)
         calculator.percentualSaudeDep3 = this.percentualTetoSaude(auxilioDependente3)
-        //console.log('PERCENTUAIS: ')
-        //console.log('Servidor: ' + calculator.percentualSaudeServidor)
-        //console.log('Dep1: ' + calculator.percentualSaudeDep1)
-        //console.log('Dep2: ' + calculator.percentualSaudeDep2)
-        //console.log('Dep3: ' + calculator.percentualSaudeDep3)
+        //console.log(`PERCENTUAIS:
+        // Servidor: ${calculator.percentualSaudeServidor}
+        // Dep1: ' + calculator.percentualSaudeDep1
+        // Dep2: ${calculator.percentualSaudeDep2}
+        // Dep3: ${calculator.percentualSaudeDep3}`)
       } else calculator.saude = 0.0
 
       //Cálculo do 13º salário integral - incluso em folha complementar
@@ -1346,18 +1342,19 @@ export default {
               calculator.ferias -
               (calculator.previdencia + calculator.teto + 189.59 * calculator.dependente)
 
-      //console.log('Vencimento Basico: ' + calculator.vencimentoBasico)
-      //console.log('GAJ: ' + calculator.gaj)
-      //console.log('AQE: ' + calculator.aqeValue)
-      //console.log('AQFC: ' + calculator.aqfcValue)
-      //console.log('Representacao: ' + calculator.representacao)
-      //console.log('Previdencia: ' + calculator.previdencia)
-      //console.log('Dependente: ' + calculator.dependente)
-      //console.log('Previdencia: ' + calculator.previdencia)
-      //console.log('Prevcom: ' + calculator.prevcom)
-      //console.log('Base de Calculo IRRF: ' + baseIRRF)
-      //console.log('TETO: ' + calculator.teto)
-      //console.log('------------------------')
+      /* console.log(`------------------------
+      Vencimento Basico: ${calculator.vencimentoBasico}
+      GAJ: ${calculator.gaj}
+      AQE: ${calculator.aqeValue}
+      AQFC: ${calculator.aqfcValue}
+      Representacao: ${calculator.representacao}
+      Previdencia: ${calculator.previdencia}
+      Dependente: ${calculator.dependente}
+      Previdencia: ${calculator.previdencia}
+      Prevcom: ${calculator.prevcom}
+      Base de Calculo IRRF: ${baseIRRF}
+      TETO: ${calculator.teto}
+      ------------------------`) */
 
       calculator.irrf = this.calcularIrrf(baseIRRF)
       calculator.totalDescontos =
