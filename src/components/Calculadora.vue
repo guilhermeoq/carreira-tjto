@@ -1231,11 +1231,7 @@ export default {
         (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
           ? calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo'
             ? this.calcularPrevidencia(tetoIgeprev)
-            : (calculator.vencimentoBasico +
-                calculator.gaj +
-                calculator.gtic +
-                calculator.aqeValue) *
-              0.14
+            : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
             ? 0
             : 0
@@ -1243,13 +1239,8 @@ export default {
       calculator.decimoPrevcom =
         calculator.switchDecimo &&
         (calculator.tipoDecimo === 'integral' || calculator.tipoDecimo === 'parcela2')
-          ? calculator.vencimentoBasico + calculator.gaj + calculator.gtic + calculator.aqeValue >=
-            tetoIgeprev
-            ? (calculator.vencimentoBasico +
-                calculator.gaj +
-                calculator.gtic +
-                calculator.aqeValue -
-                tetoIgeprev) *
+          ? calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue >= tetoIgeprev
+            ? (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue - tetoIgeprev) *
               0.085
             : 0
           : calculator.switchDecimo && calculator.tipoDecimo === 'parcela1'
@@ -1341,18 +1332,12 @@ export default {
       calculator.previdencia =
         calculator.tipoPrevidencia === 'prevcom' || calculator.tipoPrevidencia === 'igeprevNovo'
           ? this.calcularPrevidencia(tetoIgeprev)
-          : (calculator.vencimentoBasico + calculator.gaj + calculator.gtic + calculator.aqeValue) *
-            0.14
+          : (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue) * 0.14
 
       //Cálculo do desconto da previdência complementar
       calculator.prevcom =
-        calculator.vencimentoBasico + calculator.gaj + calculator.gtic + calculator.aqeValue >=
-        tetoIgeprev
-          ? (calculator.vencimentoBasico +
-              calculator.gaj +
-              calculator.gtic +
-              calculator.aqeValue -
-              tetoIgeprev) *
+        calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue >= tetoIgeprev
+          ? (calculator.vencimentoBasico + calculator.gaj + calculator.aqeValue - tetoIgeprev) *
             0.085
           : 0
 
