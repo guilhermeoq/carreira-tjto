@@ -381,7 +381,7 @@
                 role="switch"
                 id="switchTetoSaude"
               />
-              <label class="form-check-label">Recebe o Teto?</label>
+              <label class="form-check-label">Recebe o teto?</label>
             </div>
 
             <!-- Faixa Etaria - Idade Servidor -->
@@ -1197,7 +1197,7 @@ export default {
         // Dep3: ${calculator.percentualSaudeDep3}`)
       } else calculator.saude = 0.0
 
-      if (calculator.switchTetoSaude == true) {
+      if (calculator.switchTetoSaude == true && calculator.switchSaude == true) {
         calculator.mensalidadeServidor = 0.0
         calculator.mensalidadeDependente1 = 0.0
         calculator.mensalidadeDependente2 = 0.0
