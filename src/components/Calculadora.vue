@@ -378,9 +378,27 @@
               <label class="form-check-label">Auxílio Saúde</label>
             </div>
 
+            <div v-if="calculator.switchSaude" class="mt-3 form-check form-switch mb-3">
+              <input
+                v-model="calculator.switchTetoSaude"
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="switchTetoSaude"
+              />
+              <label class="form-check-label">Recebe o Teto?</label>
+            </div>
+
             <!-- Faixa Etaria - Idade Servidor -->
             <div class="d-flex flex-wrap justify-content-between gap-1">
-              <div v-if="calculator.switchSaude" class="form-floating mb-1 flex-fill col-3">
+              <div
+                v-if="
+                  calculator.switchSaude &&
+                  !calculator.switchTetoSaude &&
+                  !calculator.switchTetoSaude
+                "
+                class="form-floating mb-1 flex-fill col-3"
+              >
                 <select
                   class="form-select border-primary border-2"
                   id="idadeServidor"
@@ -407,7 +425,10 @@
                 </select>
                 <label>Idade Servidor</label>
               </div>
-              <div v-if="calculator.switchSaude" class="form-floating mb-1 col-6">
+              <div
+                v-if="calculator.switchSaude && !calculator.switchTetoSaude"
+                class="form-floating mb-1 col-6"
+              >
                 <input
                   type="number"
                   min="0.00"
@@ -422,7 +443,7 @@
               </div>
             </div>
             <div
-              v-if="calculator.switchSaude"
+              v-if="calculator.switchSaude && !calculator.switchTetoSaude"
               class="progress mb-3"
               role="progressbar"
               aria-label="Limite Servidor"
@@ -455,7 +476,7 @@
 
             <!-- Faixa Etaria - Idade Dependente 1 -->
             <div
-              v-if="calculator.switchSaude"
+              v-if="calculator.switchSaude && !calculator.switchTetoSaude"
               class="d-flex flex-wrap justify-content-between gap-1"
             >
               <div class="form-floating mb-1 flex-fill col-3">
@@ -500,7 +521,7 @@
               </div>
             </div>
             <div
-              v-if="calculator.switchSaude"
+              v-if="calculator.switchSaude && !calculator.switchTetoSaude"
               class="progress mb-3"
               role="progressbar"
               aria-label="Limite Dependente 1"
@@ -533,7 +554,7 @@
 
             <!-- Faixa Etaria - Idade Dependente 2 -->
             <div
-              v-if="calculator.switchSaude"
+              v-if="calculator.switchSaude && !calculator.switchTetoSaude"
               class="d-flex flex-wrap justify-content-between gap-1"
             >
               <div class="form-floating mb-3 flex-fill col-3">
@@ -563,7 +584,10 @@
                 </select>
                 <label>Idade Dep. 2</label>
               </div>
-              <div v-show="calculator.switchSaude" class="form-floating mb-3 col-6">
+              <div
+                v-show="calculator.switchSaude && !calculator.switchTetoSaude"
+                class="form-floating mb-3 col-6"
+              >
                 <input
                   type="number"
                   min="0.00"
@@ -578,7 +602,7 @@
               </div>
             </div>
             <div
-              v-if="calculator.switchSaude"
+              v-if="calculator.switchSaude && !calculator.switchTetoSaude"
               class="progress mb-3"
               role="progressbar"
               aria-label="Limite Dependente 2"
@@ -611,7 +635,7 @@
 
             <!-- Faixa Etaria - Idade Dependente 3 -->
             <div
-              v-if="calculator.switchSaude"
+              v-if="calculator.switchSaude && !calculator.switchTetoSaude"
               class="d-flex flex-wrap justify-content-between gap-1"
             >
               <div class="form-floating mb-1 flex-fill col-3">
@@ -657,7 +681,7 @@
               </div>
             </div>
             <div
-              v-if="calculator.switchSaude"
+              v-if="calculator.switchSaude && !calculator.switchTetoSaude"
               class="progress mb-3"
               role="progressbar"
               aria-label="Limite Dependente 3"
@@ -688,7 +712,10 @@
               </div>
             </div>
 
-            <div v-if="calculator.switchSaude" class="input-group mb-3 flex-fill">
+            <div
+              v-if="calculator.switchSaude && !calculator.switchTetoSaude"
+              class="input-group mb-3 flex-fill"
+            >
               <label class="input-group-text">Multiplicar 'Dep. 3' x</label>
               <select
                 v-model="calculator.multiplicadorDependente3"
@@ -702,7 +729,10 @@
             </div>
 
             <!-- BARRA PERCENTUAL - TETO GLOBAL DO PLANO DE SAUDE -->
-            <div v-if="calculator.switchSaude" class="progress-stacked border-bottom">
+            <div
+              v-if="calculator.switchSaude && !calculator.switchTetoSaude"
+              class="progress-stacked border-bottom"
+            >
               <div
                 class="progress"
                 role="progressbar"
@@ -760,7 +790,10 @@
             </div>
           </div>
 
-          <div v-if="calculator.switchSaude" class="d-flex flex-wrap justify-content-center">
+          <div
+            v-if="calculator.switchSaude && !calculator.switchTetoSaude"
+            class="d-flex flex-wrap justify-content-center"
+          >
             <p>
               <small><strong>Teto Aux. Saúde: R$ 3.408,34</strong></small>
             </p>
@@ -985,6 +1018,7 @@ export default {
       return {
         simularPercentual: true,
         switchSaude: false,
+        switchTetoSaude: false,
         cargo: 'tecnico',
         nivel: 1,
         aqfc: 3,
@@ -1167,6 +1201,14 @@ export default {
         // Dep2: ${calculator.percentualSaudeDep2}
         // Dep3: ${calculator.percentualSaudeDep3}`)
       } else calculator.saude = 0.0
+
+      if (calculator.switchTetoSaude == true) {
+        calculator.mensalidadeServidor = 0.0
+        calculator.mensalidadeDependente1 = 0.0
+        calculator.mensalidadeDependente2 = 0.0
+        calculator.mensalidadeDependente3 = 0.0
+        calculator.saude = 3408.34
+      }
 
       //Cálculo do 13º salário integral - incluso em folha complementar
       calculator.decimoFolhaComplementar =
