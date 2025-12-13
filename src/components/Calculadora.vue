@@ -58,15 +58,13 @@
         </p>
       </div>
 
-      <!--       <div class="callout callout-info">
+      <div class="callout callout-info">
         <small
-          ><strong>Atualizações [01/11/2025]:</strong><br />
-          📈 O cálculo da URV já está incorporado no simulador, em conformidade com a
-          <a href="https://doe.to.gov.br/diario/5476/download"
-            >Lei Nº 4.815, de 21 de julho de 2025</a
-          >.</small
-        >
-      </div> -->
+          ><strong>Atualizações [12/12/2025]:</strong><br />
+          📅 Os cálculos de adiantamento do 13º salário para 2026 estão ajustados, considerando a
+          vigência da URV em ambas as parcelas.
+        </small>
+      </div>
 
       <div style="text-align: center; margin-top: 2em; margin-bottom: 1em">
         <button type="button" class="btn clearBtn" @click="resetCalculators">
@@ -95,18 +93,18 @@
       <div v-for="(calculator, index) in calculators" :key="index" class="calculator">
         <h4>Simulação {{ index + 1 }}</h4>
         <form @change="updateSalary(index)">
-          <!-- SWITCH URV
+          <!-- SWITCH DATABASE
           <div class="form-check form-switch mt-4 mb-3">
             <input
               v-model="calculator.simularPercentual"
               class="form-check-input"
               type="checkbox"
               role="switch"
-              id="URVSwitch"
+              id="DBSwitch"
             />
-            <label class="form-check-label">Calcular URV (+11,98%)</label>
-          </div>
-          -->
+            <label class="form-check-label">Simular data-base 2026 (+4%)</label>
+          </div>-->
+
           <div class="d-flex justify-content-center mt-4 gap-3">
             <!-- SELECTION CARGO -->
             <div class="form-floating mb-3 flex-fill">
@@ -918,15 +916,6 @@
             <i class="bi bi-caret-down-fill"></i> Total de Descontos 13º:
             {{ formatarParaBR(calculator.totalDescontosDecimo) }}
           </p>
-          <p
-            v-show="
-              calculator.switchDecimo &&
-              calculator.tipoDecimo === 'parcela2' &&
-              calculator.simularPercentual
-            "
-          >
-            <i><small>*Adiantamento do 13º sem URV</small></i>
-          </p>
           <p class="tab-liquido">
             <i class="bi bi-caret-right-fill"></i> 13º Salário Líquido:
             {{ formatarParaBR(calculator.decimoLiquido) }}
@@ -1011,7 +1000,7 @@ export default {
     //Inicializar calculadora
     createCalculator() {
       return {
-        simularPercentual: true,
+        simularPercentual: false,
         switchSaude: false,
         switchTetoSaude: false,
         cargo: 'tecnico',
@@ -1062,7 +1051,7 @@ export default {
       }
     },
     saveCalculatorsToLocalStorage() {
-      localStorage.setItem('calculators-storev1', JSON.stringify(this.calculators))
+      localStorage.setItem('calculators-store', JSON.stringify(this.calculators))
     },
     resetCalculators() {
       this.calculators = [this.createCalculator(), this.createCalculator()]
@@ -1112,7 +1101,7 @@ export default {
       }
 
       const vb = salarios[calculator.cargo][calculator.nivel - 1]
-      calculator.vencimentoBasico = calculator.simularPercentual ? vb * 1 : vb //1.1198
+      calculator.vencimentoBasico = calculator.simularPercentual ? vb * 1.04 : vb //1.1198
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
@@ -1228,17 +1217,7 @@ export default {
           : 0
 
       //Cálculo do desconto de adiantamento da 1ª parcela do 13º salário
-      const vbSemURV = calculator.vencimentoBasico / 1.1198
-      const repSemURV = calculator.representacao / 1.1198
-      calculator.simularPercentual
-        ? (calculator.decimoAdiantamento =
-            (vbSemURV +
-              vbSemURV * 0.3 +
-              vbSemURV * (calculator.aqfc / 100) +
-              vbSemURV * (calculator.aqe / 100) +
-              repSemURV) /
-            2)
-        : (calculator.decimoAdiantamento = calculator.decimoFolhaComplementar / 2)
+      calculator.decimoAdiantamento = calculator.decimoFolhaComplementar / 2
 
       calculator.decimoPrevidencia =
         calculator.switchDecimo &&
@@ -1513,13 +1492,13 @@ export default {
           }
         })
         // 🔐 New logic: Save to localStorage
-        localStorage.setItem('calculators-storev1', JSON.stringify(newCalculators))
+        localStorage.setItem('calculators-store', JSON.stringify(newCalculators))
       },
     },
   },
 
   mounted() {
-    const saved = localStorage.getItem('calculators-storev1')
+    const saved = localStorage.getItem('calculators-store')
     if (saved) {
       this.calculators = JSON.parse(saved)
     } else {
