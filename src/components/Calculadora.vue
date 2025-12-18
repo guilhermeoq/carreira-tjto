@@ -58,6 +58,10 @@
         </p>
       </div>
 
+      <div class="callout callout-warning">
+        <small><strong>GATIC</strong><br /> </small>
+      </div>
+
       <div style="text-align: center; margin-top: 2em; margin-bottom: 1em">
         <button type="button" class="btn clearBtn" @click="resetCalculators">
           <strong><i class="bi bi-stars"></i> Limpar</strong>
@@ -85,18 +89,33 @@
       <div v-for="(calculator, index) in calculators" :key="index" class="calculator">
         <h4>Simulação {{ index + 1 }}</h4>
         <form @change="updateSalary(index)">
-          <!-- SWITCH URV
-          <div class="form-check form-switch mt-4 mb-3">
-            <input
-              v-model="calculator.simularPercentual"
-              class="form-check-input"
-              type="checkbox"
-              role="switch"
-              id="URVSwitch"
-            />
-            <label class="form-check-label">Calcular URV (+11,98%)</label>
+          <!-- SWITCH DATABASE-->
+          <div class="border-bottom">
+            <div class="form-check form-switch mt-4 mb-3">
+              <input
+                v-model="calculator.simularPercentual"
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="DBSwitch"
+              />
+              <label class="form-check-label">Simular data-base 2026</label>
+            </div>
+            <div v-show="calculator.simularPercentual" class="form-floating mb-3 col-5">
+              <input
+                type="number"
+                min="0.00"
+                max="50.00"
+                step="any"
+                class="form-control"
+                id="percentualDatabase"
+                placeholder="Digite o valor"
+                v-model="calculator.percentualDatabase"
+              />
+              <label>Data-base (%)</label>
+            </div>
           </div>
-          -->
+
           <div class="d-flex justify-content-center mt-4 gap-3">
             <!-- SELECTION CARGO -->
             <div class="form-floating mb-3 flex-fill">
@@ -289,7 +308,7 @@
                 role="switch"
                 id="gtic"
               />
-              <label class="form-check-label">GTIC</label>
+              <label class="form-check-label">GTIC ✨</label>
             </div>
           </div>
 
@@ -892,15 +911,6 @@
             <i class="bi bi-caret-down-fill"></i> Total de Descontos 13º:
             {{ formatarParaBR(calculator.totalDescontosDecimo) }}
           </p>
-          <p
-            v-show="
-              calculator.switchDecimo &&
-              calculator.tipoDecimo === 'parcela2' &&
-              calculator.simularPercentual
-            "
-          >
-            <i><small>*Adiantamento do 13º sem URV</small></i>
-          </p>
           <p class="tab-liquido">
             <i class="bi bi-caret-right-fill"></i> 13º Salário Líquido:
             {{ formatarParaBR(calculator.decimoLiquido) }}
@@ -985,7 +995,8 @@ export default {
     //Inicializar calculadora
     createCalculator() {
       return {
-        simularPercentual: true,
+        simularPercentual: false,
+        percentualDatabase: 4.0,
         switchSaude: false,
         cargo: 'tecnico',
         nivel: 1,
@@ -1087,7 +1098,9 @@ export default {
       }
 
       const vb = salarios[calculator.cargo][calculator.nivel - 1]
-      calculator.vencimentoBasico = calculator.simularPercentual ? vb * 1 : vb //1.1198
+      calculator.vencimentoBasico = calculator.simularPercentual
+        ? vb * (1 + calculator.percentualDatabase / 100)
+        : vb //simularPercentual
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.gtic = calculator.switchGtic ? calculator.vencimentoBasico * 0.3 : 0
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
@@ -1095,7 +1108,9 @@ export default {
 
       if (calculator.switchFuncao == true) {
         calculator.simularPercentual === true
-          ? (calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1) //simularPercentual
+          ? (calculator.representacao =
+              this.consultaValorFuncao(calculator.funcaoServidor) *
+              (1 + calculator.percentualDatabase / 100)) //simularPercentual
           : (calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor))
       } else calculator.representacao = 0
 
@@ -1199,17 +1214,7 @@ export default {
           : 0
 
       //Cálculo do desconto de adiantamento da 1ª parcela do 13º salário
-      const vbSemURV = calculator.vencimentoBasico / 1.1198
-      const repSemURV = calculator.representacao / 1.1198
-      calculator.simularPercentual
-        ? (calculator.decimoAdiantamento =
-            (vbSemURV +
-              vbSemURV * 0.3 +
-              vbSemURV * (calculator.aqfc / 100) +
-              vbSemURV * (calculator.aqe / 100) +
-              repSemURV) /
-            2)
-        : (calculator.decimoAdiantamento = calculator.decimoFolhaComplementar / 2)
+      calculator.decimoAdiantamento = calculator.decimoFolhaComplementar / 2
 
       calculator.decimoPrevidencia =
         calculator.switchDecimo &&
