@@ -93,19 +93,34 @@
       <div v-for="(calculator, index) in calculators" :key="index" class="calculator">
         <h4>Simulação {{ index + 1 }}</h4>
         <form @change="updateSalary(index)">
-          <!-- SWITCH DATABASE
-          <div class="form-check form-switch mt-4 mb-3">
-            <input
-              v-model="calculator.simularPercentual"
-              class="form-check-input"
-              type="checkbox"
-              role="switch"
-              id="DBSwitch"
-            />
-            <label class="form-check-label">Simular data-base 2026 (+4%)</label>
-          </div>-->
+          <!-- SWITCH DATABASE-->
+          <div class="border-bottom">
+            <div class="form-check form-switch mt-4 mb-3">
+              <input
+                v-model="calculator.simularPercentual"
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="DBSwitch"
+              />
+              <label class="form-check-label">Simular data-base 2026</label>
+            </div>
+            <div v-show="calculator.simularPercentual" class="form-floating mb-3 col-5">
+              <input
+                type="number"
+                min="0.00"
+                max="50.00"
+                step="any"
+                class="form-control"
+                id="percentualDatabase"
+                placeholder="Digite o valor"
+                v-model="calculator.percentualDatabase"
+              />
+              <label>Data-base (%)</label>
+            </div>
+          </div>
 
-          <div class="d-flex justify-content-center mt-4 gap-3">
+          <div class="d-flex justify-content-center mt-3 gap-3">
             <!-- SELECTION CARGO -->
             <div class="form-floating mb-3 flex-fill">
               <select
@@ -792,7 +807,7 @@
             </p>
           </div>
           <p class="mb-0 mt-2">Outros descontos:</p>
-          <div class="mt-1 form-floating mb-1 col-6">
+          <div class="mt-1 form-floating mb-1 col-5">
             <input
               type="number"
               min="0.00"
@@ -1001,6 +1016,7 @@ export default {
     createCalculator() {
       return {
         simularPercentual: false,
+        percentualDatabase: 4.0,
         switchSaude: false,
         switchTetoSaude: false,
         cargo: 'tecnico',
@@ -1101,14 +1117,18 @@ export default {
       }
 
       const vb = salarios[calculator.cargo][calculator.nivel - 1]
-      calculator.vencimentoBasico = calculator.simularPercentual ? vb * 1.04 : vb //1.1198
+      calculator.vencimentoBasico = calculator.simularPercentual
+        ? vb * (1 + calculator.percentualDatabase / 100)
+        : vb //simularPercentual
       calculator.gaj = calculator.vencimentoBasico * 0.3
       calculator.aqfcValue = calculator.vencimentoBasico * (calculator.aqfc / 100)
       calculator.aqeValue = calculator.vencimentoBasico * (calculator.aqe / 100)
 
       if (calculator.switchFuncao == true) {
         calculator.simularPercentual === true
-          ? (calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor) * 1) //simularPercentual
+          ? (calculator.representacao =
+              this.consultaValorFuncao(calculator.funcaoServidor) *
+              (1 + calculator.percentualDatabase / 100)) //simularPercentual
           : (calculator.representacao = this.consultaValorFuncao(calculator.funcaoServidor))
       } else calculator.representacao = 0
 
@@ -1976,7 +1996,7 @@ body[data-bs-theme='light'] {
 .gradient-text {
   background: linear-gradient(to right, #302055, rgb(147, 104, 172), rgb(67, 9, 161));
   background-size: 200% 200%;
-  animation: rainbow 2s ease-in-out infinite;
+  animation: rainbow 4s ease-in-out infinite;
   background-clip: text;
   -webkit-background-clip: text;
   color: rgb(109 40 217);
@@ -1984,7 +2004,7 @@ body[data-bs-theme='light'] {
   font-weight: 900;
 }
 
-.gradient-text:hover {
+.gradient-text {
   color: rgba(0, 0, 0, 0);
 }
 
