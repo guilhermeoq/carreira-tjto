@@ -308,7 +308,7 @@
                 role="switch"
                 id="gtic"
               />
-              <label class="form-check-label">GTIC ✨</label>
+              <label class="form-check-label">GATIC ✨</label>
             </div>
           </div>
 
