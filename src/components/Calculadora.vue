@@ -58,18 +58,6 @@
         </p>
       </div>
 
-      <div class="justify-content-center">
-        <pre>
- ██████╗████████╗██╗ ██████╗    ███╗   ███╗ ██████╗ ██████╗
-██╔════╝╚══██╔══╝██║██╔════╝    ████╗ ████║██╔═══██╗██╔══██╗
-██║  ███╗  ██║   ██║██║         ██╔████╔██║██║   ██║██║  ██║
-██║   ██║  ██║   ██║██║         ██║╚██╔╝██║██║   ██║██║  ██║
-╚██████╔╝  ██║   ██║╚██████╗    ██║ ╚═╝ ██║╚██████╔╝██████╔╝
- ╚═════╝   ╚═╝   ╚═╝ ╚═════╝    ╚═╝     ╚═╝ ╚═════╝ ╚═════╝
-
-        </pre>
-      </div>
-
       <div style="text-align: center; margin-top: 2em; margin-bottom: 1em">
         <button type="button" class="btn clearBtn" @click="resetCalculators">
           <strong><i class="bi bi-stars"></i> Limpar</strong>
