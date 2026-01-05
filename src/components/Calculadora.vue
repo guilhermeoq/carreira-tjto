@@ -62,8 +62,6 @@
         <small
           ><strong>Atualizações [17/12/2025]:</strong><br />
           🚨 Nova opção para simular data-base 2026, com percentual ajustável.<br />
-          📅 Você já pode planejar seu 13º salário para 2026! Os cálculos estão ajustados
-          considerando a vigência da URV em ambas as parcelas.
         </small>
       </div>
 
@@ -1789,6 +1787,7 @@ body[data-bs-theme='light'] {
   }
 
   .title {
+    text-wrap: balance;
     font-weight: 700;
     font-family: 'YourHeadingFont', sans-serif;
     line-height: 0.95;
