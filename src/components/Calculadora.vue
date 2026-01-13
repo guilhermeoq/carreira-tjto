@@ -60,8 +60,8 @@
 
       <div class="callout callout-info">
         <small
-          ><strong>Atualizações [17/12/2025]:</strong><br />
-          🛒 Simulação de +15% no aux. alimentação incorporada no cálculo.<br/>
+          ><strong>Atualizações [13/01/2026]:</strong><br />
+          🛒 Simulação de +15% no aux. alimentação incorporada no cálculo.<br />
           🚨 Nova opção para simular data-base 2026, com percentual ajustável.<br />
         </small>
       </div>
@@ -1313,7 +1313,7 @@ export default {
         calculator.ferias +
         calculator.saude +
         calculator.decimoparcela1 +
-        2440.30
+        2440.3
 
       //Cálculo do teto/sub-teto (2024: 29196.14 / 2025: 30760.27)
       //Como o sub-teto parece estar inativo, o teto é -5% do subsídio dos ministros do STF.
