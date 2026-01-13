@@ -61,6 +61,7 @@
       <div class="callout callout-info">
         <small
           ><strong>Atualizações [17/12/2025]:</strong><br />
+          🛒 Simulação de +15% no aux. alimentação incorporada no cálculo.<br/>
           🚨 Nova opção para simular data-base 2026, com percentual ajustável.<br />
         </small>
       </div>
