@@ -61,6 +61,7 @@
       <div class="callout callout-info">
         <small
           ><strong>Atualizações [17/12/2025]:</strong><br />
+          🛒 Simulação de +15% no aux. alimentação incorporada no cálculo.<br/>
           🚨 Nova opção para simular data-base 2026, com percentual ajustável.<br />
         </small>
       </div>
@@ -843,7 +844,7 @@
             {{ formatarParaBR(calculator.representacao) }}
           </p>
           <p class="tab-alimentacao">
-            <strong> <i class="bi bi-basket-fill"></i> Aux. Alimentação:</strong> R$ 2.122,00
+            <strong> <i class="bi bi-basket-fill"></i> Aux. Alimentação:</strong> R$ 2.440,30
           </p>
           <p v-show="calculator.switchSaude" class="tab-saude">
             <strong> <i class="bi bi-hospital-fill"></i> Aux. Saúde:</strong>
@@ -1312,7 +1313,7 @@ export default {
         calculator.ferias +
         calculator.saude +
         calculator.decimoparcela1 +
-        2122
+        2440.30
 
       //Cálculo do teto/sub-teto (2024: 29196.14 / 2025: 30760.27)
       //Como o sub-teto parece estar inativo, o teto é -5% do subsídio dos ministros do STF.
