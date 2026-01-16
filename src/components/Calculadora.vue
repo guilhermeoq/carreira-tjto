@@ -60,8 +60,15 @@
 
       <div class="callout callout-info">
         <small
-          ><strong>Atualizações [13/01/2026]:</strong><br />
-          🛒 Simulação de +15% no aux. alimentação incorporada no cálculo.<br />
+          ><strong>Atualizações [16/01/2026]:</strong><br />
+          🆕 A calculadora foi atualizada considerando que o
+          <a
+            href="https://www.cnnbrasil.com.br/economia/macroeconomia/teto-do-inss-sobe-para-r-8-47555-em-2026-veja-faixas-atualizadas/"
+            >teto do IGEPREV aumentou</a
+          >
+          de R$ 8.157,40 para R$ 8.475,55 em 2026. Desta forma, os descontos do IGEPREV e BrasilPrev
+          mudaram.<br />🛒 A calculadora já está considerando reajuste de +15% no aux. alimentação
+          (uma diferença de R$ 318,30).<br />
           🚨 Nova opção para simular data-base 2026, com percentual ajustável.<br />
         </small>
       </div>
@@ -844,7 +851,7 @@
             {{ formatarParaBR(calculator.representacao) }}
           </p>
           <p class="tab-alimentacao">
-            <strong> <i class="bi bi-basket-fill"></i> Aux. Alimentação:</strong> R$ 2.440,30
+            <strong> <i class="bi bi-basket-fill"></i> Aux. Alimentação:</strong> R$ 2.440.30
           </p>
           <p v-show="calculator.switchSaude" class="tab-saude">
             <strong> <i class="bi bi-hospital-fill"></i> Aux. Saúde:</strong>
@@ -1104,7 +1111,7 @@ export default {
     //Atualizar cálculo do salário
     updateSalary(index) {
       const calculator = this.calculators[index]
-      const tetoIgeprev = 8157.41
+      const tetoIgeprev = 8475.55
       const salarios = {
         tecnico: [
           8329.27, 8745.73, 9183.02, 9642.17, 10124.27, 10630.47, 11162.03, 11720.11, 12306.13,
