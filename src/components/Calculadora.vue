@@ -1085,7 +1085,7 @@ export default {
     //Atualizar cálculo do salário
     updateSalary(index) {
       const calculator = this.calculators[index]
-      const tetoIgeprev = 8157.41
+      const tetoIgeprev = 8475.55
       const salarios = {
         tecnico: [
           8329.27, 8745.73, 9183.02, 9642.17, 10124.27, 10630.47, 11162.03, 11720.11, 12306.13,
