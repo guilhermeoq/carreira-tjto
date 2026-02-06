@@ -850,12 +850,44 @@
               ><br />
               <small
                 ><strong
-                  ><span v-if="calculator.reembolsoAgregado - 3408.34 >= 0" class="negative"
+                  ><span
+                    v-if="
+                      calculator.mensalidadeDependente1 +
+                        calculator.mensalidadeDependente2 +
+                        calculator.mensalidadeDependente3 * calculator.multiplicadorDependente3 -
+                        3408.34 >=
+                      0
+                    "
+                    class="negative"
                     >Excedente Aux. Saúde:
-                    {{ formatarParaBR(3408.34 - calculator.reembolsoAgregado) }} </span
-                  ><span v-if="calculator.reembolsoAgregado - 3408.34 < 0" class="positive"
+                    {{
+                      formatarParaBR(
+                        3408.34 -
+                          (calculator.mensalidadeDependente1 +
+                            calculator.mensalidadeDependente2 +
+                            calculator.mensalidadeDependente3 *
+                              calculator.multiplicadorDependente3),
+                      )
+                    }} </span
+                  ><span
+                    v-if="
+                      calculator.mensalidadeDependente1 +
+                        calculator.mensalidadeDependente2 +
+                        calculator.mensalidadeDependente3 * calculator.multiplicadorDependente3 -
+                        3408.34 <
+                      0
+                    "
+                    class="positive"
                     >Saldo Aux. Saúde:
-                    {{ formatarParaBR(3408.34 - calculator.reembolsoAgregado) }}
+                    {{
+                      formatarParaBR(
+                        3408.34 -
+                          (calculator.mensalidadeDependente1 +
+                            calculator.mensalidadeDependente2 +
+                            calculator.mensalidadeDependente3 *
+                              calculator.multiplicadorDependente3),
+                      )
+                    }}
                   </span></strong
                 ></small
               >
