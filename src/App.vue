@@ -76,6 +76,10 @@
 </template>
 
 <script>
+import { inject } from '@vercel/analytics'
+import { injectSpeedInsights } from '@vercel/speed-insights'
+inject()
+injectSpeedInsights()
 import ThemeToggle from './components/ThemeToggle.vue'
 import Landing from './views/Landing.vue'
 export default {
