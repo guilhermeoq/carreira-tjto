@@ -38,7 +38,7 @@ const faqs = ref([
   {
     question: 'Qual a base de cálculo do IRRF?',
     answer:
-      'O imposto de renda retido na fonte (IRRF) incide sobre: [(Vencimento básico + GAJ + AQE) - Dedução da Previdência]. As alíquotas efetivas também são afetadas conforme o número de dependentes declarados.',
+      'O imposto de renda retido na fonte (IRRF) incide sobre: [(Vencimento básico + GAJ + AQE + AQFC + Adic. Férias + Função) - Dedução da Previdência]. As alíquotas efetivas também são afetadas conforme o número de dependentes declarados.',
   },
   {
     question: 'O que é a previdência complementar?',
