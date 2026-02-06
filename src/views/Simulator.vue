@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container-lg">
     <div class="container-sm">
-      <div class="callout callout-info">
+      <!--       <div class="callout callout-info">
         <small
           ><strong>Atualizações [16/01/2026]:</strong><br />
           🆕 A calculadora foi atualizada considerando que o
@@ -14,9 +14,9 @@
           (uma diferença de R$ 318,30).<br />
           🚨 Nova opção para simular data-base 2026, com percentual ajustável.<br />
         </small>
-      </div>
+      </div> -->
 
-      <div style="text-align: center; margin-top: 2em; margin-bottom: 1em">
+      <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
         <button type="button" class="btn clearBtn" @click="resetCalculators">
           <strong><i class="bi bi-stars"></i> Limpar</strong>
         </button>

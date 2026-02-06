@@ -15,10 +15,16 @@
 
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
       <router-link to="/app" class="btn btn-primary btn-lg px-4 gap-3"> Simular </router-link>
+      <Share />
     </div>
     <div>
       <main>
         <Features />
+      </main>
+    </div>
+    <div>
+      <main>
+        <Changelog />
       </main>
     </div>
     <div>
@@ -32,11 +38,15 @@
 <script>
 import FAQ from '../components/FAQ.vue'
 import Features from '../components/Features.vue'
+import Share from '../components/Share.vue'
+import Changelog from '../components/Changelog.vue'
 
 export default {
   components: {
     FAQ, // <--- This line is mandatory in the Options API
     Features,
+    Share,
+    Changelog,
   },
 }
 </script>
