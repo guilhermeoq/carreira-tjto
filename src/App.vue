@@ -43,17 +43,6 @@
     <router-view></router-view>
 
     <div class="container mt-5">
-      <p class="footer">
-        Desenvolvido por
-        <a href="https://guilhermeoq.github.io" class="link"
-          >Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a
-        >. Este simulador é gratuito, não coleta nenhuma informação pessoal e foi parametrizado
-        apenas com dados públicos. Os valores calculados nesta página não podem ser considerados
-        100% corretos devido a possíveis erros nos cálculos. Não me responsabilizo por eventuais
-        diferenças entre a simulação e os valores reais. Caso você tenha alguma sugestão ou
-        comentário, por favor entre em contato pelo e-mail
-        <a class="link" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
-      </p>
       <div class="badge container d-flex justify-content-center align-items-center gap-3 mt-3">
         <a href="https://vuejs.org">
           <img
@@ -68,6 +57,16 @@
           />
         </a>
       </div>
+      <p class="footer">
+        Desenvolvido por
+        <a href="https://guilhermeoq.github.io" class="link"
+          >Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a
+        >. Este simulador é gratuito, não coleta informações pessoais e foi parametrizado apenas com
+        dados públicos. Os valores calculados nesta página não podem ser considerados 100% corretos
+        devido a possíveis erros nos cálculos. Não me responsabilizo por eventuais diferenças.
+        Dúvidas/sugestões:
+        <a class="link" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
+      </p>
       <p class="copyright">© 2026 carreiratjto.com. Todos os direitos reservados.</p>
     </div>
 
