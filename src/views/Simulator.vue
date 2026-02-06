@@ -852,44 +852,58 @@
                 ><strong
                   ><span
                     v-if="
-                      calculator.mensalidadeServidor +
-                        calculator.mensalidadeDependente1 +
-                        calculator.mensalidadeDependente2 +
-                        calculator.mensalidadeDependente3 * calculator.multiplicadorDependente3 -
-                        3408.34 >=
+                      consultaReembolso(calculator.faixaEtariaServidor) -
+                        calculator.mensalidadeServidor +
+                        (consultaReembolso(calculator.faixaEtariaDependente1) -
+                          calculator.mensalidadeDependente1) +
+                        (consultaReembolso(calculator.faixaEtariaDependente2) -
+                          calculator.mensalidadeDependente2) +
+                        (consultaReembolso(calculator.faixaEtariaDependente3) -
+                          calculator.mensalidadeDependente3) *
+                          calculator.multiplicadorDependente3 <
                       0
                     "
                     class="negative"
                     >Excedente Aux. Saúde:
                     {{
                       formatarParaBR(
-                        3408.34 -
-                          (calculator.mensalidadeServidor +
-                            calculator.mensalidadeDependente1 +
-                            calculator.mensalidadeDependente2 +
-                            calculator.mensalidadeDependente3 *
-                              calculator.multiplicadorDependente3),
+                        consultaReembolso(calculator.faixaEtariaServidor) -
+                          calculator.mensalidadeServidor +
+                          (consultaReembolso(calculator.faixaEtariaDependente1) -
+                            calculator.mensalidadeDependente1) +
+                          (consultaReembolso(calculator.faixaEtariaDependente2) -
+                            calculator.mensalidadeDependente2) +
+                          (consultaReembolso(calculator.faixaEtariaDependente3) -
+                            calculator.mensalidadeDependente3) *
+                            calculator.multiplicadorDependente3,
                       )
                     }} </span
                   ><span
                     v-if="
-                      calculator.mensalidadeServidor +
-                        calculator.mensalidadeDependente1 +
-                        calculator.mensalidadeDependente2 +
-                        calculator.mensalidadeDependente3 * calculator.multiplicadorDependente3 -
-                        3408.34 <
+                      consultaReembolso(calculator.faixaEtariaServidor) -
+                        calculator.mensalidadeServidor +
+                        (consultaReembolso(calculator.faixaEtariaDependente1) -
+                          calculator.mensalidadeDependente1) +
+                        (consultaReembolso(calculator.faixaEtariaDependente2) -
+                          calculator.mensalidadeDependente2) +
+                        (consultaReembolso(calculator.faixaEtariaDependente3) -
+                          calculator.mensalidadeDependente3) *
+                          calculator.multiplicadorDependente3 >=
                       0
                     "
                     class="positive"
                     >Saldo Aux. Saúde:
                     {{
                       formatarParaBR(
-                        3408.34 -
-                          (calculator.mensalidadeServidor +
-                            calculator.mensalidadeDependente1 +
-                            calculator.mensalidadeDependente2 +
-                            calculator.mensalidadeDependente3 *
-                              calculator.multiplicadorDependente3),
+                        consultaReembolso(calculator.faixaEtariaServidor) -
+                          calculator.mensalidadeServidor +
+                          (consultaReembolso(calculator.faixaEtariaDependente1) -
+                            calculator.mensalidadeDependente1) +
+                          (consultaReembolso(calculator.faixaEtariaDependente2) -
+                            calculator.mensalidadeDependente2) +
+                          (consultaReembolso(calculator.faixaEtariaDependente3) -
+                            calculator.mensalidadeDependente3) *
+                            calculator.multiplicadorDependente3,
                       )
                     }}
                   </span></strong
