@@ -1,6 +1,77 @@
 <template>
   <div class="back" style="background-attachment: fixed">
-    <Calculadora />
+    <nav class="navbar navbar-expand-lg navbar-collapse">
+      <div class="container-fluid">
+        <div class="navbar-brand">
+          <router-link to="/" class="text-decoration-none">
+            <img src="/android-chrome-192x192.png" width="25" height="25" alt="" />
+            <strong>carreiratjto.com</strong>
+          </router-link>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.al.to.leg.br/arquivos/lei_2409-2010_63738.PDF"
+                >Lei n.º 2.409</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
+                >Data-base 2025</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="app" class="container-lg">
+      <div class="mt-4 mb-3 d-flex justify-content-end">
+        <ThemeToggle />
+      </div>
+    </div>
+    <router-view></router-view>
+
+    <div class="container mt-5">
+      <p class="footer">
+        Desenvolvido por
+        <a href="https://guilhermeoq.github.io" class="link"
+          >Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a
+        >. Este simulador é gratuito, não coleta nenhuma informação pessoal e foi parametrizado
+        apenas com dados públicos. Os valores calculados nesta página não podem ser considerados
+        100% corretos devido a possíveis erros nos cálculos. Não me responsabilizo por eventuais
+        diferenças entre a simulação e os valores reais. Caso você tenha alguma sugestão ou
+        comentário, por favor entre em contato pelo e-mail
+        <a class="link" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
+      </p>
+      <div class="badge container d-flex justify-content-center align-items-center gap-3 mt-3">
+        <a href="https://vuejs.org">
+          <img
+            src="https://img.shields.io/badge/Built%20with%20Vue-grey?style=for-the-badge&logo=vuedotjs&&color=35495e"
+            alt="Built with Vue.js"
+          />
+        </a>
+        <a href="https://vercel.com">
+          <img
+            src="https://img.shields.io/badge/Powered%20by%20Vercel-grey?style=for-the-badge&logo=vercel&color=292929"
+            alt="Powered by Vercel"
+          />
+        </a>
+      </div>
+      <p class="copyright">© 2026 carreiratjto.com. Todos os direitos reservados.</p>
+    </div>
+
+    <div class="container d-flex justify-content-center align-items-center"></div>
   </div>
 </template>
 
@@ -9,11 +80,13 @@ import { inject } from '@vercel/analytics'
 import { injectSpeedInsights } from '@vercel/speed-insights'
 inject()
 injectSpeedInsights()
-import Calculadora from './components/Calculadora.vue'
-
+import ThemeToggle from './components/ThemeToggle.vue'
+import Landing from './views/Landing.vue'
 export default {
+  name: 'App',
   components: {
-    Calculadora,
+    ThemeToggle,
+    Landing,
   },
 }
 </script>
