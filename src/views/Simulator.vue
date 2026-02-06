@@ -852,7 +852,8 @@
                 ><strong
                   ><span
                     v-if="
-                      calculator.mensalidadeDependente1 +
+                      calculator.mensalidadeServidor +
+                        calculator.mensalidadeDependente1 +
                         calculator.mensalidadeDependente2 +
                         calculator.mensalidadeDependente3 * calculator.multiplicadorDependente3 -
                         3408.34 >=
@@ -863,7 +864,8 @@
                     {{
                       formatarParaBR(
                         3408.34 -
-                          (calculator.mensalidadeDependente1 +
+                          (calculator.mensalidadeServidor +
+                            calculator.mensalidadeDependente1 +
                             calculator.mensalidadeDependente2 +
                             calculator.mensalidadeDependente3 *
                               calculator.multiplicadorDependente3),
@@ -871,7 +873,8 @@
                     }} </span
                   ><span
                     v-if="
-                      calculator.mensalidadeDependente1 +
+                      calculator.mensalidadeServidor +
+                        calculator.mensalidadeDependente1 +
                         calculator.mensalidadeDependente2 +
                         calculator.mensalidadeDependente3 * calculator.multiplicadorDependente3 -
                         3408.34 <
@@ -882,7 +885,8 @@
                     {{
                       formatarParaBR(
                         3408.34 -
-                          (calculator.mensalidadeDependente1 +
+                          (calculator.mensalidadeServidor +
+                            calculator.mensalidadeDependente1 +
                             calculator.mensalidadeDependente2 +
                             calculator.mensalidadeDependente3 *
                               calculator.multiplicadorDependente3),
