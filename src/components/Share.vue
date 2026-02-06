@@ -3,7 +3,7 @@
     v-if="isShareSupported"
     @click="shareWebsite"
     type="button"
-    class="btn btn-outline-secondary btn-lg px-4"
+    class="btn btn-secondary btn-lg px-4"
   >
     <i class="bi bi-share-fill me-2"></i>
     Compartilhar

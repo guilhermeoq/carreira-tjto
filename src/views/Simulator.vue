@@ -1,21 +1,6 @@
 <template>
   <div id="app" class="container-lg">
     <div class="container-sm">
-      <!--       <div class="callout callout-info">
-        <small
-          ><strong>Atualizações [16/01/2026]:</strong><br />
-          🆕 A calculadora foi atualizada considerando que o
-          <a
-            href="https://www.cnnbrasil.com.br/economia/macroeconomia/teto-do-inss-sobe-para-r-8-47555-em-2026-veja-faixas-atualizadas/"
-            >teto do IGEPREV aumentou</a
-          >
-          de R$ 8.157,40 para R$ 8.475,55 em 2026. Desta forma, os descontos do IGEPREV e BrasilPrev
-          mudaram.<br />🛒 A calculadora já está considerando reajuste de +15% no aux. alimentação
-          (uma diferença de R$ 318,30).<br />
-          🚨 Nova opção para simular data-base 2026, com percentual ajustável.<br />
-        </small>
-      </div> -->
-
       <div style="text-align: center; margin-top: 1em; margin-bottom: 1em">
         <button type="button" class="btn clearBtn" @click="resetCalculators">
           <strong><i class="bi bi-stars"></i> Limpar</strong>
