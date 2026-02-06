@@ -1,63 +1,6 @@
 <template>
-  <!-- <div class="scroll-buttons position-fixed bottom-0 start-0 m-3 d-flex flex-column gap-2 z-3">
-    <button class="btn btn-secondary btn-sm" @click="scrollToTop">
-      <i class="bi bi-arrow-up"></i>
-    </button>
-    <a href="#comparativo" class="btn btn-secondary btn-sm">
-      <i class="bi bi-arrow-down"></i>
-    </a>
-  </div>-->
-  <nav class="navbar navbar-expand-lg navbar-collapse">
-    <div class="container-fluid">
-      <div class="navbar-brand">
-        <img src="/android-chrome-192x192.png" width="25" height="25" alt="" />
-        <strong>carreiratjto.com</strong>
-      </div>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.al.to.leg.br/arquivos/lei_2409-2010_63738.PDF"
-              >Lei n.º 2.409</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://sapl.al.to.leg.br/materia/11972/documentoacessorio"
-              >Data-base 2025</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
   <div id="app" class="container-lg">
-    <div class="mt-4 mb-3 d-flex justify-content-end">
-      <ThemeToggle />
-    </div>
     <div class="container-sm">
-      <h1 class="title">
-        Simulador da Carreira
-        <span class="gradient-text">PCCR</span> dos Servidores do TJTO
-      </h1>
-
-      <div class="d-block d-md-flex gap-3">
-        <p class="subtitle">
-          Simule a <strong>evolução na carreira e salário do TJTO</strong>. Visualize progressões e
-          detalhes da folha de pagamento neste simulador gratuito desenvolvido para facilitar seu
-          planejamento financeiro.
-        </p>
-      </div>
-
       <div class="callout callout-info">
         <small
           ><strong>Atualizações [16/01/2026]:</strong><br />
@@ -960,41 +903,11 @@
       </h5>
       <p><small>(diferença de valor líquido entre as simulações)</small></p>
     </div>
-    <div class="container d-flex justify-content-center align-items-center">
-      <p class="footer">
-        Desenvolvido por
-        <a href="https://guilhermeoq.github.io" class="link"
-          >Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a
-        >. Este simulador é gratuito, não coleta nenhuma informação pessoal e foi desenvolvido com
-        base em dados do Portal da Transparência e da legislação vigente.<br />Os valores calculados
-        nesta página não podem ser considerados 100% corretos devido a possíveis erros nos cálculos
-        e nos valores e alíquotas de impostos e gratificações. Não me responsabilizo por eventuais
-        diferenças entre a simulação e os valores reais. Caso você tenha alguma sugestão ou
-        comentário, por favor entre em contato pelo e-mail
-        <a class="link" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
-      </p>
-    </div>
-
-    <div class="badge container d-flex justify-content-center align-items-center gap-3">
-      <a href="https://vuejs.org">
-        <img
-          src="https://img.shields.io/badge/Built%20with%20Vue-grey?style=for-the-badge&logo=vuedotjs&&color=35495e"
-          alt="Built with Vue.js"
-        />
-      </a>
-      <a href="https://vercel.com">
-        <img
-          src="https://img.shields.io/badge/Powered%20by%20Vercel-grey?style=for-the-badge&logo=vercel&color=292929"
-          alt="Powered by Vercel"
-        />
-      </a>
-    </div>
-    <p class="copyright">© {{ currentYear }} carreiratjto.com. Todos os direitos reservados.</p>
   </div>
 </template>
 
 <script>
-import ThemeToggle from './ThemeToggle.vue'
+import ThemeToggle from '../components/ThemeToggle.vue'
 export default {
   data() {
     return {
@@ -1094,12 +1007,6 @@ export default {
       this.updateSalary(0)
       this.saveCalculatorsToLocalStorage()
     },
-    /* scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    },
-    scrollToBottom() {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }, */
 
     //Opções de AQE conforme cargo
     getAqeOptions(cargo) {
@@ -1706,7 +1613,7 @@ body[data-bs-theme='dark'] {
 
   .footer {
     color: #858585;
-    margin-top: 3em;
+    margin-top: 1em;
     line-height: 1;
     text-align: justify;
     font-size: 0.9em;
