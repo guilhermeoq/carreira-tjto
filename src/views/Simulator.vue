@@ -387,34 +387,61 @@
             </div>
             <div
               v-if="calculator.switchSaude && !calculator.switchTetoSaude"
-              class="progress mb-3"
-              role="progressbar"
-              aria-label="Limite Servidor"
-              :aria-valuenow="
-                (
-                  (calculator.mensalidadeServidor * 100) /
-                  consultaReembolso(calculator.faixaEtariaServidor)
-                ).toFixed(2)
-              "
-              aria-valuemin="0"
-              aria-valuemax="100"
+              class="d-flex align-items-center justify-content-between"
             >
               <div
-                class="progress-bar bg-primary"
-                :style="{
-                  width:
-                    (calculator.mensalidadeServidor * 100) /
-                      consultaReembolso(calculator.faixaEtariaServidor) +
-                    '%',
-                }"
-              >
-                {{
+                class="progress mb-3 flex-grow-1 me-3"
+                role="progressbar"
+                aria-label="Limite Servidor"
+                :aria-valuenow="
                   (
                     (calculator.mensalidadeServidor * 100) /
                     consultaReembolso(calculator.faixaEtariaServidor)
-                  ).toFixed(2) + '%'
-                }}
+                  ).toFixed(2)
+                "
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <div
+                  class="progress-bar bg-primary"
+                  :style="{
+                    width:
+                      (calculator.mensalidadeServidor * 100) /
+                        consultaReembolso(calculator.faixaEtariaServidor) +
+                      '%',
+                  }"
+                >
+                  {{
+                    (
+                      (calculator.mensalidadeServidor * 100) /
+                      consultaReembolso(calculator.faixaEtariaServidor)
+                    ).toFixed(2) + '%'
+                  }}
+                </div>
               </div>
+              <p>
+                <strong
+                  ><span
+                    :class="{
+                      positive:
+                        consultaReembolso(calculator.faixaEtariaServidor) -
+                          calculator.mensalidadeServidor >=
+                        0,
+                      negative:
+                        consultaReembolso(calculator.faixaEtariaServidor) -
+                          calculator.mensalidadeServidor <
+                        0,
+                    }"
+                  >
+                    {{
+                      formatarParaBR(
+                        consultaReembolso(calculator.faixaEtariaServidor) -
+                          calculator.mensalidadeServidor,
+                      )
+                    }}</span
+                  >
+                </strong>
+              </p>
             </div>
 
             <!-- Faixa Etaria - Idade Dependente 1 -->
@@ -465,34 +492,61 @@
             </div>
             <div
               v-if="calculator.switchSaude && !calculator.switchTetoSaude"
-              class="progress mb-3"
-              role="progressbar"
-              aria-label="Limite Dependente 1"
-              :aria-valuenow="
-                (
-                  (calculator.mensalidadeDependente1 * 100) /
-                  consultaReembolso(calculator.faixaEtariaDependente1)
-                ).toFixed(2)
-              "
-              aria-valuemin="0"
-              aria-valuemax="100"
+              class="d-flex align-items-center justify-content-between"
             >
               <div
-                class="progress-bar bg-success"
-                :style="{
-                  width:
-                    (calculator.mensalidadeDependente1 * 100) /
-                      consultaReembolso(calculator.faixaEtariaDependente1) +
-                    '%',
-                }"
-              >
-                {{
+                class="progress mb-3 flex-grow-1 me-3"
+                role="progressbar"
+                aria-label="Limite Dependente 1"
+                :aria-valuenow="
                   (
                     (calculator.mensalidadeDependente1 * 100) /
                     consultaReembolso(calculator.faixaEtariaDependente1)
-                  ).toFixed(2) + '%'
-                }}
+                  ).toFixed(2)
+                "
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <div
+                  class="progress-bar bg-success"
+                  :style="{
+                    width:
+                      (calculator.mensalidadeDependente1 * 100) /
+                        consultaReembolso(calculator.faixaEtariaDependente1) +
+                      '%',
+                  }"
+                >
+                  {{
+                    (
+                      (calculator.mensalidadeDependente1 * 100) /
+                      consultaReembolso(calculator.faixaEtariaDependente1)
+                    ).toFixed(2) + '%'
+                  }}
+                </div>
               </div>
+              <p>
+                <strong
+                  ><span
+                    :class="{
+                      positive:
+                        consultaReembolso(calculator.faixaEtariaDependente1) -
+                          calculator.mensalidadeDependente1 >=
+                        0,
+                      negative:
+                        consultaReembolso(calculator.faixaEtariaDependente1) -
+                          calculator.mensalidadeDependente1 <
+                        0,
+                    }"
+                  >
+                    {{
+                      formatarParaBR(
+                        consultaReembolso(calculator.faixaEtariaDependente1) -
+                          calculator.mensalidadeDependente1,
+                      )
+                    }}</span
+                  >
+                </strong>
+              </p>
             </div>
 
             <!-- Faixa Etaria - Idade Dependente 2 -->
@@ -546,34 +600,61 @@
             </div>
             <div
               v-if="calculator.switchSaude && !calculator.switchTetoSaude"
-              class="progress mb-3"
-              role="progressbar"
-              aria-label="Limite Dependente 2"
-              :aria-valuenow="
-                (
-                  (calculator.mensalidadeDependente2 * 100) /
-                  consultaReembolso(calculator.faixaEtariaDependente2)
-                ).toFixed(2)
-              "
-              aria-valuemin="0"
-              aria-valuemax="100"
+              class="d-flex align-items-center justify-content-between"
             >
               <div
-                class="progress-bar bg-warning"
-                :style="{
-                  width:
-                    (calculator.mensalidadeDependente2 * 100) /
-                      consultaReembolso(calculator.faixaEtariaDependente2) +
-                    '%',
-                }"
-              >
-                {{
+                class="progress mb-3 flex-grow-1 me-3"
+                role="progressbar"
+                aria-label="Limite Dependente 2"
+                :aria-valuenow="
                   (
                     (calculator.mensalidadeDependente2 * 100) /
                     consultaReembolso(calculator.faixaEtariaDependente2)
-                  ).toFixed(2) + '%'
-                }}
+                  ).toFixed(2)
+                "
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <div
+                  class="progress-bar bg-warning"
+                  :style="{
+                    width:
+                      (calculator.mensalidadeDependente2 * 100) /
+                        consultaReembolso(calculator.faixaEtariaDependente2) +
+                      '%',
+                  }"
+                >
+                  {{
+                    (
+                      (calculator.mensalidadeDependente2 * 100) /
+                      consultaReembolso(calculator.faixaEtariaDependente2)
+                    ).toFixed(2) + '%'
+                  }}
+                </div>
               </div>
+              <p>
+                <strong
+                  ><span
+                    :class="{
+                      positive:
+                        consultaReembolso(calculator.faixaEtariaDependente2) -
+                          calculator.mensalidadeDependente2 >=
+                        0,
+                      negative:
+                        consultaReembolso(calculator.faixaEtariaDependente2) -
+                          calculator.mensalidadeDependente2 <
+                        0,
+                    }"
+                  >
+                    {{
+                      formatarParaBR(
+                        consultaReembolso(calculator.faixaEtariaDependente2) -
+                          calculator.mensalidadeDependente2,
+                      )
+                    }}</span
+                  >
+                </strong>
+              </p>
             </div>
 
             <!-- Faixa Etaria - Idade Dependente 3 -->
@@ -625,34 +706,61 @@
             </div>
             <div
               v-if="calculator.switchSaude && !calculator.switchTetoSaude"
-              class="progress mb-3"
-              role="progressbar"
-              aria-label="Limite Dependente 3"
-              :aria-valuenow="
-                (
-                  (calculator.mensalidadeDependente3 * 100) /
-                  consultaReembolso(calculator.faixaEtariaDependente3)
-                ).toFixed(2)
-              "
-              aria-valuemin="0"
-              aria-valuemax="100"
+              class="d-flex align-items-center justify-content-between"
             >
               <div
-                class="progress-bar bg-danger"
-                :style="{
-                  width:
-                    (calculator.mensalidadeDependente3 * 100) /
-                      consultaReembolso(calculator.faixaEtariaDependente3) +
-                    '%',
-                }"
-              >
-                {{
+                class="progress mb-3 flex-grow-1 me-3"
+                role="progressbar"
+                aria-label="Limite Dependente 3"
+                :aria-valuenow="
                   (
                     (calculator.mensalidadeDependente3 * 100) /
                     consultaReembolso(calculator.faixaEtariaDependente3)
-                  ).toFixed(2) + '%'
-                }}
+                  ).toFixed(2)
+                "
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <div
+                  class="progress-bar bg-danger"
+                  :style="{
+                    width:
+                      (calculator.mensalidadeDependente3 * 100) /
+                        consultaReembolso(calculator.faixaEtariaDependente3) +
+                      '%',
+                  }"
+                >
+                  {{
+                    (
+                      (calculator.mensalidadeDependente3 * 100) /
+                      consultaReembolso(calculator.faixaEtariaDependente3)
+                    ).toFixed(2) + '%'
+                  }}
+                </div>
               </div>
+              <p>
+                <strong
+                  ><span
+                    :class="{
+                      positive:
+                        consultaReembolso(calculator.faixaEtariaDependente3) -
+                          calculator.mensalidadeDependente3 >=
+                        0,
+                      negative:
+                        consultaReembolso(calculator.faixaEtariaDependente3) -
+                          calculator.mensalidadeDependente3 <
+                        0,
+                    }"
+                  >
+                    {{
+                      formatarParaBR(
+                        consultaReembolso(calculator.faixaEtariaDependente3) -
+                          calculator.mensalidadeDependente3,
+                      )
+                    }}</span
+                  >
+                </strong>
+              </p>
             </div>
 
             <div
@@ -738,7 +846,19 @@
             class="d-flex flex-wrap justify-content-center"
           >
             <p>
-              <small><strong>Teto Aux. Saúde: R$ 3.408,34</strong></small>
+              <small><strong>Teto Aux. Saúde: R$ 3.408,34</strong></small
+              ><br />
+              <small
+                ><strong
+                  ><span v-if="calculator.reembolsoAgregado - 3408.34 >= 0" class="negative"
+                    >Excedente Aux. Saúde:
+                    {{ formatarParaBR(3408.34 - calculator.reembolsoAgregado) }} </span
+                  ><span v-if="calculator.reembolsoAgregado - 3408.34 < 0" class="positive"
+                    >Saldo Aux. Saúde:
+                    {{ formatarParaBR(3408.34 - calculator.reembolsoAgregado) }}
+                  </span></strong
+                ></small
+              >
             </p>
           </div>
           <p class="mb-0 mt-2">Outros descontos:</p>
@@ -944,6 +1064,7 @@ export default {
         mensalidadeDependente1: 0.0,
         mensalidadeDependente2: 0.0,
         mensalidadeDependente3: 0.0,
+        reembolsoAgregado: 0.0,
         percentualSaudeServidor: 0,
         percentualSaudeDep1: 0,
         percentualSaudeDep2: 0,
@@ -1045,7 +1166,6 @@ export default {
         let auxilioDependente1 = 0
         let auxilioDependente2 = 0
         let auxilioDependente3 = 0
-        let reembolsoAgregado = 0
 
         // Consulta teto de reembolso Aux.Saude para Servidor
         if (
@@ -1089,10 +1209,11 @@ export default {
             // = ${auxilioDependente3}`)
 
             //Somatório dos reembolsos apurados conforme tetos por faixa etária
-            (reembolsoAgregado = parseFloat(
+            (calculator.reembolsoAgregado = parseFloat(
               auxilioServidor + auxilioDependente1 + auxilioDependente2 + auxilioDependente3,
             ))
-        calculator.saude = reembolsoAgregado >= 3408.34 ? 3408.34 : reembolsoAgregado
+        calculator.saude =
+          calculator.reembolsoAgregado >= 3408.34 ? 3408.34 : calculator.reembolsoAgregado
 
         calculator.percentualSaudeServidor = this.percentualTetoSaude(auxilioServidor)
         calculator.percentualSaudeDep1 = this.percentualTetoSaude(auxilioDependente1)
