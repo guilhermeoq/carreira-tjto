@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5" id="icon-grid">
-    <h2 class="pb-2">Funcionalidades</h2>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+    <h2 class="">Funcionalidades</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-3">
       <div class="col d-flex align-items-start">
         <i
           class="bi bi-calendar-event text-body-secondary flex-shrink-0 me-3"
@@ -52,6 +52,18 @@
       </div>
       <div class="col d-flex align-items-start">
         <i
+          class="bi bi-person-up text-body-secondary flex-shrink-0 me-3"
+          style="font-size: 1.75rem"
+          aria-hidden="true"
+        >
+        </i>
+        <div>
+          <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Funções</h3>
+          <p>Veja valores para cargos em comissão (DAJ) e funções comissionadas (FC).</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <i
           class="bi bi-people text-body-secondary flex-shrink-0 me-3"
           style="font-size: 1.75rem"
           aria-hidden="true"
@@ -72,18 +84,6 @@
         <div>
           <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Imposto de Renda</h3>
           <p>Veja a dedução do IRRF, considerando seus dependentes.</p>
-        </div>
-      </div>
-      <div class="col d-flex align-items-start">
-        <i
-          class="bi bi-person-up text-body-secondary flex-shrink-0 me-3"
-          style="font-size: 1.75rem"
-          aria-hidden="true"
-        >
-        </i>
-        <div>
-          <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Funções DAJ/FC</h3>
-          <p>Veja valores para cargos em comissão (DAJ) e funções comissionadas (FC).</p>
         </div>
       </div>
       <div class="col d-flex align-items-start">

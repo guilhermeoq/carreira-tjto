@@ -22,6 +22,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="https://www.al.to.leg.br/arquivos/lei_2409-2010_63738.PDF"
                 >Lei n.º 2.409</a
               >
@@ -61,10 +64,8 @@
         Desenvolvido por
         <a href="https://guilhermeoq.github.io" class="link"
           >Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a
-        >. Este simulador é gratuito, não coleta informações pessoais e foi parametrizado apenas com
-        dados públicos. Os valores calculados nesta página não podem ser considerados 100% corretos
-        devido a possíveis erros nos cálculos. Não me responsabilizo por eventuais diferenças.
-        Dúvidas/sugestões:
+        >. Simulação baseada em dados públicos. Os resultados são estimativas e não substituem o
+        contracheque oficial. Contato:
         <a class="link" href="mailto:contato@carreiratjto.com">contato@carreiratjto.com</a>.
       </p>
       <p class="copyright">© 2026 carreiratjto.com. Todos os direitos reservados.</p>
