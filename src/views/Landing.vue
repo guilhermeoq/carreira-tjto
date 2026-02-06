@@ -14,7 +14,9 @@
     </div>
 
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      <router-link to="/app" class="btn btn-primary btn-lg px-4 gap-3"> Simular </router-link>
+      <router-link to="/app" class="btn btn-primary btn-lg px-4 gap-3"
+        ><i class="bi bi-calculator-fill me-2"></i> Simular
+      </router-link>
       <Share />
     </div>
     <div>
