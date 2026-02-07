@@ -33,8 +33,8 @@
                 <h6 class="fw-bold text-warning">Alterações</h6>
                 <p>
                   🛒 A calculadora já está considerando reajuste de +15% no aux. alimentação (uma
-                  diferença de R$ 318,30). 🆕 A calculadora foi atualizada considerando que o teto
-                  do IGEPREV aumentou de R$8.157,40 para R$8.475,55 em 2026. Desta forma, os
+                  diferença de R$ 318,30).<br />🆕 A calculadora foi atualizada considerando que o
+                  teto do IGEPREV aumentou de R$8.157,40 para R$8.475,55 em 2026. Desta forma, os
                   descontos do IGEPREV e BrasilPrev mudaram.
                 </p>
               </div>
