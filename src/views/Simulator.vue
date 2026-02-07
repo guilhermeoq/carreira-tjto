@@ -846,69 +846,21 @@
             class="d-flex flex-wrap justify-content-center"
           >
             <p>
-              <small><strong>Teto Aux. Saúde: R$ 3.408,34</strong></small
-              ><br />
+              <small><strong>Teto Aux. Saúde: R$ 3.408,34</strong><br /> </small>
               <small
-                ><strong
-                  ><span
-                    v-if="
-                      consultaReembolso(calculator.faixaEtariaServidor) -
-                        calculator.mensalidadeServidor +
-                        (consultaReembolso(calculator.faixaEtariaDependente1) -
-                          calculator.mensalidadeDependente1) +
-                        (consultaReembolso(calculator.faixaEtariaDependente2) -
-                          calculator.mensalidadeDependente2) +
-                        (consultaReembolso(calculator.faixaEtariaDependente3) -
-                          calculator.mensalidadeDependente3) *
-                          calculator.multiplicadorDependente3 <
-                      0
-                    "
-                    class="negative"
-                    >Excedente Aux. Saúde:
-                    {{
-                      formatarParaBR(
-                        consultaReembolso(calculator.faixaEtariaServidor) -
-                          calculator.mensalidadeServidor +
-                          (consultaReembolso(calculator.faixaEtariaDependente1) -
-                            calculator.mensalidadeDependente1) +
-                          (consultaReembolso(calculator.faixaEtariaDependente2) -
-                            calculator.mensalidadeDependente2) +
-                          (consultaReembolso(calculator.faixaEtariaDependente3) -
-                            calculator.mensalidadeDependente3) *
-                            calculator.multiplicadorDependente3,
-                      )
-                    }} </span
-                  ><span
-                    v-if="
-                      consultaReembolso(calculator.faixaEtariaServidor) -
-                        calculator.mensalidadeServidor +
-                        (consultaReembolso(calculator.faixaEtariaDependente1) -
-                          calculator.mensalidadeDependente1) +
-                        (consultaReembolso(calculator.faixaEtariaDependente2) -
-                          calculator.mensalidadeDependente2) +
-                        (consultaReembolso(calculator.faixaEtariaDependente3) -
-                          calculator.mensalidadeDependente3) *
-                          calculator.multiplicadorDependente3 >=
-                      0
-                    "
-                    class="positive"
-                    >Saldo Aux. Saúde:
-                    {{
-                      formatarParaBR(
-                        consultaReembolso(calculator.faixaEtariaServidor) -
-                          calculator.mensalidadeServidor +
-                          (consultaReembolso(calculator.faixaEtariaDependente1) -
-                            calculator.mensalidadeDependente1) +
-                          (consultaReembolso(calculator.faixaEtariaDependente2) -
-                            calculator.mensalidadeDependente2) +
-                          (consultaReembolso(calculator.faixaEtariaDependente3) -
-                            calculator.mensalidadeDependente3) *
-                            calculator.multiplicadorDependente3,
-                      )
-                    }}
-                  </span></strong
-                ></small
-              >
+                ><strong class="negative"
+                  >Excedente:
+                  {{
+                    formatarParaBR(
+                      calculator.saude -
+                        calculator.mensalidadeServidor -
+                        calculator.mensalidadeDependente1 -
+                        calculator.mensalidadeDependente2 -
+                        calculator.mensalidadeDependente3 * calculator.multiplicadorDependente3,
+                    )
+                  }}</strong
+                ><br />
+              </small>
             </p>
           </div>
           <p class="mb-0 mt-2">Outros descontos:</p>
@@ -1081,6 +1033,7 @@ export default {
 
       return total1 - total0
     },
+
     currentYear() {
       return new Date().getFullYear()
     },
@@ -1114,7 +1067,6 @@ export default {
         mensalidadeDependente1: 0.0,
         mensalidadeDependente2: 0.0,
         mensalidadeDependente3: 0.0,
-        reembolsoAgregado: 0.0,
         percentualSaudeServidor: 0,
         percentualSaudeDep1: 0,
         percentualSaudeDep2: 0,
@@ -1216,6 +1168,7 @@ export default {
         let auxilioDependente1 = 0
         let auxilioDependente2 = 0
         let auxilioDependente3 = 0
+        let reembolsoAgregado = 0
 
         // Consulta teto de reembolso Aux.Saude para Servidor
         if (
@@ -1252,18 +1205,13 @@ export default {
             this.consultaReembolso(calculator.faixaEtariaDependente3) *
             calculator.multiplicadorDependente3
         else
-          (auxilioDependente3 =
-            calculator.mensalidadeDependente3 * calculator.multiplicadorDependente3),
-            // console.log(`Auxilio Dependente 3 x
-            // ${calculator.multiplicadorDependente3}
-            // = ${auxilioDependente3}`)
-
-            //Somatório dos reembolsos apurados conforme tetos por faixa etária
-            (calculator.reembolsoAgregado = parseFloat(
-              auxilioServidor + auxilioDependente1 + auxilioDependente2 + auxilioDependente3,
-            ))
-        calculator.saude =
-          calculator.reembolsoAgregado >= 3408.34 ? 3408.34 : calculator.reembolsoAgregado
+          auxilioDependente3 =
+            calculator.mensalidadeDependente3 * calculator.multiplicadorDependente3
+        //Somatório dos reembolsos apurados conforme tetos por faixa etária
+        reembolsoAgregado = parseFloat(
+          auxilioServidor + auxilioDependente1 + auxilioDependente2 + auxilioDependente3,
+        )
+        calculator.saude = reembolsoAgregado >= 3408.34 ? 3408.34 : reembolsoAgregado
 
         calculator.percentualSaudeServidor = this.percentualTetoSaude(auxilioServidor)
         calculator.percentualSaudeDep1 = this.percentualTetoSaude(auxilioDependente1)
