@@ -39,7 +39,7 @@
       </div>
     </nav>
     <div id="app" class="container-lg">
-      <div class="mt-4 mb-3 d-flex justify-content-end">
+      <div class="mt-1 d-flex justify-content-end">
         <ThemeToggle />
       </div>
     </div>
@@ -62,7 +62,7 @@
       </div>
       <p class="footer">
         Desenvolvido por
-        <a href="https://guilhermeoq.github.io" class="link"
+        <a href="https://linktr.ee/guilhermeoq" class="link"
           >Guilherme Quintino <i class="bi bi-box-arrow-up-right"></i></a
         >. Simulação baseada em dados públicos. Os resultados são estimativas e não substituem o
         contracheque oficial. Contato:
